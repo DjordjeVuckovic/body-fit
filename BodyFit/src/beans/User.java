@@ -9,7 +9,7 @@ public class User {
 	private String password;
 	private String name;
 	private String surname;
-	private Date birthdate;
+	private Date birthday;
 	private Gender gender;
 	private UserRole userRole;
 	private boolean deleted;
@@ -23,7 +23,7 @@ public class User {
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
-		this.birthdate = birthdate;
+		this.birthday = birthdate;
 		this.gender = gender;
 		this.userRole = userRole;
 		this.deleted = false;
@@ -46,7 +46,7 @@ public class User {
 			
 			e.printStackTrace();
 		}
-		this.birthdate = parseDate;
+		this.birthday = parseDate;
 	}
 	public UserRole getUserRole() {
 		return userRole;
@@ -79,10 +79,10 @@ public class User {
 		this.surname = surname;
 	}
 	public Date getBirthdate() {
-		return birthdate;
+		return birthday;
 	}
 	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
+		this.birthday = birthdate;
 	}
 	public Gender getGender() {
 		return gender;
@@ -99,7 +99,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", name=" + name + ", surname=" + surname
-				+ ", birthdate=" + birthdate + ", gender=" + gender + ", userRole=" + userRole + ", deleted=" + deleted
+				+ ", birthdate=" + birthday + ", gender=" + gender + ", userRole=" + userRole + ", deleted=" + deleted
 				+ "]";
 	}
 	

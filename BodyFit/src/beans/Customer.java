@@ -4,35 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Customer extends User {
-	private ArrayList<SportFacility> visitedFacilities;
+	private ArrayList<String> visitedFacilities;
 	private CustomerType customerType;
 	private double colletedPoints;
 	private Due due;
 	
 
+	
 	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,
-			UserRole userRole) {
+			UserRole userRole, double colletedPoints) {
 		super(username, password, name, surname, birthdate, gender, userRole);
-		this.setUserRole(userRole);
-		visitedFacilities = new ArrayList<SportFacility>();
-		this.customerType = new CustomerType("BRONZE", 0, 0);
-		this.colletedPoints = 0;
-
+		this.colletedPoints = colletedPoints;
 	}
 	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,
 			UserRole userRole,Due due) {
 		super(username, password, name, surname, birthdate, gender, userRole);
 		this.setUserRole(userRole);
-		visitedFacilities = new ArrayList<SportFacility>();
+		visitedFacilities = new ArrayList<String>();
 		this.customerType = new CustomerType("BRONZE", 0, 0);
 		this.colletedPoints = 0;
 		this.due = due;
 
 	}
-	public ArrayList<SportFacility> getVisitedFacilities() {
+	public ArrayList<String> getVisitedFacilities() {
 		return visitedFacilities;
 	}
-	public void setVisitedFacilities(ArrayList<SportFacility> visitedFacilities) {
+	public void setVisitedFacilities(ArrayList<String> visitedFacilities) {
 		this.visitedFacilities = visitedFacilities;
 	}
 	public CustomerType getCustomerType() {
