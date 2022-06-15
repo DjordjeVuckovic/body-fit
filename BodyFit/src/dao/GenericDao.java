@@ -26,7 +26,7 @@ public abstract class GenericDao<TKey,TEntity, Dao extends GenericDao<TKey, TEnt
 	public void setBasePath(String path) {
 		this.basePath = path;
 	}
-	 Gson gs = new GsonBuilder()
+	protected Gson gs = new GsonBuilder()
 	      .setPrettyPrinting()
 	      .create();
 	
