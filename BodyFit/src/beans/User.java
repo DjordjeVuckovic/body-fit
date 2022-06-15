@@ -13,9 +13,22 @@ public class User {
 	private Gender gender;
 	private UserRole userRole;
 	private boolean deleted;
+	private boolean banned;
 	
 	
 
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public boolean isBanned() {
+		return banned;
+	}
+	public void setBanned(boolean banned) {
+		this.banned = banned;
+	}
 	public User(String username, String password, String name, String surname, Date birthdate, Gender gender,
 			UserRole userRole) {
 		super();
