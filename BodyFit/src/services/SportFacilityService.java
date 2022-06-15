@@ -12,19 +12,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Customer;
-import dao.CustomerDao;
-@Path("customers")
-public class CustomerService {
-	CustomerDao customerDao = new CustomerDao();
+import beans.SportFacility;
+import dao.SportFacilityDao;
+
+@Path("facilities")
+public class SportFacilityService {
+	
+	SportFacilityDao sportFacilityDao = new SportFacilityDao();
 	
 	@Context
 	ServletContext ctx;
 	@SuppressWarnings("unused")
 	public void init() {
-		if (ctx.getAttribute("customers") == null) {
+		if (ctx.getAttribute("trainers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("customers", new CustomerService());
+			ctx.setAttribute("trainers", new CustomerService());
 		}
 	}
 	public String getContext() {
@@ -34,8 +36,8 @@ public class CustomerService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Customer> getAllCustomers() {
-		customerDao.setBasePath(getContext());
+	public ArrayList<SportFacility> getAllFacilities() {
+		sportFacilityDao.setBasePath(getContext());
 //
 //		ArrayList<Customer> customers = new ArrayList<Customer>();
 //
@@ -44,16 +46,15 @@ public class CustomerService {
 //
 //		System.out.println("Found " + customers.size() + " customers.");
 
-		return customerDao.getAllToList();
+		return sportFacilityDao.getAllToList();
 	}
 	@POST
 	@Path("create")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createCustomer(Customer customer) {
-		customerDao.setBasePath(getContext());
-		customerDao.create(customer);
+	public void createFacility(SportFacility SportFacility) {
+		sportFacilityDao.setBasePath(getContext());
+		sportFacilityDao.create(SportFacility);
 	}
-	
 
 }

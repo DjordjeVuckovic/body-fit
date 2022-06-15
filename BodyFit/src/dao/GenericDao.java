@@ -17,7 +17,7 @@ public abstract class GenericDao<TKey,TEntity, Dao extends GenericDao<TKey, TEnt
 	protected abstract TKey getKey(TEntity entity);
 	protected abstract String getFilePath();
 	protected  String getPath() {
-		return "C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\src\\jsonData\\" + getFilePath();
+		return basePath + getFilePath();
 	}
 	//protected abstract void RemoveAllReference(TEntity entity);
 	@SuppressWarnings("unused")

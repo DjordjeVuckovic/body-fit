@@ -12,19 +12,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Customer;
-import dao.CustomerDao;
-@Path("customers")
-public class CustomerService {
-	CustomerDao customerDao = new CustomerDao();
+import beans.Manager;
+import dao.ManagerDao;
+@Path("managers")
+public class MangerService {
+	ManagerDao managerDao = new ManagerDao();
 	
 	@Context
 	ServletContext ctx;
 	@SuppressWarnings("unused")
 	public void init() {
-		if (ctx.getAttribute("customers") == null) {
+		if (ctx.getAttribute("managers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("customers", new CustomerService());
+			ctx.setAttribute("managers", new CustomerService());
 		}
 	}
 	public String getContext() {
@@ -34,8 +34,8 @@ public class CustomerService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Customer> getAllCustomers() {
-		customerDao.setBasePath(getContext());
+	public ArrayList<Manager> getAllMangers() {
+		managerDao.setBasePath(getContext());
 //
 //		ArrayList<Customer> customers = new ArrayList<Customer>();
 //
@@ -44,16 +44,14 @@ public class CustomerService {
 //
 //		System.out.println("Found " + customers.size() + " customers.");
 
-		return customerDao.getAllToList();
+		return managerDao.getAllToList();
 	}
 	@POST
 	@Path("create")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createCustomer(Customer customer) {
-		customerDao.setBasePath(getContext());
-		customerDao.create(customer);
+	public void createManger(Manager manager) {
+		managerDao.setBasePath(getContext());
+		managerDao.create(manager);
 	}
-	
-
 }
