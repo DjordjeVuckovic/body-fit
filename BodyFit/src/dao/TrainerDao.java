@@ -46,10 +46,5 @@ public class TrainerDao  extends GenericDao<String,Trainer, TrainerDao>{
 		return new ArrayList<Trainer>(getAllToMap().values());
 	}
 
-	@Override
-	public Trainer getById(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

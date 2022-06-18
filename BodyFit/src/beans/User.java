@@ -15,7 +15,15 @@ public class User {
 	private boolean deleted;
 	private boolean banned;
 	
+	public User() {
+		super();
+	}
 	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 
 	public Date getBirthday() {
 		return birthday;

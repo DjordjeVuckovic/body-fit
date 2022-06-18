@@ -34,8 +34,10 @@ public class Customer extends User {
 		this.colletedPoints = 0;
 		visitedFacilities = new ArrayList<String>();
 		this.customerType = new CustomerType("BRONZE", 0, 0);
-
-		
+	}
+	
+	public Customer() {
+		super();
 	}
 	public ArrayList<String> getVisitedFacilities() {
 		return visitedFacilities;

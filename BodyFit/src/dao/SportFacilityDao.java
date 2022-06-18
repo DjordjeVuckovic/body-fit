@@ -46,10 +46,5 @@ public class SportFacilityDao extends GenericDao<String,SportFacility, SportFaci
 		return new ArrayList<SportFacility>(getAllToMap().values());
 	}
 
-	@Override
-	public SportFacility getById(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

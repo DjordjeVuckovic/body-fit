@@ -8,7 +8,8 @@
     "birthday": "Jun 15, 2022, 2:36:51 AM",
     "gender": "FEMALE",
     "userRole": "CUSTOMER",
-    "deleted": false
+    "deleted": false,
+    "banned": false
   },
   "djokaa": {
     "colletedPoints": 144.0,
@@ -19,6 +20,31 @@
     "birthday": "Jun 15, 2022, 2:36:51 AM",
     "gender": "MALE",
     "userRole": "CUSTOMER",
-    "deleted": false
+    "deleted": false,
+    "banned": false
+  },
+  "laza": {
+    "colletedPoints": 11.0,
+    "username": "laza",
+    "password": "lazarevic",
+    "name": "m",
+    "surname": "m",
+    "birthday": "Jun 18, 2022, 10:16:40 PM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false
+  },
+  "aa": {
+    "colletedPoints": 11.0,
+    "username": "aa",
+    "password": "lazarevic",
+    "name": "m",
+    "surname": "m",
+    "birthday": "Nov 11, 2019, 1:00:00 AM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false
   }
 }

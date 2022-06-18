@@ -56,6 +56,61 @@ public class LoginService {
 		ctx.setAttribute("username", "");
 		return "Log Out Successful";
 	}
+	@POST
+	@Path("logInStatus")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean SuccesLoginIn(User user) {
+		UserState loginState = customerLogIn(user);
+		boolean loginStatus= false;
+		if(loginState == UserState.SUCCESS) {
+			loginStatus =  true;
+		}
+		loginState = adminLogIn(user);
+		if(loginState == UserState.SUCCESS) {
+			loginStatus = true;
+		}
+		loginState = managerLogIn(user);
+		if(loginState == UserState.SUCCESS) {
+			loginStatus =  true;
+		}
+		loginState = trainerLogIn(user);
+		if(loginState == UserState.SUCCESS) {
+			loginStatus = true;
+		}
+		return loginStatus;
+		
+	}
+	@GET
+	@Path("loggedUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getCurrentUser() {
+		adminDao.setBasePath(getContext());
+		customerDao.setBasePath(getContext());
+		managerDao.setBasePath(getContext());
+		trainerDao.setBasePath(getContext());
+		User user = new User();
+		String username = (String) ctx.getAttribute("username");
+		user.setUsername(username);
+		User trainer = trainerDao.getById(username);
+		if(trainer != null) {
+			return trainer;
+		}
+		User manager = managerDao.getById(username);
+		if(manager != null) {
+			return manager;
+		}
+		User customer = customerDao.getById(username);
+		if(customer != null) {
+			return customer;
+		}
+		User admin = adminDao.getById(username);
+		if(admin != null) {
+			return admin;
+		}
+		return null;
+		
+	}
 	public UserState customerLogIn(User user) {
 		UserState state = UserState.ERROR;
 		customerDao.setBasePath(getContext());
@@ -128,6 +183,81 @@ public class LoginService {
 		return state;
 	}
 	
-	
+	public String getCustomerStateString(User user) {
+		UserState state  = customerLogIn(user);
+		String userState = "";
+		switch (state) {
+		case SUCCESS:
+			userState = "Success login";
+			break;
+		case ERROR:
+			userState = "Wrong credential.Wrong username or password!";
+			break;
+		case BANNED:
+			userState = "Your are banned!";
+			break;
+
+		default:
+			break;
+		}
+		return userState;
+	}
+	public String getTrainerStateString(User user) {
+		UserState state  = trainerLogIn(user);
+		String userState = "";
+		switch (state) {
+		case SUCCESS:
+			userState = "Success login";
+			break;
+		case ERROR:
+			userState = "Wrong credential.Wrong username or password!";
+			break;
+		case BANNED:
+			userState = "Your are banned!";
+			break;
+
+		default:
+			break;
+		}
+		return userState;
+	}
+	public String getManagerStateString(User user) {
+		UserState state  = managerLogIn(user);
+		String userState = "";
+		switch (state) {
+		case SUCCESS:
+			userState = "Success login";
+			break;
+		case ERROR:
+			userState = "Wrong credential.Wrong username or password!";
+			break;
+		case BANNED:
+			userState = "Your are banned!";
+			break;
+
+		default:
+			break;
+		}
+		return userState;
+	}
+	public String getAdminStateString(User user) {
+		UserState state  = adminLogIn(user);
+		String userState = "";
+		switch (state) {
+		case SUCCESS:
+			userState = "Success login";
+			break;
+		case ERROR:
+			userState = "Wrong credential.Wrong username or password!";
+			break;
+		case BANNED:
+			userState = "Your are banned!";
+			break;
+
+		default:
+			break;
+		}
+		return userState;
+	}	
 
 }

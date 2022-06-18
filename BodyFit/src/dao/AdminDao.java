@@ -47,10 +47,5 @@ public class AdminDao  extends GenericDao<String, Admin, AdminDao>{
 		return new ArrayList<Admin>(getAllToMap().values());
 	}
 
-	@Override
-	public Admin getById(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
