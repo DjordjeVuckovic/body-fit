@@ -15,6 +15,11 @@ public class Location {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+	public Location(GeoLocation geoLocation, Adress adress) {
+		super();
+		this.geoLocation = geoLocation;
+		this.adress = adress;
+	}
 	
 
 }
