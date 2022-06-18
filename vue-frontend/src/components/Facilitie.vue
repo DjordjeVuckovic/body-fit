@@ -3,6 +3,7 @@
     <h3>{{facilitie.name}}</h3>
     <p>{{facilitie.location}}</p>
     <p>{{facilitie.type}}</p>
+    <p>{{facilitie.facilityContent}}</p>
 </div>
     
 </template>
