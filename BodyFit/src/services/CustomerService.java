@@ -36,23 +36,16 @@ public class CustomerService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Customer> getAllCustomers() {
 		customerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return customerDao.getAllToList();
 	}
 	@POST
 	@Path("/")	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createCustomer(Customer customer) {
+	public Customer createCustomer(Customer customer) {
 		customerDao.setBasePath(getContext());
 		customerDao.create(customer);
+		return customer;
 	}
 	
 

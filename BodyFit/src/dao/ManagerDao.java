@@ -47,10 +47,5 @@ public class ManagerDao extends GenericDao<String,Manager, ManagerDao>{
 		return new ArrayList<Manager>(getAllToMap().values());
 	}
 
-	@Override
-	public Manager getById(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

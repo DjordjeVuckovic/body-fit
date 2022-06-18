@@ -15,8 +15,9 @@ public class User {
 	private boolean deleted;
 	private boolean banned;
 	
-	
-
+	public User() {
+		super();
+	}
 	public Date getBirthday() {
 		return birthday;
 	}

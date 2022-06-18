@@ -26,7 +26,7 @@ public class SportFacilityService {
 	public void init() {
 		if (ctx.getAttribute("trainers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("trainers", new CustomerService());
+			ctx.setAttribute("trainers", new SportFacilityService());
 		}
 	}
 	public String getContext() {
@@ -38,18 +38,10 @@ public class SportFacilityService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<SportFacility> getAllFacilities() {
 		sportFacilityDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return sportFacilityDao.getAllToList();
 	}
 	@POST
-	@Path("create")	
+	@Path("/")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createFacility(SportFacility SportFacility) {

@@ -7,7 +7,6 @@ class FacilitieService{
     getFacilities(){
         return axios.get(FACILITIES_API_BASE_URL);
     }
-    
 }
 
 export default new FacilitieService()

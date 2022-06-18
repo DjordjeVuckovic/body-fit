@@ -36,11 +36,6 @@ public class CustomerDao extends GenericDao<String,Customer, CustomerDao>{
 		return new ArrayList<Customer>(getAllToMap().values());
 	}
 
-	@Override
-	public Customer getById(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	protected String getFilePath() {
