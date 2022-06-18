@@ -26,6 +26,17 @@ public class Customer extends User {
 		this.due = due;
 
 	}
+	
+	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,
+			UserRole userRole) {
+		super(username, password, name, surname, birthdate, gender, userRole);
+		this.setUserRole(UserRole.CUSTOMER);
+		this.colletedPoints = 0;
+		visitedFacilities = new ArrayList<String>();
+		this.customerType = new CustomerType("BRONZE", 0, 0);
+
+		
+	}
 	public ArrayList<String> getVisitedFacilities() {
 		return visitedFacilities;
 	}
