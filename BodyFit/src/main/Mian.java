@@ -39,7 +39,9 @@ public class Mian {
 		
 		
 		SportFacilityDao facilityDao = new SportFacilityDao();
-		SportFacility facility = new SportFacility("111", "Flex", FacilityType.GYM, new ArrayList<>() , false,"111", 4.4, date, date);
+
+		SportFacility facility = new SportFacility("7", "Flex", FacilityType.GYM, new ArrayList<>() , false, "dgasfdfsgdgasgf", 4.4, date, date);
+
 		
 		facilityDao.create(facility);
 		}

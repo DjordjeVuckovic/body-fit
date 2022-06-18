@@ -5,7 +5,7 @@
     "type": "GYM",
     "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
     "status": false,
-    "location": "BUlevar Cara Lazara 11",
+    "location": "Bulevar Cara Lazara 11",
     "averageGrade": 4.4,
     "openTime": "Jun 15, 2022, 2:36:51 AM",
     "closeTime": "Jun 30, 2022, 2:36:51 AM"
@@ -39,6 +39,28 @@
     "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
     "status": false,
     "location": "Bulevar Evrope 33 ",
+    "averageGrade": 3.4,
+    "openTime": "Jun 15, 2022, 2:36:51 AM",
+    "closeTime": "Jun 30, 2022, 2:36:51 AM"
+  },
+  "5": {
+	"sportFacilityId": "5",
+    "name": "Atlantida",
+    "type": "POOL",
+    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
+    "status": false,
+    "location": "Gogoljeva 11",
+    "averageGrade": 3.4,
+    "openTime": "Jun 15, 2022, 2:36:51 AM",
+    "closeTime": "Jun 30, 2022, 2:36:51 AM"
+  },
+  "6": {
+	"sportFacilityId": "6",
+    "name": "Talicni tom",
+    "type": "SHOOTINGRANGE",
+    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
+    "status": false,
+    "location": "Jiricekova 1",
     "averageGrade": 3.4,
     "openTime": "Jun 15, 2022, 2:36:51 AM",
     "closeTime": "Jun 30, 2022, 2:36:51 AM"
