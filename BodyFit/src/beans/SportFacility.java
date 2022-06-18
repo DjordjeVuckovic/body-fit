@@ -9,14 +9,14 @@ public class SportFacility {
 	private FacilityType type;
 	private ArrayList<String> facilityContent;
 	private boolean isWorikng;
-	private Location location;
+	private String location;
 	private double averageGrade;
 	private Date openTime;
 	private Date closeTime;
 	
 	
 	public SportFacility(String sportFacilityId, String name, FacilityType type, ArrayList<String> facilityContent,
-			boolean status, Location location, double averageGrade, Date openTime, Date closeTime) {
+			boolean status, String location, double averageGrade, Date openTime, Date closeTime) {
 		super();
 		this.sportFacilityId = sportFacilityId;
 		this.name = name;
@@ -58,10 +58,10 @@ public class SportFacility {
 	public void setWorikng(boolean status) {
 		this.isWorikng = status;
 	}
-	public Location getLocation() {
+	public String getLocation() {
 		return location;
 	}
-	public void setLocation(Location location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 	public double getAverageGrade() {

@@ -3,10 +3,21 @@
     "colletedPoints": 11.0,
     "username": "mikiia",
     "password": "mikia",
-    "name": "m",
-    "surname": "m",
+    "name": "marinko",
+    "surname": "marinko",
     "birthday": "Jun 15, 2022, 2:36:51 AM",
     "gender": "FEMALE",
+    "userRole": "CUSTOMER",
+    "deleted": false
+  },
+  "djokaa": {
+    "colletedPoints": 144.0,
+    "username": "Djoka",
+    "password": "Djokovic",
+    "name": "Jelena",
+    "surname": "Djokovic",
+    "birthday": "Jun 15, 2022, 2:36:51 AM",
+    "gender": "MALE",
     "userRole": "CUSTOMER",
     "deleted": false
   }
