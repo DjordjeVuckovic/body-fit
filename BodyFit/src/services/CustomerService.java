@@ -47,8 +47,8 @@ public class CustomerService {
 		return customerDao.getAllToList();
 	}
 	@POST
-	@Path("create")	
-	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/")	
+	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createCustomer(Customer customer) {
 		customerDao.setBasePath(getContext());
