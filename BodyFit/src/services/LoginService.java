@@ -111,6 +111,77 @@ public class LoginService {
 		return null;
 		
 	}
+	public UserState customerLogIn(User user) {
+		UserState state = UserState.ERROR;
+		customerDao.setBasePath(getContext());
+		for (Customer u : customerDao.getAllToList()) {
+			if (u.getUsername().equals(user.getUsername())) {
+				if (u.getPassword().equals(user.getPassword())) {
+					if(u.isBanned()) {
+						state = UserState.BANNED;
+					}
+					else {
+						setLoggedInUser(user.getUsername());
+						state = UserState.SUCCESS;
+					}
+			}
+		}
+		}
+		return state;
+	}
+
+	public UserState adminLogIn(User user) {
+		adminDao.setBasePath(getContext());
+		UserState state = UserState.ERROR;
+		for (Admin u : adminDao.getAllToList()) {
+			if (u.getUsername().equals(user.getUsername())) {
+				if (u.getPassword().equals(user.getPassword())) {
+					setLoggedInUser(user.getUsername());
+					return UserState.SUCCESS;
+			
+			}
+		}
+		}
+		return state;
+	}
+
+	public UserState managerLogIn(User user) {
+		managerDao.setBasePath(getContext());
+		UserState state = UserState.ERROR;
+		for (Manager u : managerDao.getAllToList()) {
+			if (u.getUsername().equals(user.getUsername())) {
+				if (u.getPassword().equals(u.getPassword())) {
+					if(u.isBanned()) {
+						state =  UserState.BANNED;
+					}
+					else {
+						setLoggedInUser(u.getUsername());
+						state = UserState.SUCCESS;
+					}
+				}
+			}
+		}
+		return state;
+	}
+
+	public UserState trainerLogIn(User user) {
+		trainerDao.setBasePath(getContext());
+		UserState state = UserState.ERROR;
+		for (Trainer u : trainerDao.getAllToList()) {
+			if (u.getUsername().equals(user.getUsername())) {
+				if (u.getPassword().equals(user.getPassword())) {
+					if(u.isBanned()) {
+						state = UserState.BANNED;
+					}
+					else {
+						setLoggedInUser(user.getUsername());
+						state = UserState.SUCCESS;
+					}
+				}
+			}
+		}
+		return state;
+	}
 	
 	public String getCustomerStateString(User user) {
 		UserState state  = customerLogIn(user);
@@ -188,78 +259,5 @@ public class LoginService {
 		}
 		return userState;
 	}	
-	public UserState customerLogIn(User user) {
-		UserState state = UserState.ERROR;
-		customerDao.setBasePath(getContext());
-		for (Customer u : customerDao.getAllToList()) {
-			if (u.getUsername().equals(user.getUsername())) {
-				if (u.getPassword().equals(user.getPassword())) {
-					if(u.isBanned()) {
-						state = UserState.BANNED;
-					}
-					else {
-						setLoggedInUser(user.getUsername());
-						state = UserState.SUCCESS;
-					}
-			}
-		}
-		}
-		return state;
-	}
-
-	public UserState adminLogIn(User user) {
-		adminDao.setBasePath(getContext());
-		UserState state = UserState.ERROR;
-		for (Admin u : adminDao.getAllToList()) {
-			if (u.getUsername().equals(user.getUsername())) {
-				if (u.getPassword().equals(user.getPassword())) {
-					setLoggedInUser(user.getUsername());
-					return UserState.SUCCESS;
-			
-			}
-		}
-		}
-		return state;
-	}
-
-	public UserState managerLogIn(User user) {
-		managerDao.setBasePath(getContext());
-		UserState state = UserState.ERROR;
-		for (Manager u : managerDao.getAllToList()) {
-			if (u.getUsername().equals(user.getUsername())) {
-				if (u.getPassword().equals(u.getPassword())) {
-					if(u.isBanned()) {
-						state =  UserState.BANNED;
-					}
-					else {
-						setLoggedInUser(u.getUsername());
-						state = UserState.SUCCESS;
-					}
-				}
-			}
-		}
-		return state;
-	}
-
-	public UserState trainerLogIn(User user) {
-		trainerDao.setBasePath(getContext());
-		UserState state = UserState.ERROR;
-		for (Trainer u : trainerDao.getAllToList()) {
-			if (u.getUsername().equals(user.getUsername())) {
-				if (u.getPassword().equals(user.getPassword())) {
-					if(u.isBanned()) {
-						state = UserState.BANNED;
-					}
-					else {
-						setLoggedInUser(user.getUsername());
-						state = UserState.SUCCESS;
-					}
-				}
-			}
-		}
-		return state;
-	}
-	
-	
 
 }

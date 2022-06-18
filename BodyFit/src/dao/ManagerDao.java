@@ -23,7 +23,7 @@ public class ManagerDao extends GenericDao<String,Manager, ManagerDao>{
 	@Override
 	protected String getFilePath() {
 		// TODO Auto-generated method stub
-		return "manager.json";
+		return "managers.json";
 	}
 	public Map<String,Manager> getAllToMap(){
 		String json = "";
