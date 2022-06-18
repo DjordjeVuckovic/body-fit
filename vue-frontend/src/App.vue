@@ -1,8 +1,9 @@
 <template>
   <div class = "container">
-    <Header title = "Facilities"></Header>
-    <Facilities :facilities="facilities"></Facilities>
+    <Header title = "Facilities" hidden="hidden"></Header>
+    <Facilities :facilities="facilities" v-if="shower"></Facilities>
     <Customer hidden="hidden"/>
+    <LoginForm></LoginForm>
   </div>
 </template>
 
@@ -11,17 +12,20 @@ import FacilitieService from './FrontedServices/FacilitieServices'
 import Customer from './components/Customer.vue'
 import Header from './components/Header.vue'
 import Facilities from './components/Facilities.vue'
+import LoginForm from './components/SignupForm.vue'
 
 export default{
   name: 'App',
   components: {
     Customer,
     Header,
-    Facilities
+    Facilities,
+    LoginForm
   },
   data() {
     return{
-      facilities: []
+      facilities: [],
+      shower : false
     }
   },
   methods:{
