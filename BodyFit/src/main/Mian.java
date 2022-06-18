@@ -39,7 +39,7 @@ public class Mian {
 		
 		
 		SportFacilityDao facilityDao = new SportFacilityDao();
-		SportFacility facility = new SportFacility("1", "Flex", FacilityType.GYM, new ArrayList<>() , false, new Location(new GeoLocation(213, 34235), new Adress("Bulevar Cara lazara 11", "Novi Sad", "21000")), 4.4, date, date);
+		SportFacility facility = new SportFacility("7", "Flex", FacilityType.GYM, new ArrayList<>() , false, "dgasfdfsgdgasgf", 4.4, date, date);
 		
 		facilityDao.create(facility);
 		}
