@@ -31,6 +31,11 @@ const routes = [
     path: '/newManger',
     name: 'newManger',
     component: createManagerView
+  },
+  {
+    path: '/HomeView',
+    name:'HomeView',
+    component: HomeView
   }
 ]
 

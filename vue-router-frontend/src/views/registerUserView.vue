@@ -2,28 +2,32 @@
   <form class="center" @submit.prevent="createUser">
   <h1>Create new Account </h1>
   <label>Username:</label>
-  <input type="text" placeholder="Enter username..." v-model="user.username" required>
+  <input type="username" placeholder="Enter username..." v-model="user.username" required>
   <label>Password:</label>
-  <input v-model="user.password" type="password" required placeholder="Enter password...">
+  <input v-model="user.password" type="password"  placeholder="Enter password..." required>
   <label>Name:</label>
-  <input v-model="user.name" type="text" required placeholder="Enter name...">
+  <input v-model="user.name" type="text"  placeholder="Enter name..." required>
   <label>Surname:</label>
-  <input v-model="user.surname" type="text" required placeholder="Enter surname...">
+  <input v-model="user.surname" type="text"  placeholder="Enter surname..." required>
   <label>Birthdate:</label>
   <input type="date" v-model="user.birthday" required>
     <label>Gender:</label>
-  <select id="gender" name="gender" v-model="user.gender">
+  <select id="gender" name="gender" v-model="user.gender" required>
     <option value="male">Male</option>
     <option value="female">Female</option>
   </select>
   <input type="submit" class="inputButton" value="Sign up"/>
   </form>
+  <div class="centerp">
+  <p >{{error}}</p>
+  </div>
 
 
 </template>
 
 <script>
 import axios from "axios";
+import Facilities from "@/components/Facilities";
 export default {
   name: "registerUser",
   data(){
@@ -35,15 +39,34 @@ export default {
         surname:'',
         birthday:'',
         gender:''
+      },
+      error:'',
+      props: {
+        users: Array
       }
     }
   },
   methods:{
     createUser(){
+      console.log(this.users)
+      if (this.users.some(code=> code.username.toLowerCase() === this.user.username.toLowerCase()))
+      {
+        this.error = "Wrong credential.Please choose another username!";
+        alert(this.error);
+        return;
+      }
       axios.post("http://localhost:8080/BodyFit/rest/customers",this.user)
           .then((response) => console.log(response))
           .catch((error) => console.log(error))
+      this.$router.push("About");
+    },
+    goToLogin(){
+      this.$router.push("About");
     }
+  },
+  created() {
+    axios.get("http://localhost:8080/BodyFit/rest/customers")
+        .then(response => (this.users = response.data))
   }
 }
 </script>
@@ -54,6 +77,13 @@ export default {
   text-align: center;
   padding: 0 0 20px 0;
   color: #2691d9;
+}
+.centerp{
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+  text-align: center;
+  padding: 0 0 20px 0;
+  color: red;
+
 }
 form {
   max-width: 420px;
