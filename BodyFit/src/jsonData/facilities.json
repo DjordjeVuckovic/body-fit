@@ -1,69 +1,72 @@
 {
   "1": {
-	"sportFacilityId": "1",
-    "name": "Flex",
-    "type": "GYM",
-    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
-    "isWorking": false,
-    "location": "BUlevar Cara Lazara 11",
-    "averageGrade": 4.4,
-    "openTime": "Jun 15, 2022, 2:36:51 AM",
-    "closeTime": "Jun 30, 2022, 2:36:51 AM"
-  },
-  "2": {
-	"sportFacilityId": "2",
-    "name": "Classic",
-    "type": "GYM",
-    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
-    "isWorking": false,
-    "location": "Lasla Gala 11",
-    "averageGrade": 3.4,
-    "openTime": "Jun 15, 2022, 2:36:51 AM",
-    "closeTime": "Jun 30, 2022, 2:36:51 AM"
-  },
-  "3": {
-	"sportFacilityId": "3",
-    "name": "Gladiator",
-    "type": "GYM",
-    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
-    "isWorking": false,
-    "location": "Fruskogorska 19 ",
-    "averageGrade": 3.4,
-    "openTime": "Jun 15, 2022, 2:36:51 AM",
-    "closeTime": "Jun 30, 2022, 2:36:51 AM"
-  },
-  "4": {
-	"sportFacilityId": "4",
+    "sportFacilityId": "1",
     "name": "Synergy",
     "type": "GYM",
-    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
     "isWorking": false,
-    "location": "Bulevar Evrope 33 ",
-    "averageGrade": 3.4,
-    "openTime": "Jun 15, 2022, 2:36:51 AM",
-    "closeTime": "Jun 30, 2022, 2:36:51 AM"
+    "currentLocation": {
+      "streetAndNumber": "Veselina Maslese 84",
+      "city": "Novi Sad",
+      "postalCode": "2100",
+      "latitude": "45,11",
+      "longitude": "19.84"
+    },
+    "averageGrade": 9.0
   },
-  "5": {
-	"sportFacilityId": "5",
+  "2": {
+    "sportFacilityId": "2",
+    "name": "Flex",
+    "type": "GYM",
+    "isWorking": true,
+    "currentLocation": {
+      "streetAndNumber": "Bulevar Cara Lazara 11",
+      "city": "Novi Sad",
+      "postalCode": "2100",
+      "latitude": "41,11",
+      "longitude": "12.84"
+    },
+    "averageGrade": 4.0
+  },
+  "3": {
+    "sportFacilityId": "3",
+    "name": "Gladiator",
+    "type": "GYM",
+    "isWorking": false,
+    "currentLocation": {
+      "streetAndNumber": "Fruskogorska 19",
+      "city": "Novi Sad",
+      "postalCode": "2100",
+      "latitude": "41,11",
+      "longitude": "12.84"
+    },
+    "averageGrade": 5.0
+  },
+   "4": {
+    "sportFacilityId": "4",
     "name": "Atlantida",
     "type": "POOL",
-    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
-    "status": false,
-    "location": "Gogoljeva 11",
-    "averageGrade": 3.4,
-    "openTime": "Jun 15, 2022, 2:36:51 AM",
-    "closeTime": "Jun 30, 2022, 2:36:51 AM"
+    "isWorking": true,
+    "currentLocation": {
+      "streetAndNumber": "Gogoljeva 11",
+      "city": "Novi Sad",
+      "postalCode": "2100",
+      "latitude": "41,11",
+      "longitude": "12.84"
+    },
+    "averageGrade": 4.0
   },
-  "6": {
-	"sportFacilityId": "6",
+   "5": {
+    "sportFacilityId": "5",
     "name": "Talicni tom",
     "type": "SHOOTINGRANGE",
-    "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
-    "status": false,
-    "location": "Jiricekova 1",
-    "averageGrade": 3.4,
-    "openTime": "Jun 15, 2022, 2:36:51 AM",
-    "closeTime": "Jun 30, 2022, 2:36:51 AM"
+    "isWorking": true,
+    "currentLocation": {
+      "streetAndNumber": "Jiricekova 1",
+      "city": "Novi Sad",
+      "postalCode": "2100",
+      "latitude": "31,11",
+      "longitude": "12.84"
+    },
+    "averageGrade": 4.0
   }
-
 }

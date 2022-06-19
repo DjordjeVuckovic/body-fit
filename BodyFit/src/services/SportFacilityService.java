@@ -27,6 +27,7 @@ import javax.ws.rs.ext.Provider;
 
 import beans.SportFacility;
 import dao.SportFacilityDao;
+import dto.FacilityViewDto;
 
 @Path("facilities")
 public class SportFacilityService  {
@@ -37,9 +38,9 @@ public class SportFacilityService  {
 	ServletContext ctx;
 	@SuppressWarnings("unused")
 	public void init() {
-		if (ctx.getAttribute("trainers") == null) {
+		if (ctx.getAttribute("facilities") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("trainers", new SportFacilityService());
+			ctx.setAttribute("facilities", new SportFacilityService());
 		}
 	}
 	public String getContext() {
@@ -52,6 +53,17 @@ public class SportFacilityService  {
 	public ArrayList<SportFacility> getAllFacilities() {
 		sportFacilityDao.setBasePath(getContext());
 		return sportFacilityDao.getAllToList();
+	}
+	@GET
+	@Path("/getAll")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<FacilityViewDto> getAllFacilitiesDto() {
+		sportFacilityDao.setBasePath(getContext());
+		ArrayList<FacilityViewDto> facilityViewDtos = new ArrayList<FacilityViewDto>();
+		for (SportFacility s : sportFacilityDao.getAllToList()) {
+			facilityViewDtos.add(new FacilityViewDto(s));
+		}
+		return facilityViewDtos;
 	}
 	@POST
 	@Path("/")	
