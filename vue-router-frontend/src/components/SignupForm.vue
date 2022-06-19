@@ -5,7 +5,7 @@
         <input type="text" required>
         <label>Pasword:</label>
         <input type="password" required>
-        <button type="submit" class="submiter" >Login</button>
+        <button type="submit" class="submiter" @click="$emit('login')"  >Login</button>
         <div class="signup_link">
             Not a member?
             <a href="#">Signup</a>
