@@ -1,5 +1,16 @@
 <template>
+  <div id="app">
+  <div id="nav">
+  <router-link to="/HomeView">Home</router-link>
+  <router-link to="/about">About</router-link>
+  <router-link to="/facilities">Facilities</router-link>
+    <span id="login">
+      <router-link to="/">Login</router-link>
+    </span>
+</div>
   <router-view class="container"/>
+  </div>
+
 </template>
 
 <script>
@@ -16,6 +27,15 @@ export default{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+#app{
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+}
+#login{
+  padding-left: 1300px;
 }
 body {
   font-family: 'Poppins', sans-serif;
@@ -52,4 +72,22 @@ body {
   display: block;
   width: 100%;
 }
+#nav{
+  padding: 40px;
+  text-align: left;
+}
+#nav a{
+  font-weight: bold;
+  font-size:30px;
+  color: black;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 4px;
+
+}
+#nav a.router-link-exact-active{
+  color:white;
+  background: #2691d9;
+}
+
 </style>
