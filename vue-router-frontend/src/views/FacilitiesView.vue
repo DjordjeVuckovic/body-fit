@@ -1,11 +1,6 @@
 <template>
 <div>
     <Header title = "Facilities" ></Header>
-  <form @onsubmit.prevent="filterProducts" role="search" class="myform">
-    <label for="search">Search for facilities:</label>
-    <input id="search" type="search" placeholder="Search..." autofocus required v-model="searchQuery"/>
-    <button type="submit" class="btn">Search</button>
-  </form>
     <Facilities :facilities="facilities"></Facilities>  
 </div>
     
@@ -33,15 +28,7 @@ export default {
             FacilitieService.getFacilities().then((response) => {
             this.facilities = response.data
             });
-        },
-        filterProducts(){
-          let retval = []
-          for(let fac in this.facilities){
-            if(fac.name == this.searchQuery){
-              alert("Tu je ")
-            }
-          }
-      }
+        }
     },
     created(){
     this.getFacilities()
@@ -75,7 +62,6 @@ body {
   background: #2691d9;
   color: white;
   border: none;
-  padding: 10px 20px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -88,7 +74,7 @@ body {
   margin-left: 10px;
   border-radius: 5px;
   height: 30px;
-  width: 300px;
+  width: 350px;
 }
 .btn:focus {
   outline: none;

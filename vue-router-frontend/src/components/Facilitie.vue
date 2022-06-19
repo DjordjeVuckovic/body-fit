@@ -11,10 +11,18 @@
       <td>
         <label>{{facilitie.address}}</label>
       </td>
+    </tr><tr><td>
+      <label>City and postal:</label>
+    </td>
+
+      <td>
+        <label>{{facilitie.city}} {{facilitie.postal}}</label>
+      </td>
     </tr>
+
     <tr>
       <td>
-        <label>Latitude,Longitude: </label>
+        <label>Latitude and longitude: </label>
       </td>
       <td>
         <label>{{facilitie.lat}} , {{facilitie.longi}}</label>
@@ -55,11 +63,6 @@ export default{
     props:{
         facilitie: Object
     },
-  data() {
-      return{
-    Synergy: "../assets/Synergy"
-    }
-  },
   methods:{
     getImgUrl(facility){
       let images = require.context('../assets/', false, /\.png$/);
