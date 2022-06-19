@@ -3,13 +3,10 @@
     <router-link to="/HomeView">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/facilities">Facilities</router-link>
-    <span id="login">
-      <router-link v-if="!logedInUser" to="/">Login</router-link>
+    <span class="login">
+    <router-link v-if="!logedInUser" to="/">Login</router-link>
+      <router-link to="/registration">Signup</router-link>
     </span>
-    <h1 class="welcome" v-if="logedInUser" >welcome {{logedInUser.name}} {{logedInUser.surname}}</h1>
-
-    
-
 </div>
 </template>
 
@@ -38,13 +35,14 @@ export default {
   color:white;
   background: #2691d9;
 }
-#login{
-  padding-left: 1300px;
-}
+.login{
+  padding-left: 1000px;
+}.sign{
+   text-align: center;
+ }
 .welcome{
     text-align: left;
     position: inherit;
-    padding-left: 1800px;
     position:absolute;
 }
 </style>

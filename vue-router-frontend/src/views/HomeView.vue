@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Gym" src="@/assets/gym.png" >
+    <HelloWorld msg="Welcome to back user"/>
   </div>
 </template>
 
@@ -16,3 +16,6 @@ export default {
   }
 }
 </script>
+<style>
+
+</style>
