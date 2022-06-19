@@ -5,6 +5,7 @@ import About from '../views/AboutView.vue'
 import Facilities from '../views/FacilitiesView.vue'
 import Registration from '../views/registerUserView.vue'
 import createManagerView from '../views/createManagerView'
+import MainView from "@/views/MainView";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/HomeView',
     name:'HomeView',
     component: HomeView
+  },
+  {
+    path: '/MainView',
+    name: MainView,
+    component: MainView
   }
 ]
 
