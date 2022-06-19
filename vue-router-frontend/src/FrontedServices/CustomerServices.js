@@ -7,9 +7,6 @@ class CustomerService{
     getCustomers(){
         return axios.get(CUSTOMER_API_BASE_URL);
     }
-    createCustomer(){
-        return axios.post(CUSTOMER_API_BASE_URL);
-    }
     
 }
 
