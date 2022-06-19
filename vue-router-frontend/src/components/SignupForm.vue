@@ -10,6 +10,10 @@
             Not a member?
             <router-link to="/registration" ><a>Signup</a></router-link>
         </div>
+      <div class="signup_link">
+        Not a member?
+        <router-link to="/newManger" ><a>newManger</a></router-link>
+      </div>
     </form>
 </template>
 
