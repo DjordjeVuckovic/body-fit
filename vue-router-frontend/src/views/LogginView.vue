@@ -8,6 +8,7 @@ import LoginForm from '../components/SignupForm.vue'
 import LoginService from '../FrontedServices/LoginServices'
 import axios from "axios";
 
+
 export default {
     name: 'Loggin',
     components:{
@@ -18,13 +19,22 @@ export default {
     
     methods:{
         login(user){   
-            console.log(user)
+            
             axios.post("http://localhost:8080/BodyFit/rest/login/logInStatus",user)
-            .then((response) => {if(response.data){this.$router.push({name : 'Facilities'})}})
+            .then((response) => {
+                if(response.data){
+                    this.$emit('loggedIn',user)
+                    this.$router.push({name : 'Facilities'})}})
             .catch((error) => console.log(error))
+            
                       
         },   
+        
     },
+    emits:['loggedIn'],
+    
+        
+    
     
 }
 </script>

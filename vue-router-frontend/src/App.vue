@@ -1,21 +1,36 @@
 <template>
   <div id="app">
-  <div id="nav">
-  <router-link to="/HomeView">Home</router-link>
-  <router-link to="/about">About</router-link>
-  <router-link to="/facilities">Facilities</router-link>
-    <span id="login">
-      <router-link to="/">Login</router-link>
-    </span>
-</div>
-  <router-view class="container"/>
+  <NavigationBar :logedInUser="logedInUser"></NavigationBar>
+  <router-view @loggedIn="logggUser" :logedInUser="logedInUser" class="container"/>
   </div>
 
 </template>
 
 <script>
+import NavigationBar from'./components/NavigationBar.vue'
+import axios from "axios";
 export default{
   name:'App',
+  methods:{
+    logggUser(user){
+      
+      axios.get("http://localhost:8080/BodyFit/rest/login/loggedUser")
+            .then((response) => {
+              this.logedInUser = response.data
+              console.log(this.logedInUser)
+              this.$router.push({name : 'Facilities'})
+             })
+            .catch((error) => console.log(error))
+    }
+  },
+  data(){
+    return{
+      logedInUser: null
+    }
+  },
+  components:{
+    NavigationBar
+  }
  
 }
 </script>
@@ -35,7 +50,7 @@ export default{
   color: black;
 }
 #login{
-  padding-left: 1300px;
+  padding-left: 1600px;
 }
 body {
   font-family: 'Poppins', sans-serif;
@@ -48,6 +63,9 @@ body {
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+}
+.user{
+  padding-left: 1300px;
 }
 .btn {
   display: inline-block;
