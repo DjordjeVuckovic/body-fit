@@ -1,6 +1,6 @@
 <template>
     <form class="center" @submit.prevent="$emit('login',this.user)">
-        <h1>Loggin</h1>
+        <h1>Login</h1>
         <label>Username:</label>
         <input v-model="user.username" type="username" required>
         <label>Pasword:</label>

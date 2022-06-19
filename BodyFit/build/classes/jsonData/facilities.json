@@ -57,7 +57,7 @@
   },
    "5": {
     "sportFacilityId": "5",
-    "name": "Talicni tom",
+    "name": "Talicna",
     "type": "SHOOTINGRANGE",
     "isWorking": true,
     "currentLocation": {

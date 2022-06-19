@@ -1,4 +1,5 @@
 <template>
+
     <div v-for="facilitie in facilities" v-bind:key="facilitie.sportFacilityId">
         <Facilitie :facilitie="facilitie"></Facilitie>
     </div>
