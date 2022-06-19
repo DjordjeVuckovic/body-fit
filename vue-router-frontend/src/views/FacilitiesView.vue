@@ -1,20 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link to="/registerUser">registerUser</router-link>
-  </nav>
-  <router-view/>
-  <router-view class="container"/>
+<div>
+    <Header title = "Facilities" ></Header>
+    <Facilities :facilities="facilities"></Facilities>  
+</div>
+    
 </template>
 
 <script>
-export default{
-  name:'App',
- 
+import FacilitieService from '../FrontedServices/FacilitieServices'
+import Facilities from '../components/Facilities.vue'
+import Header from '../components/Header.vue'
+export default {
+    name: 'FacilitiesView',
+    components: {
+    Facilities,
+    Header
+    },
+    data() {
+        return{
+        facilities: [],
+        shower : false
+        }
+    },
+    methods:{
+        getFacilities(){
+            FacilitieService.getFacilities().then((response) => {
+            this.facilities = response.data
+            });
+        }
+    },
+    created(){
+    this.getFacilities()
+    }
 }
 </script>
-
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
@@ -58,4 +77,5 @@ body {
   display: block;
   width: 100%;
 }
+
 </style>

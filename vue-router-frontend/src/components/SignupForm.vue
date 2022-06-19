@@ -1,11 +1,11 @@
 <template>
-    <form class="center">
+    <form class="center" @submit.prevent="$emit('login',this.user)">
         <h1>Loggin</h1>
         <label>Username:</label>
-        <input type="text" required>
+        <input v-model="user.username" type="username" required>
         <label>Pasword:</label>
-        <input type="password" required>
-        <button type="submit" class="submiter" >Login</button>
+        <input v-model="user.password" type="password" required>
+        <input  type="submit" class="submiter" value="login"/>
         <div class="signup_link">
             Not a member?
             <a href="#">Signup</a>
@@ -15,7 +15,15 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+            user:{
+                password: '',
+                username: ''
+            }
+           
+        }
+    }
 }
 </script>
 
@@ -83,6 +91,15 @@ export default {
     }
     .submiter{
         text-align: center;
+        width: 100px;
+        background: #2691d9;
+        border: 0;
+        padding: 10px 20px;
+        margin-top: 40px;
+        margin-left: 120px;
+        color: white;
+        border-radius: 15px;
+        font-size: 20px;
     }
     .signup_link{
         margin: 30px 0;
