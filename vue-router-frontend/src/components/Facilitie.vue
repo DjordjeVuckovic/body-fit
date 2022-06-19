@@ -1,9 +1,35 @@
 <template>
 <div class = "facilitie">
-    <h3>{{facilitie.name}}</h3>
-    <p>{{facilitie.location}}</p>
-    <p>{{facilitie.type}}</p>
-    <p>{{facilitie.facilityContent}}</p>
+  <h3 class="name">{{facilitie.name}}</h3>
+  <table>
+    <tbody>
+    <tr>
+      <td>
+        <label>{{facilitie.address}}</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>{{facilitie.lat}} , {{facilitie.longi}}</label>
+      </td>
+    </tr><tr>
+      <td>
+        <label>{{facilitie.type}}</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>{{facilitie.status}}</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>{{facilitie.rating}}</label>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
 </div>
     
 </template>
@@ -22,6 +48,7 @@ export default{
 .fas {
   color: red;
 }
+
 .facilitie {
   background: #f4f4f4;
   margin: 5px;
@@ -31,10 +58,24 @@ export default{
 .facilitie.reminder {
   border-left: 5px solid green;
 }
-.facilitie h3 {
+.name {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: space-between;
+  color: #2691d9;
+  font-size:26px;
+  padding-bottom:10px;
+}
+td{
+  padding-bottom:5px;
+}
+thead {
+  color: blue;
+  text-align: center;
+}
+table, tbody, td {
+  padding-bottom:5px;
 }
 
 </style>

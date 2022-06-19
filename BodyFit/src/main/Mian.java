@@ -36,17 +36,20 @@ public class Mian {
 //		AdminDao adminDao = new AdminDao();
 //		Admin admin = new Admin("a", "a", "a", "a",  date,Gender.FEMALE, UserRole.ADMIN);
 //		adminDao.create(admin);
-		Customer customer = new Customer("laza", "lazarevic", "m", "m",date, Gender.MALE, UserRole.CUSTOMER, 11);
-		//dao.setBasePath("C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\src\\jsonData\\");	
-		dao.create(customer);
 		
 		
 
+//		SportFacilityDao facilityDao = new SportFacilityDao();
+//
+//		SportFacility facility = new SportFacility("7", "Flex", FacilityType.GYM, new ArrayList<>() , false, "dgasfdfsgdgasgf", 4.4, date, date);
+//
+//		
+//		facilityDao.create(facility);
 		SportFacilityDao facilityDao = new SportFacilityDao();
-
-		SportFacility facility = new SportFacility("7", "Flex", FacilityType.GYM, new ArrayList<>() , false, "dgasfdfsgdgasgf", 4.4, date, date);
-
-		
+		Adress adress = new Adress("Veselina Maslese 84","Novi Sad","2100","45,11","19.84");
+		SportFacility facility = new SportFacility("1",  "Synergy", FacilityType.GYM, adress,
+				9.0);
+		facilityDao.setBasePath("C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\src\\jsonData\\");
 		facilityDao.create(facility);
 		}
 		

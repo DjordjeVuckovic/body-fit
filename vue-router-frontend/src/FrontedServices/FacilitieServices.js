@@ -1,13 +1,12 @@
 import axios from "axios";
 
 
-const FACILITIES_API_BASE_URL="http://localhost:8080/BodyFit/rest/facilities"
+const FACILITIES_API_BASE_URL="http://localhost:8080/BodyFit/rest/facilities/getAll"
 
 class FacilitieService{
     getFacilities(){
         return axios.get(FACILITIES_API_BASE_URL);
     }
-    
 }
 
 export default new FacilitieService()
