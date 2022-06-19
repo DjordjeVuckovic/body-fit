@@ -1,6 +1,7 @@
 package services;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
@@ -16,7 +17,7 @@ import beans.Trainer;
 import dao.TrainerDao;
 
 @Path("trainers")
-public class TrainerService {
+public class TrainerService  {
 	
 	TrainerDao trainerDao = new TrainerDao();
 	
@@ -49,12 +50,13 @@ public class TrainerService {
 		return trainerDao.getAllToList();
 	}
 	@POST
-	@Path("create")	
+	@Path("/")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createTrainer(Trainer trainer) {
 		trainerDao.setBasePath(getContext());
 		trainerDao.create(trainer);
 	}
+	
 
 }

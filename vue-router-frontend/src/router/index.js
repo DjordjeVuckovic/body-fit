@@ -4,6 +4,7 @@ import Loggin from '../views/LogginView.vue'
 import About from '../views/AboutView.vue'
 import Facilities from '../views/FacilitiesView.vue'
 import Registration from '../views/registerUserView.vue'
+import createManagerView from '../views/createManagerView'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/registration',
     name: 'Registration',
     component: Registration
+  },
+  {
+    path: '/newManger',
+    name: 'newManger',
+    component: createManagerView
   }
 ]
 
