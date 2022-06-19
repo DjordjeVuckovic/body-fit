@@ -8,7 +8,7 @@
         <input  type="submit" class="submiter" value="login"/>
         <div class="signup_link">
             Not a member?
-            <a href="#">Signup</a>
+            <router-link to="/registration" ><a>Signup</a></router-link>
         </div>
     </form>
 </template>
