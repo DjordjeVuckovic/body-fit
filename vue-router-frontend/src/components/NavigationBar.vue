@@ -3,9 +3,13 @@
     <router-link to="/HomeView">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/facilities">Facilities</router-link>
+    <router-link v-if="isAdmin"  to="/add-facilities">Add facilitie</router-link>
     <span class="login">
     <router-link v-if="!logedInUser" to="/">Login</router-link>
-      <router-link to="/registration">Signup</router-link>
+    <router-link v-if="!logedInUser" to="/registration">Signup</router-link>
+    <router-link v-if="logedInUser" @click="signOut()" to="/">Sign out</router-link>
+    
+    
     </span>
 </div>
 </template>
@@ -13,7 +17,12 @@
 <script>
 export default {
     name: 'NavigationBar',
-    props:['logedInUser'],
+    props:['logedInUser', 'isAdmin'],
+    methods:{
+      signOut(){
+        this.$emit('sign-out')
+      }
+    }
 }
 </script>
 
@@ -35,6 +44,7 @@ export default {
   color:white;
   background: #2691d9;
 }
+
 .login{
   padding-left: 1000px;
 }.sign{
