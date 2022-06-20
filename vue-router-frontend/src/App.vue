@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-  <NavigationBar :logedInUser="logedInUser"></NavigationBar>
-  <router-view @loggedIn="logggUser" :logedInUser="logedInUser" class="container"/>
+  <NavigationBar @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
+  <router-view  @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"  class="container"/>
   </div>
 
 </template>
@@ -17,15 +17,26 @@ export default{
       axios.get("http://localhost:8080/BodyFit/rest/login/loggedUser")
             .then((response) => {
               this.logedInUser = response.data
-              console.log(this.logedInUser)
+              if (this.logedInUser.userRole == "ADMIN"){
+              this.isAdmin = true
+            }
               this.$router.push({name : 'Facilities'})
              })
             .catch((error) => console.log(error))
-    }
+            
+            
+    },
+    signOut(){
+      console.log("sinarut")
+      this.logedInUser = null
+      this.isAdmin = false
+      console.log(this.logedInUser)
+    },
   },
   data(){
     return{
-      logedInUser: null
+      logedInUser: null,
+      isAdmin: null
     }
   },
   components:{
