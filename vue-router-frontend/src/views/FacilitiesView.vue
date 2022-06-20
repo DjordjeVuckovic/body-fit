@@ -74,7 +74,7 @@ body {
   margin-left: 10px;
   border-radius: 5px;
   height: 30px;
-  width: 350px;
+  width: 250px;
 }
 .btn:focus {
   outline: none;

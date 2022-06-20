@@ -1,9 +1,25 @@
 <template>
     <label for="search">Search for facilities:</label>
     <input id="search" type="search" placeholder="Search..." autofocus required v-model="searchQuery"/>
-    <label for="sort">Sort :</label>
+    <label id="sort" for="sort">Sort facilities:</label>
+    <select id="sort" name="sort" v-model="selected" style="width: 200px;" @change="sortList()">
+    <option value="Default">Default sort</option>
+    <option value="NameASC">Name, ASC</option>
+    <option value="NameDES">Name, DES</option>
+    <option value="LocationASC">Location, ASC</option>
+    <option value="LocationDES">Location, DES</option>
+    <option value="GradeASC">Grade, ASC</option>
+    <option value="GradeDES">Grade, DES</option>
+  </select>
+  <label id="v" for="v">Filter facilities:</label>
+  <select id="v" name="v" v-model="filterMe" style="width: 200px;" @change="filterByType()">
+    <option value="ANY">ANY</option>
+    <option value="GYM">GYM</option>
+    <option value="POOL">POOL</option>
+    <option value="SHOOTINGRANGE">SHOOTINGRANGE</option>
+  </select>
     <div v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
-      <Facilitie :facilitie="facilitie"></Facilitie>
+      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>
     </div>
 </template>
 
@@ -21,7 +37,8 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
         data() {
         return{
           searchQuery: '',
-          sortedbyASC: false
+          selected:'Default',
+          filterMe:'ANY'
         }
       },
         methods: {
@@ -37,15 +54,47 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
               return this.facilities;
             }
           },
-          sortList(sortBy) {
-            if (this.sortedbyASC) {
-              this.facilities.sort((x, y) => (x[sortBy] > y[sortBy] ? -1 : 1));
-              this.sortedbyASC = false;
-            } else {
-              this.facilities.sort((x, y) => (x[sortBy] < y[sortBy] ? -1 : 1));
-              this.sortedbyASC = true;
+          sortList() {
+            console.log(this.selected)
+            if (this.selected == 'NameASC') {
+              this.facilities.sort((x, y) => (x.name < y.name ? -1 : 1));
             }
-        }
+            if(this.selected == 'NameDES') {
+              this.facilities.sort((x, y) => (x.name > y.name ? -1 : 1));
+            }
+            if(this.selected == 'LocationASC') {
+              this.facilities.sort((x, y) => (x.address < y.address ? -1 : 1));
+            }
+            if(this.selected == 'LocationDES') {
+              this.facilities.sort((x, y) => (x.address > y.address ? -1 : 1));
+            }
+            if(this.selected == 'GradeASC') {
+              this.facilities.sort((x, y) => (x.rating < y.rating ? -1 : 1));
+            }
+            if(this.selected == 'GradeDES') {
+              this.facilities.sort((x, y) => (x.rating > y.rating ? -1 : 1));
+            }
+        },
+          filterByType(facility){
+            if(this.filterMe == facility.type || this.filterMe == 'ANY') {
+              return true
+            }
+            else{
+              return false
+            }
+          },
+
+          filterOpen() {
+          }
+
         }
     }
 </script>
+<style>
+#sort{
+  margin-left: 10px;
+  border-radius: 5px;
+  height: 30px;
+  width: 350px;
+}
+</style>

@@ -26,10 +26,7 @@ export default {
                     this.$emit('loggedIn',user)
                     this.$router.push({name : 'Facilities'})}})
             .catch((error) => console.log(error))
-            
-                      
-        },   
-        
+        },
     },
     emits:['loggedIn'],
     
