@@ -1,6 +1,6 @@
 <template>
   <form class="center" @submit.prevent="createUser">
-    <h1>Create new Account </h1>
+    <h1>Create new  trainer </h1>
     <label>Username:</label>
     <input type="text" placeholder="Enter username..." v-model="user.username" required>
     <label>Password:</label>

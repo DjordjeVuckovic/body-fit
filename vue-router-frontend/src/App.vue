@@ -17,7 +17,8 @@ export default{
       axios.get("http://localhost:8080/BodyFit/rest/login/loggedUser")
             .then((response) => {
               this.logedInUser = response.data
-              if (this.logedInUser.userRole == "ADMIN"){
+              console.log(this.logedInUser.userRole)
+              if (this.logedInUser.userRole === "ADMIN"){
               this.isAdmin = true
             }
               this.$router.push({name : 'Facilities'})

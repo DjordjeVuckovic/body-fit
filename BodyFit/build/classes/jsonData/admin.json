@@ -8,5 +8,25 @@
     "gender": "FEMALE",
     "userRole": "ADMIN",
     "deleted": false
+  },
+  "b": {
+    "username": "b",
+    "password": "b",
+    "name": "b",
+    "surname": "b",
+    "birthday": "Jun 15, 2022, 2:36:51 AM",
+    "gender": "FEMALE",
+    "userRole": "ADMIN",
+    "deleted": false
+  },
+   "admin": {
+    "username": "admin",
+    "password": "admin",
+    "name": "admin",
+    "surname": "admin",
+    "birthday": "Jun 15, 2022, 2:36:51 AM",
+    "gender": "FEMALE",
+    "userRole": "ADMIN",
+    "deleted": false
   }
 }

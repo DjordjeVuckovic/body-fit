@@ -83,7 +83,6 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
             if(this.filterMe == facility.type || this.filterMe == 'ANY') {
               ret = true
             }
-            console.log(facility.status)
             if(this.checked && facility.status === 'Closed'){
               ret = false
             }
