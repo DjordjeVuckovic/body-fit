@@ -11,13 +11,15 @@
     <option value="GradeASC">Grade, ASC</option>
     <option value="GradeDES">Grade, DES</option>
   </select>
-  <label id="v" for="v">Filter facilities:</label>
-  <select id="v" name="v" v-model="filterMe" style="width: 200px;" @change="filterByType()">
+  <label id="sort" for="sort">Filter facilities:</label>
+  <select id="sort" name="sort" v-model="filterMe" style="width: 200px;" @change="filterByType()">
     <option value="ANY">ANY</option>
     <option value="GYM">GYM</option>
     <option value="POOL">POOL</option>
     <option value="SHOOTINGRANGE">SHOOTINGRANGE</option>
   </select>
+  <label> Only working:</label>
+  <input type="checkbox" class="combo" v-model="checked">
     <div v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
       <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>
     </div>
@@ -38,7 +40,8 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
         return{
           searchQuery: '',
           selected:'Default',
-          filterMe:'ANY'
+          filterMe:'ANY',
+          checked:false
         }
       },
         methods: {
@@ -76,15 +79,15 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
             }
         },
           filterByType(facility){
+            let ret = false
             if(this.filterMe == facility.type || this.filterMe == 'ANY') {
-              return true
+              ret = true
             }
-            else{
-              return false
+            console.log(facility.status)
+            if(this.checked && facility.status === 'Closed'){
+              ret = false
             }
-          },
-
-          filterOpen() {
+            return ret
           }
 
         }
@@ -96,5 +99,9 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
   border-radius: 5px;
   height: 30px;
   width: 350px;
+}
+.combo{
+  margin-left: 5px;
+  border-radius: 5px;
 }
 </style>
