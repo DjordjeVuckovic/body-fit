@@ -65,14 +65,7 @@ public class SportFacilityService  {
 		}
 		return facilityViewDtos;
 	}
-	@POST
-	@Path("/")	
-	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void createFacility(SportFacility SportFacility) {
-		sportFacilityDao.setBasePath(getContext());
-		sportFacilityDao.create(SportFacility);
-	}
+	
 
 
 }

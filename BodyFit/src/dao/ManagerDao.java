@@ -46,6 +46,16 @@ public class ManagerDao extends GenericDao<String,Manager, ManagerDao>{
 		// TODO Auto-generated method stub
 		return new ArrayList<Manager>(getAllToMap().values());
 	}
+	public ArrayList<Manager> getAllAvailable(){
+		ArrayList<Manager> managers = getAllToList();
+		ArrayList<Manager> availbaleManagers = new ArrayList<Manager>();
+		
+		for (Manager m : managers)
+			if (m.getSportFacilityId().isEmpty())
+				availbaleManagers.add(m);
+		
+		return availbaleManagers;
+	}
 
 
 }

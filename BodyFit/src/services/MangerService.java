@@ -54,4 +54,19 @@ public class MangerService {
 		managerDao.setBasePath(getContext());
 		managerDao.create(manager);
 	}
+	@GET
+	@Path("/getAll")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Manager> getAllAvailableManagers() {
+		managerDao.setBasePath(getContext());
+//
+//		ArrayList<Customer> customers = new ArrayList<Customer>();
+//
+//		for (Customer c : customerDao.getAllToList())
+//			customers.add(c);
+//
+//		System.out.println("Found " + customers.size() + " customers.");
+
+		return managerDao.getAllAvailable();
+	}
 }
