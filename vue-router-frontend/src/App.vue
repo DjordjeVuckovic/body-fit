@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   <NavigationBar @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-  <router-view  @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"  class="container"/>
+  <router-view @addFacilitie="addFacilitie" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"  class="container"/>
   </div>
 
 </template>
@@ -35,6 +35,9 @@ export default{
       this.isAdmin = false
       console.log(this.logedInUser)
     },
+    addFacilitie(NewFacilitie){
+      console.log(NewFacilitie)
+    }
   },
   data(){
     return{
