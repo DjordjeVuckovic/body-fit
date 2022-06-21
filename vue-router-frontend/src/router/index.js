@@ -5,13 +5,19 @@ import About from '../views/AboutView.vue'
 import Facilities from '../views/FacilitiesView.vue'
 import Registration from '../views/registerUserView.vue'
 import createManagerView from '../views/createManagerView'
-import MainView from "@/views/MainView";
+import MainView from "@/views/MainView"
+import AddFacilitiesView from '../views/AddFacilitieView'
 
 const routes = [
   {
     path: '/about',
     name: 'about',
     component: About
+  },
+  {
+    path: '/addFacilitie',
+    name: 'abaddFacilitie',
+    component: AddFacilitiesView
   },
   {
     path: '/',
