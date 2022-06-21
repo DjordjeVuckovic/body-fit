@@ -40,7 +40,7 @@ public class SportFacilityService  {
 	public void init() {
 		if (ctx.getAttribute("facilities") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("facilities", new SportFacilityService());
+			ctx.setAttribute("facilities", new SportFacilityDao());
 		}
 	}
 	public String getContext() {

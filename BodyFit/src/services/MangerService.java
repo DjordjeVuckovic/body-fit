@@ -24,7 +24,7 @@ public class MangerService {
 	public void init() {
 		if (ctx.getAttribute("managers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("managers", new CustomerService());
+			ctx.setAttribute("managers", new MangerService());
 		}
 	}
 	public String getContext() {
@@ -36,14 +36,6 @@ public class MangerService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Manager> getAllMangers() {
 		managerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return managerDao.getAllToList();
 	}
 	@POST
@@ -59,14 +51,6 @@ public class MangerService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Manager> getAllAvailableManagers() {
 		managerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return managerDao.getAllAvailable();
 	}
 }
