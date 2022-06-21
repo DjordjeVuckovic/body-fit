@@ -24,9 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import beans.Adress;
-import beans.FacilityType;
-import beans.RandomGenerator;
+
 import beans.SportFacility;
 import dao.SportFacilityDao;
 import dto.FacilityViewDto;
@@ -67,7 +65,14 @@ public class SportFacilityService  {
 		}
 		return facilityViewDtos;
 	}
-	
-	
+	@POST
+	@Path("/")	
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void createFacility(SportFacility SportFacility) {
+		sportFacilityDao.setBasePath(getContext());
+		sportFacilityDao.create(SportFacility);
+	}
+
 
 }

@@ -9,8 +9,6 @@
 <script>
 import NavigationBar from'./components/NavigationBar.vue'
 import axios from "axios";
-import Vue from "vue";
-import {ComboBoxPlugin} from '@syncfusion/ej2-vue-dropdowns';\
 export default{
   name:'App',
   methods:{

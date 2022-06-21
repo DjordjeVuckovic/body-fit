@@ -13,9 +13,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Manager;
-import beans.UserRole;
 import dao.ManagerDao;
-import dto.UserDto;
 @Path("managers")
 public class MangerService {
 	ManagerDao managerDao = new ManagerDao();
@@ -36,7 +34,7 @@ public class MangerService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Manager> getAllManagers() {
+	public ArrayList<Manager> getAllMangers() {
 		managerDao.setBasePath(getContext());
 //
 //		ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -48,28 +46,12 @@ public class MangerService {
 
 		return managerDao.getAllToList();
 	}
-	@GET
-	@Path("/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Manager> getAllAvailableManagers() {
-		managerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
-		return managerDao.getAllAvailable();
-	}
 	@POST
-	@Path("/")	
+	@Path("create")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createManger(UserDto manager) {
+	public void createManger(Manager manager) {
 		managerDao.setBasePath(getContext());
-		Manager newManger = new Manager(manager.username, manager.password, manager.name, manager.surname, manager.birthday, manager.gerGenderEnum(), UserRole.MANAGER, "");
-		managerDao.create(newManger);
+		managerDao.create(manager);
 	}
 }
