@@ -17,6 +17,7 @@
       <option value="female">Female</option>
     </select>
     <input type="submit" class="inputButton" value="Sign up"/>
+    <ejs-combobox></ejs-combobox>
   </form>
 </template>
 

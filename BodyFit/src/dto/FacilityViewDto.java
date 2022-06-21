@@ -13,8 +13,6 @@ public class FacilityViewDto {
 	public String location;
 	public String lat;
 	public String longi;
-	//public String logitude;
-	//public String latitude;
 	public String rating;
 	public FacilityViewDto(SportFacility facility) {
 		this.name = facility.getName();
