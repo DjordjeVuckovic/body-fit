@@ -12,8 +12,8 @@
     <option value="GradeDES">Grade, DES</option>
   </select>
   <label id="sort" for="sort">Filter facilities:</label>
-  <select id="sort" name="sort" v-model="filterMe" style="width: 200px;" @change="filterByType()">
-    <option value="ANY">ANY</option>
+  <select id="sort" name="sort" v-model="filterMe" style="width: 200px;">
+    <option value="ALL">ALL</option>
     <option value="GYM">GYM</option>
     <option value="POOL">POOL</option>
     <option value="SHOOTINGRANGE">SHOOTINGRANGE</option>
@@ -40,7 +40,7 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
         return{
           searchQuery: '',
           selected:'Default',
-          filterMe:'ANY',
+          filterMe:'ALL',
           checked:false
         }
       },
@@ -80,7 +80,8 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
         },
           filterByType(facility){
             let ret = false
-            if(this.filterMe == facility.type || this.filterMe == 'ANY') {
+            if(facility.type === undefined ||  this.filterMe===undefined) {return}
+            if(this.filterMe === facility.type || this.filterMe === 'ALL') {
               ret = true
             }
             if(this.checked && facility.status === 'Closed'){
