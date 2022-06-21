@@ -24,7 +24,7 @@ export default {
             .then((response) => {
                 if(response.data){
                     this.$emit('loggedIn',user)
-                    this.$router.push({name : 'Facilities'})}})
+                    }})
             .catch((error) => console.log(error))
             
                       

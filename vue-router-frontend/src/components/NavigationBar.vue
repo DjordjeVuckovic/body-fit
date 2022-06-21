@@ -3,7 +3,7 @@
     <router-link to="/HomeView">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/facilities">Facilities</router-link>
-    <router-link v-if="isAdmin"  to="/add-facilities">Add facilitie</router-link>
+    <router-link v-if="isAdmin"  to="/addFacilitie">Add facilitie</router-link>
     <span class="login">
     <router-link v-if="!logedInUser" to="/">Login</router-link>
     <router-link v-if="!logedInUser" to="/registration">Signup</router-link>
