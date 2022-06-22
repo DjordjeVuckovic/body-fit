@@ -5,23 +5,12 @@ import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.ContainerResponseContext;
-import javax.ws.rs.container.ContainerResponseFilter;
-import javax.ws.rs.container.PreMatching;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.Provider;
+
 
 import beans.Adress;
 import beans.FacilityType;
@@ -65,7 +54,7 @@ public class NewSportFacilityService {
 		sportFacilityDao.setBasePath(getContext());
 		SportFacility facility = new SportFacility(RandomGenerator.usingRandomUUID(), sportFacility.name, FacilityType.valueOf(sportFacility.type), new Adress(sportFacility.address, sportFacility.city, sportFacility.postal), 0);
 		setCurrentFacility(facility);
-		//sportFacilityDao.create(facility);
+		sportFacilityDao.create(facility);
 	}
 	@POST
 	@Path("setManager")	
@@ -82,3 +71,4 @@ public class NewSportFacilityService {
 	}
 
 }
+

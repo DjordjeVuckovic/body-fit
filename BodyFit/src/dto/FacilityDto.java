@@ -7,5 +7,4 @@ public class FacilityDto {
 	public String postal;
 	public String address;
 	public boolean status;
-	
 }

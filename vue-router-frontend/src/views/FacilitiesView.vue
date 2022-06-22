@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container-fluid" style="margin-top: 150px">
     <Header title = "Facilities" ></Header>
     <Facilities :facilities="facilities"></Facilities>  
 </div>

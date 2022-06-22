@@ -24,9 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import beans.Adress;
-import beans.FacilityType;
-import beans.RandomGenerator;
+
 import beans.SportFacility;
 import dao.SportFacilityDao;
 import dto.FacilityViewDto;
@@ -42,7 +40,7 @@ public class SportFacilityService  {
 	public void init() {
 		if (ctx.getAttribute("facilities") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("facilities", new SportFacilityService());
+			ctx.setAttribute("facilities", new SportFacilityDao());
 		}
 	}
 	public String getContext() {
@@ -68,6 +66,6 @@ public class SportFacilityService  {
 		return facilityViewDtos;
 	}
 	
-	
+
 
 }

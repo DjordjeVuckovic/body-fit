@@ -1,7 +1,9 @@
 <template>
+  <div class="container-fluid" style="margin-top: 150px">
   <div id="main">
   <div id="nav">
     <Header title="You have successfully created an account!"></Header>
+  </div>
   </div>
   </div>
 </template>

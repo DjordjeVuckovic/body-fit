@@ -1,4 +1,5 @@
 <template>
+  <div class="container-fluid" style="margin-top: 150px">
   <form class="center" @submit.prevent="createUser">
     <h1>Create new  trainer </h1>
     <label>Username:</label>
@@ -17,8 +18,8 @@
       <option value="female">Female</option>
     </select>
     <input type="submit" class="inputButton" value="Sign up"/>
-    <ejs-combobox></ejs-combobox>
   </form>
+  </div>
 </template>
 
 <script>

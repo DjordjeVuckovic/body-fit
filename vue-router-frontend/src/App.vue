@@ -25,17 +25,16 @@ export default{
               this.$router.push({name : 'Facilities'})
              })
             .catch((error) => console.log(error))
-            
-            
     },
     signOut(){
-      console.log("sinarut")
       this.logedInUser = null
       this.isAdmin = false
-      console.log(this.logedInUser)
     },
     addFacilitie(NewFacilitie){
       console.log(NewFacilitie)
+      axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/")
+      .then((response)=>{console.log(NewFacilitie)})
+      .catch((error) => console.log(error))
     }
   },
   data(){
@@ -69,7 +68,7 @@ export default{
   padding-left: 1600px;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .container {
   max-width: 1280px;
@@ -106,20 +105,36 @@ body {
   display: block;
   width: 100%;
 }
-#nav{
-  padding: 40px;
+#mynav{
   text-align: left;
+  padding: 20px;
 }
-#nav a{
+
+.drop{
+  text-align: left;
+  padding-right: 20px;
+}
+.drop a{
   font-weight: bold;
-  font-size:30px;
-  color: black;
+  font-size:22px;
+  color:white;
   text-decoration: none;
-  padding: 15px;
   border-radius: 4px;
+}
+#drop a.router-link-exact-active{
+  color:white;
+  background: #2691d9;
+}
+#mynav a{
+  font-weight: bold;
+  font-size:22px;
+  color:white;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 20px;
 
 }
-#nav a.router-link-exact-active{
+#mynav a.router-link-exact-active{
   color:white;
   background: #2691d9;
 }

@@ -13,9 +13,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Manager;
-import beans.UserRole;
 import dao.ManagerDao;
-import dto.UserDto;
 @Path("managers")
 public class MangerService {
 	ManagerDao managerDao = new ManagerDao();
@@ -26,7 +24,7 @@ public class MangerService {
 	public void init() {
 		if (ctx.getAttribute("managers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("managers", new CustomerService());
+			ctx.setAttribute("managers", new MangerService());
 		}
 	}
 	public String getContext() {
@@ -36,40 +34,23 @@ public class MangerService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Manager> getAllManagers() {
+	public ArrayList<Manager> getAllMangers() {
 		managerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return managerDao.getAllToList();
 	}
+	@POST
+	@Path("create")	
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void createManger(Manager manager) {
+		managerDao.setBasePath(getContext());
+		managerDao.create(manager);
+	}
 	@GET
-	@Path("/")
+	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Manager> getAllAvailableManagers() {
 		managerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return managerDao.getAllAvailable();
-	}
-	@POST
-	@Path("/")	
-	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void createManger(UserDto manager) {
-		managerDao.setBasePath(getContext());
-		Manager newManger = new Manager(manager.username, manager.password, manager.name, manager.surname, manager.birthday, manager.gerGenderEnum(), UserRole.MANAGER, "");
-		managerDao.create(newManger);
 	}
 }
