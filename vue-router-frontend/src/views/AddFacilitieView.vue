@@ -31,7 +31,6 @@
   </form>
   <p>{{NewFacilitie.name}}</p>
   <p>{{NewFacilitie.type}}</p>
-  <p>{{NewFacilitie.facilityContent}}</p>
   <p>{{NewFacilitie.city}}</p>
   <p>{{NewFacilitie.address}}</p>
   <p>{{NewFacilitie.postal}}</p>
@@ -47,7 +46,6 @@ export default {
             NewFacilitie:{
                 name: '',
                 type: '',
-                facilityContent: '',
                 city: '',
                 postal: '',
                 address: ''
