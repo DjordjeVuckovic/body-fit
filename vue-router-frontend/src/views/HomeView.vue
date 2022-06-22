@@ -1,4 +1,5 @@
 <template>
+  <div class="container-fluid" style="margin-top: 150px">
   <div class="home">
     <img class="picture" alt="Gym" src="@/assets/gym.png" >
     <h1 v-if="logedInUser">Welcome back {{logedInUser.name}} {{logedInUser.surname}}</h1>
@@ -6,6 +7,7 @@
       Train and stay helty!
     </p>
   </div>
+    </div>
 </template>
 
 <script>
