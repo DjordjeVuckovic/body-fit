@@ -33,8 +33,8 @@
           <li class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin"  to='/addFacilitie'>Add facilitie</router-link>
           </li>
-          <li class="nav-item dropdown bg-black drop"  v-if="isAdmin">
-            <a class="nav-link dropdown-toggle bg-black drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item dropdown  drop"  v-if="isAdmin">
+            <a class="nav-link dropdown-toggle  drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Add accounts
             </a>
             <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">

@@ -3,16 +3,15 @@
   <div class="container-fluid mx-5">
     <div class="mx-2" >
       <div class="textual"><label for="search">Search for facilities:</label></div>
-      <div class="textual"><input id="search" type="search" placeholder="Search..." autofocus required v-model="searchQuery"/></div>
-    
-    
+      <div class="textual">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search..." autofocus required v-model="searchQuery"/></div>
     </div>
     <div >
       <div class="textual">
         <label  id="sort" for="sort">Sort facilities:</label>
       </div>
       <div class="textual">
-        <select id="sort" name="sort" v-model="selected" style="width: 200px;" @change="sortList()">
+        <select id="sort" name="sort" class="form-select" aria-label="Default select example" v-model="selected" style="{width: 200px;}" @change="sortList()">
           <option value="Default">Default sort</option>
           <option value="NameASC">Name, ASC</option>
           <option value="NameDES">Name, DES</option>
@@ -30,7 +29,7 @@
        <label id="sort" for="sort">Filter facilities:</label>
     </div>
    
-    <select id="sort" name="sort" v-model="filterMe" style="width: 200px;">
+    <select id="sort" name="sort" v-model="filterMe" style="{width: 200px;}" class="form-select" aria-label="Default select example">
       <option value="ALL">ALL</option>
       <option value="GYM">GYM</option>
       <option value="POOL">POOL</option>
@@ -43,7 +42,7 @@
       <label> Only working:</label>
     </div>
     <div class="text-center" >
-      <input  type="checkbox" class="combo checkbox " v-model="checked">
+      <input  type="checkbox" class="combo checkbox" id="flexCheckChecked" v-model="checked">
     </div>
   
   </div>

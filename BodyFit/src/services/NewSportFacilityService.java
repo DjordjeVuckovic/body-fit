@@ -31,7 +31,6 @@ public class NewSportFacilityService {
 	ServletContext ctx;
 	@SuppressWarnings("unused")
 	public void init() {
-		Acc
 		if (ctx.getAttribute("newFacilitie") == null) {
 			String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("newFacilitie", new SportFacility());

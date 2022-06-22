@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
+import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -64,6 +66,15 @@ public class SportFacilityService  {
 			facilityViewDtos.add(new FacilityViewDto(s));
 		}
 		return facilityViewDtos;
+	}
+	@DELETE
+	@Path("{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deleteFacility(@PathParam("id") String id) {
+		sportFacilityDao.setBasePath(getContext());
+		sportFacilityDao.delete(id);
+		
 	}
 	
 

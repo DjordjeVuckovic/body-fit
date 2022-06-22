@@ -144,6 +144,7 @@ body {
 }
 .textual{
   font-size: 20px;
+  padding-bottom:10px;
 }
 .checkbox{
   width: 20px;
