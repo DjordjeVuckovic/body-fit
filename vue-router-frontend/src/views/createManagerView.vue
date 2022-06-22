@@ -1,4 +1,5 @@
 <template>
+  <div class="container-fluid" style="margin-top: 150px">
   <form class="center" @submit.prevent="createUser">
     <h1>Create new  trainer </h1>
     <label>Username:</label>
@@ -18,6 +19,7 @@
     </select>
     <input type="submit" class="inputButton" value="Sign up"/>
   </form>
+  </div>
 </template>
 
 <script>

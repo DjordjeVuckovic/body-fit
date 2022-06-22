@@ -1,4 +1,5 @@
 <template>
+  <div class="container-fluid" style="margin-top: 150px">
   <form class="center" @submit.prevent="$emit('addFacilitie',this.NewFacilitie)">
         <h1>Add a facilitie?</h1>
         <label>Name</label>
@@ -40,6 +41,7 @@
   <p>{{NewFacilitie.city}}</p>
   <p>{{NewFacilitie.address}}</p>
   <p>{{NewFacilitie.postal}}</p>
+    </div>
 </template>
 
 <script>

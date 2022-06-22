@@ -1,6 +1,8 @@
 
 <template>
+  <div class="container-fluid" style="margin-top: 150px">
   <LoginForm @login="login"></LoginForm>
+    </div>
 </template>
 
 <script>
