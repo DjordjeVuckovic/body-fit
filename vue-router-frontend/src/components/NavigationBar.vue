@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-collapse me-auto mb-0 mb-lg-0">
           <li class="nav-item" id="mynav">
-            <router-link class="nav-link active" aria-current="page" to="/HomeView" >Home</router-link>
+            <router-link   aria-current="page" to="/HomeView" >Home</router-link>
           </li>
           <li class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" to="/about">About</router-link>
@@ -74,5 +74,32 @@ export default {
 </script>
 
 <style>
+    #nav{
+  padding: 40px;
+  text-align: left;
+}
+#nav a{
+  font-weight: bold;
+  font-size:30px;
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 4px;
 
+}
+#nav a.router-link-exact-active{
+  color:black;
+  background: black;
+}
+
+.login{
+  padding-left: 1000px;
+}.sign{
+   text-align: center;
+ }
+.welcome{
+    text-align: left;
+    position: inherit;
+    position:absolute;
+}
 </style>

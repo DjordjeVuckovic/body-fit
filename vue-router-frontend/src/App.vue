@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-  <NavigationBar @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-  <router-view @addFacilitie="addFacilitie" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"  class="container"/>
+    
+      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
+    
+  
+    <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
+  
+  
   </div>
 
 </template>
@@ -30,11 +35,13 @@ export default{
       this.logedInUser = null
       this.isAdmin = false
     },
-    addFacilitie(NewFacilitie){
+    async addFacilitie(NewFacilitie){
       console.log(NewFacilitie)
-      axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/")
+      axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/",NewFacilitie)
       .then((response)=>{console.log(NewFacilitie)})
       .catch((error) => console.log(error))
+
+      
     }
   },
   data(){
@@ -72,11 +79,8 @@ body {
 }
 .container {
   max-width: 1280px;
-  margin: 30px auto;
   overflow: auto;
-  min-height: 720px;
-  border: 1px solid steelblue;
-  padding: 30px;
+
   border-radius: 5px;
 }
 .user{
@@ -135,8 +139,16 @@ body {
 
 }
 #mynav a.router-link-exact-active{
-  color:white;
-  background: #2691d9;
+  color:#2691d9;
+  background: white;
+}
+.textual{
+  font-size: 20px;
+}
+.checkbox{
+  width: 20px;
+  height: 20px;
+  align-content: center;
 }
 
 </style>

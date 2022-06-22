@@ -25,5 +25,6 @@
         margin-bottom: 70px;
         font-size: 30px;
         text-align: center;
+        color: white;
     }
 </style>
