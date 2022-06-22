@@ -13,7 +13,7 @@
     <router-link v-if="logedInUser" @click="signOut()" to="/">Sign out</router-link>
     </span>
 </div>-->
-  <nav class="navbar navbar-dark bg-black navbar-expand-lg nav fixed-top">
+  <nav class="navbar navbar-dark bg-primary navbar-expand-lg nav fixed-top">
     <div class="container-fluid">
       <img src="@/assets/fitness.png" height="60" width="70">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin"  to='/addFacilitie'>Add facilitie</router-link>
           </li>
           <li class="nav-item dropdown bg-black drop"  v-if="isAdmin">
-            <a class="nav-link dropdown-toggle bg-black drop nav-link active"  aria-current="page" style="::selection{background: #2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle bg-black drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Add accounts
             </a>
             <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
@@ -74,32 +74,5 @@ export default {
 </script>
 
 <style>
-    #nav{
-  padding: 40px;
-  text-align: left;
-}
-#nav a{
-  font-weight: bold;
-  font-size:30px;
-  color: black;
-  text-decoration: none;
-  padding: 15px;
-  border-radius: 4px;
 
-}
-#nav a.router-link-exact-active{
-  color:white;
-  background: #2691d9;
-}
-
-.login{
-  padding-left: 1000px;
-}.sign{
-   text-align: center;
- }
-.welcome{
-    text-align: left;
-    position: inherit;
-    position:absolute;
-}
 </style>

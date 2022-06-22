@@ -31,6 +31,9 @@ export default{
     },
     addFacilitie(NewFacilitie){
       console.log(NewFacilitie)
+      axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/")
+      .then((response)=>{console.log(NewFacilitie)})
+      .catch((error) => console.log(error))
     }
   },
   data(){

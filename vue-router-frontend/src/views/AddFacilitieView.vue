@@ -13,13 +13,7 @@
             <option value="BOWLINGCENTER">Bowling center</option>
             <option value="SHOOTINGRANGE">Shooting range</option>
         </select>
-        <label>Content</label>
-        <select v-model="NewFacilitie.facilityContent" multiple>
-            <option value="grupni">Grupni</option>
-            <option value="personalni">Personalni</option>
-            <option value="sauna">Sauna</option>
-            <option value="kardio">Kardio</option>
-        </select>
+
 
         <label>City:</label>
         <input type="City" v-model="NewFacilitie.city"/>

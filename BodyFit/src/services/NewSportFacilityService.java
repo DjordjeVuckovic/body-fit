@@ -54,7 +54,7 @@ public class NewSportFacilityService {
 		sportFacilityDao.setBasePath(getContext());
 		SportFacility facility = new SportFacility(RandomGenerator.usingRandomUUID(), sportFacility.name, FacilityType.valueOf(sportFacility.type), new Adress(sportFacility.address, sportFacility.city, sportFacility.postal), 0);
 		setCurrentFacility(facility);
-		//sportFacilityDao.create(facility);
+		sportFacilityDao.create(facility);
 	}
 	@POST
 	@Path("setManager")	
