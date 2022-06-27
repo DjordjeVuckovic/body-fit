@@ -1,14 +1,8 @@
 <template>
   <div id="app">
-    
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-    
-  
     <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
-  
-  
   </div>
-
 </template>
 
 <script>
