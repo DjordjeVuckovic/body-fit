@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
+
     
   
     <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
   
   
-  </div>
 
+  </div>
 </template>
 
 <script>
@@ -148,6 +148,7 @@ body {
 }
 .textual{
   font-size: 20px;
+  padding-bottom:10px;
 }
 .checkbox{
   width: 20px;

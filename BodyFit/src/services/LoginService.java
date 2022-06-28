@@ -57,6 +57,12 @@ public class LoginService   {
 	private void setLoggedInUser(String username) {
 		ctx.setAttribute("username", username);
 	}
+	@POST
+	@Path("loggedUser")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getUsername() {
+		return (String)ctx.getAttribute("username");
+	}
 	
 	@POST
 	@Path("logOut")

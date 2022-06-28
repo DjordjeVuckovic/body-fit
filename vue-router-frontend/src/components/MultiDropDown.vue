@@ -1,5 +1,5 @@
 <template>
-  <div class="multi-selector">
+  <div class="multi-selector dropdown">
             <div class="select-field">
                 <input  type="text" name="" placeholder="Choose Tasks" id="" class="input-selector">
                 <span class="down-arrow">&blacktriangledown;</span>  

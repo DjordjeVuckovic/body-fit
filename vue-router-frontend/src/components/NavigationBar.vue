@@ -1,18 +1,4 @@
 <template>
-<!--  <div id="nav">
-    <router-link to="/HomeView">Home</router-link>
-    <router-link to="/about">About</router-link>
-    <router-link to="/facilities">Facilities</router-link>
-
-    <router-link v-if="isAdmin"  to='/addFacilitie'>Add facilitie</router-link>
-    <router-link v-if="isAdmin"  to="/newManger">Add trainer</router-link>
-
-    <span class="login">
-    <router-link v-if="!logedInUser" to="/">Login</router-link>
-    <router-link v-if="!logedInUser" to="/registration">Signup</router-link>
-    <router-link v-if="logedInUser" @click="signOut()" to="/">Sign out</router-link>
-    </span>
-</div>-->
   <nav class="navbar navbar-dark bg-primary navbar-expand-lg nav fixed-top">
     <div class="container-fluid">
       <img src="@/assets/fitness.png" height="60" width="70">
@@ -48,8 +34,8 @@
               <span class="align-middle"> Add facilitie</span> 
             </router-link>
           </li>
-          <li class="nav-item dropdown bg-black drop"  v-if="isAdmin">
-            <a class="nav-link dropdown-toggle bg-black drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item dropdown  drop"  v-if="isAdmin">
+            <a class="nav-link dropdown-toggle  drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Add accounts
             </a>
             <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
