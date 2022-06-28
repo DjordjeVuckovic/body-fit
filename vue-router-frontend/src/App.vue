@@ -4,7 +4,7 @@
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
     
   
-    <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
+    <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
   
   
   </div>
@@ -22,6 +22,7 @@ export default{
       
       axios.get("http://localhost:8080/BodyFit/rest/login/loggedUser")
             .then((response) => {
+              console.log(response.data)
               this.logedInUser = response.data
               console.log(this.logedInUser.userRole)
               if (this.logedInUser.userRole === "ADMIN"){
@@ -42,6 +43,9 @@ export default{
       .catch((error) => console.log(error))
 
       
+    },
+    account(){
+      his.$router.push({name : 'AccountView'})
     }
   },
   data(){
@@ -148,7 +152,7 @@ body {
 .checkbox{
   width: 20px;
   height: 20px;
-  align-content: center;
+  
 }
 
 </style>

@@ -7,6 +7,7 @@ import Registration from '../views/registerUserView.vue'
 import createManagerView from '../views/createManagerView'
 import MainView from "@/views/MainView"
 import AddFacilitiesView from '../views/AddFacilitieView'
+import AccountView from '../views/AccountView'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/MainView',
     name: MainView,
     component: MainView
+  },
+  {
+    path: '/account',
+    name: AccountView,
+    component: AccountView
   }
 ]
 
