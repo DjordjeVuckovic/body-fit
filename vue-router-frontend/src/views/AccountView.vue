@@ -1,23 +1,69 @@
-<template>
-    <form class="center" @submit.prevent="$emit('account')">
+<template >
+<div style="margin-top: 100px">
+    <form class="center" @submit.prevent="$emit('account')" >
         <h1>Account information</h1>
         <span>
             <label>Username:</label>
-            <label>{{logedInUser.name}}</label>
+            <p1 v-if="this.editBool">{{logedInUser.username}}
+            
+                <svg  v-if="this.editBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 85%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="edit()">
+                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+            </svg>
+            </p1>
+            <div v-if="!this.editBool" class="row">
+                
+                <div class="col-10">
+                    <input  v-model="logedInUser.username" type="text" required >
+                </div>
+                <div class="col-sm input">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20" height="20"  fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                    </svg>
+                </div>
+                
+            </div>
+            
         </span>
+         <span>
+            <label>Name:</label>
+            <p1>{{logedInUser.name}}
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 85%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+            </svg>
+            </p1>
+        </span>
+         <span>
+            <label>Surname:</label>
+            <p1>{{logedInUser.surname}}
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 85%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+            </svg>
+            </p1>
+        </span>
+       
     
-        <input  type="submit" class="submiter" value="Edit information"/>
-        <div class="signup_link">
-            Not a member?
-            <router-link to="/registration" ><a>Signup</a></router-link>
-        </div>
+    
+        <input  type="submit" class="submiter " value="Edit information"/>
+        
     </form>
+</div>
+    
 </template>
 
 <script>
 export default {
     name: 'AccountView',
-    props:['logedInUser']
+    props:['logedInUser'],
+    data(){
+        return{
+            editBool: true
+        }
+    },
+    methods:{
+        edit(){
+            this.editBool = false;
+        }
+    }
 }
 </script>
 
@@ -49,7 +95,7 @@ export default {
         font-weight: bolder;
         font-size: 15px;
     }
-    input {
+    p1 {
         display: block;
         padding: 10px 6px;
         width: 100%;
@@ -58,6 +104,28 @@ export default {
         border-bottom: 1px solid #ddd;
         color: #555;
         font-size: 20px;
+    }
+     input {
+        display: block;
+        padding: 10px 6px;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        color: #555;
+        font-size: 20px;
+        background: rgb(242, 242, 240);
+    }
+    .input {
+        display: block;
+        padding: 10px 6px;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        color: #555;
+        font-size: 20px;
+        background: rgb(242, 242, 240);
     }
     .pill{
         display: inline-block;
@@ -73,7 +141,7 @@ export default {
     }
     button{
        
-        width: 100px;
+        width: px;
         background: #2691d9;
         border: 0;
         padding: 10px 20px;
@@ -84,13 +152,13 @@ export default {
         font-size: 20px;
     }
     .submiter{
-        text-align: center;
-        width: 100px;
+        text-align: left;
+        width: 170px;
         background: #2691d9;
         border: 0;
         padding: 10px 20px;
         margin-top: 40px;
-        margin-left: 120px;
+        margin-left: 85px;
         color: white;
         border-radius: 15px;
         font-size: 20px;
