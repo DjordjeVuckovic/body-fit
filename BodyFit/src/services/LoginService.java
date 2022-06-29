@@ -68,6 +68,7 @@ public class LoginService   {
 	@Path("logOut")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String userLogOut() {
+		System.out.println(ctx.getRealPath(""));
 		ctx.setAttribute("username", "");
 		return "Log Out Successful";
 	}
@@ -76,6 +77,7 @@ public class LoginService   {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public boolean SuccesLoginIn(User user) {
+		
 		UserState loginState = customerLogIn(user);
 		boolean loginStatus= false;
 		if(loginState == UserState.SUCCESS) {

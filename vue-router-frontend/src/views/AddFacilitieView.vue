@@ -9,12 +9,10 @@
             <option value="GYM">Gym</option>
             <option value="POOL">Pool</option>
             <option value="SPORTCENTER">Sport center</option>
-            <option value="DANCINGSRUDIO">Dancing studio</option>
+            <option value="DANCINGSTUDIO">Dancing studio</option>
             <option value="BOWLINGCENTER">Bowling center</option>
             <option value="SHOOTINGRANGE">Shooting range</option>
         </select>
-
-
         <label>City:</label>
         <input type="City" v-model="NewFacilitie.city"/>
 
@@ -23,10 +21,9 @@
 
         <label>PostalCode:</label>
         <input type="PostalCode" v-model="NewFacilitie.postal"/>
+        <input type="file" @change="onSelectedFile">
+        <button @click.prevent="OnFileUpload(this.NewFacilitie.name)">Add logo</button>
         <input  type="submit" class="submiter" value="Add Facilitie"/>
-
-        
-  
 
   </form>
   <p>{{NewFacilitie.name}}</p>
@@ -39,6 +36,7 @@
 
 <script>
 import MultiDropDown from '../components/MultiDropDown.vue'
+import axios from "axios";
 export default {
     name: 'addFaciliteView', 
     data(){
@@ -49,12 +47,36 @@ export default {
                 city: '',
                 postal: '',
                 address: ''
-            }
-            
+            },
+          selectedFile:null,
+
         }
     },
     components:{
         MultiDropDown
+    },
+    methods:{
+      onSelectedFile(event){
+        this.selectedFile = event.target.files[0]
+      },
+      OnFileUpload(name){
+        let base64String = "";
+
+        const file = document.querySelector('input[type=file]')['files'][0];
+
+        const reader = new FileReader();
+        reader.onload = function () {
+          base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+          console.log(name);
+          axios.post("http://localhost:8080/BodyFit/rest/files/uploadFile/",name)
+              .then((response)=>{console.log("Success set up name")})
+              .catch((error) => console.log(error))
+          axios.post("http://localhost:8080/BodyFit/rest/files/uploadLogo/",base64String)
+              .then((response)=>{console.log("Success uploading")})
+              .catch((error) => console.log(error))
+        }
+        reader.readAsDataURL(file);
+      }
     }
 }
 </script>

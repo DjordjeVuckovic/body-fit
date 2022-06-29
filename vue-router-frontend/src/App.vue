@@ -1,10 +1,7 @@
 <template>
   <div id="app">
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-
-    
-  
-    <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
+      <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
   
   
 
@@ -26,8 +23,8 @@ export default{
               this.logedInUser = response.data
               console.log(this.logedInUser.userRole)
               if (this.logedInUser.userRole === "ADMIN"){
-              this.isAdmin = true
-            }
+                this.isAdmin = true
+              }
               this.$router.push({name : 'Facilities'})
              })
             .catch((error) => console.log(error))
@@ -41,8 +38,6 @@ export default{
       axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/",NewFacilitie)
       .then((response)=>{console.log(NewFacilitie)})
       .catch((error) => console.log(error))
-
-      
     },
     account(){
       his.$router.push({name : 'AccountView'})
