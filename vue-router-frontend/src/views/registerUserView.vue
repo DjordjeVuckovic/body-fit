@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" style="margin-top: 150px">
+  <div class="container-fluid" style="margin-top: 100px">
   <form class="center" @submit.prevent="createUser">
   <h1>Create new Account </h1>
   <label>Username:</label>
