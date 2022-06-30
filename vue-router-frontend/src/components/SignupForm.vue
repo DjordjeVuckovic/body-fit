@@ -50,7 +50,7 @@ export default {
         text-align: left;
         padding: 40px;
         border-radius: 10px;
-        font-size: 15px;
+        font-size: 20px;
     }
     .labelMy {
         color: #aaa;
@@ -60,7 +60,7 @@ export default {
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: bolder;
-        font-size: 15px;
+        font-size: 20px;
     }
     .inputMy {
         display: block;
