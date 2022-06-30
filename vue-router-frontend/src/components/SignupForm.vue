@@ -1,21 +1,30 @@
 <template>
-    <form class="center" @submit.prevent="$emit('login',this.user)">
+  <div class="row justify-content-center my-5">
+    <form class="center container-fluid" @submit.prevent="$emit('login',this.user)">
+      <div class="text-center">
         <h1>Login</h1>
-        <label>Username:</label>
-        <input v-model="user.username" type="username" required>
-        <label>Pasword:</label>
-        <input v-model="user.password" type="password" required>
-        <input  type="submit" class="submiter" value="login"/>
+      </div>
+      <InputBase
+        v-model="user.username"
+        label="Username:"
+        type="username"
+      />
+        <label class="form-label labelMy">Pasword:</label>
+        <input v-model="user.password" class="form-control inputMy" type="password" placeholder="Password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
+        <input  type="submit" class="btn btn-primary submiter" value="login" />
         <div class="signup_link">
             Not a member?
             <router-link to="/registration" ><a>Signup</a></router-link>
         </div>
     </form>
+  </div>
 </template>
 
 <script>
+import InputBase from "@/components/InputBase";
 export default {
-    data(){
+  components: {InputBase},
+  data(){
         return{
             user:{
                 password: '',
@@ -35,27 +44,25 @@ export default {
         color: #2691d9;
     }
     form {
-        max-width: 420px;
-        margin: 30px auto;
+        max-width: 520px;
+        margin: 20px auto;
         background: rgb(242, 242, 240);
         text-align: left;
         padding: 40px;
         border-radius: 10px;
         font-size: 15px;
-        
-        
     }
-    label {
+    .labelMy {
         color: #aaa;
         display: inline-block;
         margin: 25px 0 15px;
-        font-size: 0.6em;
+        font-size: 0.7em;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: bolder;
         font-size: 15px;
     }
-    input {
+    .inputMy {
         display: block;
         padding: 10px 6px;
         width: 100%;
@@ -76,18 +83,6 @@ export default {
         font-weight: bold;
         color: #777;
         cursor: pointer;
-    }
-    button{
-       
-        width: 100px;
-        background: #2691d9;
-        border: 0;
-        padding: 10px 20px;
-        margin-top: 40px;
-        margin-left: 120px;
-        color: white;
-        border-radius: 15px;
-        font-size: 20px;
     }
     .submiter{
         text-align: center;

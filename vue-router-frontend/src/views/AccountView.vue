@@ -230,8 +230,7 @@ export default {
         font-size: 20px;
     }
     .submiter{
-        text-align: left;
-        width: 170px;
+        text-align: center;
         background: #2691d9;
         border: 0;
         padding: 10px 20px;

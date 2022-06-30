@@ -5,7 +5,10 @@
   <label>Username:</label>
   <input type="username" placeholder="Enter username..." v-model="user.username" required>
   <label>Password:</label>
-  <input v-model="user.password" type="password"  placeholder="Enter password..." required>
+  <input v-model="user.password" type="password"  placeholder="Enter password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
+    <div id="passwordHelpBlock" class="form-text">
+      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+    </div>
   <label>Name:</label>
   <input v-model="user.name" type="text"  placeholder="Enter name..." required>
   <label>Surname:</label>
@@ -53,7 +56,7 @@ export default {
       console.log(this.users)
       if (this.users.some(code=> code.username.toLowerCase() === this.user.username.toLowerCase()))
       {
-        this.error = "Wrong credential.Please choose another username!";
+        this.error = "Wrong credentials.Please choose another username!";
         alert(this.error);
         return;
       }
@@ -88,7 +91,7 @@ export default {
 
 }
 form {
-  max-width: 420px;
+  max-width: 520px;
   margin: 30px auto;
   background: rgb(242, 242, 240);
   text-align: left;
