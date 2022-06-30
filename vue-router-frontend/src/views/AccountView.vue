@@ -6,7 +6,7 @@
             <label>Username:</label>
             <div v-if="this.editBool" class="row">
                 <div  class="col-9">
-                    <p1 v-if="this.editBool">{{logedInUser.username}}</p1>
+                    <p1 v-if="this.editBool">{{this.username}}</p1>
                 </div>
                 <div class="col-sm input">
                     <svg  v-if="this.editBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="edit()">
@@ -19,7 +19,7 @@
             <div v-if="!this.editBool" class="row">
                 
                 <div class="col-9">
-                    <input  v-model="logedInUser.username" type="text" required >
+                    <input  v-model="this.username" type="text" required >
                 </div>
                 <div class="col-sm input">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" @click="edited()">
@@ -37,7 +37,7 @@
             <label>Name:</label>
             <div v-if="this.editNameBool" class="row">
                 <div  class="col-9">
-                    <p1 v-if="this.editNameBool">{{logedInUser.name}}</p1>
+                    <p1 v-if="this.editNameBool">{{this.name}}</p1>
                 </div>
                 <div class="col-sm input">
                     <svg  v-if="this.editNameBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="editName()">
@@ -48,7 +48,7 @@
             <div v-if="!this.editNameBool" class="row">
                 
                 <div class="col-9">
-                    <input  v-model="logedInUser.name" type="text" required >
+                    <input  v-model="this.name" type="text" required >
                 </div>
                 <div class="col-sm input">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" @click="editedName()">
@@ -65,7 +65,7 @@
             <label>Surname:</label>
             <div v-if="this.editSurNameBool" class="row">
                 <div  class="col-9">
-                    <p1 v-if="this.editSurNameBool">{{logedInUser.surname}}</p1>
+                    <p1 v-if="this.editSurNameBool">{{this.surname}}</p1>
                 </div>
                 <div class="col-sm input">
                     <svg  v-if="this.editSurNameBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="editSurName()">
@@ -76,7 +76,7 @@
             <div v-if="!this.editSurNameBool" class="row">
                 
                 <div class="col-9">
-                    <input  v-model="logedInUser.surname" type="text" required >
+                    <input  v-model="this.surname" type="text" required >
                 </div>
                 <div class="col-sm input">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" @click="editedSurName()">
@@ -89,10 +89,37 @@
                 
             </div>
         </span>
+        
        
     
-    
-        <input  type="submit" class="submiter " value="Edit information"/>
+        <div class=" align-items-center justify-content-center">
+            <div class=" justify-content-center">
+                <button v-if="this.changePassword" type="button" class="submiter d-flex" @click="ChangePassword()" >Change password</button>
+            </div>
+            
+        </div>
+        
+        <div  v-if="!this.changePassword" class="paswordchanger container">
+            <div >
+                <label class="paswordchangerText">Insert old password:</label>
+                <input  class="paswordchangerText" type="password" required >
+                <label class="paswordchangerText">Insert new password:</label>
+                <input class="paswordchangerText"  type="password" required >
+                <label class="paswordchangerText">Confirm new password:</label>
+                <input class="paswordchangerText"  type="password" required >
+                <div class="paswordchangerbutton row">
+                    <div class="col-sm">
+                        <button>Confirm</button>
+                    </div>
+                    
+                    <div class="col-sm" >
+                        <button>Confirm</button>
+                    </div>
+                </div>
+                
+            </div>
+             
+        </div>
         
     </form>
     
@@ -100,6 +127,7 @@
     {{logedInUser.name}}
     {{logedInUser.surname}}
     {{logedInUser.username}}
+    <p>{{this.name}}</p>
 </template>
 
 <script>
@@ -110,7 +138,11 @@ export default {
         return{
             editBool: true,
             editNameBool: true,
-            editSurNameBool: true
+            editSurNameBool: true,
+            name: this.logedInUser.name,
+            surname: this.logedInUser.surname,
+            username: this.logedInUser.username,
+            changePassword: true
         }
     },
     methods:{
@@ -119,29 +151,41 @@ export default {
         },
         edited(){
             this.editBool = true;
+            this.logedInUser.username = this.username;
         },
         notEdited(){
             this.editBool = true;
+             this.username = this.logedInUser.username;
         },
         editName(){
             this.editNameBool = false;
         },
         editedName(){
             this.editNameBool = true;
+            this.logedInUser.name = this.name;
         },
         notEditedName(){
             this.editNameBool = true;
+            this.name = this.logedInUser.name;
         },
         editSurName(){
             this.editSurNameBool = false;
         },
         editedSurName(){
             this.editSurNameBool = true;
+            this.logedInUser.surname = this.surname;
         },
         notEditedSurName(){
             this.editSurNameBool = true;
+            this.surname = this.logedInUser.surname;
+        },
+        ChangePassword(){
+            this.changePassword = false
         }
-    }
+        
+       
+    },
+    
 }
 </script>
 
@@ -151,9 +195,10 @@ export default {
         text-align: center;
         padding: 0 0 20px 0;
         color: #2691d9;
+        align-items: center;
     }
     form {
-        max-width: 420px;
+        max-width: 600px;
         margin: 30px auto;
         background: rgb(242, 242, 240);
         text-align: left;
@@ -162,6 +207,23 @@ export default {
         font-size: 15px;
         
         
+        
+    }
+    .paswordchanger{
+        width: 400px;
+        margin-top: 60px;
+        padding-bottom: 30px;
+        background: rgb(170, 179, 208);
+        color: black;
+    }
+    .paswordchangerText{
+        
+        background: rgb(170, 179, 208);
+        color: black;
+    }
+    .paswordchangerbutton{
+        align-items: flex-start;
+        justify-items: center;
     }
     label {
         color: #aaa;
@@ -224,7 +286,7 @@ export default {
         border: 0;
         padding: 10px 20px;
         margin-top: 40px;
-        margin-left: 120px;
+        margin-left: 75px;
         color: white;
         border-radius: 15px;
         font-size: 20px;
@@ -233,9 +295,8 @@ export default {
         text-align: center;
         background: #2691d9;
         border: 0;
-        padding: 10px 20px;
+        align-self: center;
         margin-top: 40px;
-        margin-left: 85px;
         color: white;
         border-radius: 15px;
         font-size: 20px;
