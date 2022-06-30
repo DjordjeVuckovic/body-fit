@@ -20,8 +20,7 @@ export default {
     }, 
     
     methods:{
-        login(user){   
-            
+        login(user){
             axios.post("http://localhost:8080/BodyFit/rest/login/logInStatus",user)
             .then((response) => {
                 if(response.data){

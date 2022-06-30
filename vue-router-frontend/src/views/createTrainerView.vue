@@ -43,6 +43,7 @@ export default {
       axios.post("http://localhost:8080/BodyFit/rest/trainers", this.user)
           .then((response) => console.log(response))
           .catch((error) => console.log(error))
+      this.$router.push({name : 'MainView'})
     }
   }
 }

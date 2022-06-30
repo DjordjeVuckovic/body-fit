@@ -8,6 +8,7 @@ import createManagerView from '../views/createManagerView'
 import MainView from "@/views/MainView"
 import AddFacilitiesView from '../views/AddFacilitieView'
 import AccountView from '../views/AccountView'
+import createTrainerView from "@/views/createTrainerView";
 
 const routes = [
   {
@@ -41,18 +42,23 @@ const routes = [
     component: createManagerView
   },
   {
+    path: '/newTrainer',
+    name: 'newTrainer',
+    component: createTrainerView
+  },
+  {
     path: '/HomeView',
     name:'HomeView',
     component: HomeView
   },
   {
     path: '/MainView',
-    name: MainView,
+    name: 'MainView',
     component: MainView
   },
   {
     path: '/account',
-    name: AccountView,
+    name: 'AccountView',
     component: AccountView
   }
 ]

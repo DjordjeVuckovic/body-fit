@@ -9,7 +9,7 @@
             @change="checkName"
         />
         <label>Type</label>
-        <select v-model="NewFacilitie.type" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+        <select v-model="NewFacilitie.type" class="form-select form-select-lg mb-3 selectMy" aria-label=".form-select-lg example" >
             <option value="GYM">Gym</option>
             <option value="POOL">Pool</option>
             <option value="SPORTCENTER">Sport center</option>
@@ -43,10 +43,12 @@
           <button @click.prevent="OnFileUpload(this.NewFacilitie.name)" :disabled="isDisabled" class="btn btn-primary mb-3 btn-lg  buttonMy">Add logo</button>
         </div>
       </div>
+    <div>
+      <AvailableManagers/>
+    </div>
     <div class="d-grid gap-2 col-5 mx-auto">
       <input  type="submit" class="submiter btn btn-primary btn-lg" value="Add Facilitie" :disabled="isDisabled"/>
     </div>
-
   </form>
   <p>{{NewFacilitie.name}}</p>
   <p>{{NewFacilitie.type}}</p>
@@ -61,6 +63,7 @@ import MultiDropDown from '../components/MultiDropDown.vue'
 import InputBase from "@/components/InputBase"
 import FacilitieService from '../FrontedServices/FacilitieServices'
 import axios from "axios";
+import AvailableManagers from "@/components/AvailableManagers";
 export default {
     name: 'addFaciliteView',
     data(){
@@ -78,21 +81,20 @@ export default {
         }
     },
     components:{
+      AvailableManagers,
         MultiDropDown,InputBase,FacilitieService
     },
     methods:{
       OnFileUpload(name){
+        axios.post("http://localhost:8080/BodyFit/rest/files/uploadFile/",name)
+            .then((response)=>{console.log("Success set up name" + response)})
+            .catch((error) => console.log(error))
         let base64String = "";
-
         const file = document.querySelector('input[type=file]')['files'][0];
-
         const reader = new FileReader();
         reader.onload = function () {
           base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
           console.log(name);
-          axios.post("http://localhost:8080/BodyFit/rest/files/uploadFile/",name)
-              .then((response)=>{console.log("Success set up name" + response)})
-              .catch((error) => console.log(error))
           axios.post("http://localhost:8080/BodyFit/rest/files/uploadLogo/",base64String)
               .then((response)=>{console.log("Success uploading")})
               .catch((error) => console.log(error))
@@ -149,9 +151,9 @@ export default {
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: bolder;
-        font-size: 15px;
+        font-size: 20px;
     }
-    select {
+    .selectMy {
         width: 100%;
         display: inline-block;
         margin: 25px 0 15px;

@@ -1,1 +1,38 @@
-{}
+{
+  "milan": {
+    "sportFacilityId": "",
+    "username": "milan",
+    "password": "123",
+    "name": "milan",
+    "surname": "milic",
+    "birthday": "Feb 1, 2010, 1:00:00 AM",
+    "gender": "FEMALE",
+    "userRole": "MANAGER",
+    "deleted": false,
+    "banned": false
+  },
+  "viki": {
+    "sportFacilityId": "",
+    "username": "viki",
+    "password": "234",
+    "name": "viki",
+    "surname": "vikic",
+    "birthday": "Jun 21, 2022, 2:00:00 AM",
+    "gender": "FEMALE",
+    "userRole": "MANAGER",
+    "deleted": false,
+    "banned": false
+  },
+  "miki": {
+    "sportFacilityId": "",
+    "username": "miki",
+    "password": "qwe123",
+    "name": "miki",
+    "surname": "mikic",
+    "birthday": "Feb 1, 2017, 1:00:00 AM",
+    "gender": "FEMALE",
+    "userRole": "MANAGER",
+    "deleted": false,
+    "banned": false
+  }
+}

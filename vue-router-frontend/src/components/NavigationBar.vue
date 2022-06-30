@@ -39,7 +39,7 @@
               Add accounts
             </a>
             <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
-              <li  class="dropdown-item"><router-link v-if="isAdmin" to="/newManger">Add trainer</router-link></li>
+              <li  class="dropdown-item"><router-link v-if="isAdmin" to="/newTrainer">Add trainer</router-link></li>
               <li ><router-link v-if="isAdmin" class="dropdown-item" to="/newManger">Add manager</router-link></li>
             </ul>
           </li>

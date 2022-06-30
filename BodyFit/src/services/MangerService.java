@@ -12,11 +12,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Customer;
 import beans.Manager;
 import dao.ManagerDao;
+import dao.SportFacilityDao;
+import dto.UserDto;
 @Path("managers")
 public class MangerService {
 	ManagerDao managerDao = new ManagerDao();
+	SportFacilityDao sportFacilityDao = new SportFacilityDao();
 	
 	@Context
 	ServletContext ctx;
@@ -46,8 +50,18 @@ public class MangerService {
 		managerDao.setBasePath(getContext());
 		managerDao.create(manager);
 	}
+	@POST
+	@Path("/")	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Manager createManager(UserDto customer) {
+		managerDao.setBasePath(getContext());
+		Manager maangerNew = new Manager(customer.username,customer.password,customer.name,customer.surname,customer.birthday,customer.gerGenderEnum(),null);
+		managerDao.create(maangerNew);
+		return maangerNew;
+	}
 	@GET
-	@Path("/getAll")
+	@Path("/getAvailable")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Manager> getAllAvailableManagers() {
 		managerDao.setBasePath(getContext());

@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" style="margin-top: 150px">
   <form class="center" @submit.prevent="createUser">
-    <h1>Create new  trainer </h1>
+    <h1>Create new  manager </h1>
     <label>Username:</label>
     <input type="text" placeholder="Enter username..." v-model="user.username" required>
     <label>Password:</label>
@@ -24,6 +24,7 @@
 
 <script>
 import axios from "axios";
+import MainView from "@/views/MainView";
 export default {
   name: "registerUser",
   data() {
@@ -40,9 +41,10 @@ export default {
   },
   methods: {
     createUser() {
-      axios.post("http://localhost:8080/BodyFit/rest/trainers", this.user)
+      axios.post("http://localhost:8080/BodyFit/rest/managers", this.user)
           .then((response) => console.log(response))
           .catch((error) => console.log(error))
+      this.$router.push({name : 'MainView'})
     }
   }
 }

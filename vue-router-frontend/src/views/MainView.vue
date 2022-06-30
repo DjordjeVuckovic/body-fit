@@ -1,6 +1,8 @@
 <template>
   <div class="container-fluid" style="margin-top: 150px">
   <div id="main">
+    <p>You have successfully created an account!</p>
+    <Header title="You have successfully created an account!"></Header>
   <div id="nav">
     <Header title="You have successfully created an account!"></Header>
   </div>

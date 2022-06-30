@@ -36,7 +36,7 @@ export default {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 20px;
 }
 .inputBase {
   display: block;

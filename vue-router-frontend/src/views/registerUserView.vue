@@ -63,7 +63,7 @@ export default {
       axios.post("http://localhost:8080/BodyFit/rest/customers",this.user)
           .then((response) => console.log(response))
           .catch((error) => console.log(error))
-      this.$router.push("MainView");
+      this.$router.push({name : 'MainView'})
     },
     goToLogin(){
       this.$router.push("About");

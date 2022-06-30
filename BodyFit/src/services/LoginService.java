@@ -128,6 +128,30 @@ public class LoginService   {
 		return null;
 		
 	}
+	@POST
+	@Path("getUsernames")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<String> getAllUserNames(){
+		customerDao.setBasePath(getContext());
+		managerDao.setBasePath(getContext());
+		adminDao.setBasePath(getContext());
+		trainerDao.setBasePath(getContext());
+		ArrayList<String> usernames = new ArrayList<String>();
+		for (User user : customerDao.getAllToList()) {
+			usernames.add(user.getName());
+		}
+		for (User user : managerDao.getAllToList()) {
+			usernames.add(user.getName());
+		}
+		for (User user : adminDao.getAllToList()) {
+			usernames.add(user.getName());
+		}
+		for (User user : trainerDao.getAllToList()) {
+			usernames.add(user.getName());
+		}
+		return usernames;
+
+	}
 	public UserState customerLogIn(User user) {
 		UserState state = UserState.ERROR;
 		customerDao.setBasePath(getContext());
