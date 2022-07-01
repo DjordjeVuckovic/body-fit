@@ -15,7 +15,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import beans.Customer;
 import beans.Manager;
+import beans.User;
 import dao.ManagerDao;
 import dao.SportFacilityDao;
 import dto.UserDto;
@@ -38,12 +40,17 @@ public class MangerService {
 				+ File.separator);
 	}
 	@PUT
-	@Path("{id}")
-	public Manager getUserById(@PathParam("id") String id,Manager manager) {
-	   managerDao.setBasePath(getContext());
-	   Manager findManager = managerDao.getById(id);
-	   managerDao.update(manager);
-	   return manager;
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/editManager")
+	public User editCustomerById(UserDto manager) {
+		managerDao.setBasePath(getContext());
+		Manager c = managerDao.getById(manager.username);
+		c.setName(manager.name);
+		c.setSurname(manager.surname);
+
+		managerDao.update(c);
+		return c;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
 
 	}
