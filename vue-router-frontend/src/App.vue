@@ -3,11 +3,13 @@
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
       <router-view style="padding-top:120px ;"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
   </div>
+<!--  <MyFooter/>-->
 </template>
 
 <script>
-import NavigationBar from'./components/NavigationBar.vue'
+import NavigationBar from './components/NavigationBar.vue'
 import axios from "axios";
+import MyFooter from "@/MyFooter";
 
 export default{
   name:'App',
@@ -47,6 +49,7 @@ export default{
     }
   },
   components:{
+    MyFooter,
     NavigationBar
   }
  
@@ -73,12 +76,7 @@ export default{
 body {
   font-family: 'Roboto', sans-serif;
 }
-.container {
-  max-width: 1280px;
-  overflow: auto;
 
-  border-radius: 5px;
-}
 .user{
   padding-left: 1300px;
 }

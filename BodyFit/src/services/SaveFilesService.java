@@ -12,7 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 @Path("files")
 public class SaveFilesService {
-	
+	private String path1 = "C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\vue-router-frontend\\src\\assets\\";
 	@Context
 	ServletContext ctx;
 	
@@ -24,9 +24,7 @@ public class SaveFilesService {
 		}
 	}
 	public String getLogosPath() {
-		//return (ctx.getRealPath("") + "logos" + File.separator);
-		//return "C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\WebContent\\logos\\";
-		return "C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\vue-router-frontend\\src\\assets\\";
+		return path1;
 	}
 	@POST
 	@Path("uploadFile")
