@@ -8,17 +8,22 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Customer;
+import beans.Manager;
+import beans.User;
 import dao.CustomerDao;
 import dto.UserDto;
 @Path("customers")
 public class CustomerService {
 	CustomerDao customerDao = new CustomerDao();
+	
 	
 	@Context
 	ServletContext ctx;
@@ -49,6 +54,22 @@ public class CustomerService {
 		Customer customerNew = new Customer(customer.username,customer.password,customer.name,customer.surname,customer.birthday,customer.gerGenderEnum(),null);
 		customerDao.create(customerNew);
 		return customerNew;
+	}
+	
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/editCustomer")
+	public User editCustomerById(UserDto customer) {
+		customerDao.setBasePath(getContext());
+		Customer c = customerDao.getById(customer.username);
+		c.setName(customer.name);
+		c.setSurname(customer.surname);
+
+		customerDao.update(c);
+		return c;
+	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
+
 	}
 	
 	
