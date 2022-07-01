@@ -50,15 +50,22 @@
     </div>
 
   </nav>
-<section class="p-5 ">
-  <div   v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
-      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>
+  <div class="row">
+<!--  <div class="row" v-for="i in makeRows">-->
+<!--    <div v-for="facilitie in i" class="col-6">-->
+<!--      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>-->
+<!--    </div>-->
+<!--  </div>-->
+    <div class="col-lg-6">
+  <div  v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
+    <div>
+      <div>
+      <Facilitie  v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>
+      </div>
+    </div>
   </div>
-
-</section>
-
-    
-    
+    </div>
+  </div>
 </template>
 
 <script>
@@ -77,8 +84,21 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
           searchQuery: '',
           selected:'Default',
           filterMe:'ALL',
-          checked:false
+          checked:false,
+          rowSize: 2
         }
+      },
+      computed:{
+        makeRows(){
+          let row = [];
+          let i,l, chunkSize = this.rowSize;
+
+          for (i=0,l=this.resultQuery().length; i<l; i+=chunkSize) {
+            row.push(this.resultQuery().slice(i,i+chunkSize));
+
+          }
+          return row;
+        },
       },
         methods: {
           resultQuery(){
@@ -89,6 +109,9 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
                     || this.searchQuery.toLowerCase().split(' ').every(v => item.rating.toLowerCase().includes(v))
                     || this.searchQuery.toLowerCase().split(' ').every(v => item.city.toLowerCase().includes(v))
               })
+              if(this.checked){
+                console.log('aa')
+              }
             }else{
               return this.facilities;
             }
@@ -115,19 +138,21 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
             }
         },
           filterByType(facility){
-            let ret = false
-            if(facility.type === undefined ||  this.filterMe===undefined) {return}
-            if(this.filterMe === facility.type || this.filterMe === 'ALL') {
-              ret = true
-            }
-            if(this.checked && facility.status === 'Closed'){
-              ret = false
-            }
-            return ret
-          }
-
+        let ret = false
+        if(facility.type === undefined ||  this.filterMe===undefined) {return}
+        if(this.filterMe === facility.type || this.filterMe === 'ALL') {
+          ret = true
         }
+        if(this.checked && facility.status === 'Closed'){
+          ret = false
+        }
+        return ret
+      }
+    },
     }
 </script>
-<style >
+<style scoped>
+.myrow { display: table}
+
+.mycol { float: left; padding: 100px;}
 </style>

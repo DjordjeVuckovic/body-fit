@@ -57,7 +57,7 @@
   </table>
     <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="facilityPreview">Preview facility</button>
   </div>
-  <div class="col-4">
+  <div class="col-4 ico">
     <img :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
   </div>
   </div>

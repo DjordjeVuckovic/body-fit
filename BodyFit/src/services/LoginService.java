@@ -37,7 +37,6 @@ public class LoginService   {
 	ManagerDao managerDao = new ManagerDao();
 	AdminDao adminDao = new AdminDao();
 	TrainerDao trainerDao = new TrainerDao();
-	private User user;
 	List<String> usernames;
 	
 	@Context
@@ -57,14 +56,14 @@ public class LoginService   {
 	private void setLoggedInUser(String username) {
 		ctx.setAttribute("username", username);
 	}
-	@POST
+	@GET
 	@Path("loggedUser")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getUsername() {
 		return (String)ctx.getAttribute("username");
 	}
 	
-	@POST
+	@GET
 	@Path("logOut")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String userLogOut() {
@@ -106,9 +105,7 @@ public class LoginService   {
 		customerDao.setBasePath(getContext());
 		managerDao.setBasePath(getContext());
 		trainerDao.setBasePath(getContext());
-		User user = new User();
 		String username = (String) ctx.getAttribute("username");
-		user.setUsername(username);
 		User trainer = trainerDao.getById(username);
 		if(trainer != null) {
 			return trainer;
@@ -149,6 +146,7 @@ public class LoginService   {
 		for (User user : trainerDao.getAllToList()) {
 			usernames.add(user.getName());
 		}
+		this.usernames = usernames;
 		return usernames;
 
 	}
