@@ -1,5 +1,5 @@
 <template>
-  <h1>{{facility.name}}</h1>
+<!--  <h1>{{facility.name}}</h1>-->
 </template>
 
 <script>
