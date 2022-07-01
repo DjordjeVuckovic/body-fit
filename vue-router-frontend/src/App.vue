@@ -32,12 +32,6 @@ export default{
       this.logedInUser = null
       this.isAdmin = false
     },
-    // async addFacilitie(NewFacilitie){
-    //   console.log(NewFacilitie)
-    //   axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/",NewFacilitie)
-    //   .then((response)=>{console.log(NewFacilitie)})
-    //   .catch((error) => console.log(error))
-    // },
     account(){
       this.$router.push({name : 'AccountView'})
     },
@@ -65,7 +59,6 @@ export default{
 
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;

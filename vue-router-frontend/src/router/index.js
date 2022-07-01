@@ -9,7 +9,6 @@ import MainView from "@/views/MainView"
 import AddFacilitiesView from '../views/AddFacilitieView'
 import AccountView from '../views/AccountView'
 import createTrainerView from "@/views/createTrainerView";
-import facilityView from "@/components/facilityView";
 import SelectedFacilitieView from '../views/SelectedFacilitieView'
 
 const routes = [

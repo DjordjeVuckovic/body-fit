@@ -60,7 +60,7 @@
   <div  v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
     <div>
       <div>
-      <Facilitie  v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>
+      <Facilitie  v-if="filterByType(facilitie)"  :facilitie="facilitie"  @selectFacilitie="$emit('selectFacilitie',facilitie)"></Facilitie>
       </div>
     </div>
   </div>
