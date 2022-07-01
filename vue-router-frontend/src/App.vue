@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-      <router-view style="padding-top:120px ;"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
+      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie" :isAdmin="isAdmin"/>
   </div>
 <!--  <MyFooter/>-->
 </template>
@@ -39,13 +39,20 @@ export default{
     //   .catch((error) => console.log(error))
     // },
     account(){
-      his.$router.push({name : 'AccountView'})
+      this.$router.push({name : 'AccountView'})
+    },
+    SelectFacilitie(facilitie){
+      this.selectedFacilitie = facilitie
+      console.log(this.selectedFacilitie)
+      this.$router.push({name : 'facilityView'})
+      
     }
   },
   data(){
     return{
       logedInUser: null,
-      isAdmin: null
+      isAdmin: null,
+      selectedFacilitie: null
     }
   },
   components:{

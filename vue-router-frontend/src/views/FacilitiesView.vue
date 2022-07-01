@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Facilities :facilities="facilities"></Facilities>  
+    <Facilities :facilities="facilities" @selectFacilitie="Selectfacilitie"></Facilities>  
 </div>
     
 </template>
@@ -27,10 +27,13 @@ export default {
             FacilitieService.getFacilities().then((response) => {
             this.facilities = response.data
             });
+        },
+        Selectfacilitie(facilitie){
+            this.$emit('selectFacilitie',facilitie)
         }
     },
-    created(){
-    this.getFacilities()
+    created(facilitie){
+    this.getFacilities('selectFacilitie',this.facilitie)
     }
 }
 </script>

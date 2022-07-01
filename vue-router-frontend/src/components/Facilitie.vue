@@ -55,7 +55,7 @@
     </tr>
     </tbody>
   </table>
-    <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="facilityPreview">Preview facility</button>
+    <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
   </div>
   <div class="col-4 ico">
     <img :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
