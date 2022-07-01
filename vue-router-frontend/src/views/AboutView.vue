@@ -2,7 +2,7 @@
   <div id="my">
     <div>
       <h1>Customize with Props</h1>
-      <Wizard
+      
           squared-tabs
           card-background
           navigable-tabs
@@ -19,7 +19,7 @@
       >
         <CreateManagerForFacilitie v-if="currentTabIndex === 0"/>
         <h5 v-if="currentTabIndex === 1">Tab 1</h5>
-      </Wizard>
+      
     </div>
   </div>
 </template>

@@ -50,12 +50,12 @@
     </div>
 
   </nav>
-<section class="p-5 ">
-  <div   v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
-      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>
-  </div>
+  <section class="p-5 ">
+    <div   v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
+      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie" @selectFacilitie="$emit('selectFacilitie',facilitie)"></Facilitie>
+    </div>
 
-</section>
+  </section>
 
     
     
@@ -92,6 +92,9 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
             }else{
               return this.facilities;
             }
+          },
+          bla(facilitie){
+            console.log(facilitie)
           },
           sortList() {
             console.log(this.selected)
