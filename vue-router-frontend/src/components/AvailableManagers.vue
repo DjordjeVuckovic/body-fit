@@ -1,7 +1,7 @@
 <template>
   <label >Available Managers:</label>
-  <select  id="selectNew"  @change="customStuffLoad" class="selectAcc form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option v-for="manager in managers" v-bind:value="manager.username">
+  <select  id="selectNew"   @change="customStuffLoad" v-model="selectedManager" class="selectAcc form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <option v-for="manager in managers" v-bind:value="manager">
     {{ manager.name}} {{manager.surname}}
     </option>
   </select>
@@ -13,22 +13,29 @@ export default {
   name: "AvailableManagers",
   data(){
     return{
-      managers:[]
+      managers:[],
+      selectedManager:null,
+      isAny:true
     }
   },
   methods:{
     getManagers(){
       ManagerService.getAvailableManagers().then((response) => {
         this.managers = response.data
+        if(this.managers.length===0){
+          this.isAny = false
+        }
+        this.$emit('isAny',this.isAny)
       });
     },
     customStuffLoad(){
-      console.log('1')
+      this.$emit('selectedMng',this.selectedManager)
     }
   },
   created() {
     this.getManagers()
-  }
+  },
+  emits:['selectedMng','isAny']
 }
 </script>
 

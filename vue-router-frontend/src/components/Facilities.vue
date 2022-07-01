@@ -129,6 +129,5 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
         }
     }
 </script>
-<style>
-
+<style >
 </style>

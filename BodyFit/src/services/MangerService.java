@@ -54,9 +54,9 @@ public class MangerService {
 	@Path("/")	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Manager createManager(UserDto customer) {
+	public Manager createManager(UserDto manager) {
 		managerDao.setBasePath(getContext());
-		Manager maangerNew = new Manager(customer.username,customer.password,customer.name,customer.surname,customer.birthday,customer.gerGenderEnum(),null);
+		Manager maangerNew = new Manager(manager.username,manager.password,manager.name,manager.surname,manager.birthday,manager.gerGenderEnum(),null);
 		managerDao.create(maangerNew);
 		return maangerNew;
 	}

@@ -1,10 +1,7 @@
 <template>
   <div id="app">
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-      <router-view style="padding-top:120px ;" @addFacilitie="addFacilitie" @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
-  
-  
-
+      <router-view style="padding-top:120px ;"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :isAdmin="isAdmin"/>
   </div>
 </template>
 
@@ -33,12 +30,12 @@ export default{
       this.logedInUser = null
       this.isAdmin = false
     },
-    async addFacilitie(NewFacilitie){
-      console.log(NewFacilitie)
-      axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/",NewFacilitie)
-      .then((response)=>{console.log(NewFacilitie)})
-      .catch((error) => console.log(error))
-    },
+    // async addFacilitie(NewFacilitie){
+    //   console.log(NewFacilitie)
+    //   axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/",NewFacilitie)
+    //   .then((response)=>{console.log(NewFacilitie)})
+    //   .catch((error) => console.log(error))
+    // },
     account(){
       his.$router.push({name : 'AccountView'})
     }

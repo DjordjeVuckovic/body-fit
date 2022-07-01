@@ -1,23 +1,65 @@
 <template>
-  <div  style="margin-top: 150px">
-<!--  <div class="about">-->
-<!--    <h1>This is an about page</h1>-->
-<!--  </div>-->
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
-            <a class="nav-link" href="#">Pricing</a>
-            <a class="nav-link disabled">Disabled</a>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <div id="app">
+    <div>
+      <h1>Customize with Props</h1>
+      <Wizard
+          squared-tabs
+          card-background
+          navigable-tabs
+          :custom-tabs="[
+          {
+            title: 'Step 1',
+          },
+          {
+            title: 'Step 2',
+          },
+        ]"
+          :beforeChange="onTabBeforeChange"
+          @change="onChangeCurrentTab"
+      >
+        <CreateManagerForFacilitie v-if="currentTabIndex === 0"/>
+        <h5 v-if="currentTabIndex === 1">Tab 1</h5>
+      </Wizard>
+    </div>
   </div>
 </template>
+
+<script>
+import 'form-wizard-vue3/dist/form-wizard-vue3.css';
+import Wizard from 'form-wizard-vue3';
+import CreateManagerForFacilitie from "@/components/createManagerForFacilitie";
+
+export default {
+  name: 'App',
+  components: {
+    Wizard,CreateManagerForFacilitie
+  },
+  data() {
+    return {
+      currentTabIndex: 0,
+    };
+  },
+  methods: {
+    onChangeCurrentTab(index) {
+      this.currentTabIndex = index;
+    },
+    onTabBeforeChange() {
+      if (this.currentTabIndex === 0) {
+        console.log('First Tab');
+      }
+      console.log('All Tabs');
+    },
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

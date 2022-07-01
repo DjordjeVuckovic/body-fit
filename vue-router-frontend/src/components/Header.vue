@@ -1,7 +1,9 @@
 <template>
+  <div class="container-fluid">
     <header>
-        <h1>{{title}}</h1>
+      <h1 class="headerMy">{{title}}</h1>
     </header>
+  </div>
 </template>
 
 <script>
@@ -18,13 +20,17 @@
 </script>
 
 <style scoped>
-    header{
-        display: flex;
+    div.headerMy{
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 70px;
+        font-weight: bolder;
         font-size: 30px;
         text-align: center;
-        color: white;
+        color: black;
+        margin-top: auto;
+        margin-bottom: auto;
+        min-height: 10em;
+        display: table-cell;
+        vertical-align: middle
     }
 </style>

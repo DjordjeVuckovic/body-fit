@@ -77,7 +77,7 @@ public class LoginService   {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public boolean SuccesLoginIn(User user) {
-		
+		System.out.println(ctx.getRealPath(""));
 		UserState loginState = customerLogIn(user);
 		boolean loginStatus= false;
 		if(loginState == UserState.SUCCESS) {
@@ -152,7 +152,7 @@ public class LoginService   {
 		return usernames;
 
 	}
-	public UserState customerLogIn(User user) {
+	private UserState customerLogIn(User user) {
 		UserState state = UserState.ERROR;
 		customerDao.setBasePath(getContext());
 		for (Customer u : customerDao.getAllToList()) {
@@ -171,7 +171,7 @@ public class LoginService   {
 		return state;
 	}
 
-	public UserState adminLogIn(User user) {
+	private UserState adminLogIn(User user) {
 		adminDao.setBasePath(getContext());
 		UserState state = UserState.ERROR;
 		for (Admin u : adminDao.getAllToList()) {
@@ -186,7 +186,7 @@ public class LoginService   {
 		return state;
 	}
 
-	public UserState managerLogIn(User user) {
+	private UserState managerLogIn(User user) {
 		managerDao.setBasePath(getContext());
 		UserState state = UserState.ERROR;
 		for (Manager u : managerDao.getAllToList()) {
@@ -205,7 +205,7 @@ public class LoginService   {
 		return state;
 	}
 
-	public UserState trainerLogIn(User user) {
+	private UserState trainerLogIn(User user) {
 		trainerDao.setBasePath(getContext());
 		UserState state = UserState.ERROR;
 		for (Trainer u : trainerDao.getAllToList()) {
@@ -224,82 +224,82 @@ public class LoginService   {
 		return state;
 	}
 	
-	public String getCustomerStateString(User user) {
-		UserState state  = customerLogIn(user);
-		String userState = "";
-		switch (state) {
-		case SUCCESS:
-			userState = "Success login";
-			break;
-		case ERROR:
-			userState = "Wrong credential.Wrong username or password!";
-			break;
-		case BANNED:
-			userState = "Your are banned!";
-			break;
-
-		default:
-			break;
-		}
-		return userState;
-	}
-	public String getTrainerStateString(User user) {
-		UserState state  = trainerLogIn(user);
-		String userState = "";
-		switch (state) {
-		case SUCCESS:
-			userState = "Success login";
-			break;
-		case ERROR:
-			userState = "Wrong credential.Wrong username or password!";
-			break;
-		case BANNED:
-			userState = "Your are banned!";
-			break;
-
-		default:
-			break;
-		}
-		return userState;
-	}
-	public String getManagerStateString(User user) {
-		UserState state  = managerLogIn(user);
-		String userState = "";
-		switch (state) {
-		case SUCCESS:
-			userState = "Success login";
-			break;
-		case ERROR:
-			userState = "Wrong credential.Wrong username or password!";
-			break;
-		case BANNED:
-			userState = "Your are banned!";
-			break;
-
-		default:
-			break;
-		}
-		return userState;
-	}
-	public String getAdminStateString(User user) {
-		UserState state  = adminLogIn(user);
-		String userState = "";
-		switch (state) {
-		case SUCCESS:
-			userState = "Success login";
-			break;
-		case ERROR:
-			userState = "Wrong credential.Wrong username or password!";
-			break;
-		case BANNED:
-			userState = "Your are banned!";
-			break;
-
-		default:
-			break;
-		}
-		return userState;
-	}	
+//	public String getCustomerStateString(User user) {
+//		UserState state  = customerLogIn(user);
+//		String userState = "";
+//		switch (state) {
+//		case SUCCESS:
+//			userState = "Success login";
+//			break;
+//		case ERROR:
+//			userState = "Wrong credential.Wrong username or password!";
+//			break;
+//		case BANNED:
+//			userState = "Your are banned!";
+//			break;
+//
+//		default:
+//			break;
+//		}
+//		return userState;
+//	}
+//	public String getTrainerStateString(User user) {
+//		UserState state  = trainerLogIn(user);
+//		String userState = "";
+//		switch (state) {
+//		case SUCCESS:
+//			userState = "Success login";
+//			break;
+//		case ERROR:
+//			userState = "Wrong credential.Wrong username or password!";
+//			break;
+//		case BANNED:
+//			userState = "Your are banned!";
+//			break;
+//
+//		default:
+//			break;
+//		}
+//		return userState;
+//	}
+//	public String getManagerStateString(User user) {
+//		UserState state  = managerLogIn(user);
+//		String userState = "";
+//		switch (state) {
+//		case SUCCESS:
+//			userState = "Success login";
+//			break;
+//		case ERROR:
+//			userState = "Wrong credential.Wrong username or password!";
+//			break;
+//		case BANNED:
+//			userState = "Your are banned!";
+//			break;
+//
+//		default:
+//			break;
+//		}
+//		return userState;
+//	}
+//	public String getAdminStateString(User user) {
+//		UserState state  = adminLogIn(user);
+//		String userState = "";
+//		switch (state) {
+//		case SUCCESS:
+//			userState = "Success login";
+//			break;
+//		case ERROR:
+//			userState = "Wrong credential.Wrong username or password!";
+//			break;
+//		case BANNED:
+//			userState = "Your are banned!";
+//			break;
+//
+//		default:
+//			break;
+//		}
+//		return userState;
+//	}	
 	
 
 

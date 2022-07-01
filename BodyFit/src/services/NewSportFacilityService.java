@@ -60,12 +60,12 @@ public class NewSportFacilityService {
 	@Path("setManager")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void setManager(UserDto dto) {
+	public void setManager(Manager managerForChange) {
 		sportFacility = getCurrentFacility();
 		sportFacilityDao.setBasePath(getContext());
 		managerDao.setBasePath(getContext());
-		Manager manager = managerDao.getById(dto.username);
-		sportFacilityDao.create(sportFacility);
+		Manager manager = managerDao.getById(managerForChange.getUsername());
+		//sportFacilityDao.create(sportFacility);
 		manager.setSportFacilityId(sportFacility.getSportFacilityId());
 		managerDao.update(manager);
 	}

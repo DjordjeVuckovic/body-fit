@@ -1,6 +1,7 @@
 <template>
-  <div class="container-fluid" style="margin-top: 150px">
-  <form class="center" @submit.prevent="$emit('addFacilitie',this.NewFacilitie)">
+  <div class="container-fluid" style="margin-top: 50px">
+    <Header title="Step 1" v-if="step1"/>
+  <form class="center" v-if="step1">
         <h1>Add  facilitie</h1>
         <InputBase
             v-model="NewFacilitie.name"
@@ -44,12 +45,23 @@
         </div>
       </div>
     <div>
-      <AvailableManagers/>
     </div>
     <div class="d-grid gap-2 col-5 mx-auto">
-      <input  type="submit" class="submiter btn btn-primary btn-lg" value="Add Facilitie" :disabled="isDisabled"/>
+      <input @click.prevent="ChangeView"  class="submiter btn btn-primary btn-lg" value="Next" :disabled="isDisabled"/>
     </div>
   </form>
+    <div v-if="!step1">
+      <div class="container-fluid">
+        <Header title="Step 2"/>
+        <form  class="center" @submit.prevent="addFacilitie">
+          <AvailableManagers @selectedMng="OnSelection" @isAny="CheckAvailability" v-if="isAvailable"/>
+          <CreateManagerForFacilitie v-if="!isAvailable" @createdManager="SendManager"/>
+          <div class="d-grid gap-2 col-5 mx-auto">
+            <input type="submit" class="submiter btn btn-primary btn-lg" value="Finish"/>
+          </div>
+        </form>
+      </div>
+    </div>
   <p>{{NewFacilitie.name}}</p>
   <p>{{NewFacilitie.type}}</p>
   <p>{{NewFacilitie.city}}</p>
@@ -59,11 +71,13 @@
 </template>
 
 <script>
+import CreateManagerForFacilitie from "@/components/createManagerForFacilitie";
 import MultiDropDown from '../components/MultiDropDown.vue'
 import InputBase from "@/components/InputBase"
 import FacilitieService from '../FrontedServices/FacilitieServices'
 import axios from "axios";
 import AvailableManagers from "@/components/AvailableManagers";
+import Header from "@/components/Header";
 export default {
     name: 'addFaciliteView',
     data(){
@@ -77,12 +91,14 @@ export default {
             },
           selectedFile:null,
           isDisabled:true,
-          facilities:[]
+          facilities:[],
+          availableManager:null,
+          isAvailable : true,
+          step1:true
         }
     },
     components:{
-      AvailableManagers,
-        MultiDropDown,InputBase,FacilitieService
+      AvailableManagers, MultiDropDown,InputBase,FacilitieService,CreateManagerForFacilitie,Header
     },
     methods:{
       OnFileUpload(name){
@@ -119,6 +135,29 @@ export default {
         else{
           this.isDisabled = false
         }
+      },
+      OnSelection(selectedManager){
+        this.availableManager= selectedManager
+        console.log(this.availableManager)
+      },
+      CheckAvailability(isAny){
+        this.isAvailable = isAny
+      },
+      SendManager(user){
+        this.availableManager = user
+        console.log(user)
+      },
+      addFacilitie(){
+        axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/",this.NewFacilitie)
+            .then((response)=>{console.log(this.NewFacilitie)})
+            .catch((error) => console.log(error))
+        axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/setManager/",this.availableManager)
+            .then((response)=>{console.log(this.availableManager)})
+            .catch((error) => console.log(error))
+        this.$router.push('Facilities')
+      },
+      ChangeView(){
+        this.step1 = false
       }
     },
   created() {
@@ -181,7 +220,6 @@ export default {
     .submiter{
         text-align: center;
         background: #2691d9;
-        color: white;
         border-radius: 15px;
         font-size: 20px;
         margin-top: 50px;

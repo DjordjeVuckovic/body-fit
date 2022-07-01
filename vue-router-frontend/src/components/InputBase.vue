@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-<label class="baseLabel">{{label}}</label>
+  <label class="baseLabel">{{label}}</label>
   <input class="inputBase form-control" :placeholder="createPlaceholder()"  :value="modelValue" @input="$emit('update:modelValue',$event.target.value)" required>
   </div>
 </template>
