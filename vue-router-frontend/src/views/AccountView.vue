@@ -6,7 +6,7 @@
             <label>Username:</label>
             <div v-if="this.editBool" class="row">
                 <div  class="col-9">
-                    <p1 v-if="this.editBool">{{this.username}}</p1>
+                    <p1 v-if="this.editBool">{{this.user.username}}</p1>
                 </div>
                 <div class="col-sm input">
                     <svg  v-if="this.editBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="edit()">
@@ -19,7 +19,7 @@
             <div v-if="!this.editBool" class="row">
                 
                 <div class="col-9">
-                    <input  v-model="this.username" type="text" required >
+                    <input  v-model="this.user.username" type="text" required >
                 </div>
                 <div class="col-sm input">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" @click="edited()">
@@ -37,7 +37,7 @@
             <label>Name:</label>
             <div v-if="this.editNameBool" class="row">
                 <div  class="col-9">
-                    <p1 v-if="this.editNameBool">{{this.name}}</p1>
+                    <p1 v-if="this.editNameBool">{{this.user.name}}</p1>
                 </div>
                 <div class="col-sm input">
                     <svg  v-if="this.editNameBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="editName()">
@@ -48,7 +48,7 @@
             <div v-if="!this.editNameBool" class="row">
                 
                 <div class="col-9">
-                    <input  v-model="this.name" type="text" required >
+                    <input  v-model="this.user.name" type="text" required >
                 </div>
                 <div class="col-sm input">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" @click="editedName()">
@@ -65,7 +65,7 @@
             <label>Surname:</label>
             <div v-if="this.editSurNameBool" class="row">
                 <div  class="col-9">
-                    <p1 v-if="this.editSurNameBool">{{this.surname}}</p1>
+                    <p1 v-if="this.editSurNameBool">{{this.user.surname}}</p1>
                 </div>
                 <div class="col-sm input">
                     <svg  v-if="this.editSurNameBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="editSurName()">
@@ -76,7 +76,7 @@
             <div v-if="!this.editSurNameBool" class="row">
                 
                 <div class="col-9">
-                    <input  v-model="this.surname" type="text" required >
+                    <input  v-model="this.user.surname" type="text" required >
                 </div>
                 <div class="col-sm input">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" @click="editedSurName()">
@@ -112,7 +112,7 @@
                         <button>Confirm</button>
                     </div>
                     
-                    <div class="col-sm" >
+                    <div class="col-sm">
                         <button>Confirm</button>
                     </div>
                 </div>
@@ -127,10 +127,11 @@
     {{logedInUser.name}}
     {{logedInUser.surname}}
     {{logedInUser.username}}
-    <p>{{this.name}}</p>
+    <p>{{this.user.name}}</p>
 </template>
 
 <script>
+import axios from "axios";
 export default {
     name: 'AccountView',
     props:['logedInUser'],
@@ -139,9 +140,12 @@ export default {
             editBool: true,
             editNameBool: true,
             editSurNameBool: true,
-            name: this.logedInUser.name,
-            surname: this.logedInUser.surname,
-            username: this.logedInUser.username,
+            user:{
+                name: this.logedInUser.name,
+                surname: this.logedInUser.surname,
+                username: this.logedInUser.username,
+            },
+            
             changePassword: true
         }
     },
@@ -151,29 +155,71 @@ export default {
         },
         edited(){
             this.editBool = true;
-            this.logedInUser.username = this.username;
+            this.logedInUser.username = this.user.username;
         },
         notEdited(){
             this.editBool = true;
-             this.username = this.logedInUser.username;
+             this.user.username = this.logedInUser.username;
         },
         editName(){
             this.editNameBool = false;
         },
         editedName(){
             this.editNameBool = true;
-            this.logedInUser.name = this.name;
+            this.logedInUser.name = this.user.name;
+            console.log(this.logedInUser.userRole)
+            if(this.logedInUser.userRole == "ADMIN"){
+                axios.put("http://localhost:8080/BodyFit/rest/admins/editAdmin",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            else if(this.logedInUser.userRole == "MANAGER"){
+                 axios.put("http://localhost:8080/BodyFit/rest/managers/editManager",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            else if(this.logedInUser.userRole == "CUSTOMER"){
+                 axios.put("http://localhost:8080/BodyFit/rest/customers/editCustomer",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            else if(this.logedInUser.userRole == "COACH"){
+                 axios.put("http://localhost:8080/BodyFit/rest/trainers/editTrainer",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            
         },
         notEditedName(){
             this.editNameBool = true;
-            this.name = this.logedInUser.name;
+            this.user.name = this.logedInUser.name;
         },
         editSurName(){
             this.editSurNameBool = false;
         },
         editedSurName(){
             this.editSurNameBool = true;
-            this.logedInUser.surname = this.surname;
+            this.logedInUser.surname = this.user.surname;
+            if(this.logedInUser.userRole == "ADMIN"){
+                axios.put("http://localhost:8080/BodyFit/rest/admins/editAdmin",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            else if(this.logedInUser.userRole == "MANAGER"){
+                 axios.put("http://localhost:8080/BodyFit/rest/managers/editManager",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            else if(this.logedInUser.userRole == "CUSTOMER"){
+                 axios.put("http://localhost:8080/BodyFit/rest/customers/editCustomer",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
+            else if(this.logedInUser.userRole == "COACH"){
+                 axios.put("http://localhost:8080/BodyFit/rest/trainers/editTrainer",this.user)
+                .then((response) => {console.log(response.data)})
+                .catch((error) => console.log(error))
+            }
         },
         notEditedSurName(){
             this.editSurNameBool = true;

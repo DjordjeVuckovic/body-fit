@@ -21,6 +21,7 @@ import beans.Manager;
 
 import beans.Trainer;
 import beans.User;
+import beans.UserRole;
 import dao.TrainerDao;
 import dto.UserDto;
 
@@ -71,7 +72,7 @@ public class TrainerService  {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Trainer createManager(UserDto newTrainer) {
 		trainerDao.setBasePath(getContext());
-		Trainer trainer = new Trainer(newTrainer.username,newTrainer.password,newTrainer.name,newTrainer.surname,newTrainer.birthday,newTrainer.gerGenderEnum(),null);
+		Trainer trainer = new Trainer(newTrainer.username,newTrainer.password,newTrainer.name,newTrainer.surname,newTrainer.birthday,newTrainer.gerGenderEnum(),UserRole.COACH);
 		trainerDao.create(trainer);
 		return trainer;
 	}
