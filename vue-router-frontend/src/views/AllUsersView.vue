@@ -1,15 +1,20 @@
 <template >
-<div class="mx-5">
+<nav class="navbar navbar-dark bg-dark p-5 text-light">
+    <div class="container-fluid mx-5">
+        
+   
+    </div>
+</nav>
+<div class="mx-5 bla">
     <div style="margin-top: 50px" class="album py-5">
-    <div class="row row-cols-3 g-3">
-        <div  v-for="user in this.users" v-bind:key="user.username" class="container">
-            <div class="col">
-                <User :user = "user"></User>
+        <div class="row row-cols-3 g-3">
+            <div  v-for="user in this.users" v-bind:key="user.username" class="container">
+                <div class="col">
+                    <User :user = "user"></User>
+                </div>
             </div>
+        </div>
     </div>
-    </div>
-    
-</div>
 </div>
 
   
@@ -60,7 +65,10 @@ export default {
     }
 }
 </script>
-
+    
 <style>
-
+    .bla{
+        min-width: 350;
+        min-height: 300;
+    }
 </style>
