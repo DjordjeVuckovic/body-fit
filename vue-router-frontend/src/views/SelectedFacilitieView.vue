@@ -8,7 +8,9 @@
 import Facilitie from '../components/Facilitie.vue'
 export default {
     name: 'SelectedFacilitieView',
-    props:['selectedFacilitie'],
+    props:{
+      selectedFacilitie: Object
+    },
     components:{
             Facilitie
         },

@@ -45,6 +45,15 @@ public class SportFacilityDao extends GenericDao<String,SportFacility, SportFaci
 		// TODO Auto-generated method stub
 		return new ArrayList<SportFacility>(getAllToMap().values());
 	}
+	public SportFacility getByName(String facilityName) {
+		for(SportFacility facility : getAllToList()) {
+			if(facility.getName().equals(facilityName)) {
+				return facility;
+			}
+		}
+		return null;
+		
+	}
 
 
 }

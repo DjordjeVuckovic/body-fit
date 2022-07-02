@@ -33,8 +33,8 @@
               <span class="align-bottom">Facilities</span> 
               </router-link>
           </li>
-          <li class="nav-item" id="mynav">
-            <router-link class="nav-link active" aria-current="page" v-if="isAdmin"  to='/addFacilitie'>
+          <li class="nav-item" id="mynav" v-if="isAdmin">
+            <router-link class="nav-link active" aria-current="page"   to='/addFacilitie'>
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
               </svg>
@@ -49,12 +49,17 @@
             <a class="nav-link dropdown-toggle  drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Add accounts
             </a>
-            <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
-              <li  class="dropdown-item"><router-link v-if="isAdmin" to="/newTrainer">Add trainer</router-link></li>
-              <li ><router-link v-if="isAdmin" class="dropdown-item" to="/newManger">Add manager</router-link></li>
+            <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown" v-if="isAdmin">
+              <li  class="dropdown-item"><router-link to="/newTrainer">Add trainer</router-link></li>
+              <li ><router-link  class="dropdown-item" to="/newManger">Add manager</router-link></li>
             </ul>
           </li>
+          <li class="nav-item" id="mynav">
+            <router-link v-if="isManager" to="/registration">Add content</router-link>
+          </li>
         </ul>
+        <div>
+        </div>
         <div class="d-flex">
           <ul class="navbar-collapse me-auto mb-0 mb-lg-0">
             <li class="nav-justified" id="mynav">
@@ -91,7 +96,7 @@
 <script>
 export default {
     name: 'NavigationBar',
-    props:['logedInUser', 'isAdmin'],
+    props:['logedInUser', 'isAdmin','isManager'],
     methods:{
       signOut(){
         this.$emit('sign-out')

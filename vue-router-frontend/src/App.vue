@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin"></NavigationBar>
-      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie" :isAdmin="isAdmin"/>
+      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"></NavigationBar>
+      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie" :isAdmin="isAdmin" :isManager="isManager"/>
   </div>
 <!--  <MyFooter/>-->
 </template>
@@ -24,6 +24,9 @@ export default{
               if (this.logedInUser.userRole === "ADMIN"){
                 this.isAdmin = true
               }
+              if(this.logedInUser.userRole==="MANAGER"){
+                this.isManager = true
+              }
               this.$router.push({name : 'Facilities'})
              })
             .catch((error) => console.log(error))
@@ -31,6 +34,7 @@ export default{
     signOut(){
       this.logedInUser = null
       this.isAdmin = false
+      this.isManager = false
     },
     account(){
       this.$router.push({name : 'AccountView'})
@@ -46,7 +50,8 @@ export default{
     return{
       logedInUser: null,
       isAdmin: null,
-      selectedFacilitie: null
+      selectedFacilitie: null,
+      isManager: false
     }
   },
   components:{

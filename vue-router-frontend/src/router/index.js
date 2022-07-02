@@ -10,6 +10,7 @@ import AddFacilitiesView from '../views/AddFacilitieView'
 import AccountView from '../views/AccountView'
 import createTrainerView from "@/views/createTrainerView";
 import SelectedFacilitieView from '../views/SelectedFacilitieView'
+import AddContentView from "@/views/AddContentView";
 
 const routes = [
   {
@@ -66,6 +67,11 @@ const routes = [
     path: '/facilityView',
     name: 'facilityView',
     component: SelectedFacilitieView
+  },
+  {
+    path: '/AddContentView',
+    name: 'AddContentView',
+    component: AddContentView
   }
 ]
 

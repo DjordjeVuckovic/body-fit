@@ -33,18 +33,20 @@ public class SportFacility {
 		this.type = type;
 		this.currentLocation = currentLocation;
 		this.averageGrade = averageGrade;
+		this.facilityContent = new ArrayList<String>();
 	}
-	public SportFacility(String sportFacilityId, String name, FacilityType type, ArrayList<String> facilityContent,
-			boolean status, double averageGrade, Date openTime, Date closeTime) {
+	public SportFacility(String sportFacilityId, String name, FacilityType type,
+			boolean status,Adress location, double averageGrade, Date openTime, Date closeTime) {
 		super();
 		this.sportFacilityId = sportFacilityId;
 		this.name = name;
 		this.type = type;
-		this.facilityContent = facilityContent;
+		this.facilityContent = new ArrayList<String>();
 		this.isWorking = status;
 		this.averageGrade = averageGrade;
 		this.openTime = openTime;
 		this.closeTime = closeTime;
+		this.facilityContent = new ArrayList<String>();
 	}
 	public SportFacility(String sportFacilityId, String name, FacilityType type, ArrayList<String> facilityContent,
 			boolean status, Adress location, double averageGrade, Date openTime, Date closeTime) {
@@ -58,6 +60,7 @@ public class SportFacility {
 		this.averageGrade = averageGrade;
 		this.openTime = openTime;
 		this.closeTime = closeTime;
+		this.facilityContent = facilityContent;
 	}
 	public String getSportFacilityId() {
 		return sportFacilityId;
@@ -106,6 +109,11 @@ public class SportFacility {
 	}
 	public void setCloseTime(Date closeTime) {
 		this.closeTime = closeTime;
+	}
+	public void addContent(String contentId) {
+		if(!this.facilityContent.contains(contentId))
+			this.facilityContent.add(contentId);
+		
 	}
 	
 	
