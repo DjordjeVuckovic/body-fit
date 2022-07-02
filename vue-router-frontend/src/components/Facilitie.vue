@@ -1,5 +1,5 @@
-<template>
-<div class = "facilitie container-fluid" >
+<template >
+<div class = "facilitie container-fluid p-5" >
   <div class="row">
   <div class="col-8">
   <table class="table">
