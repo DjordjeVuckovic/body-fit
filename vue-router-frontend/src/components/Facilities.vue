@@ -56,19 +56,18 @@
 <!--      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>-->
 <!--    </div>-->
 <!--  </div>-->
-  <div class="album py-5">
-    <div class="row row-cols-2 g-3">
-        <div  v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId" class="container">
-          
-        <div class="col">
+
+    <div class="overflow-auto">
+      <div class="col-lg-6">
+      <div  v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
+        <div class="d-block">
           <Facilitie  v-if="filterByType(facilitie)"  :facilitie="facilitie"  @selectFacilitie="$emit('selectFacilitie',facilitie)"></Facilitie>
         </div>
-      
-    </div>
-    </div>
-    
+      </div>
+      </div>
   </div>
-</div>
+    </div>
+
 </template>
 
 <script>
@@ -155,6 +154,7 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
         return ret
       }
     },
+      emits:['selectFacilitie']
     }
 </script>
 <style scoped>

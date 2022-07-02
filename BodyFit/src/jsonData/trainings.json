@@ -1,0 +1,13 @@
+{
+  "123": {
+    "id": "123",
+    "type": "FUNCTIONAL",
+    "sportFacilityId": "22",
+    "trainerId": "1",
+    "name": "23",
+    "description": "aa",
+    "duration": 1,
+    "deleted": false,
+    "additionalPrice": 9.0
+  }
+}

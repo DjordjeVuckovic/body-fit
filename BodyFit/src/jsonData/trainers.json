@@ -1,1 +1,13 @@
-{}
+{"tr": {
+    "trainingHistory": [],
+    "username": "tr",
+    "password": "tr",
+    "name": "baki",
+    "surname": "bakic",
+    "birthday": "Jul 7, 2022, 2:00:00 AM",
+    "gender": "FEMALE",
+    "userRole": "COACH",
+    "deleted": false,
+    "banned": false
+  }
+  }

@@ -10,7 +10,6 @@ public class FacilityViewDto {
 	public String city;
 	public String postal;
 	public String address;
-	public String location;
 	public String lat;
 	public String longi;
 	//public String logitude;
@@ -20,7 +19,6 @@ public class FacilityViewDto {
 		this.name = facility.getName();
 		this.type = facility.getType().toString();
 		this.status = isWorkingToString(facility);
-		//this.location = facility.getLocation();
 		this.city = facility.getCurrentLocation().getCity();
 		this.postal = facility.getCurrentLocation().getPostalCode();
 		this.address = facility.getCurrentLocation().getStreetAndNumber();

@@ -16,28 +16,43 @@ import java.util.Map;
 import beans.Admin;
 import beans.Adress;
 import beans.Customer;
+import beans.FacilityContent;
+import beans.FacilityContentType;
 import beans.FacilityType;
 import beans.Gender;
 import beans.GeoLocation;
 import beans.Location;
 import beans.SportFacility;
+import beans.Training;
+import beans.TrainingType;
 import beans.UserRole;
 import dao.AdminDao;
 import dao.CustomerDao;
+import dao.FacilityContentDao;
 import dao.SportFacilityDao;
+import dao.TrainerDao;
+import dao.TrainingDao;
 
 public class Mian {
 
 	public static void main(String[] args) {
+		Training training = new Training("123", TrainingType.FUNCTIONAL, "22", "1", "23", "aa", 01,011, false);
+		//FacilityContent tr = new FacilityContent("13", "2", FacilityContentType.TRAINING, "31", 30, false);
+		TrainingDao contentDao = new TrainingDao();
+		contentDao.setBasePath("src/jsonData/");
+		contentDao.create(training);
+		
 		// TODO Auto-generated method stub
-//		CustomerDao dao = new CustomerDao();
 //		Date date = new Date();
-////		Customer customer = new Customer("mikiia", "mikia", "m", "m",date, Gender.FEMALE, UserRole.CUSTOMER, 11);
-////		dao.create(customer);
-////		AdminDao adminDao = new AdminDao();
-////		Admin admin = new Admin("a", "a", "a", "a",  date,Gender.FEMALE, UserRole.ADMIN);
-////		adminDao.create(admin);
-//		
+//		CustomerDao customerDao = new CustomerDao();
+//		customerDao.setBasePath("src/jsonData/");
+//		Customer customer = new Customer("lm", "mikia", "m", "m",date, Gender.FEMALE, UserRole.CUSTOMER, 11);
+		//File fileRelative3 = new File("src/jsonData/pdf-sample.pdf");
+//		String str = "C:\\\\Users\\\\djord\\\\OneDrive\\\\Documents\\\\GitHub\\\\WebProject\\\\BodyFit\\\\src\\\\jsonData\\";
+//		System.out.println(fileRelative3.getPath());
+//		System.out.println(fileRelative3.getAbsolutePath());
+		//customerDao.create(customer);
+		
 //		
 //
 ////		SportFacilityDao facilityDao = new SportFacilityDao();
@@ -55,6 +70,7 @@ public class Mian {
 		
 
 		}
+		
 		
 
 }

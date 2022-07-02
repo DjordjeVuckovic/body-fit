@@ -15,6 +15,8 @@ public class Customer extends User {
 			UserRole userRole, double colletedPoints) {
 		super(username, password, name, surname, birthdate, gender, userRole);
 		this.colletedPoints = colletedPoints;
+		visitedFacilities = new ArrayList<String>();
+		this.customerType = new CustomerType("BRONZE", 0, 0);
 	}
 	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,
 			UserRole userRole,Due due) {

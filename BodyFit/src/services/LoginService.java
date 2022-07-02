@@ -52,6 +52,7 @@ public class LoginService   {
 	public String getContext() {
 		return (ctx.getRealPath("") + "WEB-INF" + File.separator + "classes" + File.separator + "jsonData"
 				+ File.separator);
+		//return "src/jsonData/";
 	}
 	private void setLoggedInUser(String username) {
 		ctx.setAttribute("username", username);

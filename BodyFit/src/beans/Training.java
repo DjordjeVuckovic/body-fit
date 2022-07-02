@@ -1,26 +1,28 @@
 package beans;
 
-import java.time.Duration;
 
 public class Training {
 	private String id;
-	private String type;
+	private TrainingType type;
 	private String sportFacilityId;
-	private Duration duration;
 	private String trainerId;
+	private String name;
 	private String description;
+	private int duration;
 	private boolean deleted;
-	
-	public Training(String id, String type, String sportFacilityId, Duration duration, String trainerId,
-			String description) {
+	private double additionalPrice;
+	public Training(String id, TrainingType type, String sportFacilityId, String trainerId, String name,
+			String description, int duration,double additionalPrice, boolean deleted) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.sportFacilityId = sportFacilityId;
-		this.duration = duration;
 		this.trainerId = trainerId;
+		this.name = name;
 		this.description = description;
-		this.deleted = false;
+		this.duration = duration;
+		this.deleted = deleted;
+		this.additionalPrice = additionalPrice;
 	}
 	public String getId() {
 		return id;
@@ -28,10 +30,34 @@ public class Training {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getType() {
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getDuration() {
+		return duration;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+	public boolean isDeleted() {
+		return deleted;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+	public TrainingType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(TrainingType type) {
 		this.type = type;
 	}
 	public String getSportFacilityId() {
@@ -40,34 +66,12 @@ public class Training {
 	public void setSportFacilityId(String sportFacilityId) {
 		this.sportFacilityId = sportFacilityId;
 	}
-	public Duration getDuration() {
-		return duration;
-	}
-	public void setDuration(Duration duration) {
-		this.duration = duration;
-	}
 	public String getTrainerId() {
 		return trainerId;
 	}
 	public void setTrainerId(String trainerId) {
 		this.trainerId = trainerId;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public boolean isDeleted() {
-		return deleted;
-	}
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
-	@Override
-	public String toString() {
-		return "Training [id=" + id + ", type=" + type + ", sportFacilityId=" + sportFacilityId + ", duration="
-				+ duration + ", trainerId=" + trainerId + ", description=" + description + ", deleted=" + deleted + "]";
-	}
+	
 
 }

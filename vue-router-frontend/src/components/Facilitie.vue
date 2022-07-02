@@ -1,7 +1,7 @@
 <template >
 <div class = "facilitie container-fluid p-5" >
   <div class="row">
-  <div class="col-8">
+  <div class="col-lg-8 pt-3 pb-3">
   <table class="table">
     <thead class="table-dark">
     <th class="name justify-content-end" scope="col">{{facilitie.name}}</th>
@@ -55,10 +55,12 @@
     </tr>
     </tbody>
   </table>
-    <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
+    <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
   </div>
-  <div class="col-4 ico">
+  <div class="col-lg-4 ico pt-3 pb-3 justify-content-center">
+    <span class="d-block">
     <img :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
+      </span>
   </div>
   </div>
 </div>
@@ -77,16 +79,9 @@ export default{
     getImgUrl(facility){
       let images = require.context('../assets/', false, /\.png$/);
       return images('./' + facility + ".png")
-    },
-    facilityPreview(){
-        // console.log(this.facilitie.name)
-        this.$router.push(
-            {
-              name:'facilityView',
-            }
-        )
-    },
-  }
+    }
+  },
+  emits:['selectFacilitie']
 }
 </script>
 
@@ -100,9 +95,11 @@ table{
   font-size: 24px;
 }
 .ico{
-  display: block;
+  display: flex;
   padding-bottom: 10px;
   margin-left: auto;
+  margin-right: auto;
+  max-width: 20em;
 }
 .facilitie {
   background: #f4f4f4;
