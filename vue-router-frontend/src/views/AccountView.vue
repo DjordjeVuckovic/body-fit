@@ -5,8 +5,8 @@
         <span>
             <label>Username:</label>
             <div v-if="this.editBool" class="row">
-                <div  >
-                    <p1 v-if="this.editBool">{{this.user.username}}</p1>
+                <div >
+                    <p1 class="" v-if="this.editBool">{{this.user.username}}</p1>
                 </div>
                
             </div >
@@ -157,87 +157,8 @@ export default {
         VueBasicAlert
     },
     methods:{
-        edit(){
-            this.editBool = false;
-        },
-        edited(){
-            this.editBool = true;
-            this.logedInUser.username = this.user.username;
-        },
-        notEdited(){
-            this.editBool = true;
-             this.user.username = this.logedInUser.username;
-        },
-        editName(){
-            this.editNameBool = false;
-        },
-        editedName(){
-            this.editNameBool = true;
-            this.logedInUser.name = this.user.name;
-            console.log(this.logedInUser.userRole)
-            if(this.logedInUser.userRole == "ADMIN"){
-                axios.put("http://localhost:8080/BodyFit/rest/admins/editAdmin",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            else if(this.logedInUser.userRole == "MANAGER"){
-                 axios.put("http://localhost:8080/BodyFit/rest/managers/editManager",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            else if(this.logedInUser.userRole == "CUSTOMER"){
-                 axios.put("http://localhost:8080/BodyFit/rest/customers/editCustomer",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            else if(this.logedInUser.userRole == "COACH"){
-                 axios.put("http://localhost:8080/BodyFit/rest/trainers/editTrainer",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            
-        },
-        notEditedName(){
-            this.editNameBool = true;
-            this.user.name = this.logedInUser.name;
-        },
-        editSurName(){
-            this.editSurNameBool = false;
-        },
-        editedSurName(){
-            this.editSurNameBool = true;
-            this.logedInUser.surname = this.user.surname;
-            if(this.logedInUser.userRole == "ADMIN"){
-                axios.put("http://localhost:8080/BodyFit/rest/admins/editAdmin",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            else if(this.logedInUser.userRole == "MANAGER"){
-                 axios.put("http://localhost:8080/BodyFit/rest/managers/editManager",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            else if(this.logedInUser.userRole == "CUSTOMER"){
-                 axios.put("http://localhost:8080/BodyFit/rest/customers/editCustomer",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-            else if(this.logedInUser.userRole == "COACH"){
-                 axios.put("http://localhost:8080/BodyFit/rest/trainers/editTrainer",this.user)
-                .then((response) => {console.log(response.data)})
-                .catch((error) => console.log(error))
-            }
-        },
-        notEditedSurName(){
-            this.editSurNameBool = true;
-            this.surname = this.logedInUser.surname;
-        },
-        setNewPassword(){
-            if(this.user.password == this.oldPassword && this.newPassword == this.confirmPassword){
-                this.user.password = this.newPassword;
-                this.logedInUser.password = this.newPassword;
-                this.changePassword = true;
-                if(this.logedInUser.userRole == "ADMIN"){
+        updateUser(){
+             if(this.logedInUser.userRole == "ADMIN"){
                     axios.put("http://localhost:8080/BodyFit/rest/admins/editAdmin",this.user)
                     .then((response) => {console.log(response.data); console.log(this.user)})
                     .catch((error) => console.log(error))
@@ -257,6 +178,50 @@ export default {
                     .then((response) => {console.log(response.data)})
                     .catch((error) => console.log(error))
                 }
+        },
+        edit(){
+            this.editBool = false;
+        },
+        edited(){
+            this.editBool = true;
+            this.logedInUser.username = this.user.username;
+        },
+        notEdited(){
+            this.editBool = true;
+             this.user.username = this.logedInUser.username;
+        },
+        editName(){
+            this.editNameBool = false;
+        },
+        editedName(){
+            this.editNameBool = true;
+            this.logedInUser.name = this.user.name;
+            console.log(this.logedInUser.userRole)
+            this.updateUser();
+            
+        },
+        notEditedName(){
+            this.editNameBool = true;
+            this.user.name = this.logedInUser.name;
+        },
+        editSurName(){
+            this.editSurNameBool = false;
+        },
+        editedSurName(){
+            this.editSurNameBool = true;
+            this.logedInUser.surname = this.user.surname;
+           this.updateUser();
+        },
+        notEditedSurName(){
+            this.editSurNameBool = true;
+            this.surname = this.logedInUser.surname;
+        },
+        setNewPassword(){
+            if(this.user.password == this.oldPassword && this.newPassword == this.confirmPassword){
+                this.user.password = this.newPassword;
+                this.logedInUser.password = this.newPassword;
+                this.changePassword = true;
+                this.updateUser();
             }
             else{
                 this.$refs.alert 
@@ -269,7 +234,8 @@ export default {
         },
         cancelPasswordChange(){
              this.changePassword = true
-        }
+        },
+        
         
        
     },
