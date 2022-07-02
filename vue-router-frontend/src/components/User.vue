@@ -108,6 +108,8 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
+  min-height: 430px;
+  max-height: 430px;
 }
 .user.reminder {
   border-left: 5px solid green;
