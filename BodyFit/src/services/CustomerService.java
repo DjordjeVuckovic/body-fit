@@ -65,7 +65,7 @@ public class CustomerService {
 		Customer c = customerDao.getById(customer.username);
 		c.setName(customer.name);
 		c.setSurname(customer.surname);
-
+		c.setPassword(customer.password);
 		customerDao.update(c);
 		return c;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();

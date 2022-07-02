@@ -58,7 +58,7 @@ public class AdminService{
 		Admin a = adminDao.getById(admin.username);
 		a.setName(admin.name);
 		a.setSurname(admin.surname);
-
+		a.setPassword(admin.password);
 		adminDao.update(a);
 		return a;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();

@@ -86,7 +86,7 @@ public class TrainerService  {
 		Trainer t = trainerDao.getById(trainer.username);
 		t.setName(trainer.name);
 		t.setSurname(trainer.surname);
-
+		t.setPassword(trainer.password);
 		trainerDao.update(t);
 		return t;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();

@@ -48,7 +48,7 @@ public class MangerService {
 		Manager c = managerDao.getById(manager.username);
 		c.setName(manager.name);
 		c.setSurname(manager.surname);
-
+		c.setPassword(manager.password);
 		managerDao.update(c);
 		return c;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();

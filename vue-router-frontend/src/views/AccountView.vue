@@ -5,14 +5,10 @@
         <span>
             <label>Username:</label>
             <div v-if="this.editBool" class="row">
-                <div  class="col-9">
+                <div  >
                     <p1 v-if="this.editBool">{{this.user.username}}</p1>
                 </div>
-                <div class="col-sm input">
-                    <svg  v-if="this.editBool" xmlns="http://www.w3.org/2000/svg" style="margin-left: 40%;" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16" @click="edit()">
-                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                    </svg>
-                </div>
+               
             </div >
             
             
@@ -94,7 +90,7 @@
     
         <div class=" align-items-center justify-content-center">
             <div class=" justify-content-center">
-                <button v-if="this.changePassword" type="button" class="submiter d-flex" @click="ChangePassword()" >Change password</button>
+                <button v-if="this.changePassword" type="button" class="submiter d-flex" @click="StartChangePassword()" >Change password</button>
             </div>
             
         </div>
@@ -102,19 +98,21 @@
         <div  v-if="!this.changePassword" class="paswordchanger container">
             <div >
                 <label class="paswordchangerText">Insert old password:</label>
-                <input  class="paswordchangerText" type="password" required >
-                <label class="paswordchangerText">Insert new password:</label>
-                <input class="paswordchangerText"  type="password" required >
+                <input v-model="this.oldPassword" class="paswordchangerText" type="password" required >
+                <label  class="paswordchangerText">Insert new password:</label>
+                <input v-model="this.newPassword" class="paswordchangerText"  type="password" required >
                 <label class="paswordchangerText">Confirm new password:</label>
-                <input class="paswordchangerText"  type="password" required >
+                <input v-model="this.confirmPassword" class="paswordchangerText"  type="password" required >
                 <div class="paswordchangerbutton row">
                     <div class="col-sm">
-                        <button>Confirm</button>
+                        <button @click="setNewPassword()">Confirm</button>
                     </div>
                     
                     <div class="col-sm">
-                        <button>Confirm</button>
+                        <button @click="cancelPasswordChange()">Cancel</button>
+                       
                     </div>
+                     <vue-basic-alert :duration="200" ref="alert"></vue-basic-alert>
                 </div>
                 
             </div>
@@ -124,13 +122,15 @@
     </form>
     
 </div>
-    {{logedInUser.name}}
-    {{logedInUser.surname}}
-    {{logedInUser.username}}
     <p>{{this.user.name}}</p>
+    <p>{{this.oldPassword}}</p>
+    <p>{{this.newPassword}}</p>
+    <p>{{this.confirmPassword}}</p>
+    <p>{{this.user.password}}</p>
 </template>
 
 <script>
+import VueBasicAlert from 'vue-basic-alert'
 import axios from "axios";
 export default {
     name: 'AccountView',
@@ -144,10 +144,17 @@ export default {
                 name: this.logedInUser.name,
                 surname: this.logedInUser.surname,
                 username: this.logedInUser.username,
+                password : this.logedInUser.password
             },
             
-            changePassword: true
+            changePassword: true,
+            newPassword: '',
+            confirmPassword: '',
+            oldPassword: ''
         }
+    },
+    components:{
+        VueBasicAlert
     },
     methods:{
         edit(){
@@ -225,8 +232,43 @@ export default {
             this.editSurNameBool = true;
             this.surname = this.logedInUser.surname;
         },
-        ChangePassword(){
+        setNewPassword(){
+            if(this.user.password == this.oldPassword && this.newPassword == this.confirmPassword){
+                this.user.password = this.newPassword;
+                this.logedInUser.password = this.newPassword;
+                this.changePassword = true;
+                if(this.logedInUser.userRole == "ADMIN"){
+                    axios.put("http://localhost:8080/BodyFit/rest/admins/editAdmin",this.user)
+                    .then((response) => {console.log(response.data); console.log(this.user)})
+                    .catch((error) => console.log(error))
+                }
+                else if(this.logedInUser.userRole == "MANAGER"){
+                    axios.put("http://localhost:8080/BodyFit/rest/managers/editManager",this.user)
+                    .then((response) => {console.log(response.data)})
+                    .catch((error) => console.log(error))
+                }
+                else if(this.logedInUser.userRole == "CUSTOMER"){
+                    axios.put("http://localhost:8080/BodyFit/rest/customers/editCustomer",this.user)
+                    .then((response) => {console.log(response.data)})
+                    .catch((error) => console.log(error))
+                }
+                else if(this.logedInUser.userRole == "COACH"){
+                    axios.put("http://localhost:8080/BodyFit/rest/trainers/editTrainer",this.user)
+                    .then((response) => {console.log(response.data)})
+                    .catch((error) => console.log(error))
+                }
+            }
+            else{
+                this.$refs.alert 
+                .showAlert('error','Plese fulfill required fields correctly ','warning')
+            }
+            
+        },
+        StartChangePassword(){
             this.changePassword = false
+        },
+        cancelPasswordChange(){
+             this.changePassword = true
         }
         
        
