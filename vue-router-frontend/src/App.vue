@@ -24,7 +24,7 @@ export default{
               if (this.logedInUser.userRole === "ADMIN"){
                 this.isAdmin = true
               }
-              if(this.logedInUser.userRole==="MANAGER"){
+              if(this.logedInUser.userRole==="MANAGER" && this.logedInUser.sportFacilityId !== ""){
                 this.isManager = true
               }
               this.$router.push({name : 'Facilities'})

@@ -30,15 +30,16 @@ import dao.AdminDao;
 import dao.CustomerDao;
 import dao.FacilityContentDao;
 import dao.SportFacilityDao;
+import dao.TrainerDao;
+import dao.TrainingDao;
 
 public class Mian {
 
 	public static void main(String[] args) {
-		Training training = new Training("1", "2a", FacilityContentType.TRAINING, "31", 30, false,TrainingType.GROUP , "32", "2");
-		FacilityContent tr = new FacilityContent("13", "2", FacilityContentType.TRAINING, "31", 30, false);
-		FacilityContentDao contentDao = new FacilityContentDao();
+		Training training = new Training("123", TrainingType.FUNCTIONAL, "22", "1", "23", "aa", 01,011, false);
+		//FacilityContent tr = new FacilityContent("13", "2", FacilityContentType.TRAINING, "31", 30, false);
+		TrainingDao contentDao = new TrainingDao();
 		contentDao.setBasePath("src/jsonData/");
-		contentDao.create(tr);
 		contentDao.create(training);
 		
 		// TODO Auto-generated method stub

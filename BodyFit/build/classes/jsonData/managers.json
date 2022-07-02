@@ -1,6 +1,6 @@
 {
   "milan": {
-    "sportFacilityId": "",
+    "sportFacilityId": "1",
     "username": "milan",
     "password": "123",
     "name": "milan",
@@ -12,7 +12,7 @@
     "banned": false
   },
   "viki": {
-    "sportFacilityId": "",
+    "sportFacilityId": "2",
     "username": "viki",
     "password": "234",
     "name": "viki",
