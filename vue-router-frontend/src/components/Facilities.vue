@@ -56,6 +56,7 @@
 <!--      <Facilitie v-if="filterByType(facilitie)"  :facilitie="facilitie"></Facilitie>-->
 <!--    </div>-->
 <!--  </div>-->
+
     <div class="overflow-auto">
       <div class="col-lg-6">
       <div  v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
@@ -66,6 +67,7 @@
       </div>
   </div>
     </div>
+
 </template>
 
 <script>
