@@ -190,7 +190,7 @@ public class LoginService   {
 		UserState state = UserState.ERROR;
 		for (Manager u : managerDao.getAllToList()) {
 			if (u.getUsername().equals(user.getUsername())) {
-				if (u.getPassword().equals(u.getPassword())) {
+				if (u.getPassword().equals(user.getPassword())) {
 					if(u.isBanned()) {
 						state =  UserState.BANNED;
 					}

@@ -1,13 +1,24 @@
 {
-  "123": {
-    "id": "123",
-    "type": "FUNCTIONAL",
-    "sportFacilityId": "22",
-    "trainerId": "1",
-    "name": "23",
-    "description": "aa",
-    "duration": 1,
+  "0": {
+    "id": "0",
+    "type": "PERSONAL",
+    "sportFacilityId": "2",
+    "trainerId": "viki",
+    "name": "biki",
+    "description": "gc",
+    "duration": 23,
     "deleted": false,
-    "additionalPrice": 9.0
+    "additionalPrice": 0.0
+  },
+  "1": {
+    "id": "1",
+    "type": "PERSONAL",
+    "sportFacilityId": "2",
+    "trainerId": "viki",
+    "name": "p-1",
+    "description": "13",
+    "duration": 13,
+    "deleted": false,
+    "additionalPrice": 13.0
   }
 }

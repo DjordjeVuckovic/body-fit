@@ -1,7 +1,5 @@
 package services;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
@@ -20,7 +18,6 @@ import beans.SportFacility;
 import dao.ManagerDao;
 import dao.SportFacilityDao;
 import dto.FacilityViewDto;
-import dto.UserDto;
 
 @Path("newFacilitie")
 public class NewSportFacilityService {

@@ -11,6 +11,12 @@ public class Training {
 	private int duration;
 	private boolean deleted;
 	private double additionalPrice;
+	public double getAdditionalPrice() {
+		return additionalPrice;
+	}
+	public void setAdditionalPrice(double additionalPrice) {
+		this.additionalPrice = additionalPrice;
+	}
 	public Training(String id, TrainingType type, String sportFacilityId, String trainerId, String name,
 			String description, int duration,double additionalPrice, boolean deleted) {
 		super();
@@ -23,6 +29,10 @@ public class Training {
 		this.duration = duration;
 		this.deleted = deleted;
 		this.additionalPrice = additionalPrice;
+	}
+	
+	public Training() {
+		
 	}
 	public String getId() {
 		return id;

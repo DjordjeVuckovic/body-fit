@@ -36,11 +36,14 @@ import dao.TrainingDao;
 public class Mian {
 
 	public static void main(String[] args) {
-		Training training = new Training("123", TrainingType.FUNCTIONAL, "22", "1", "23", "aa", 01,011, false);
-		//FacilityContent tr = new FacilityContent("13", "2", FacilityContentType.TRAINING, "31", 30, false);
-		TrainingDao contentDao = new TrainingDao();
-		contentDao.setBasePath("src/jsonData/");
-		contentDao.create(training);
+//		TrainingDao trainingDao = new TrainingDao();
+//		trainingDao.setBasePath("src/jsonData/");
+//		ArrayList<Training> tr = trainingDao.getAllByManager("2");
+//		
+//		System.out.println(tr.isEmpty());
+//		for (Training tra: tr) {
+//			System.out.println(tra.getId());
+//		}
 		
 		// TODO Auto-generated method stub
 //		Date date = new Date();

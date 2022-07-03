@@ -177,10 +177,10 @@ export default {
 </script>
     
 <style>
-    .bla{
-        min-width: 350;
-        min-height: 300;
-        max-width: 350;
-        max-height: 300;
-    }
+    /*.bla{*/
+    /*    min-width: 350;*/
+    /*    min-height: 300;*/
+    /*    max-width: 350;*/
+    /*    max-height: 300;*/
+    /*}*/
 </style>

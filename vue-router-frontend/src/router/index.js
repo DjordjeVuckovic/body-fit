@@ -12,6 +12,8 @@ import createTrainerView from "@/views/createTrainerView";
 import SelectedFacilitieView from '../views/SelectedFacilitieView'
 import AllUsersView from '../views/AllUsersView'
 import AddContentView from "@/views/AddContentView";
+import AddTrainingView from "@/views/AddTrainingView";
+import TrainingsForManagerView from "@/views/TrainingsForManagerView";
 
 
 const routes = [
@@ -79,7 +81,18 @@ const routes = [
     path: '/AddContentView',
     name: 'AddContentView',
     component: AddContentView
+  },
+  {
+    path: '/addTrainingView',
+    name: 'addTrainingView',
+    component: AddTrainingView
+  },
+  {
+    path: '/trainingsForManagerView',
+    name: 'trainingsForManagerView',
+    component: TrainingsForManagerView
   }
+
 ]
 
 const router = createRouter({

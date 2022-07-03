@@ -65,7 +65,10 @@
             </ul>
           </li>
           <li class="nav-item" id="mynav">
-            <router-link v-if="isManager" to="/registration">Add content</router-link>
+            <router-link v-if="isManager" to="/addTrainingView">Add training</router-link>
+          </li>
+          <li class="nav-item" id="mynav">
+            <router-link v-if="isManager && logedInUser != null" to="/trainingsForManagerView">All trainings</router-link>
           </li>
         </ul>
         <div>

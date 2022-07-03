@@ -9,7 +9,7 @@
             type="text"
             @change="checkName"
         />
-        <label>Type</label>
+        <label>Type:</label>
         <select v-model="NewFacilitie.type" class="form-select form-select-lg mb-3 selectMy" aria-label=".form-select-lg example" >
             <option value="GYM">Gym</option>
             <option value="POOL">Pool</option>
@@ -38,7 +38,7 @@
          </div>
     <div class="row g-2">
          <div class="col-auto">
-           <input class="form-control inputMy" type="file" id="formFile">
+           <input :disabled="isDisabled" class="form-control inputMy" type="file" id="formFile">
          </div>
         <div class="col-auto">
           <button @click.prevent="OnFileUpload(this.NewFacilitie.name)" :disabled="isDisabled" class="btn btn-primary mb-3 btn-lg  buttonMy">Add logo</button>
@@ -125,7 +125,7 @@ export default {
       checkName(){
         if (this.facilities.some(code=> code.name.toLowerCase() === this.NewFacilitie.name.toLowerCase()))
         {
-          this.error = "Wrong credentials.Please choose another name!";
+          this.error = "Wrong name.Please choose another name!";
           alert(this.error);
           this.isDisabled = true
         }

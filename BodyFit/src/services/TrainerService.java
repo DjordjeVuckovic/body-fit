@@ -48,14 +48,6 @@ public class TrainerService  {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Trainer> getAllTrainers() {
 		trainerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return trainerDao.getAllToList();
 	}
 	@POST
@@ -70,7 +62,7 @@ public class TrainerService  {
 	@Path("/")	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Trainer createManager(UserDto newTrainer) {
+	public Trainer createTrainer(UserDto newTrainer) {
 		trainerDao.setBasePath(getContext());
 		Trainer trainer = new Trainer(newTrainer.username,newTrainer.password,newTrainer.name,newTrainer.surname,newTrainer.birthday,newTrainer.gerGenderEnum(),UserRole.COACH);
 		trainerDao.create(trainer);
@@ -90,7 +82,6 @@ public class TrainerService  {
 		trainerDao.update(t);
 		return t;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
-
 	}
 	
 

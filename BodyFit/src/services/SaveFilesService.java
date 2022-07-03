@@ -13,18 +13,22 @@ import javax.ws.rs.core.Context;
 @Path("files")
 public class SaveFilesService {
 	private String path1 = "C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\vue-router-frontend\\src\\assets\\";
+	private String path2 = "C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\vue-router-frontend\\src\\assets\\trainings\\";
+
 	@Context
 	ServletContext ctx;
 	
 	@SuppressWarnings("unused")
 	public void init() {
 		if (ctx.getAttribute("file") == null) {
-			String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("file", "");
 		}
 	}
-	public String getLogosPath() {
+	private String getLogosPath() {
 		return path1;
+	}
+	private String getTrainingPhotoPath() {
+		return path2;
 	}
 	@POST
 	@Path("uploadFile")
@@ -36,6 +40,19 @@ public class SaveFilesService {
 	}
 
 	@POST
+	@Path("uploadTrainingPhoto")
+	public void saveTrainingPhoto(String input) throws IOException {
+
+		String imageString = input;
+		String name = (String) ctx.getAttribute("file");
+		byte[] decodedBytes = Base64.getDecoder().decode(imageString);
+		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
+		File file = new File(getTrainingPhotoPath() + name + ".png");
+		ImageIO.write(buffImg, "png", file);
+		System.out.println("Image " + name + ".png" + " uploaded.");
+
+	}
+	@POST
 	@Path("uploadLogo")
 	public void saveImageLogo(String input) throws IOException {
 
@@ -44,10 +61,6 @@ public class SaveFilesService {
 		byte[] decodedBytes = Base64.getDecoder().decode(imageString);
 		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
 		File file = new File(getLogosPath() + name + ".png");
-		System.out.println(file.getName());
-		System.out.println(file.getAbsolutePath());
-		System.out.println(file.canWrite());
-		System.out.println(ctx.getRealPath(""));
 		ImageIO.write(buffImg, "png", file);
 		System.out.println("Image " + name + ".png" + " uploaded.");
 

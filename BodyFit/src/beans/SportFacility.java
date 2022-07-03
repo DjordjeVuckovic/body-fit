@@ -13,14 +13,8 @@ public class SportFacility {
 	private double averageGrade;
 	private Date openTime;
 	private Date closeTime;
+	private boolean deleted;
 	
-	
-	public Adress getCurrentLocation() {
-		return currentLocation;
-	}
-	public void setCurrentLocation(Adress currentLocation) {
-		this.currentLocation = currentLocation;
-	}
 	public SportFacility() {
 		super();
 	}
@@ -34,6 +28,7 @@ public class SportFacility {
 		this.currentLocation = currentLocation;
 		this.averageGrade = averageGrade;
 		this.facilityContent = new ArrayList<String>();
+		this.deleted = false;
 	}
 	public SportFacility(String sportFacilityId, String name, FacilityType type,
 			boolean status,Adress location, double averageGrade, Date openTime, Date closeTime) {
@@ -41,12 +36,12 @@ public class SportFacility {
 		this.sportFacilityId = sportFacilityId;
 		this.name = name;
 		this.type = type;
-		this.facilityContent = new ArrayList<String>();
 		this.isWorking = status;
 		this.averageGrade = averageGrade;
 		this.openTime = openTime;
 		this.closeTime = closeTime;
 		this.facilityContent = new ArrayList<String>();
+		this.deleted = false;
 	}
 	public SportFacility(String sportFacilityId, String name, FacilityType type, ArrayList<String> facilityContent,
 			boolean status, Adress location, double averageGrade, Date openTime, Date closeTime) {
@@ -114,6 +109,18 @@ public class SportFacility {
 		if(!this.facilityContent.contains(contentId))
 			this.facilityContent.add(contentId);
 		
+	}
+	public boolean isDeleted() {
+		return deleted;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+	public Adress getCurrentLocation() {
+		return currentLocation;
+	}
+	public void setCurrentLocation(Adress currentLocation) {
+		this.currentLocation = currentLocation;
 	}
 	
 	

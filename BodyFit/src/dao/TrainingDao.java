@@ -5,6 +5,7 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.google.gson.reflect.TypeToken;
@@ -43,6 +44,17 @@ public class TrainingDao extends GenericDao<String, Training, TrainingDao> {
 	public ArrayList<Training> getAllToList() {
 		// TODO Auto-generated method stub
 		return new ArrayList<Training>(getAllToMap().values());
+	}
+	public ArrayList<Training> getAllByManager(String managerFacilityId){
+		ArrayList<Training> trainingsForManager = new ArrayList<Training>();
+		for (Training training : getAllToList()) {
+			if(training.getSportFacilityId().equals(managerFacilityId)) {
+				trainingsForManager.add(training);
+			}
+			
+		}
+		return trainingsForManager;
+		
 	}
 
 }
