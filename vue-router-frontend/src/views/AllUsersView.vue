@@ -5,7 +5,7 @@
       <div class="mx-2" >
         <div class="textual"><label for="search">Search for users:</label></div>
         <div class="textual">
-          <input class="form-control me-2" type="search" v-model="searchQuery" @change="resultQuery()" @emptied="resultQuery()" placeholder="Search" aria-label="Search..." autofocus required /></div>
+          <input class="form-control me-2" type="search" v-model="searchQuery" @change="filterList()" @emptied="filterList() " placeholder="Search" aria-label="Search..." autofocus required /></div>
       </div>
       <div >
         <div class="textual">
@@ -32,7 +32,7 @@
           <label id="sort" for="sort">Filter users:</label>
         </div>
 
-        <select id="sort" name="sort" v-model="searchQuery"  @change="filterList()"  style="{width: 200px;}" class="form-select" aria-label="Default select example">
+        <select id="sort" name="sort" v-model="filterType"  @change="filterList()"  style="{width: 200px;}" class="form-select" aria-label="Default select example">
           <option value="ALL">ALL</option>
           <option value="ADMIN">ADMIN</option>
           <option value="CUSTOMER">CUSTOMER</option>
@@ -49,7 +49,7 @@
 <div class="bla  ">
     <div  class="album py-5 mx-5">
         <div class="row row-cols-3 g-3">
-            <div  v-for="user in this.users" v-bind:key="user.username" class="container">
+            <div  v-for="user in this.filterList()" v-bind:key="user.username" class="container">
                 <div class="col">
                     <User :user = "user"></User>
                 </div>
@@ -74,7 +74,7 @@ export default {
             users: [],
             searchQuery: '',
             selected: 'Default',
-            filterQuer: 'ALL',
+            filterType: 'ALL',
             filterUsers : []
         }
         
@@ -83,66 +83,79 @@ export default {
         User
     },
     methods:{
+        filterList(){
+            if(this.filterType == 'ALL' ){
+                this.resultQuery();
+                
+            }
+            else{
+                this.resultQuery();
+                this.filterUsers =  this.filterUsers.filter((item)=>{
+                //return item.userRole.toLowerCase().includes(this.filterType)
+                return this.filterType.toLowerCase().split(' ').every(v => item.userRole.toLowerCase().includes(v)) 
+                })
+            }
+            this.sortList();
+            return this.filterUsers;
+        },
         resultQuery(){
             if(this.searchQuery){
-              this.users = this.users.filter((item)=>{
+              this.filterUsers = this.filterUsers.filter((item)=>{
                 return this.searchQuery.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v)) 
                     || this.searchQuery.toLowerCase().split(' ').every(v => item.surname.toLowerCase().includes(v))
                     || this.searchQuery.toLowerCase().split(' ').every(v => item.username.toLowerCase().includes(v))
               })
-              if(this.checked){
-                console.log('aa')
-              }
+              this.sortList();
             }else
             {
-              this.getAllUsers()
+               this.filterUsers = this.users
             }
           },
           sortList() {
             console.log(this.selected)
             if (this.selected == 'NameASC') {
-              this.users.sort((x, y) => (x.name < y.name ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.name < y.name ? -1 : 1));
             }
             if(this.selected == 'NameDES') {
-              this.users.sort((x, y) => (x.name > y.name ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.name > y.name ? -1 : 1));
             }
             if(this.selected == 'SurnameASC') {
-              this.users.sort((x, y) => (x.surname < y.surname ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.surname < y.surname ? -1 : 1));
             }
             if(this.selected == 'SurnameDES') {
-              this.users.sort((x, y) => (x.surname > y.surname ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.surname > y.surname ? -1 : 1));
             }
             if(this.selected == 'UsernameASC') {
-              this.users.sort((x, y) => (x.username < y.username ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.username < y.username ? -1 : 1));
             }
             if(this.selected == 'UsernameDES') {
-              this.users.sort((x, y) => (x.username > y.username ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.username > y.username ? -1 : 1));
             }
             if(this.selected == 'PointsASC') {
-              this.users.sort((x, y) => (x.colletedPoints < y.colletedPoints ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.colletedPoints < y.colletedPoints ? -1 : 1));
             }
             if(this.selected == 'PointsDES') {
-              this.users.sort((x, y) => (x.colletedPoints > y.colletedPoints ? -1 : 1));
+              this.filterUsers.sort((x, y) => (x.colletedPoints > y.colletedPoints ? -1 : 1));
             }
         },
-      getCustomers(){
+      getCustomers(u){
         axios.get("http://localhost:8080/BodyFit/rest/customers/")
-                    .then((response) => {  this.users = response.data; console.log(this.users);})
+                    .then((response) => {   this.filterUsers = [...this.filterUsers, ...response.data ];this.users = this.filterUsers;})
                     .catch((error) => console.log(error))
       },
       getTrainers(){
         axios.get("http://localhost:8080/BodyFit/rest/trainers/")
-                    .then((response) => { this.users = [...this.users, ...response.data ]; console.log(this.users);})
+                    .then((response) => {  this.filterUsers = [...this.filterUsers, ...response.data ];this.users = this.filterUsers;})
                     .catch((error) => console.log(error))
       },
       getManagers(){
         axios.get("http://localhost:8080/BodyFit/rest/managers/")
-                    .then((response) => { this.users = [...this.users, ...response.data ]; console.log(this.users);})
+                    .then((response) => { this.filterUsers = [...this.filterUsers, ...response.data ];this.users = this.filterUsers;})
                     .catch((error) => console.log(error))
       },
       getAdmins(){
         axios.get("http://localhost:8080/BodyFit/rest/admins/")
-                    .then((response) => { this.users = [...this.users, ...response.data ]; console.log(this.users);})
+                    .then((response) => {  this.filterUsers = [...this.filterUsers, ...response.data ];this.users = this.filterUsers; })
                     .catch((error) => console.log(error))
       },
       getAllUsers(){
@@ -154,11 +167,8 @@ export default {
       
     },
     created(){
-        this.getCustomers()
-        this.getTrainers()
-        this.getManagers()
-        this.getAdmins()
-        this.filterUsers = this.users
+        this.getAllUsers()
+        this
         console.log("asdadasd")
         console.log(this.users)
 
