@@ -33,6 +33,9 @@
               <span class="align-bottom">Facilities</span> 
               </router-link>
           </li>
+          <li  class="nav-item" id="mynav">
+            <router-link class="nav-link active" aria-current="page" v-if="isCustomer" to="/chooseMembership">Buy membership</router-link>
+          </li>
 
           <li class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin"  to='/addFacilitie'>
@@ -70,6 +73,7 @@
           <li class="nav-item" id="mynav">
             <router-link v-if="isManager && logedInUser != null" to="/trainingsForManagerView">All trainings</router-link>
           </li>
+          
         </ul>
         <div>
         </div>
@@ -109,7 +113,7 @@
 <script>
 export default {
     name: 'NavigationBar',
-    props:['logedInUser', 'isAdmin','isManager'],
+    props:['logedInUser', 'isAdmin','isManager','isCustomer'],
     methods:{
       signOut(){
         this.$emit('sign-out')
