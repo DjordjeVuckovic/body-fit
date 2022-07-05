@@ -50,9 +50,9 @@
         </tr>
         </tbody>
       </table>
-      <button class="btn btn-primary mb-3 btn-lg  buttonMy">Edit training</button>
+      <router-link class="btn btn-primary mb-3   buttonMy" :to="{name: 'EditTrainingView',params:{id:trainingId}}">Edit training</router-link>
     </div>
-    <div  style="margin-top: 20px" class="col-lg-4 ico pt-5 pb-3 justify-content-center">
+    <div  style="margin-top: 5px" class="col-lg-4 ico pt-5 pb-3 justify-content-center">
        <span class="d-block">
          <img :src="getImgUrl(training.name)" :alt="training.name" class="ico"/>
         </span>
@@ -71,7 +71,8 @@ export default {
   },
   data(){
     return{
-      sportFacilityName:""
+      sportFacilityName:"",
+      trainingId:this.training.id
     }
   },
   methods:{
@@ -108,10 +109,7 @@ table{
   padding: 10px 20px;
   cursor: pointer;
   min-height: 430px;
-  max-height: 430px;
-}
-.user.reminder {
-  border-left: 5px solid green;
+  max-height: 500px;
 }
 .buttonMy{
   background: #2691d9;

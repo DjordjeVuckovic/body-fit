@@ -53,6 +53,19 @@ public class SaveFilesService {
 
 	}
 	@POST
+	@Path("editTrainingPhoto")
+	public void editTrainingPhoto(String input) throws IOException {
+
+		String imageString = input;
+		String name = (String) ctx.getAttribute("file");
+		byte[] decodedBytes = Base64.getDecoder().decode(imageString);
+		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
+		File file = new File(getTrainingPhotoPath() + name + ".png");
+		ImageIO.write(buffImg, "png", file);
+		System.out.println("Image " + name + ".png" + " uploaded.");
+
+	}
+	@POST
 	@Path("uploadLogo")
 	public void saveImageLogo(String input) throws IOException {
 

@@ -1,5 +1,5 @@
 {
-"tr": {
+  "tr": {
     "trainingHistory": [],
     "username": "tr",
     "password": "tr",
@@ -10,5 +10,17 @@
     "userRole": "COACH",
     "deleted": false,
     "banned": false
+  },
+  "bobi": {
+    "trainingHistory": [],
+    "username": "bobi",
+    "password": "123",
+    "name": "bobi",
+    "surname": "bobi",
+    "birthday": "Jul 20, 2022, 2:00:00 AM",
+    "gender": "FEMALE",
+    "userRole": "COACH",
+    "deleted": false,
+    "banned": false
   }
-  }
+}

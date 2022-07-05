@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -102,5 +104,35 @@ public class TrainingService {
 			
 		}
 		return trainersMap.values(); 
+	}
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Training getById(@PathParam("id") String id) {
+		trainingDao.setBasePath(getContext());
+		return trainingDao.getById(id);
+	}
+	@POST
+	@Path("/getById")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Training getByIdP(String id) {
+		trainingDao.setBasePath(getContext());
+		return trainingDao.getById(id);
+	}
+	@PUT
+	@Path("/editTraining")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Training editTraining(TrainingDto newTraining) {
+		trainingDao.setBasePath(getContext());
+		Training trainingEdit = trainingDao.getById(newTraining.id);
+		trainingEdit.setName(newTraining.name);
+		trainingEdit.setType(TrainingType.valueOf(newTraining.type));
+		trainingEdit.setDescription(newTraining.description);
+		trainingEdit.setDuration(newTraining.duration);
+		trainingEdit.setAdditionalPrice(newTraining.additionalPrice);
+		trainingEdit.setTrainerId(newTraining.trainerId);
+		trainingDao.update(trainingEdit);
+		return trainingEdit;
 	}
 }

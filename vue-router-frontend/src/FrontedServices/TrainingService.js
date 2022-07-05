@@ -3,6 +3,7 @@ import axios from "axios";
 const TRAININGS_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings"
 const TRAININGS_MANAGERS_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings/getAllByManager"
 const TRAININGS_TRAINERS_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings/getAllTrainers"
+const TRAINING_EDIT_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings/editTraining"
 
 
 class getTrainings{
@@ -17,6 +18,9 @@ class getTrainings{
     }
     getTrainersForFacility(id){
         return axios.post(TRAININGS_TRAINERS_API_BASE_URL,id)
+    }
+    updateTraining(training){
+        return axios.put(TRAINING_EDIT_API_BASE_URL,training)
     }
 
 }

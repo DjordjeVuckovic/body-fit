@@ -15,6 +15,7 @@ import AddContentView from "@/views/AddContentView";
 import AddTrainingView from "@/views/AddTrainingView";
 import TrainingsForManagerView from "@/views/TrainingsForManagerView";
 import TrainersForManagerView from "@/views/TrainersForManagerView";
+import EditTrainingView from "@/views/EditTrainingView";
 
 
 const routes = [
@@ -97,6 +98,11 @@ const routes = [
     path: '/trainersForManagerView',
     name: 'trainersForManagerView',
     component: TrainersForManagerView
+  },
+  {
+    path: '/EditTrainingView/:id',
+    name: 'EditTrainingView',
+    component: EditTrainingView
   }
 
 ]

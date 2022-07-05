@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid" style="margin-top: 150px">
+  <div class="container-fluid" style="margin-top: 15em">
   </div>
   <form class="center">
-    <h1>Add  training</h1>
+    <h1>Edit  training</h1>
     <InputBase
         v-model="name"
         label="Name:"
@@ -10,7 +10,7 @@
         @change="checkName"
     />
     <label>Type:</label>
-    <select v-model="type" class="form-select form-select-lg mb-3 selectMy" aria-label=".form-select-lg example" >
+    <select v-model="type"  class="form-select form-select-lg mb-3 selectMy" aria-label=".form-select-lg example" >
       <option value="GROUP">Group</option>
       <option value="PERSONAL">Personal</option>
       <option value="GYM">Gym</option>
@@ -21,14 +21,16 @@
     <InputBase class="description"
                v-model="description"
                label="Description:"
-               style="max-height: 300px"
                type="text"
     />
     <label class="baseLabel">Duration(minutes):</label>
     <input class="inputBase form-control" v-model="duration" type="number" min="1" max="1000"/>
     <label class="baseLabel">Additional price:</label>
     <input class="inputBase form-control" v-model="additionalPrice" type="number" min="1" max="1000"/>
-    <AllTrainers @selectedTrainer="OnSelection" :selectedTrainer="trainer"/>
+    <AllTrainers :selectedTrainer="trainer" @selectedTrainer="OnSelection"/>
+    <div class="col-form-label-lg">
+      Current trainer: {{trainerId}}
+    </div>
     <div class="col-auto">
       <label  class="col-form-label">Upload image:</label>
     </div>
@@ -43,21 +45,24 @@
     <div>
     </div>
     <div class="d-grid gap-2 col-5 mx-auto">
-      <input @click.prevent="CreateTraining"  class="submiter btn btn-primary btn-lg" value="Finish" :disabled="isDisabled"/>
+      <input @click.prevent="EditTraining"  class="submiter btn btn-primary btn-lg" value="Finish" :disabled="isDisabled"/>
     </div>
   </form>
 </template>
 
 <script>
+import axios from "axios";
 import InputBase from "@/components/InputBase";
 import AllTrainers from "@/components/AllTrainers";
 import TrainingService from "@/FrontedServices/TrainingService";
-import axios from "axios";
+import TrainerService from "@/FrontedServices/TrainerService";
+
 export default {
-  name: "CreateTraining",
-  components:{InputBase,AllTrainers,TrainingService},
-  data() {
-    return {
+  name: "EditTrainingView",
+  data(){
+    return{
+      startName:'',
+      id:this.$route.params.id,
       name:'',
       type: '',
       description:'',
@@ -65,10 +70,12 @@ export default {
       additionalPrice:'',
       trainings:[],
       selectedFile:null,
-      isDisabled:true,
-      trainer:{}
+      isDisabled:false,
+      trainer:{},
+      trainerId:'',
     }
   },
+  components:{InputBase,AllTrainers,TrainingService},
   methods: {
     OnFileUpload(){
       axios.post("http://localhost:8080/BodyFit/rest/files/uploadFile/",this.name)
@@ -80,7 +87,7 @@ export default {
       reader.onload = function () {
         base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
         console.log(this.name);
-        axios.post("http://localhost:8080/BodyFit/rest/files/uploadTrainingPhoto/",base64String)
+        axios.post("http://localhost:8080/BodyFit/rest/files/editTrainingPhoto/",base64String)
             .then((response)=>{console.log("Success uploading")})
             .catch((error) => console.log(error))
       }
@@ -88,22 +95,25 @@ export default {
     },
     checkName() {
       if (this.trainings.some(code => code.name.toLowerCase() === this.name.toLowerCase())) {
-        this.error = "Wrong name.Please choose another name!";
-        alert(this.error);
-        this.isDisabled = true
+        if(this.startName !== this.name) {
+          this.error = "Wrong name.Please choose another name!";
+          alert(this.error);
+          this.isDisabled = true
+        }
       } else if (!this.name) {
         this.isDisabled = true
       } else {
         this.isDisabled = false
       }
     },
-    CreateTraining() {
+    EditTraining() {
       //console.log(this.logedInUser)
       let trainerIdd = ""
       if(this.trainer != null){
         trainerIdd = this.trainer.username
       }
       const training = {
+        id: this.id,
         name: this.name,
         type: this.type,
         description: this.description,
@@ -112,9 +122,11 @@ export default {
         sportFacilityId : this.logedInUser.sportFacilityId,
         trainerId : trainerIdd
       }
-      TrainingService.createTraining(training)
+      console.log(training)
+      TrainingService.updateTraining(training)
           .then((response)=>{console.log(response.data)})
           .catch((error) => console.log(error))
+      this.$router.push({name : 'trainingsForManagerView'})
     },
     getAll() {
       TrainingService.getTrainings().then((response) => {
@@ -123,16 +135,40 @@ export default {
     },
     OnSelection(selectedTrainer){
       this.trainer = selectedTrainer;
+      this.trainerId = selectedTrainer.username
       console.log(this.trainer)
+    },
+    findTrainer(){
+      TrainerService.getTrainers().then(
+          (res)=>{
+            for(let tr of res.data){
+              if(tr.username === this.trainerId){
+                this.trainer =tr
+              }
+            }
+          }
+      )
     }
   },
   created() {
+    axios.post("http://localhost:8080/BodyFit/rest/trainings/getById",this.id).then(
+        (res)=>{
+          this.startName =res.data.name
+          this.name= res.data.name
+          this.type = res.data.type
+          this.description = res.data.description
+          this.duration = res.data.duration
+          this.additionalPrice = res.data.additionalPrice
+          this.trainerId = res.data.trainerId;
+          console.log(res.data)
+        }
+    )
     this.getAll()
+    this.findTrainer()
   },
   props:{
     logedInUser:Object
   }
-
 }
 </script>
 

@@ -1,14 +1,14 @@
 {
   "0": {
     "id": "0",
-    "type": "YOGA",
+    "type": "GROUP",
     "sportFacilityId": "2",
-    "trainerId": "tr",
-    "name": "gh",
-    "description": "gh",
-    "duration": 30,
+    "trainerId": "bobi",
+    "name": "ghhgg",
+    "description": "ghggg",
+    "duration": 40,
     "deleted": false,
-    "additionalPrice": 20.0
+    "additionalPrice": 30.0
   },
   "1": {
     "id": "1",
@@ -42,5 +42,16 @@
     "duration": 30,
     "deleted": false,
     "additionalPrice": 0.0
+  },
+  "4": {
+    "id": "4",
+    "type": "GROUP",
+    "sportFacilityId": "2",
+    "trainerId": "bobi",
+    "name": "pump",
+    "description": "pump me",
+    "duration": 30,
+    "deleted": false,
+    "additionalPrice": 2000.0
   }
 }

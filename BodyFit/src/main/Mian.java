@@ -42,13 +42,16 @@ public class Mian {
 //		SportFacility fac = facilityDao.getById("2");
 //		System.out.println(fac.getName());
 		
-//		TrainingDao trainingDao = new TrainingDao();
-//		trainingDao.setBasePath("src/jsonData/");
+		TrainingDao trainingDao = new TrainingDao();
+		trainingDao.setBasePath("src/jsonData/");
 //		ArrayList<Training> tr = trainingDao.getAllByManager("2");
 //		ArrayList<Trainer> tr1 = trainingDao.getAllTrainersForTrainings("2");
 //		for (Trainer tra: tr1) {
 //			System.out.println(tra.getUsername());
 //		}
+		Training tr =  trainingDao.getById("0");
+		System.out.println(tr.getName());
+		
 //		
 //		System.out.println(tr.isEmpty());
 //		for (Training tra: tr) {

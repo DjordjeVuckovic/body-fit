@@ -2,7 +2,7 @@
   <label >Trainers:</label>
   <select  id="selectNew"   @change="trainerStuffLoad" v-model="selectedTrainer" class="selectAcc form-select form-select-lg mb-3" aria-label=".form-select-lg example">
     <option v-for="trainer in trainers" v-bind:value="trainer">
-      {{ trainer.name}} {{trainer.surname}}
+     {{ trainer.name}} {{trainer.surname}} |<br> username: {{trainer.username}}
     </option>
   </select>
 </template>
@@ -15,9 +15,11 @@ export default {
   data(){
     return{
       trainers:[],
-      selectedTrainer:null,
       isAny:true
     }
+  },
+  props :{
+    selectedTrainer:Object
   },
   methods: {
     getTrainers() {
