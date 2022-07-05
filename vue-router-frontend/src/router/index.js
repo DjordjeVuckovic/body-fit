@@ -14,8 +14,10 @@ import AllUsersView from '../views/AllUsersView'
 import AddContentView from "@/views/AddContentView";
 import AddTrainingView from "@/views/AddTrainingView";
 import TrainingsForManagerView from "@/views/TrainingsForManagerView";
+import ChooseMembershipView from "@/views/ChooseMembershipView";
 import TrainersForManagerView from "@/views/TrainersForManagerView";
 import EditTrainingView from "@/views/EditTrainingView";
+
 
 
 const routes = [
@@ -103,6 +105,12 @@ const routes = [
     path: '/EditTrainingView/:id',
     name: 'EditTrainingView',
     component: EditTrainingView
+  }
+  ,
+  {
+    path: '/chooseMembership',
+    name: 'chooseMembership',
+    component: ChooseMembershipView
   }
 
 ]

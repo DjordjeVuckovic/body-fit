@@ -7,7 +7,7 @@ public class Customer extends User {
 	private ArrayList<String> visitedFacilities;
 	private CustomerType customerType;
 	private double colletedPoints;
-	private Due due;
+	private Membership membership;
 	
 
 	
@@ -19,13 +19,13 @@ public class Customer extends User {
 		this.customerType = new CustomerType("BRONZE", 0, 0);
 	}
 	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,
-			UserRole userRole,Due due) {
+			UserRole userRole,Membership due) {
 		super(username, password, name, surname, birthdate, gender, userRole);
 		this.setUserRole(userRole);
 		visitedFacilities = new ArrayList<String>();
 		this.customerType = new CustomerType("BRONZE", 0, 0);
 		this.colletedPoints = 0;
-		this.due = due;
+		this.membership = due;
 
 	}
 	
@@ -59,11 +59,11 @@ public class Customer extends User {
 	public void setColletedPoints(double colletedPoints) {
 		this.colletedPoints = colletedPoints;
 	}
-	public Due getDue() {
-		return due;
+	public Membership getMembership() {
+		return membership;
 	}
-	public void setDue(Due due) {
-		this.due = due;
+	public void setMembership(Membership due) {
+		this.membership = due;
 	}
 	
 	
