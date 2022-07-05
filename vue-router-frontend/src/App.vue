@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"></NavigationBar>
-      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie" :isAdmin="isAdmin" :isManager="isManager"/>
+      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
+      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
+      :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer"/>
   </div>
 <!--  <MyFooter/>-->
 </template>
@@ -21,6 +22,10 @@ export default{
               console.log(response.data)
               this.logedInUser = response.data
               console.log(this.logedInUser.userRole)
+              if (this.logedInUser.userRole == "CUSTOMER"){
+                console.log("amsanfdhsghffjausidfas")
+                this.isCustomer = true
+              }
               if (this.logedInUser.userRole === "ADMIN"){
                 this.isAdmin = true
               }
@@ -35,6 +40,7 @@ export default{
       this.logedInUser = null
       this.isAdmin = false
       this.isManager = false
+      this.isCustomer = false
     },
     account(){
       this.$router.push({name : 'AccountView'})
@@ -51,7 +57,8 @@ export default{
       logedInUser: null,
       isAdmin: null,
       selectedFacilitie: null,
-      isManager: false
+      isManager: false,
+      isCustomer: false
     }
   },
   components:{

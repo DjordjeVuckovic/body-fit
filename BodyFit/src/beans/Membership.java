@@ -2,19 +2,19 @@ package beans;
 
 import java.util.Date;
 
-public class Due {
+public class Membership {
 	private String id;//10 characters
-	private String type;
+	private MembershipType type;
 	private Date paymentDate;
 	private Date dateAndTimeOfValidity;
 	private int price;
 	private String customerId;
 	private boolean isActive;
-	private double numberOfSession;
+	private int numberOfSession;
 	
 	
-	public Due(String id, String type, Date paymentDate, Date dateAndTimeOfValidity, int price, String customerId,
-			boolean status, double numberOfSession) {
+	public Membership(String id, MembershipType type, Date paymentDate, Date dateAndTimeOfValidity, int price, String customerId,
+			boolean status, int numberOfSession) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -31,10 +31,10 @@ public class Due {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getType() {
+	public MembershipType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(MembershipType type) {
 		this.type = type;
 	}
 	public Date getPaymentDate() {
@@ -49,7 +49,7 @@ public class Due {
 	public void setDateAndTimeOfValidity(Date dateAndTimeOfValidity) {
 		this.dateAndTimeOfValidity = dateAndTimeOfValidity;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
@@ -67,10 +67,10 @@ public class Due {
 	public void setActive(boolean status) {
 		this.isActive = status;
 	}
-	public double getNumberOfSession() {
+	public int getNumberOfSession() {
 		return numberOfSession;
 	}
-	public void setNumberOfSession(double numberOfSession) {
+	public void setNumberOfSession(int numberOfSession) {
 		this.numberOfSession = numberOfSession;
 	}
 	@Override
