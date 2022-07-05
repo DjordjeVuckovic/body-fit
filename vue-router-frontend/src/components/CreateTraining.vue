@@ -28,6 +28,7 @@
     <input class="inputBase form-control" v-model="duration" type="number" min="1" max="1000"/>
     <label class="baseLabel">Additional price:</label>
     <input class="inputBase form-control" v-model="additionalPrice" type="number" min="1" max="1000"/>
+    <AllTrainers @selectedTrainer="OnSelection"/>
     <div class="col-auto">
       <label  class="col-form-label">Upload image:</label>
     </div>
@@ -53,7 +54,7 @@ import AllTrainers from "@/components/AllTrainers";
 import TrainingService from "@/FrontedServices/TrainingService";
 import axios from "axios";
 export default {
-  name: "createTraining",
+  name: "CreateTraining",
   components:{InputBase,AllTrainers,TrainingService},
   data() {
     return {
@@ -96,7 +97,11 @@ export default {
       }
     },
     CreateTraining() {
-      console.log(this.logedInUser)
+      //console.log(this.logedInUser)
+      let trainerIdd = ""
+      if(this.trainer != null){
+        trainerIdd = this.trainer.username
+      }
       const training = {
         name: this.name,
         type: this.type,
@@ -104,7 +109,7 @@ export default {
         duration:this.duration,
         additionalPrice: this.additionalPrice,
         sportFacilityId : this.logedInUser.sportFacilityId,
-        trainerId : this.logedInUser.name
+        trainerId : trainerIdd
       }
       TrainingService.createTraining(training)
           .then((response)=>{console.log(response.data)})
@@ -114,6 +119,10 @@ export default {
       TrainingService.getTrainings().then((response) => {
         this.trainings = response.data
       });
+    },
+    OnSelection(selectedTrainer){
+      this.trainer = selectedTrainer;
+      console.log(this.trainer)
     }
   },
   created() {

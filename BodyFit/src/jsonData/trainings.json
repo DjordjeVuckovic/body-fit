@@ -1,24 +1,46 @@
 {
   "0": {
     "id": "0",
-    "type": "PERSONAL",
+    "type": "YOGA",
     "sportFacilityId": "2",
-    "trainerId": "viki",
-    "name": "biki",
-    "description": "gc",
-    "duration": 23,
+    "trainerId": "tr",
+    "name": "gh",
+    "description": "gh",
+    "duration": 30,
     "deleted": false,
-    "additionalPrice": 0.0
+    "additionalPrice": 20.0
   },
   "1": {
     "id": "1",
     "type": "PERSONAL",
     "sportFacilityId": "2",
-    "trainerId": "viki",
-    "name": "p-1",
-    "description": "13",
-    "duration": 13,
+    "trainerId": "",
+    "name": "vg",
+    "description": "gh",
+    "duration": 23,
     "deleted": false,
-    "additionalPrice": 13.0
+    "additionalPrice": 23.0
+  },
+  "2": {
+    "id": "2",
+    "type": "PERSONAL",
+    "sportFacilityId": "2",
+    "trainerId": "tr",
+    "name": "bodyPump",
+    "description": "gh",
+    "duration": 30,
+    "deleted": false,
+    "additionalPrice": 0.0
+  },
+  "3": {
+    "id": "3",
+    "type": "LESSMILLS",
+    "sportFacilityId": "2",
+    "trainerId": "tr",
+    "name": "flexx",
+    "description": "fff",
+    "duration": 30,
+    "deleted": false,
+    "additionalPrice": 0.0
   }
 }

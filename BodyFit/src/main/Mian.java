@@ -23,6 +23,7 @@ import beans.Gender;
 import beans.GeoLocation;
 import beans.Location;
 import beans.SportFacility;
+import beans.Trainer;
 import beans.Training;
 import beans.TrainingType;
 import beans.UserRole;
@@ -36,9 +37,18 @@ import dao.TrainingDao;
 public class Mian {
 
 	public static void main(String[] args) {
+//		SportFacilityDao facilityDao = new SportFacilityDao(); 
+//		facilityDao.setBasePath("C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\src\\jsonData\\");
+//		SportFacility fac = facilityDao.getById("2");
+//		System.out.println(fac.getName());
+		
 //		TrainingDao trainingDao = new TrainingDao();
 //		trainingDao.setBasePath("src/jsonData/");
 //		ArrayList<Training> tr = trainingDao.getAllByManager("2");
+//		ArrayList<Trainer> tr1 = trainingDao.getAllTrainersForTrainings("2");
+//		for (Trainer tra: tr1) {
+//			System.out.println(tra.getUsername());
+//		}
 //		
 //		System.out.println(tr.isEmpty());
 //		for (Training tra: tr) {

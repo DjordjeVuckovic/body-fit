@@ -1,7 +1,9 @@
 package services;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
@@ -11,13 +13,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import beans.SportFacility;
+import beans.Trainer;
 import beans.Training;
 import beans.TrainingType;
 import dao.ManagerDao;
 import dao.SportFacilityDao;
+import dao.TrainerDao;
 import dao.TrainingDao;
 import dto.TrainingDto;
 
@@ -26,6 +29,7 @@ public class TrainingService {
 	ManagerDao managerDao = new ManagerDao();
 	SportFacilityDao sportFacilityDao = new SportFacilityDao();
 	TrainingDao trainingDao = new TrainingDao();
+	TrainerDao trainerDao = new TrainerDao();
 	SportFacility sportFacility;
 	@Context
 	ServletContext ctx;
@@ -82,5 +86,21 @@ public class TrainingService {
 	public ArrayList<Training> getAllByManager(String managerFacilityId){
 		trainingDao.setBasePath(getContext());
 		return trainingDao.getAllByManager(managerFacilityId);
-	} 
+	}
+	@POST
+	@Path("/getAllTrainers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Trainer> getAllTrainersForTrainings(String  managerFacilityId){
+		trainerDao.setBasePath(getContext());
+		Map<String, Trainer> trainersMap =  new HashMap<String, Trainer>();
+		for(Training training: getAllByManager(managerFacilityId)) {
+			if(!training.getTrainerId().isEmpty()) {
+				Trainer trainer =  trainerDao.getById(training.getTrainerId());
+				//System.out.println(trainer.getName());
+				trainersMap.put(trainer.getUsername(), trainer);
+			}
+			
+		}
+		return trainersMap.values(); 
+	}
 }

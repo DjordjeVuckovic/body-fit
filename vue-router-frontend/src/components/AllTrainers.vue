@@ -1,5 +1,5 @@
 <template>
-  <label >Available Managers:</label>
+  <label >Trainers:</label>
   <select  id="selectNew"   @change="trainerStuffLoad" v-model="selectedTrainer" class="selectAcc form-select form-select-lg mb-3" aria-label=".form-select-lg example">
     <option v-for="trainer in trainers" v-bind:value="trainer">
       {{ trainer.name}} {{trainer.surname}}
