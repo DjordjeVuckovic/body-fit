@@ -70,8 +70,14 @@
           <li class="nav-item" id="mynav">
             <router-link v-if="isManager" to="/addTrainingView">Add training</router-link>
           </li>
-          <li class="nav-item" id="mynav">
-            <router-link v-if="isManager && logedInUser != null" to="/trainingsForManagerView">All trainings</router-link>
+          <li class="nav-item dropdown  drop"  v-if="isManager">
+            <a class="nav-link dropdown-toggle  drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              My facility
+            </a>
+            <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
+              <li  class="dropdown-item"><router-link to="/trainingsForManagerView">All trainings</router-link></li>
+              <li ><router-link  class="dropdown-item" to="/trainersForManagerView">All trainers</router-link></li>
+            </ul>
           </li>
           
         </ul>

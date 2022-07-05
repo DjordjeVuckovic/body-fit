@@ -39,8 +39,18 @@
             <label>{{training.additionalPrice}}</label>
           </td>
         </tr>
+        <tr>
+          <td>
+            <label>Facility name: </label>
+          </td>
+          <td>
+<!--            <label>{{getFacility(training.sportFacilityId)}}</label>-->
+            <label>{{sportFacilityName}}</label>
+          </td>
+        </tr>
         </tbody>
       </table>
+      <button class="btn btn-primary mb-3 btn-lg  buttonMy">Edit training</button>
     </div>
     <div  style="margin-top: 20px" class="col-lg-4 ico pt-5 pb-3 justify-content-center">
        <span class="d-block">
@@ -52,16 +62,30 @@
 </template>
 
 <script>
+import FacilitieServices from "@/FrontedServices/FacilitieServices";
 export default {
   name: "Training",
+  components:[FacilitieServices],
   props:{
     training: Object
+  },
+  data(){
+    return{
+      sportFacilityName:""
+    }
   },
   methods:{
     getImgUrl(facility){
       let images = require.context('../assets/trainings', false, /\.png$/);
       return images('./' + facility + ".png")
+    },
+    getFacility(){
+      FacilitieServices.getById(this.training.sportFacilityId).
+      then((res)=> {this.sportFacilityName = res.data.name;})
     }
+  },
+  created() {
+    this.getFacility()
   }
 }
 </script>
@@ -119,5 +143,13 @@ table{
 table, tbody, td {
   padding-bottom:5px;
 }
-
+.buttonMy{
+  background: #2691d9;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

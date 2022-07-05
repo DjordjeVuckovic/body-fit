@@ -19,7 +19,6 @@ public class Manager extends User{
 		this.setUserRole(UserRole.MANAGER);
 		this.setSportFacilityId("");
 	}
-	
 	public Manager() {
 		super();
 	}

@@ -1,15 +1,17 @@
 <template>
+  <div class="container-fluid">
 <TrainingsForManager :logedInUser="logedInUser"></TrainingsForManager>
+  </div>
+
 </template>
 
 <script>
 import TrainingsForManager from "@/components/TrainingsForManager";
 export default {
   name: "TrainingsForManagerView",
-  props:{
-    logedInUser:Object
-  },
-  components:{TrainingsForManager}
+  props:['logedInUser'],
+  components:{TrainingsForManager},
+
 }
 </script>
 

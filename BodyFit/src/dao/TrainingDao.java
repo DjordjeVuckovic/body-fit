@@ -5,14 +5,16 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 
 import com.google.gson.reflect.TypeToken;
 
+import beans.Manager;
+import beans.Trainer;
 import beans.Training;
 
 public class TrainingDao extends GenericDao<String, Training, TrainingDao> {
+	TrainerDao trainerDao = new TrainerDao();
 	@Override
 	protected String getKey(Training entity) {
 		// TODO Auto-generated method stub
@@ -54,7 +56,17 @@ public class TrainingDao extends GenericDao<String, Training, TrainingDao> {
 			
 		}
 		return trainingsForManager;
-		
 	}
+//	public ArrayList<Trainer> getAllTrainersForTrainings(String  managerFacilityId){
+//		ArrayList<Trainer> trainers = new ArrayList<Trainer>();
+//		for(Training training: getAllByManager(managerFacilityId)) {
+//			if(!training.getTrainerId().isEmpty()) {
+//				Trainer trainer =  trainerDao.getById(training.getTrainerId());
+//				trainers.add(trainer);
+//			}
+//			
+//		}
+//		return trainers; 
+//	}
 
 }

@@ -1,14 +1,14 @@
 <template>
-<createTraining :logedInUser="logedInUser"></createTraining>
+<CreateTraining :logedInUser="logedInUser"></CreateTraining>
 </template>
 <script>
-import createTraining from "@/components/createTraining";
+import CreateTraining from "@/components/CreateTraining";
 export default {
   name: "AddTrainingView",
   props:{
     logedInUser:Object
   },
-  components:{createTraining}
+  components:{CreateTraining}
 
 }
 </script>
