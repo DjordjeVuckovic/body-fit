@@ -57,6 +57,16 @@ public class TrainingDao extends GenericDao<String, Training, TrainingDao> {
 		}
 		return trainingsForManager;
 	}
+	public ArrayList<Training> getAllByFacility(String facilityId){
+		ArrayList<Training> trainings = new ArrayList<Training>();
+		for (Training training : getAllToList()) {
+			if(training.getSportFacilityId().equals(facilityId)) {
+				trainings.add(training);
+			}
+			
+		}
+		return trainings;
+	}
 //	public ArrayList<Trainer> getAllTrainersForTrainings(String  managerFacilityId){
 //		ArrayList<Trainer> trainers = new ArrayList<Trainer>();
 //		for(Training training: getAllByManager(managerFacilityId)) {

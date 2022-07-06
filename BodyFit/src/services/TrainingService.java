@@ -90,6 +90,13 @@ public class TrainingService {
 		return trainingDao.getAllByManager(managerFacilityId);
 	}
 	@POST
+	@Path("/getAllByFacility")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Training> getAllByFacility(String facilityId){
+		trainingDao.setBasePath(getContext());
+		return trainingDao.getAllByFacility(facilityId);
+	}
+	@POST
 	@Path("/getAllTrainers")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Trainer> getAllTrainersForTrainings(String  managerFacilityId){

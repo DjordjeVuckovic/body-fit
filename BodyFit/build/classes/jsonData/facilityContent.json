@@ -1,0 +1,21 @@
+{
+  "1": {
+    "type": "GROUP",
+    "sportFacilityId": "32",
+    "trainerId": "2",
+    "id": "1",
+    "name": "2a",
+    "facilityContentType": "TRAINING",
+    "description": "31",
+    "duration": 30,
+    "deleted": false
+  },
+  "13": {
+    "id": "13",
+    "name": "2",
+    "facilityContentType": "TRAINING",
+    "description": "31",
+    "duration": 30,
+    "deleted": false
+  }
+}
