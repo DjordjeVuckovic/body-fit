@@ -18,6 +18,7 @@ import ChooseMembershipView from "@/views/ChooseMembershipView";
 import TrainersForManagerView from "../views/TrainersForManagerView";
 import EditTrainingView from "../views/EditTrainingView";
 import BuyTrainingView from "../views/BuyTrainingView";
+import PromoCodeView from "@/views/PromoCodeView";
 
 
 
@@ -118,7 +119,13 @@ const routes = [
     path: '/buyTrainingView/:id',
     name: 'ByTrainingView',
     component: BuyTrainingView
+  },
+  {
+    path: '/addPromoCode',
+    name: 'PromoCodeView',
+    component: PromoCodeView
   }
+
 
 ]
 

@@ -15,6 +15,7 @@
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
     "form-wizard-vue3": "^0.2.1",
+    "moment": "^2.29.4",
     "vue": "^3.2.13",
     "vue-basic-alert": "^1.1.0",
     "vue-router": "^4.0.3"
