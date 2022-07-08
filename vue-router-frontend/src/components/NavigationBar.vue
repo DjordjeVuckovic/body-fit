@@ -36,6 +36,10 @@
           <li  class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isCustomer" to="/chooseMembership">Buy membership</router-link>
           </li>
+          <li  class="nav-item" id="mynav">
+            <router-link class="nav-link active" aria-current="page" v-if="isAdmin" to="/addPromoCode">Promo Codes</router-link>
+          </li>
+          
 
           <li class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin"  to='/addFacilitie'>

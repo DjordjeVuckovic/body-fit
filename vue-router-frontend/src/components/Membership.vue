@@ -1,5 +1,5 @@
 <template>
-    <div class = "membership ">
+    <div class = "membership">
         <form @submit.prevent="$emit('buyMembership',this.user)">
             <div class="big pb-1">
             <h1 style="padding-top:10px ;">{{numberOfSession}}</h1>
@@ -9,43 +9,66 @@
             <h1>{{type}}</h1>
             <p1>membership</p1>
         </div>
-        <div>
-            <h1>{{price}}</h1>
+        
+        <div class="big pb-1" >
+            <h1>{{membership.price}}</h1>
             <p>RSD</p>
+            
+        </div>
+        <div class="d-grid gap-2 col-5 mx-auto" v-if="!isCode">
+            <button  class="buttonMy" @click="chooseMembership">Choose</button>
+        </div>
+        
+        <div class="big p-3" v-if="isCode">
+            <p1 >have a promo code?</p1>
+            <input v-model="code" type="text"/>
+            <button class="buttonMy" @click="applyCode">Apply</button>
+        </div>
+        <div class="d-grid gap-2 col-5 mx-auto" v-if="isCode">
             <button class="buttonMy" @click="buyMembership">Buy</button>
         </div>
+        <vue-basic-alert :duration="200" :closeIn="5000" ref="alert"></vue-basic-alert>
         </form>
     </div>
 </template>
 
 <script>
+import moment from "moment"
+import VueBasicAlert from 'vue-basic-alert'
 import axios from "axios";
+import PromoCodeService from '../FrontedServices/PromoCodeServices'
 export default {
     name:'Membership',
-    props:['numberOfSession','type','price','logedInUser'],
+    props:['numberOfSession','type','price','logedInUser','isCode'],
+    components:{PromoCodeService,VueBasicAlert},
     data(){
         return{
             membership:{
                 numberOfSession: this.numberOfSession,
                 type: this.type,
                 price: this.price,
-            }
+                promoCodes:[]
+            },
+            code:''
         }
     },
+    emits:['chooseMembership'],
     methods:{
+        chooseMembership(){
+            this.$emit('chooseMembership',this.membership)
+        },
         buyMembership(){
-
             var today = new Date();
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             var endDate = this.calculateEndDate()
             let newmembership={
-                type: this.type,
+                type: this.membership.type,
                 paymentDate : date,
                 dateAndTimeOfValidity: endDate,
-                price: this.price,
+                price: this.membership.price,
                 customerId:this.logedInUser.username,
                 isActive: true,
-                numberOfSession: this.numberOfSession
+                numberOfSession: this.membership.numberOfSession
             }
 
              axios.post("http://localhost:8080/BodyFit/rest/memberships/",newmembership)
@@ -79,7 +102,43 @@ export default {
                
                 return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             }
+        },
+        getAll(){
+            PromoCodeService.getPromoCodes().
+            then((res)=>
+                {
+                    console.log(res.data)
+                    this.promoCodes = res.data
+                })
+        },
+        applyCode(){
+            var find = false
+            for (var existingCode of this.promoCodes){
+                
+                var today = new Date();
+                console.log(this.code)
+                console.log(existingCode.code)
+                if (existingCode.code == this.code && existingCode.quantity > 0 && moment(today).isBefore(existingCode.dateOfValidity)){
+                    
+                    this.$refs.alert 
+                    .showAlert('success','Yuu have successfully apllied promo code','congratulations!')
+                    this.membership.price = this.membership.price - this.membership.price * existingCode.discount/100
+                    find = true
+                }
+    
+                
+            }
+            if(find==false)
+                {
+                    this.$refs.alert 
+                    .showAlert('error','Incorrect promo code ','warning')
+                    this.code=''
+                }
         }
+
+    },
+    created() {
+        this.getAll()
     }
     
 }
@@ -101,8 +160,20 @@ table{
   margin-right: auto;
   max-width: 20em;
 }
+input {
+        margin-top: 15px;
+        
+        display: block;
+        padding: 10px 6px;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        color: #555;
+        font-size: 20px;
+    }
 .membership {
-  border-bottom:2px solid  #2691d9; 
+  
   
   background: #f4f4f4;
   border-radius: 15px;
@@ -118,9 +189,9 @@ table{
   border-radius: 15px;
   font-size: 20px;
 
-  margin-top: 15px;
-  margin-left: 140px;
-  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  
 }
 .name {
   align-items: flex-start;
