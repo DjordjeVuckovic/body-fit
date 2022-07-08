@@ -1,5 +1,5 @@
-<template >
-<div class="bg-dark container-fluid">
+<template  >
+<div class="bg-dark b">
     <div class="center" style="padding-top: 20px">
     <div>
         <div v-if="!isCode"  class="album py-5 mt-5">
@@ -79,7 +79,12 @@ export default {
         margin-left: 150px;
         margin-right: 150px;
         margin-top: 100px;
+       
         
+    }
+    .b{
+         
+         padding-bottom: 650px;
     }
     .choosen{
         min-height: 750px;
