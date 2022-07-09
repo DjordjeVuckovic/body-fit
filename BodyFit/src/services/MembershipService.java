@@ -1,5 +1,6 @@
 package services;
 
+import java.awt.List;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ import beans.Adress;
 import beans.FacilityType;
 import beans.Membership;
 import beans.MembershipType;
+import beans.PromoCode;
 import beans.RandomGenerator;
 import beans.SportFacility;
 import dao.MembershipDao;
@@ -84,7 +86,29 @@ public class MembershipService {
 		membershipDao.setBasePath(getContext());
 		Membership membership = new Membership(RandomGenerator.usingRandomUUID(),MembershipType.valueOf(membershipViewDto.type),membershipViewDto.paymentDate,
 				membershipViewDto.dateAndTimeOfValidity,membershipViewDto.price, membershipViewDto.customerId, true, membershipViewDto.numberOfSession);
+		ArrayList<Membership> allMemberships = membershipDao.getAllToList();
+		for (Membership membership2 : allMemberships) {
+			if (membership2.isActive() && membership.getCustomerId()==membership2.getCustomerId()) {
+				membership2.setActive(false);
+				membershipDao.update(membership2);
+			}
+		}
 		membershipDao.create(membership);
 		return membership;
+	}
+	
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/")
+	public Membership buyTraining(Membership membership) {
+		membershipDao.setBasePath(getContext());
+		Membership m = membershipDao.getById(membership.getId());
+		int quantity = m.getNumberOfSession()-1;
+		m.setNumberOfSession(quantity);		
+		membershipDao.update(m);
+		return m;
+	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
+
 	}
 }

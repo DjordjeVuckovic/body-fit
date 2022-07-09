@@ -11,6 +11,9 @@ class PromoCodeService{
     postPromoCode(code){
         return axios.post(PROMOCODES_BASE_URL,code);
     }
+    updatePromoCode(code){
+        return axios.put(PROMOCODES_BASE_URL,code);
+    }
 }
 
 export default new PromoCodeService()
