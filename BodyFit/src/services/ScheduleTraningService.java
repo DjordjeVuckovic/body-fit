@@ -36,6 +36,7 @@ import dto.TrainingDto;
 public class ScheduleTraningService {
 	TrainingDao trainingDao = new TrainingDao();
 	ScheduleTrainingDao scheduleTrainingDao = new ScheduleTrainingDao();
+	ManagerDao managerDao = new ManagerDao();
 	@Context
 	ServletContext ctx;
 	@SuppressWarnings("unused")
@@ -71,7 +72,6 @@ public class ScheduleTraningService {
 	@Path("/getAllPassedCustomer")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<ScheduleTraningDto> getAllPassedCustomer(String id){
-		scheduleTrainingDao.setBasePath(getContext());
 		scheduleTrainingDao.setBasePath(getContext());
 		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
 		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllPassedCustomer(id)) {
@@ -112,7 +112,26 @@ public class ScheduleTraningService {
 		}
 		return scheduleTraningDtos;
 	}
-	
+	@POST
+	@Path("/getAllByFacility")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ScheduleTraningDto> getAllByFacility(String id){
+		scheduleTrainingDao.setBasePath(getContext());
+		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
+		for(ScheduleTraning scheduleTraning: getAllByManager(id)) {
+			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		}
+		return scheduleTraningDtos;
+	}
+	@PUT
+	@Path("/changeStatus")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void ChangeStatus(ScheduleTraningDto updateTraning) {
+		scheduleTrainingDao.setBasePath(getContext());
+		ScheduleTraning tr = scheduleTrainingDao.getById(updateTraning.id);
+		tr.setStatus(true);
+		scheduleTrainingDao.update(tr);
+	}
 	private String GenerateId() {
 		Integer maxId = -1;
 		for (String id : scheduleTrainingDao.getAllToMap().keySet()) {
@@ -129,7 +148,7 @@ public class ScheduleTraningService {
 		trainingDao.setBasePath(getContext());
 		scheduleTrainingDao.setBasePath(getContext());
 		ArrayList<ScheduleTraning> allTranings =  new ArrayList<ScheduleTraning>();
-		for(ScheduleTraning scheduleTraning:scheduleTrainingDao.getAllToList()) {
+		for(ScheduleTraning scheduleTraning:scheduleTrainingDao.getAllAvailable()) {
 			Training tr = trainingDao.getById(scheduleTraning.getTraningId());
 			if(trainerId.equals(tr.getTrainerId())) {
 			if(scheduleTraning.getDateTraining().compareTo(date) >= 0) {
@@ -153,6 +172,19 @@ public class ScheduleTraningService {
 						allTranings.add(scheduleTraning);
 				}
 			}
+			}
+		}
+		return allTranings;
+	}
+	private ArrayList<ScheduleTraning> getAllByManager(String facilityId){
+		trainingDao.setBasePath(getContext());
+		scheduleTrainingDao.setBasePath(getContext());
+		managerDao.setBasePath(getContext());
+		ArrayList<ScheduleTraning> allTranings =  new ArrayList<ScheduleTraning>();
+		for(ScheduleTraning scheduleTraning:scheduleTrainingDao.getAllAvailable()) {
+			Training tr = trainingDao.getById(scheduleTraning.getTraningId());
+			if(facilityId.equals(tr.getSportFacilityId())) {
+				allTranings.add(scheduleTraning);
 			}
 		}
 		return allTranings;

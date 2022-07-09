@@ -1,5 +1,5 @@
 <template>
-  <div class = "user container-fluid p-5" >
+  <div class = "user container-fluid p-5">
     <div class="row">
       <div class="col-lg-8 col-md-6  pb-1">
         <table class="table">
@@ -73,7 +73,7 @@
           </tr>
           </tbody>
         </table>
-        <button class="btn btn-primary mb-3  buttonMy" v-if="isValid">Edit training</button>
+        <button class="btn btn-primary mb-3  buttonMy" v-if="isValid" @click.prevent= "ChangeStatus" >Cancel training</button>
       </div>
       <div  style="margin-top: 1px" class="col-lg-4 col-md-6 ico pt-5 pb-3 justify-content-center">
        <span class="d-">
@@ -89,6 +89,7 @@ import TrainingService from "@/FrontedServices/TrainingService";
 import FacilitieServices from "@/FrontedServices/FacilitieServices";
 import training from "@/components/Training";
 import moment from "moment";
+import ScheduleTraningService from "@/FrontedServices/ScheduleTraningService";
 export default {
   name: "UpcomingTrainingManager",
   props:{
@@ -102,12 +103,14 @@ export default {
       dateTraining:'',
       traningId:'',
       sportType:'',
-      isValid:false
+      isValid:false,
+      trType:'',
+      isDeleted:false
     }
   },
   created() {
     this.getByTrainingId()
-    this.validDate()
+    //this.validDate()
   },
   methods:{
     getByTrainingId(){
@@ -115,6 +118,12 @@ export default {
           (res)=>{
             //console.log(res.data)
             this.training = res.data
+            let trDate = moment(this.ScheduleTraining.dateTraining)
+            let assignDate = moment(this.ScheduleTraining.dateAssign)
+            let diff = trDate.diff(assignDate,'days');
+            if(diff > 2 && this.training.type === 'PERSONAL'){
+              this.isValid = true
+            }
             FacilitieServices.getById(this.training.sportFacilityId).
             then((res)=> {this.sportFacilityName = res.data.name;
               this.sportType = res.data.type})
@@ -132,16 +141,23 @@ export default {
       let images = require.context('../assets/trainings', false, /\.png$/);
       return images('./' + facility + ".png")
     },
+    ChangeStatus(){
+        //let isExecuted = confirm("Are you sure to cancel this training?")
+        ScheduleTraningService.ChangeStatus(this.ScheduleTraining)
+        this.isDeleted = true
+        this.$emit('isDeletedT')
+    },
     validDate(){
       let trDate = moment(new Date(this.ScheduleTraining.dateTraining).toDateString())
       let assignDate = moment(new Date(this.ScheduleTraining.dateAssign).toDateString())
       let diff = trDate.diff(assignDate,'days');
-      //console.log(diff)
-      if(diff > 1 && this.training.type=='PERSONAL'){
+      console.log(this.trType)
+      if(diff > 2 && this.training.type === 'PERSONAL'){
         this.isValid = true
       }
     }
-  }
+  },
+  emits:['isDeletedT']
 }
 </script>
 
@@ -161,8 +177,8 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  min-height: 430px;
-  max-height: 45em;
+  min-height: 42em;
+  max-height: 42em;
 }
 .buttonMy{
   background: #2691d9;

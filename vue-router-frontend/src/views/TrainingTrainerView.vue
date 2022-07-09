@@ -5,7 +5,7 @@
       <div class="row row-cols-2 g-3">
         <div  v-for="tr in trainings" v-bind:key="tr.id" class="container" style="padding-top: 20px">
           <div class="col">
-            <UpcomingTrainingManager :ScheduleTraining = "tr"></UpcomingTrainingManager>
+            <UpcomingTrainingManager :ScheduleTraining = "tr" @isDeletedT="refresh"></UpcomingTrainingManager>
           </div>
         </div>
       </div>
@@ -42,7 +42,8 @@ export default {
   data(){
     return{
       trainings:[],
-      trainingsPassed:[]
+      trainingsPassed:[],
+      isDeleted: false
     }
   },
   created() {
@@ -65,6 +66,14 @@ export default {
           }
       )
     },
+    refresh(){
+      ScheduleTraningService.AllUpcomingTrainer(this.logedInUser.username).then(
+          (res)=>{
+            console.log(res.data)
+            this.trainings = res.data
+          }
+      )
+    }
 
   }
 }
