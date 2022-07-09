@@ -81,8 +81,9 @@ export default {
         margin-top: 100px;
     }
     .b{
+     
+         padding-bottom: 30%;
 
-         padding-bottom: 650px;
     }
     .choosen{
         min-height: 750px;

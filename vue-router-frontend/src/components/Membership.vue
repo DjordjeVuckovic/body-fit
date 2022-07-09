@@ -20,9 +20,13 @@
         </div>
         
         <div class="big p-3" v-if="isCode">
+        <div v-if="!codeAplied">
             <p1 >have a promo code?</p1>
-            <input v-model="code" type="text"/>
+            <input v-model="promoCode.code" type="text"/>
             <button class="buttonMy" @click="applyCode">Apply</button>
+        </div>
+        <h1 style="margin-bottom: 20px;" v-if="codeAplied">Promo code aplied!</h1>
+            
         </div>
         <div class="d-grid gap-2 col-5 mx-auto" v-if="isCode">
             <button class="buttonMy" @click="buyMembership">Buy</button>
@@ -49,7 +53,13 @@ export default {
                 price: this.price,
                 promoCodes:[]
             },
-            code:''
+            promoCode:{
+                code:'',
+                dateOfValidity: '',
+                quantity:'',
+                discount:''
+            },
+            codeAplied: false
         }
     },
     emits:['chooseMembership'],
@@ -75,7 +85,17 @@ export default {
             .then((response) => {
                 console.log(response.data)})
             .catch((error) => console.log(error))
+            if(this.codeAplied){
+                PromoCodeService.updatePromoCode(this.promoCode).
+            then((res)=>
+                {
+                    console.log(res.data)
+                    
+                })
+            }
             
+             this.$refs.alert 
+                    .showAlert('success','Yuu have successfully bought membership','congratulations!')
         },
         calculateEndDate(){
             let today;
@@ -119,12 +139,13 @@ export default {
                 var today = new Date();
                 console.log(this.code)
                 console.log(existingCode.code)
-                if (existingCode.code == this.code && existingCode.quantity > 0 && moment(today).isBefore(existingCode.dateOfValidity)){
-                    
+                if (existingCode.code == this.promoCode.code && existingCode.quantity > 0 && moment(today).isBefore(existingCode.dateOfValidity)){
+                    this.promoCode=existingCode
                     this.$refs.alert 
                     .showAlert('success','Yuu have successfully apllied promo code','congratulations!')
                     this.membership.price = this.membership.price - this.membership.price * existingCode.discount/100
                     find = true
+                    this.codeAplied= true
                 }
     
                 
@@ -133,7 +154,7 @@ export default {
                 {
                     this.$refs.alert 
                     .showAlert('error','Incorrect promo code ','warning')
-                    this.code=''
+                    this.promoCode.code=''
                 }
         }
 
