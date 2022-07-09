@@ -45,6 +45,13 @@ public class TrainingDao extends GenericDao<String, Training, TrainingDao> {
 	@Override
 	public ArrayList<Training> getAllToList() {
 		// TODO Auto-generated method stub
+		ArrayList<Training> trainings = new ArrayList<Training>();
+		for (Training training : getAllToMap().values()) {
+			if(!training.isDeleted()) {
+				trainings.add(training);
+			}
+			
+		}
 		return new ArrayList<Training>(getAllToMap().values());
 	}
 	public ArrayList<Training> getAllByManager(String managerFacilityId){

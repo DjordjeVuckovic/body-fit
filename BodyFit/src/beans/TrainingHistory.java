@@ -7,6 +7,7 @@ public class TrainingHistory {
 	private String trainingId;
 	private String customerId;
 	private String trainerId;
+	private String id;
 	
 	public TrainingHistory(Date dateAndTime, String trainingId, String customerId, String trainerId) {
 		super();
@@ -15,6 +16,7 @@ public class TrainingHistory {
 		this.customerId = customerId;
 		this.trainerId = trainerId;
 	}
+	
 	public Date getDateAndTimeOfSign() {
 		return dateAndTimeOfSign;
 	}

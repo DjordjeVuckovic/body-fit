@@ -50,7 +50,8 @@
           </tr>
           </tbody>
         </table>
-        <router-link class="btn btn-primary mb-3   buttonMy" :to="{name: 'ByTrainingView',params:{id:trainingId}}">Buy training</router-link>
+        <router-link v-if="isCustomer" class="btn btn-primary mb-3   buttonMy" :to="{name: 'BuyTrainingView',params:{id:trainingId}}">Buy training</router-link>
+<!--        <button v-if="isCustomer" class="btn btn-primary mb-3   buttonMy" @click="Modal">Buy training</button>-->
       </div>
       <div  style="margin-top: 5px" class="col-lg-4 ico pt-5 pb-3 justify-content-center">
        <span class="d-block">
@@ -60,19 +61,22 @@
     </div>
   </div>
 </template>
-
 <script>
 import FacilitieServices from "@/FrontedServices/FacilitieServices";
+import ModalBuyTraining from "@/components/ModalBuyTraining";
 export default {
   name: "TrainingForCustomer",
-  components:[FacilitieServices],
+  components:[FacilitieServices,ModalBuyTraining],
   props:{
-    training: Object
+    training: Object,
+    logedInUser:Object,
+    isCustomer:Boolean
   },
   data(){
     return{
       sportFacilityName:"",
-      trainingId:this.training.id
+      trainingId:this.training.id,
+      modalOpen: false
     }
   },
   methods:{
@@ -83,6 +87,9 @@ export default {
     getFacility(){
       FacilitieServices.getById(this.training.sportFacilityId).
       then((res)=> {this.sportFacilityName = res.data.name;})
+    },
+    Modal(){
+      this.modalOpen = !this.modalOpen
     }
   },
   created() {

@@ -117,7 +117,7 @@ const routes = [
   },
   {
     path: '/buyTrainingView/:id',
-    name: 'ByTrainingView',
+    name: 'BuyTrainingView',
     component: BuyTrainingView
   },
   {
