@@ -79,12 +79,11 @@ export default {
         margin-left: 150px;
         margin-right: 150px;
         margin-top: 100px;
-       
-        
     }
     .b{
-         
+     
          padding-bottom: 30%;
+
     }
     .choosen{
         min-height: 750px;

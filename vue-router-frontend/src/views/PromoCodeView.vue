@@ -45,14 +45,14 @@ export default {
                 dateOfValidity:'',
                 quantity:'',
                 discount:'',
-            }
+            },
+            isDisabled:false,
+            promoCodes:[]
         }
     },
     components:{
         InputBase,
         PromoCodeService,
-        promoCodes:[],
-        isDisabled:false,
         VueBasicAlert
     },
     methods:{
@@ -73,7 +73,7 @@ export default {
         }
       },
       addCode(){
-        var today = new Date();
+        let today = new Date();
         if(moment(this.NewPromoCode.dateOfValidity).isBefore(today)){
             this.$refs.alert 
                 .showAlert('error','Plese fulfill date of validaty correctly ','warning')
@@ -90,7 +90,7 @@ export default {
             PromoCodeService.postPromoCode(this.NewPromoCode).
             then((res)=>
                 {
-                    console.log(res);
+                    // console.log(res);
                     this.$refs.alert 
                         .showAlert('success','Yuu have successfully added new promo code','congratulations!')
                 })

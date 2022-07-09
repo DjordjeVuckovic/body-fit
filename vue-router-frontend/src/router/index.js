@@ -19,7 +19,7 @@ import TrainersForManagerView from "../views/TrainersForManagerView";
 import EditTrainingView from "../views/EditTrainingView";
 import BuyTrainingView from "../views/BuyTrainingView";
 import PromoCodeView from "@/views/PromoCodeView";
-
+import TraningsCustomerView from "@/views/TraningsCustomerView";
 
 
 
@@ -117,13 +117,18 @@ const routes = [
   },
   {
     path: '/buyTrainingView/:id',
-    name: 'ByTrainingView',
+    name: 'BuyTrainingView',
     component: BuyTrainingView
   },
   {
     path: '/addPromoCode',
     name: 'PromoCodeView',
     component: PromoCodeView
+  },
+  {
+    path: '/trainingsCustomer',
+    name: 'TraningsCustomerView',
+    component: TraningsCustomerView
   }
 
 

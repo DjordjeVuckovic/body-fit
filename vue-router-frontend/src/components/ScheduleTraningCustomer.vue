@@ -1,7 +1,7 @@
 <template>
   <div class = "user container-fluid p-5" >
     <div class="row">
-      <div class="col-lg-8  pb-1">
+      <div class="col-lg-8 col-md-6  pb-1">
         <table class="table">
           <thead class="table-dark">
           <th class="name justify-content-end" scope="col">{{training.name}}</th>
@@ -9,18 +9,34 @@
           <tbody>
           <tr>
             <td>
-              <label>Type:</label>
+              <label>Date:</label>
             </td>
             <td>
-              <label>{{training.type}}</label>
+              <label>{{parseDate(ScheduleTraining.dateTraining)}}</label>
             </td>
           </tr>
           <tr>
             <td>
-              <label>Description:</label>
+              <label>Start Time:</label>
             </td>
             <td>
-              <label>{{training.description}}</label>
+              <label>{{ScheduleTraining.startTime}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Finish time:</label>
+            </td>
+            <td>
+              <label>{{ScheduleTraining.finishTime}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Type:</label>
+            </td>
+            <td>
+              <label>{{training.type}}</label>
             </td>
           </tr>
           <tr>
@@ -48,52 +64,70 @@
               <label>{{sportFacilityName}}</label>
             </td>
           </tr>
+          <tr>
+            <td>
+              <label>Facility type: </label>
+            </td>
+            <td><label>{{sportType}}</label>
+            </td>
+          </tr>
           </tbody>
         </table>
-        <router-link v-if="isCustomer" class="btn btn-primary mb-3   buttonMy" :to="{name: 'BuyTrainingView',params:{id:trainingId}}">Buy training</router-link>
-<!--        <button v-if="isCustomer" class="btn btn-primary mb-3   buttonMy" @click="Modal">Buy training</button>-->
       </div>
-      <div  style="margin-top: 5px" class="col-lg-4 ico pt-5 pb-3 justify-content-center">
-       <span class="d-block">
+      <div  style="margin-top: 1px" class="col-lg-4 col-md-6 ico pt-5 pb-3 justify-content-center">
+       <span class="d-">
          <img :src="getImgUrl(training.name)" :alt="training.name" class="ico"/>
         </span>
       </div>
     </div>
   </div>
 </template>
+
 <script>
+import TrainingService from "@/FrontedServices/TrainingService";
 import FacilitieServices from "@/FrontedServices/FacilitieServices";
-import ModalBuyTraining from "@/components/ModalBuyTraining";
+
 export default {
-  name: "TrainingForCustomer",
-  components:[FacilitieServices,ModalBuyTraining],
+  name: "ScheduleTraningCustomer",
   props:{
-    training: Object,
-    logedInUser:Object,
-    isCustomer:Boolean
+    ScheduleTraining: Object
   },
   data(){
     return{
       sportFacilityName:"",
-      trainingId:this.training.id,
-      modalOpen: false
-    }
-  },
-  methods:{
-    getImgUrl(facility){
-      let images = require.context('../assets/trainings', false, /\.png$/);
-      return images('./' + facility + ".png")
-    },
-    getFacility(){
-      FacilitieServices.getById(this.training.sportFacilityId).
-      then((res)=> {this.sportFacilityName = res.data.name;})
-    },
-    Modal(){
-      this.modalOpen = !this.modalOpen
+      training:{},
+      dateAssign:'',
+      dateTraining:'',
+      traningId:'',
+      sportType:''
     }
   },
   created() {
-    this.getFacility()
+    this.getByTrainingId()
+  },
+  methods:{
+    getByTrainingId(){
+      TrainingService.getById(this.ScheduleTraining.traningId).then(
+          (res)=>{
+            //console.log(res.data)
+            this.training = res.data
+            FacilitieServices.getById(this.training.sportFacilityId).
+            then((res)=> {this.sportFacilityName = res.data.name;
+                          this.sportType = res.data.type})
+          }
+      )
+    },
+    parseDate(dateStr){
+      // let date_month = new Date(dateStr).getMonth()
+      // let date_year = new Date(dateStr).getFullYear()
+      // let date_day = new Date(dateStr).getDay()
+      // let date  = new Date(date_year,date_month,date_day)
+      return new Date(dateStr).toDateString()
+    },
+    getImgUrl(facility){
+      let images = require.context('../assets/trainings', false, /\.png$/);
+      return images('./' + facility + ".png")
+    }
   }
 }
 </script>
@@ -104,11 +138,10 @@ table{
   font-size: 24px;
 }
 .ico{
-  display: flex;
   padding-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 20em;
+  max-width: 15em;
 }
 .user {
   background: #f4f4f4;
@@ -116,7 +149,7 @@ table{
   padding: 10px 20px;
   cursor: pointer;
   min-height: 430px;
-  max-height: 500px;
+  max-height: 45em;
 }
 .buttonMy{
   background: #2691d9;
