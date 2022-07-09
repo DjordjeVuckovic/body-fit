@@ -78,26 +78,27 @@ export default {
             
         },
         calculateEndDate(){
-            if(this.type=="MONTH"){
-                var today = new Date();
+            let today;
+          if(this.type=="MONTH"){
+                today = new Date();
                 today.setMonth(today.getMonth()+1);
                
                 return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             }
             else if(this.type=="THREE_MONTHS"){
-                var today = new Date();
-                today.setMonth(today.getMonth()+3);
+            today = new Date();
+            today.setMonth(today.getMonth()+3);
                
                 return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             }
             else if(this.type=="SIX_MONTHS"){
-                var today = new Date();
+                today = new Date();
                 today.setMonth(today.getMonth()+6);
                
                 return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             }
             else if(this.type=="YEAR"){
-                var today = new Date();
+                today = new Date();
                 today.setFullYear(today.getFullYear()+1);
                
                 return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -112,8 +113,8 @@ export default {
                 })
         },
         applyCode(){
-            var find = false
-            for (var existingCode of this.promoCodes){
+          let find = false;
+          for (var existingCode of this.promoCodes){
                 
                 var today = new Date();
                 console.log(this.code)

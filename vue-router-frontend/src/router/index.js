@@ -20,7 +20,7 @@ import EditTrainingView from "../views/EditTrainingView";
 import BuyTrainingView from "../views/BuyTrainingView";
 import PromoCodeView from "@/views/PromoCodeView";
 import TraningsCustomerView from "@/views/TraningsCustomerView";
-
+import TrainingTrainerView from "@/views/TrainingTrainerView";
 
 
 const routes = [
@@ -129,6 +129,11 @@ const routes = [
     path: '/trainingsCustomer',
     name: 'TraningsCustomerView',
     component: TraningsCustomerView
+  },
+  {
+    path: '/trainingsTrainer',
+    name: 'trainingsTrainer',
+    component: TrainingTrainerView
   }
 
 

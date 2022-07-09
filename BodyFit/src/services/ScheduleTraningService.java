@@ -1,7 +1,10 @@
 package services;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,11 +80,15 @@ public class ScheduleTraningService {
 		return scheduleTraningDtos;
 	}
 	@POST
-	@Path("/getAllPassedManager")
+	@Path("/getAllPassedTrainer")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<ScheduleTraning> getAllPassedManager(String id){
+	public ArrayList<ScheduleTraningDto> getAllPassedManager(String id){
 		scheduleTrainingDao.setBasePath(getContext());
-		return scheduleTrainingDao.getAllPassedManager(id);
+		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
+		for(ScheduleTraning scheduleTraning: AllPassedTrainer(id)) {
+			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		}
+		return scheduleTraningDtos;
 	}
 	@POST
 	@Path("/getAllUpcomingCustomer")
@@ -95,11 +102,15 @@ public class ScheduleTraningService {
 		return scheduleTraningDtos;
 	}
 	@POST
-	@Path("/getAllUpcomingManager")
+	@Path("/getAllUpcomingTrainer")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<ScheduleTraning> getAllUpcomingManager(String id){
+	public ArrayList<ScheduleTraningDto> getAllUpcomingTrainer(String id){
 		scheduleTrainingDao.setBasePath(getContext());
-		return scheduleTrainingDao.getAllUpcomingManager(id);
+		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
+		for(ScheduleTraning scheduleTraning: AllUpcomingTrainer(id)) {
+			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		}
+		return scheduleTraningDtos;
 	}
 	
 	private String GenerateId() {
@@ -113,4 +124,38 @@ public class ScheduleTraningService {
 		maxId++;
 		return maxId.toString();
 	}
+	private  ArrayList<ScheduleTraning> AllUpcomingTrainer(String trainerId){
+		Date date = new Date();
+		trainingDao.setBasePath(getContext());
+		scheduleTrainingDao.setBasePath(getContext());
+		ArrayList<ScheduleTraning> allTranings =  new ArrayList<ScheduleTraning>();
+		for(ScheduleTraning scheduleTraning:scheduleTrainingDao.getAllToList()) {
+			Training tr = trainingDao.getById(scheduleTraning.getTraningId());
+			if(trainerId.equals(tr.getTrainerId())) {
+			if(scheduleTraning.getDateTraining().compareTo(date) >= 0) {
+				allTranings.add(scheduleTraning);
+			}
+			}
+		}
+		return allTranings;
+	}
+	private  ArrayList<ScheduleTraning> AllPassedTrainer(String trainerId ){
+		Date date = new Date();
+		trainingDao.setBasePath(getContext());
+		scheduleTrainingDao.setBasePath(getContext());
+		Date d = Date.from(LocalDate.now().minusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+		ArrayList<ScheduleTraning> allTranings =  new ArrayList<ScheduleTraning>();
+		for(ScheduleTraning scheduleTraning:scheduleTrainingDao.getAllAvailable()) {
+			Training tr = trainingDao.getById(scheduleTraning.getTraningId());
+			if(trainerId.equals(tr.getTrainerId())) {
+				if(scheduleTraning.getDateTraining().compareTo(date) < 0) {
+					if(scheduleTraning.getDateTraining().compareTo(d) > 0) {
+						allTranings.add(scheduleTraning);
+				}
+			}
+			}
+		}
+		return allTranings;
+	}
+	
 }

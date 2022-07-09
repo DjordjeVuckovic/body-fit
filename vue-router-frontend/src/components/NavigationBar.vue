@@ -55,6 +55,11 @@
               </ul>
             </li>
           </div>
+          <div v-if="isTrainer">
+            <li class="nav-item" id="mynav">
+              <router-link to="/trainingsTrainer">My trainings</router-link>
+            </li>
+          </div>
           <li  class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin" to="/addPromoCode">Promo Codes</router-link>
           </li>
@@ -127,7 +132,7 @@
 <script>
 export default {
     name: 'NavigationBar',
-    props:['logedInUser', 'isAdmin','isManager','isCustomer'],
+    props:['logedInUser', 'isAdmin','isManager','isCustomer','isTrainer'],
     methods:{
       signOut(){
         this.$emit('sign-out')
