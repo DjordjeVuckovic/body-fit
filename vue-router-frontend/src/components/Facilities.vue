@@ -118,9 +118,6 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
               return this.facilities;
             }
           },
-          bla(facilitie){
-            console.log(facilitie)
-          },
           sortList() {
             console.log(this.selected)
             if (this.selected == 'NameASC') {

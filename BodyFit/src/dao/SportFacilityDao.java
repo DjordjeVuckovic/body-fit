@@ -52,7 +52,6 @@ public class SportFacilityDao extends GenericDao<String,SportFacility, SportFaci
 			}
 		}
 		return null;
-		
 	}
 
 

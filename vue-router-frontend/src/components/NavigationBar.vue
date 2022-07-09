@@ -33,14 +33,31 @@
               <span class="align-bottom">Facilities</span> 
               </router-link>
           </li>
+          <div v-if="isCustomer" class="d-flex">
           <li  class="nav-item" id="mynav">
-            <router-link class="nav-link active" aria-current="page" v-if="isCustomer" to="/chooseMembership">Buy membership</router-link>
+            <router-link class="nav-link active" aria-current="page" to="/chooseMembership">Buy membership</router-link>
           </li>
+            <li  class="nav-item" id="mynav">
+              <router-link class="nav-link active" aria-current="page" to="/trainingsCustomer">My trainings</router-link>
+            </li>
+          </div>
+          <div v-if="isManager">
+            <li class="nav-item" id="mynav">
+              <router-link to="/addTrainingView">Add training</router-link>
+            </li>
+            <li class="nav-item dropdown  drop" >
+              <a class="nav-link dropdown-toggle  drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                My facility
+              </a>
+              <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
+                <li  class="dropdown-item"><router-link to="/trainingsForManagerView">All trainings</router-link></li>
+                <li ><router-link  class="dropdown-item" to="/trainersForManagerView">All trainers</router-link></li>
+              </ul>
+            </li>
+          </div>
           <li  class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin" to="/addPromoCode">Promo Codes</router-link>
           </li>
-          
-
           <li class="nav-item" id="mynav">
             <router-link class="nav-link active" aria-current="page" v-if="isAdmin"  to='/addFacilitie'>
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus  mx-2 align-top" viewBox="0 0 16 16">
@@ -71,19 +88,6 @@
               <li ><router-link  class="dropdown-item" to="/newManger">Add manager</router-link></li>
             </ul>
           </li>
-          <li class="nav-item" id="mynav">
-            <router-link v-if="isManager" to="/addTrainingView">Add training</router-link>
-          </li>
-          <li class="nav-item dropdown  drop"  v-if="isManager">
-            <a class="nav-link dropdown-toggle  drop nav-link active"  aria-current="page" style="::selection{background-color:#2691d9}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              My facility
-            </a>
-            <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
-              <li  class="dropdown-item"><router-link to="/trainingsForManagerView">All trainings</router-link></li>
-              <li ><router-link  class="dropdown-item" to="/trainersForManagerView">All trainers</router-link></li>
-            </ul>
-          </li>
-          
         </ul>
         <div>
         </div>

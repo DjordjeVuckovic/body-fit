@@ -39,7 +39,7 @@
         <input class="form-control inputMy" :disabled="isDisabled" type="file" id="formFile">
       </div>
       <div class="col-auto">
-        <button @click.prevent="OnFileUpload" :disabled="isDisabled" class="btn btn-primary mb-3 btn-lg  buttonMy">Add photo</button>
+        <button @click.prevent="OnFileUpload"  :disabled="isDisabled" class="btn btn-primary mb-3 btn-lg  buttonMy">Add photo</button>
       </div>
     </div>
     <div>
@@ -73,6 +73,7 @@ export default {
       isDisabled:false,
       trainer:{},
       trainerId:'',
+      pic: null
     }
   },
   components:{InputBase,AllTrainers,TrainingService},
@@ -108,6 +109,9 @@ export default {
     },
     EditTraining() {
       //console.log(this.logedInUser)
+      if(!document.getElementById('formFile').value){
+        console.log('vv')
+      }
       let trainerIdd = ""
       if(this.trainer != null){
         trainerIdd = this.trainer.username
@@ -129,7 +133,7 @@ export default {
       this.$router.push({name : 'trainingsForManagerView'})
     },
     getAll() {
-      TrainingService.getTrainings().then((response) => {
+      TrainingService.getByManager(this.logedInUser.sportFacilityId).then((response) => {
         this.trainings = response.data
       });
     },
@@ -148,6 +152,10 @@ export default {
             }
           }
       )
+    },
+    getImgUrl(name){
+      let images = require.context('../assets/trainings', false, /\.png$/);
+      return images('./' + name + ".png")
     }
   },
   created() {
@@ -159,7 +167,8 @@ export default {
           this.description = res.data.description
           this.duration = res.data.duration
           this.additionalPrice = res.data.additionalPrice
-          this.trainerId = res.data.trainerId;
+          this.trainerId = res.data.trainerId
+          this.pic = this.getImgUrl(res.data.name)
           console.log(res.data)
         }
     )

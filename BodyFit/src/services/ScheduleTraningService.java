@@ -64,6 +64,43 @@ public class ScheduleTraningService {
 		scheduleTrainingDao.setBasePath(getContext());
 		return scheduleTrainingDao.getAllToList();
 	}
+	@POST
+	@Path("/getAllPassedCustomer")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ScheduleTraningDto> getAllPassedCustomer(String id){
+		scheduleTrainingDao.setBasePath(getContext());
+		scheduleTrainingDao.setBasePath(getContext());
+		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
+		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllPassedCustomer(id)) {
+			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		}
+		return scheduleTraningDtos;
+	}
+	@POST
+	@Path("/getAllPassedManager")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ScheduleTraning> getAllPassedManager(String id){
+		scheduleTrainingDao.setBasePath(getContext());
+		return scheduleTrainingDao.getAllPassedManager(id);
+	}
+	@POST
+	@Path("/getAllUpcomingCustomer")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ScheduleTraningDto> getAllUpcomingCustomer(String id){
+		scheduleTrainingDao.setBasePath(getContext());
+		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
+		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllUpcomingCustomer(id)) {
+			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		}
+		return scheduleTraningDtos;
+	}
+	@POST
+	@Path("/getAllUpcomingManager")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ScheduleTraning> getAllUpcomingManager(String id){
+		scheduleTrainingDao.setBasePath(getContext());
+		return scheduleTrainingDao.getAllUpcomingManager(id);
+	}
 	
 	private String GenerateId() {
 		Integer maxId = -1;

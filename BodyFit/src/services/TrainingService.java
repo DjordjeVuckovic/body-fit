@@ -32,7 +32,6 @@ public class TrainingService {
 	SportFacilityDao sportFacilityDao = new SportFacilityDao();
 	TrainingDao trainingDao = new TrainingDao();
 	TrainerDao trainerDao = new TrainerDao();
-	SportFacility sportFacility;
 	@Context
 	ServletContext ctx;
 	@SuppressWarnings("unused")

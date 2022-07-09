@@ -37,6 +37,12 @@ public class ScheduleTraning {
 		this.status = false;
 	}
 	
+	public LocalTime getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
 	public Date getDateTraining() {
 		return dateTraining;
 	}

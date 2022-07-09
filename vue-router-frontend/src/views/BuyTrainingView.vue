@@ -11,7 +11,7 @@
         <input class="inputBase form-control" v-model="startTime" type="time"/>
       </div>
       <div>
-        <label  class="baseLabel">Choose date:</label>
+        <label  class="baseLabel">Choose finish time:</label>
         <input class="inputBase form-control" v-model="finishTime" type="time"/>
       </div>
       <div class="d-grid gap-2 col-5 mx-auto">
@@ -78,6 +78,9 @@ export default {
       )
     },
     BuyTraining() {
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
       let today = new Date();
       if(moment(this.date).isBefore(today)){
         this.$refs.alert
@@ -93,9 +96,12 @@ export default {
           finishTime : this.finishTime
         }
         ScheduleTraningService.createScheduleTraining(scheduleTraining)
-        this.$refs.alert
-            .showAlert('success', 'Yuo have successfully schedule training ', 'Congratulations!')
-        this.$router.push('FacilitiesView')
+        this.$refs.alert.showAlert('success', 'You have successfully schedule training ', 'Congratulations!')
+        // for (let i = 0; i < 2; i++) {
+        //   console.log(`Waiting ${i} seconds...`);
+        //   new Promise(resolve => setTimeout(resolve, i * 1000))
+        // }
+        // this.$router.push({name: 'Facilities'})
       }
     }
   },
