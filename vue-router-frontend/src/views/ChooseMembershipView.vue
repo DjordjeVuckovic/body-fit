@@ -84,7 +84,7 @@ export default {
     }
     .b{
          
-         padding-bottom: 650px;
+         padding-bottom: 30%;
     }
     .choosen{
         min-height: 750px;
