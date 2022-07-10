@@ -1,8 +1,10 @@
 <template>
   <div id="app">
+
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
       <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie" @rateFacility="rateFacility"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
       :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer"/>
+
   </div>
 <!--  <MyFooter/>-->
 </template>
@@ -16,7 +18,6 @@ export default{
   name:'App',
   methods:{
     logggUser(user){
-      
       axios.get("http://localhost:8080/BodyFit/rest/login/loggedUser")
             .then((response) => {
               console.log(response.data)
@@ -31,6 +32,9 @@ export default{
               }
               if(this.logedInUser.userRole==="MANAGER" && this.logedInUser.sportFacilityId !== ""){
                 this.isManager = true
+              }
+              if(this.logedInUser.userRole==="COACH" && this.logedInUser.sportFacilityId !== ""){
+                this.isTrainer = true
               }
               this.$router.push({name : 'Facilities'})
              })
@@ -65,7 +69,8 @@ export default{
       isAdmin: null,
       selectedFacilitie: null,
       isManager: false,
-      isCustomer: false
+      isCustomer: false,
+      isTrainer:false
     }
   },
   components:{
