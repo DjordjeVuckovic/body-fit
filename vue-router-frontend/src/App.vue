@@ -24,7 +24,6 @@ export default{
               this.logedInUser = response.data
               console.log(this.logedInUser.userRole)
               if (this.logedInUser.userRole == "CUSTOMER"){
-                console.log("amsanfdhsghffjausidfas")
                 this.isCustomer = true
               }
               if (this.logedInUser.userRole === "ADMIN"){
@@ -56,7 +55,6 @@ export default{
       
     },
     rateFacility(sportFacilityName){
-      console.log("uso")
       axios.post("http://localhost:8080/BodyFit/rest/facilities/getByName",sportFacilityName)
        .then((response) => {this.selectedFacilitie = response.data; console.log(response.data) })
       

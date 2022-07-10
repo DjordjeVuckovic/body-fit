@@ -46,7 +46,7 @@
     </div>
 
   </nav>
-<div class="bla  ">
+<div class="container-fluid">
     <div  class="album py-5 mx-5">
         <div class="row row-cols-3 g-3">
             <div  v-for="user in this.filterList()" v-bind:key="user.username" class="container">
