@@ -71,6 +71,9 @@
             <td><label>{{sportType}}</label>
             </td>
           </tr>
+          <tr>
+            <button v-if="passed" @click="$emit('rateFacility',this.sportFacilityName)">Rate facility</button>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -86,11 +89,14 @@
 <script>
 import TrainingService from "@/FrontedServices/TrainingService";
 import FacilitieServices from "@/FrontedServices/FacilitieServices";
+import { emit } from "process";
 
 export default {
   name: "ScheduleTraningCustomer",
+  emits:['rateFacility'],
   props:{
-    ScheduleTraining: Object
+    ScheduleTraining: Object,
+    passed:false
   },
   data(){
     return{
@@ -117,6 +123,9 @@ export default {
           }
       )
     },
+    rateFacility(){
+      this.emit('rateFacility',this.sportFacilityName)
+    },
     parseDate(dateStr){
       // let date_month = new Date(dateStr).getMonth()
       // let date_year = new Date(dateStr).getFullYear()
@@ -133,6 +142,13 @@ export default {
 </script>
 
 <style scoped>
+button{
+        margin-top: 25px;
+        background: #2691d9;
+        color: white;
+        border-radius: 15px;
+        font-size: 20px;
+    }
 table{
   width: 90%;
   font-size: 24px;

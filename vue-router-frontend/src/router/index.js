@@ -20,9 +20,11 @@ import EditTrainingView from "../views/EditTrainingView";
 import BuyTrainingView from "../views/BuyTrainingView";
 import PromoCodeView from "@/views/PromoCodeView";
 import TraningsCustomerView from "@/views/TraningsCustomerView";
+import Raiting from "../views/Rating"
 import TrainingTrainerView from "@/views/TrainingTrainerView";
 import FacilityScheduleTraningsView from "@/views/FacilityScheduleTraningsView";
 import AllCustomersManagerView from "@/views/AllCustomersManagerView";
+
 
 const routes = [
   {
@@ -132,6 +134,11 @@ const routes = [
     component: TraningsCustomerView
   },
   {
+    path: '/comment',
+    name: 'CommentView',
+    component: Raiting
+  },
+  {
     path: '/trainingsTrainer',
     name: 'trainingsTrainer',
     component: TrainingTrainerView
@@ -146,6 +153,7 @@ const routes = [
     name: 'allCustomersManager',
     component: AllCustomersManagerView
   }
+
 
 
 ]

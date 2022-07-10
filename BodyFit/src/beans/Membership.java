@@ -25,6 +25,8 @@ public class Membership {
 		this.isActive = status;
 		this.numberOfSession = numberOfSession;
 	}
+	
+	
 	public String getId() {
 		return id;
 	}

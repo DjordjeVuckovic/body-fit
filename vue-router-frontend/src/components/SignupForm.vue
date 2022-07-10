@@ -11,7 +11,10 @@
       />
         <label class="form-label labelMy">Pasword:</label>
         <input v-model="user.password" class="form-control inputMy" type="password" placeholder="Password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
-        <input  type="submit" class="btn btn-primary submiter" value="login" />
+        <div class="d-grid gap-2 col-5 mx-auto">
+            <input  type="submit" class="btn btn-primary submiter" value="login" />
+        </div>
+        
         <div class="signup_link">
             Not a member?
             <router-link to="/registration" ><a>Signup</a></router-link>
@@ -91,7 +94,7 @@ export default {
         border: 0;
         padding: 10px 20px;
         margin-top: 40px;
-        margin-left: 120px;
+        margin-left: 35px;
         color: white;
         border-radius: 15px;
         font-size: 20px;

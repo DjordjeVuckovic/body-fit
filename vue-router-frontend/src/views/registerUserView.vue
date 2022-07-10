@@ -20,7 +20,10 @@
     <option value="male">Male</option>
     <option value="female">Female</option>
   </select>
-  <input type="submit" class="inputButton" value="Sign up"/>
+  <div class="d-grid gap-2 col-5 " style="margin-left: 30px;">
+    <input type="submit" class="inputButton" value="Sign up"/>
+  </div>
+  
   </form>
   <div class="centerp">
   <p >{{error}}</p>

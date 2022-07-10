@@ -1,5 +1,5 @@
 <template  >
-<div class="bg-dark b">
+<div class="bg-dark ">
     <div class="center" style="padding-top: 20px">
     <div>
         <div v-if="!isCode"  class="album py-5 mt-5">
@@ -28,9 +28,21 @@
                 <div class="col">
                     <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "22" :type = "year" :price = "21000"></Membership>
                 </div>
+                <div class="col">
+                    <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "month" :price = "3500"></Membership>
+                </div>
+                <div class="col">
+                    <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "threeMonths" :price = "7500"></Membership>
+                </div>
+                <div class="col">
+                    <Membership @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "sixMonths" :price = "15000"></Membership>
+                </div>
+                <div class="col">
+                    <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "year" :price = "25000"></Membership>
+                </div>
             </div>
         </div>
-        <div v-if="isCode">
+        <div v-if="isCode" style="padding-bottom: 300px;">
             <Membership class="container choosen" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "this.selectedMembership.numberOfSession" :isCode="true" :type = "this.selectedMembership.type" :price = "this.selectedMembership.price"></Membership>
         </div>
     </div>
@@ -74,7 +86,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .center{
         margin-left: 150px;
         margin-right: 150px;

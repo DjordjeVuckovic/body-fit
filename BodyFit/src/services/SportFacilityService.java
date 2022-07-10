@@ -71,6 +71,15 @@ public class SportFacilityService  {
 		return sportFacilityDao.getById(id);
 	}
 	
+	@POST
+	@Path("/getByName")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public SportFacility getByName(String name) {
+		sportFacilityDao.setBasePath(getContext());
+		return sportFacilityDao.getByName(name);
+	}
+	
 
 
 }
