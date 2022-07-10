@@ -48,14 +48,25 @@ public class CommentDao extends GenericDao<String,Comment, CommentDao> {
 		return new ArrayList<Comment>(getAllToMap().values());
 	}
 	
-	public ArrayList<Comment> getAllByFacility(String facilityId){
+	public ArrayList<Comment> getAprovedByFacility(String facilityId){
 		ArrayList<Comment> comments = new ArrayList<Comment>();
 		for (Comment comment : getAllToList()) {
-			if(comment.getSportFacilityId().equals(facilityId)) {
+			if(comment.getSportFacilityId().equals(facilityId) && comment.getState()) {
 				comments.add(comment);
 			}
 		}
 		return comments;
 	}
+	
+	public ArrayList<Comment> getNotAprovedByFacility(String facilityId){
+		ArrayList<Comment> comments = new ArrayList<Comment>();
+		for (Comment comment : getAllToList()) {
+			if(comment.getSportFacilityId().equals(facilityId) && !comment.getState()) {
+				comments.add(comment);
+			}
+		}
+		return comments;
+	}
+	
 	
 }

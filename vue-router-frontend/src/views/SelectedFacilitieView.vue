@@ -9,15 +9,15 @@
           <h1 class="comments">Aproved:</h1>
         </div>
         
-        <div  v-for="com in comments" v-bind:key="com.id"  style="padding-top: 20px"> 
-          <Comment :Comment="com"></Comment>
+        <div  v-for="com in commentsAproved" v-bind:key="com.id"  style="padding-top: 20px"> 
+          <Comment @refreshComments="refreshComments" :Comment="com"></Comment>
         </div>
       </div>
       
       <div class="col">
         <h1 class="comments">Not aproved:</h1>
-        <div  v-for="com in comments" v-bind:key="com.id"  style="padding-top: 20px"> 
-          <Comment :Comment="com"></Comment>
+        <div  v-for="com in commentsNotAproved" v-bind:key="com.id"  style="padding-top: 20px"> 
+          <Comment @refreshComments="refreshComments" :Comment="com"></Comment>
         </div>
       </div>
     </div>
@@ -49,7 +49,8 @@ export default {
         return {
           trainings : [],
           viewTreningsBoole:false,
-          comments:[]
+          commentsAproved:[],
+          commentsNotAproved:[]
         }
     },
     props:{
@@ -63,12 +64,21 @@ export default {
     created() {
       TrainingService.getByFacility(this.selectedFacilitie.id).
       then((res)=>{this.trainings = res.data})
-      CommentService.getByFacility(this.selectedFacilitie.id).
-      then((response)=>{this.comments = response.data})
+      CommentService.getByFacilityAproved(this.selectedFacilitie.id).
+      then((response)=>{this.commentsAproved = response.data})
+      CommentService.getByFacilityNotAproved(this.selectedFacilitie.id).
+      then((response)=>{this.commentsNotAproved = response.data; console.log("sadgfasgfadgdfag")})
+      .catch((error) => console.log(error))
     },
     methods:{
       viewTrenings(){
         this.viewTreningsBoole = true
+      },
+      refreshComments(){
+        CommentService.getByFacilityAproved(this.selectedFacilitie.id).
+        then((response)=>{this.commentsAproved = response.data})
+        CommentService.getByFacilityNotAproved(this.selectedFacilitie.id).
+        then((response)=>{this.commentsNotAproved = response.data})
       }
     }
 }

@@ -48,11 +48,19 @@ public class CommentService {
 	}
 	
 	@POST
-	@Path("/getAllByFacility")
+	@Path("/getAprovedByFacility")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Comment> getAllByFacility(String facilityId){
+	public ArrayList<Comment> getAprovedByFacility(String facilityId){
 		commentDao.setBasePath(getContext());
-		return commentDao.getAllByFacility(facilityId);
+		return commentDao.getAprovedByFacility(facilityId);
+	}
+	
+	@POST
+	@Path("/getNotAprovedByFacility")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Comment> getNotAprovedByFacility(String facilityId){
+		commentDao.setBasePath(getContext());
+		return commentDao.getNotAprovedByFacility(facilityId);
 	}
 	
 	@GET

@@ -2,8 +2,14 @@
   <div class="comment col"> 
     <div class="row"> 
         <div style="padding: 10px;"><h1>{{Comment.customerId}}</h1></div>      
-        <div style="padding: 10px;" class="row"><star-rating :rating="Comment.rating" :read-only="true" :increment="0.01"></star-rating></div>
+        <div style="padding: 10px; margin-left: 160px;" class="row"><star-rating :rating="Comment.rating" :read-only="true" :increment="0.01"></star-rating></div>
         <div style="padding: 10px;" class="row"><h1>{{Comment.text}}</h1></div>
+        <div v-if="!Comment.state">
+            <button @click="aprove" class="buttonMy">Aprove</button>
+        </div>
+        <div v-if="Comment.state">
+            <button @click="reject" class="buttonMyRed">Reject</button>
+        </div>
     </div >
     
     
@@ -11,6 +17,7 @@
 </template>
 
 <script>
+import CommentService from "../FrontedServices/CommentServices";
 import StarRating from 'vue-star-rating'
 export default {
     name:'Comment',
@@ -23,8 +30,35 @@ export default {
         }
     },
     components:{
-        StarRating
+        StarRating,CommentService
      },
+     methods:{
+        aprove(){
+            var newComment={
+                id: this.Comment.id,
+                customerId:  this.Comment.id,
+                sportFacilityId: this.Comment.sportFacilityId,
+                text:  this.Comment.text,
+                rating: this.Comment.rating,
+                state:  true
+            }
+            CommentService.aproveComment(newComment).
+            then((response)=>{this.$emit('refreshComments')})
+        },
+        reject(){
+            var newComment={
+                id: this.Comment.id,
+                customerId:  this.Comment.id,
+                sportFacilityId: this.Comment.sportFacilityId,
+                text:  this.Comment.text,
+                rating: this.Comment.rating,
+                state:  false
+            }
+            CommentService.aproveComment(newComment).
+            then((response)=>{this.$emit('refreshComments')})
+        }
+     },
+     emits:['refreshComments']
 }
 </script>
 
@@ -46,4 +80,25 @@ export default {
     border-radius: 10px;
     font-size: 20px;
     }
+    h1{
+        text-align: center;
+    }
+    .buttonMy{
+  background: #2691d9;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: 250px;
+  margin-right: auto;
+}
+.buttonMyRed{
+    background: #d6491e;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: 250px;
+  margin-right: auto;
+}
 </style>

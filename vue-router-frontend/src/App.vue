@@ -56,10 +56,20 @@ export default{
       
     },
     rateFacility(sportFacilityName){
-      console.log("uso")
-      axios.post("http://localhost:8080/BodyFit/rest/facilities/getByName",sportFacilityName)
-       .then((response) => {this.selectedFacilitie = response.data; console.log(response.data) })
-      
+      console.log(sportFacilityName)
+      axios.get("http://localhost:8080/BodyFit/rest/facilities/")
+       .then((response) => { 
+        console.log(response.data)
+           for (var facilitiy of response.data){
+            
+              if(facilitiy.name == sportFacilityName){
+                
+                this.selectedFacilitie = facilitiy
+                console.log(this.selectedFacilitie)
+              }
+           }
+        })
+       
       this.$router.push({name : 'CommentView'})
     }
   },
