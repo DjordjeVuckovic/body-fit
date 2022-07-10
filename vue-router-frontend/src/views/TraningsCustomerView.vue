@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid px-5">
     <div class="row">
       <h1 class="headMy">Upcoming trainings</h1>
       <div class="row row-cols-2 g-3">

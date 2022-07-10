@@ -28,6 +28,18 @@
                 <div class="col">
                     <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "22" :type = "year" :price = "21000"></Membership>
                 </div>
+                <div class="col">
+                    <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "month" :price = "3500"></Membership>
+                </div>
+                <div class="col">
+                    <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "threeMonths" :price = "7500"></Membership>
+                </div>
+                <div class="col">
+                    <Membership @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "sixMonths" :price = "15000"></Membership>
+                </div>
+                <div class="col">
+                    <Membership :isCode="isCode" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "50" :type = "year" :price = "25000"></Membership>
+                </div>
             </div>
         </div>
         <div v-if="isCode">
