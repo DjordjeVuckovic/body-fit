@@ -21,7 +21,8 @@ import BuyTrainingView from "../views/BuyTrainingView";
 import PromoCodeView from "@/views/PromoCodeView";
 import TraningsCustomerView from "@/views/TraningsCustomerView";
 import TrainingTrainerView from "@/views/TrainingTrainerView";
-
+import FacilityScheduleTraningsView from "@/views/FacilityScheduleTraningsView";
+import AllCustomersManagerView from "@/views/AllCustomersManagerView";
 
 const routes = [
   {
@@ -134,6 +135,16 @@ const routes = [
     path: '/trainingsTrainer',
     name: 'trainingsTrainer',
     component: TrainingTrainerView
+  },
+  {
+    path: '/facilitySchedule',
+    name: 'facilitySchedule',
+    component: FacilityScheduleTraningsView
+  },
+  {
+    path: '/allCustomersManager',
+    name: 'allCustomersManager',
+    component: AllCustomersManagerView
   }
 
 

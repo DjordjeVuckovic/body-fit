@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
-import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,24 +17,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Customer;
 import beans.ScheduleTraning;
-import beans.SportFacility;
-import beans.Trainer;
 import beans.Training;
-import beans.TrainingType;
+import dao.CustomerDao;
 import dao.ManagerDao;
 import dao.ScheduleTrainingDao;
-import dao.SportFacilityDao;
-import dao.TrainerDao;
 import dao.TrainingDao;
 import dto.ScheduleTraningDto;
-import dto.TrainingDto;
 
 @Path("scheduleTrainings")
 public class ScheduleTraningService {
 	TrainingDao trainingDao = new TrainingDao();
 	ScheduleTrainingDao scheduleTrainingDao = new ScheduleTrainingDao();
 	ManagerDao managerDao = new ManagerDao();
+	CustomerDao customerDao = new CustomerDao();
 	@Context
 	ServletContext ctx;
 	@SuppressWarnings("unused")
@@ -123,6 +118,12 @@ public class ScheduleTraningService {
 		}
 		return scheduleTraningDtos;
 	}
+	@POST
+	@Path("/getAllCustomers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Customer> getAllCustomersForManager(String id){
+		return getAllVisited(id);
+	}
 	@PUT
 	@Path("/changeStatus")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -188,6 +189,21 @@ public class ScheduleTraningService {
 			}
 		}
 		return allTranings;
+	}
+	private Collection<Customer> getAllVisited(String facilityId){
+		trainingDao.setBasePath(getContext());
+		scheduleTrainingDao.setBasePath(getContext());
+		managerDao.setBasePath(getContext());
+		customerDao.setBasePath(getContext());
+		HashMap<String,Customer> allCustomers =  new HashMap<String,Customer>();
+		for(ScheduleTraning scheduleTraning:scheduleTrainingDao.getAllToList()) {
+			Training tr = trainingDao.getById(scheduleTraning.getTraningId());
+			if(facilityId.equals(tr.getSportFacilityId())) {
+				Customer c = customerDao.getById(scheduleTraning.getCustomerId());
+				allCustomers.put(c.getUsername(),c);
+			}
+		}
+		return allCustomers.values();
 	}
 	
 }

@@ -1,9 +1,9 @@
 <template>
   <div style="padding-top: 50px" class="container-fluid">
-    <h1 class="headMy">All trainers</h1>
+    <h1 class="headMy">All customers</h1>
     <div  class="py-5 mx-5">
       <div class="row row-cols-2 g-3">
-        <div  v-for="tr in trainersForManager" v-bind:key="tr.username" class="container" style="padding-top: 20px">
+        <div  v-for="tr in customers" v-bind:key="tr.username" class="container" style="padding-top: 20px">
           <div class="col">
             <User :user = "tr" ></User>
           </div>
@@ -15,23 +15,23 @@
 
 <script>
 import TrainingService from "@/FrontedServices/TrainingService";
+import CustomerServices from "@/FrontedServices/CustomerServices";
 import User from "@/components/User";
 import Header from "@/components/Header";
 
 export default {
-  name: "TrainersForManagerView",
-  components: {User,Header},
+  name: "AllCustomersManagerView",
   data(){
     return{
-      trainersForManager:[]
+      customers:[]
     }
   },
+  components: {User,Header},
   props:['logedInUser'],
   created() {
-    TrainingService.getTrainersForFacility(this.logedInUser.sportFacilityId).
-    then((res)=>
-    {this.trainersForManager = res.data;
-      // console.log(res.data)
+    CustomerServices.getCustomersForManager(this.logedInUser.sportFacilityId).then
+    ((res)=> {
+      this.customers = res.data;
     })
   }
 }
