@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="row">
     <Facilitie :facilitie="selectedFacilitie"></Facilitie>
     </div>
@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .my-margin{
   padding-top: 100px;
 }

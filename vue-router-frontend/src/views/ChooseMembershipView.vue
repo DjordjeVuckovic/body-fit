@@ -1,5 +1,5 @@
 <template  >
-<div class="bg-dark b">
+<div class="bg-dark ">
     <div class="center" style="padding-top: 20px">
     <div>
         <div v-if="!isCode"  class="album py-5 mt-5">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="isCode">
+        <div v-if="isCode" style="padding-bottom: 300px;">
             <Membership class="container choosen" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "this.selectedMembership.numberOfSession" :isCode="true" :type = "this.selectedMembership.type" :price = "this.selectedMembership.price"></Membership>
         </div>
     </div>
