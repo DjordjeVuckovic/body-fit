@@ -15,7 +15,7 @@
       <div class="row row-cols-2 g-3">
         <div  v-for="tr in trainingsPassed" v-bind:key="tr.id" class="container" style="padding-top: 20px">
           <div class="col">
-            <ScheduleTraningCustomer :ScheduleTraining = "tr"></ScheduleTraningCustomer>
+            <ScheduleTraningCustomer @rateFacility="ratefacility"  :passed="true" :ScheduleTraining = "tr"></ScheduleTraningCustomer>
           </div>
         </div>
       </div>
@@ -61,6 +61,9 @@ export default {
           }
 
       )
+    },
+    ratefacility(sportFacilityName){
+      this.$emit('rateFacility',sportFacilityName)
     }
 
   }

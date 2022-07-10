@@ -6,9 +6,9 @@ public class Comment {
 	private String sportFacilityId; 
 	private String text;
 	private int rating;
-	private CommentState state = CommentState.WAITING;
+	private boolean state;
 	
-	public Comment(String id, String customerId, String sportFacilityId, String text, int rating, CommentState state) {
+	public Comment(String id, String customerId, String sportFacilityId, String text, int rating, boolean state) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
@@ -17,6 +17,24 @@ public class Comment {
 		this.rating = rating;
 		this.state = state;
 	}
+	
+	
+	public Comment(String customerId, String sportFacilityId, String text, int rating, boolean state) {
+		super();
+		this.customerId = customerId;
+		this.sportFacilityId = sportFacilityId;
+		this.text = text;
+		this.rating = rating;
+		this.state = state;
+	}
+
+	
+
+	public Comment() {
+		super();
+	}
+
+
 	public String getId() {
 		return id;
 	}
@@ -47,10 +65,10 @@ public class Comment {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	public CommentState getState() {
+	public boolean getState() {
 		return state;
 	}
-	public void setState(CommentState state) {
+	public void setState(boolean state) {
 		this.state = state;
 	}
 	

@@ -20,6 +20,7 @@ import EditTrainingView from "../views/EditTrainingView";
 import BuyTrainingView from "../views/BuyTrainingView";
 import PromoCodeView from "@/views/PromoCodeView";
 import TraningsCustomerView from "@/views/TraningsCustomerView";
+import Raiting from "../views/Rating"
 
 
 
@@ -129,7 +130,13 @@ const routes = [
     path: '/trainingsCustomer',
     name: 'TraningsCustomerView',
     component: TraningsCustomerView
+  },
+  {
+    path: '/comment',
+    name: 'CommentView',
+    component: Raiting
   }
+
 
 
 ]

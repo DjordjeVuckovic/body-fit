@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
-      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
+      <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie" @rateFacility="rateFacility"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
       :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer"/>
   </div>
 <!--  <MyFooter/>-->
@@ -50,6 +50,13 @@ export default{
       console.log(this.selectedFacilitie)
       this.$router.push({name : 'facilityView'})
       
+    },
+    rateFacility(sportFacilityName){
+      console.log("uso")
+      axios.post("http://localhost:8080/BodyFit/rest/facilities/getByName",sportFacilityName)
+       .then((response) => {this.selectedFacilitie = response.data; console.log(response.data) })
+      
+      this.$router.push({name : 'CommentView'})
     }
   },
   data(){
