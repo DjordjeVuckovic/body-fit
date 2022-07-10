@@ -1,26 +1,43 @@
 <template>
   <div class="container-fluid ">
     <div class="row">
-    <Facilitie @viewComments="viewComments" @hideTrenings="hideTrenings" :viewTreningsBoole="viewTreningsBoole" :viewComentsBoole="viewComentsBoole" @viewTrenings="viewTrenings" @hideComments="hideComments" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
+    <Facilitie @viewComments="viewComments"  @hideTrenings="hideTrenings" :viewTreningsBoole="viewTreningsBoole" :viewComentsBoole="viewComentsBoole" @viewTrenings="viewTrenings" @hideComments="hideComments" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
     </div>
-    <div  v-if="viewComentsBoole" class="row bg-dark"> 
-      <div class="col">
-        <div style="border-bottom: 5px white;">
-          <h1 class="comments">Aproved:</h1>
-        </div>
+    <div v-if="viewComentsBoole"> 
+        <div  v-if="isAdmin || isManager" class="row bg-dark"> 
+          <div class="col">
+            <div style="border-bottom: 5px white;">
+              <h1 class="comments">Aproved:</h1>
+            </div>
         
         <div  v-for="com in commentsAproved" v-bind:key="com.id"  style="padding-top: 20px"> 
-          <Comment @refreshComments="refreshComments" :Comment="com"></Comment>
+          <Comment :isManager="isManager" :isCustomer="isCustomer" :isTrainer="isTrainer" :isAdmin="isAdmin" @refreshComments="refreshComments" :Comment="com"></Comment>
         </div>
       </div>
       
       <div class="col">
         <h1 class="comments">Not aproved:</h1>
         <div  v-for="com in commentsNotAproved" v-bind:key="com.id"  style="padding-top: 20px"> 
-          <Comment @refreshComments="refreshComments" :Comment="com"></Comment>
+          <Comment :isManager="isManager" :isAdmin="isAdmin" @refreshComments="refreshComments" :isCustomer="isCustomer" :isTrainer="isTrainer" :Comment="com"></Comment>
         </div>
       </div>
     </div>
+
+      <div  v-if="isCustomer || isTrainer" class="row bg-dark"> 
+        <div class="col">
+          <div  v-for="com in commentsAproved" v-bind:key="com.id"  style="padding-top: 20px"> 
+            <Comment :isManager="isManager" :isAdmin="isAdmin" @refreshComments="refreshComments" :isCustomer="isCustomer" :isTrainer="isTrainer" :Comment="com"></Comment>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    
+     
+    
+
+    
     <div v-if="viewTreningsBoole" class="row">
       <h1 class="headMy">Available trainings</h1>
       <div   class="py-5 mx-5">
@@ -33,7 +50,7 @@
         </div>
       </div>
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -54,11 +71,8 @@ export default {
           commentsNotAproved:[]
         }
     },
-    props:{
-      selectedFacilitie: Object,
-      isCustomer:Boolean,
-      modalOpen : false
-    },
+    props:['selectedFacilitie', 'isCustomer','isManager','isAdmin','isTrainer',],
+    
     components:{
       TrainingForCustomer,Facilitie,ModalBuyTraining,CommentService,Comment
         },
@@ -82,6 +96,7 @@ export default {
         then((response)=>{this.commentsNotAproved = response.data})
       },
       viewComments(){
+        console.log(this.isCustomer)
         this.viewComentsBoole = true
       },
       hideComments(){

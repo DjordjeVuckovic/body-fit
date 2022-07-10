@@ -3,7 +3,7 @@
 
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
       <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie" @rateFacility="rateFacility"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
-      :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer"/>
+      :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer" :isTrainer="isTrainer"/>
 
   </div>
 <!--  <MyFooter/>-->
@@ -45,6 +45,7 @@ export default{
       this.isAdmin = false
       this.isManager = false
       this.isCustomer = false
+      this.isTrainer = false
     },
     account(){
       this.$router.push({name : 'AccountView'})

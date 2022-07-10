@@ -4,10 +4,10 @@
         <div style="padding: 10px;"><h1>{{Comment.customerId}}</h1></div>      
         <div style="padding: 10px; margin-left: 160px;" class="row"><star-rating :rating="Comment.rating" :read-only="true" :increment="0.01"></star-rating></div>
         <div style="padding: 10px;" class="row"><h1>{{Comment.text}}</h1></div>
-        <div v-if="!Comment.state">
+        <div v-if="!Comment.state && isAdmin">
             <button @click="aprove" class="buttonMy">Aprove</button>
         </div>
-        <div v-if="Comment.state">
+        <div v-if="Comment.state && isAdmin">
             <button @click="reject" class="buttonMyRed">Reject</button>
         </div>
     </div >
@@ -21,9 +21,8 @@ import CommentService from "../FrontedServices/CommentServices";
 import StarRating from 'vue-star-rating'
 export default {
     name:'Comment',
-    props:{
-        Comment: Object
-    },
+    props:['Comment', 'isCustomer','isManager','isAdmin','isTrainer'],
+    
     data(){
         return{
 
