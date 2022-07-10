@@ -24,7 +24,6 @@ export default{
               this.logedInUser = response.data
               console.log(this.logedInUser.userRole)
               if (this.logedInUser.userRole == "CUSTOMER"){
-                console.log("amsanfdhsghffjausidfas")
                 this.isCustomer = true
               }
               if (this.logedInUser.userRole === "ADMIN"){
@@ -57,6 +56,7 @@ export default{
       
     },
     rateFacility(sportFacilityName){
+
       console.log(sportFacilityName)
       axios.get("http://localhost:8080/BodyFit/rest/facilities/")
        .then((response) => { 
@@ -71,6 +71,7 @@ export default{
            }
         })
        
+
       this.$router.push({name : 'CommentView'})
     }
   },

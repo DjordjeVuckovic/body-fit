@@ -67,7 +67,9 @@
               </a>
               <ul class="dropdown-menu bg-black drop" aria-labelledby="navbarDropdown">
                 <li  class="dropdown-item"><router-link to="/trainingsForManagerView">All trainings</router-link></li>
+                <li ><router-link  class="dropdown-item" to="/facilitySchedule">Schedule trainings</router-link></li>
                 <li ><router-link  class="dropdown-item" to="/trainersForManagerView">All trainers</router-link></li>
+                <li ><router-link  class="dropdown-item" to="/allCustomersManager">All customers</router-link></li>
               </ul>
             </li>
           </div>
