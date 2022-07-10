@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid ">
     <div class="row">
-    <Facilitie :facilitie="selectedFacilitie"></Facilitie>
+    <Facilitie @viewComments="viewComments" @viewTrenings="viewTrenings" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
     </div>
-    <div class="row">
+    <div v-if="viewTreningsBoole" class="row">
       <h1 class="headMy">Available trainings</h1>
-      <div  class="py-5 mx-5">
+      <div   class="py-5 mx-5">
         <div class="row row-cols-2 g-3">
           <div  v-for="tr in trainings" v-bind:key="tr.id" class="container" style="padding-top: 20px">
             <div class="col">
@@ -27,7 +27,8 @@ export default {
     name: 'SelectedFacilitieView',
     data(){
         return {
-          trainings : []
+          trainings : [],
+          viewTreningsBoole:false
         }
     },
     props:{
@@ -42,6 +43,11 @@ export default {
     created() {
       TrainingService.getByFacility(this.selectedFacilitie.id).
       then((res)=>{this.trainings = res.data})
+    },
+    methods:{
+      viewTrenings(){
+        this.viewTreningsBoole = true
+      }
     }
 }
 </script>

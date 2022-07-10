@@ -62,11 +62,7 @@
         </form>
       </div>
     </div>
-  <p>{{NewFacilitie.name}}</p>
-  <p>{{NewFacilitie.type}}</p>
-  <p>{{NewFacilitie.city}}</p>
-  <p>{{NewFacilitie.address}}</p>
-  <p>{{NewFacilitie.postal}}</p>
+
     </div>
 </template>
 

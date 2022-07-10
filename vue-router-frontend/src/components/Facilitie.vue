@@ -55,7 +55,9 @@
     </tr>
     </tbody>
   </table>
-    <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
+    <button v-if="!selectedFacilitie" class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
+    <button v-if="selectedFacilitie" class="btn btn-primary mb-3 btn-lg  buttonMy"  @click.prevent="$emit('viewComments')">View comments</button>
+    <button style="margin-left: 50px;" v-if="selectedFacilitie" class="btn btn-primary mb-3 btn-lg  buttonMy"  @click.prevent="$emit('viewTrenings')">View trainings</button>
   </div>
   <div class="col-lg-4 ico pt-3 pb-3 justify-content-center">
     <span class="d-block">
@@ -72,7 +74,8 @@ import Header from "@/components/Header";
 export default{
     name:'Facilitie-multi',
     props:{
-        facilitie: Object
+        facilitie: Object,
+        selectedFacilitie: Object
     },
   components:{ Header},
   methods:{
@@ -81,7 +84,7 @@ export default{
       return images('./' + facility + ".png")
     }
   },
-  emits:['selectFacilitie']
+  emits:['selectFacilitie','viewComments','viewTrenings']
 }
 </script>
 
