@@ -1,7 +1,9 @@
 package services;
 import java.io.File;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -19,10 +21,12 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Customer;
 import beans.ScheduleTraning;
+import beans.SportFacility;
 import beans.Training;
 import dao.CustomerDao;
 import dao.ManagerDao;
 import dao.ScheduleTrainingDao;
+import dao.SportFacilityDao;
 import dao.TrainingDao;
 import dto.ScheduleTraningDto;
 
@@ -32,6 +36,7 @@ public class ScheduleTraningService {
 	ScheduleTrainingDao scheduleTrainingDao = new ScheduleTrainingDao();
 	ManagerDao managerDao = new ManagerDao();
 	CustomerDao customerDao = new CustomerDao();
+	SportFacilityDao facilityDao = new SportFacilityDao();
 	@Context
 	ServletContext ctx;
 	@SuppressWarnings("unused")
@@ -68,9 +73,13 @@ public class ScheduleTraningService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<ScheduleTraningDto> getAllPassedCustomer(String id){
 		scheduleTrainingDao.setBasePath(getContext());
+		trainingDao.setBasePath(getContext());
+		facilityDao.setBasePath(getContext());
 		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
-		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllPassedCustomer(id)) {
-			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		for(ScheduleTraning training: scheduleTrainingDao.getAllPassedCustomer(id)) {
+			Training tr = trainingDao.getById(training.getTraningId());
+			SportFacility facility = facilityDao.getById(tr.getSportFacilityId());
+			scheduleTraningDtos.add(new ScheduleTraningDto(training.getDateAssign(),training.getDateTraining(),training.getTraningId(),training.getCustomerId(),FormatDate(training.getStartTime()),FormatDate(training.getFinishTime()),training.getId(),training.isStatus(),tr,facility));
 		}
 		return scheduleTraningDtos;
 	}
@@ -90,12 +99,27 @@ public class ScheduleTraningService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<ScheduleTraningDto> getAllUpcomingCustomer(String id){
 		scheduleTrainingDao.setBasePath(getContext());
+		trainingDao.setBasePath(getContext());
+		facilityDao.setBasePath(getContext());
 		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
-		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllUpcomingCustomer(id)) {
-			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		for(ScheduleTraning training: scheduleTrainingDao.getAllUpcomingCustomer(id)) {
+			Training tr = trainingDao.getById(training.getTraningId());
+			SportFacility facility = facilityDao.getById(tr.getSportFacilityId());
+			scheduleTraningDtos.add(new ScheduleTraningDto(training.getDateAssign(),training.getDateTraining(),training.getTraningId(),training.getCustomerId(),FormatDate(training.getStartTime()),FormatDate(training.getFinishTime()),training.getId(),training.isStatus(),tr,facility));
 		}
 		return scheduleTraningDtos;
 	}
+//	@POST
+//	@Path("/getAllUpcomingCustomer")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public ArrayList<ScheduleTraningDto> getAllUpcomingCustomerFilter(String id){
+//		scheduleTrainingDao.setBasePath(getContext());
+//		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
+//		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllUpcomingCustomer(id)) {
+//			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+//		}
+//		return scheduleTraningDtos;
+//	}
 	@POST
 	@Path("/getAllUpcomingTrainer")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -204,6 +228,11 @@ public class ScheduleTraningService {
 			}
 		}
 		return allCustomers.values();
+	}
+	private String FormatDate(LocalTime time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
+		String timeString = time.format(formatter);
+		return timeString;
 	}
 	
 }

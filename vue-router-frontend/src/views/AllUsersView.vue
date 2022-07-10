@@ -41,8 +41,6 @@
         </select>
       </div>
 
-      
-
     </div>
 
   </nav>
@@ -84,7 +82,7 @@ export default {
     },
     methods:{
         filterList(){
-            if(this.filterType == 'ALL' ){
+            if(this.filterType === 'ALL' ){
                 this.resultQuery();
                 
             }

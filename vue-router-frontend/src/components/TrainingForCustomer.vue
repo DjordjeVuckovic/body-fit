@@ -48,6 +48,15 @@
               <label>{{sportFacilityName}}</label>
             </td>
           </tr>
+          <tr>
+            <td>
+              <label>Trainer name and surname: </label>
+            </td>
+            <td>
+              <!--            <label>{{getFacility(training.sportFacilityId)}}</label>-->
+              <label>{{trainerName}} {{trainerSurname}}</label>
+            </td>
+          </tr>
           </tbody>
         </table>
         <router-link v-if="isCustomer" class="btn btn-primary mb-3   buttonMy" :to="{name: 'BuyTrainingView',params:{id:trainingId}}">Buy training</router-link>
@@ -64,6 +73,7 @@
 <script>
 import FacilitieServices from "@/FrontedServices/FacilitieServices";
 import ModalBuyTraining from "@/components/ModalBuyTraining";
+import TrainerService from "@/FrontedServices/TrainerService";
 export default {
   name: "TrainingForCustomer",
   components:[FacilitieServices,ModalBuyTraining],
@@ -76,6 +86,8 @@ export default {
     return{
       sportFacilityName:"",
       trainingId:this.training.id,
+      trainerName:'',
+      trainerSurname:'',
       modalOpen: false
     }
   },
@@ -88,12 +100,21 @@ export default {
       FacilitieServices.getById(this.training.sportFacilityId).
       then((res)=> {this.sportFacilityName = res.data.name;})
     },
+    getTrainer(){
+      TrainerService.getById(this.training.trainerId).then(
+          (res) =>{
+            this.trainerName = res.data.name
+            this.trainerSurname = res.data.surname
+          }
+      )
+    },
     Modal(){
       this.modalOpen = !this.modalOpen
     }
   },
   created() {
     this.getFacility()
+    this.getTrainer()
   }
 }
 </script>
@@ -115,8 +136,8 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  min-height: 430px;
-  max-height: 500px;
+  min-height: 550px;
+  max-height: 550px;
 }
 .buttonMy{
   background: #2691d9;

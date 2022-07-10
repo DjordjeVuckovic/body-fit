@@ -68,6 +68,14 @@ public class TrainerService  {
 		trainerDao.create(trainer);
 		return trainer;
 	}
+	@POST
+	@Path("/getById")	
+	@Produces(MediaType.APPLICATION_JSON)
+	public Trainer getById(String id) {
+		trainerDao.setBasePath(getContext());
+		Trainer trainer= trainerDao.getById(id);
+		return trainer;
+	}
 	
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
