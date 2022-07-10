@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid ">
     <div class="row">
-    <Facilitie @viewComments="viewComments" @viewTrenings="viewTrenings" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
+    <Facilitie @viewComments="viewComments" @hideTrenings="hideTrenings" :viewTreningsBoole="viewTreningsBoole" :viewComentsBoole="viewComentsBoole" @viewTrenings="viewTrenings" @hideComments="hideComments" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
     </div>
-    <div class="row bg-dark"> 
+    <div  v-if="viewComentsBoole" class="row bg-dark"> 
       <div class="col">
         <div style="border-bottom: 5px white;">
           <h1 class="comments">Aproved:</h1>
@@ -48,7 +48,8 @@ export default {
     data(){
         return {
           trainings : [],
-          viewTreningsBoole:false,
+          viewTreningsBoole:true,
+          viewComentsBoole:false,
           commentsAproved:[],
           commentsNotAproved:[]
         }
@@ -79,6 +80,15 @@ export default {
         then((response)=>{this.commentsAproved = response.data})
         CommentService.getByFacilityNotAproved(this.selectedFacilitie.id).
         then((response)=>{this.commentsNotAproved = response.data})
+      },
+      viewComments(){
+        this.viewComentsBoole = true
+      },
+      hideComments(){
+         this.viewComentsBoole = false
+      },
+      hideTrenings(){
+         this.viewTreningsBoole = false
       }
     }
 }
