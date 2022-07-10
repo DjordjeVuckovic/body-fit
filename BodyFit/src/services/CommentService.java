@@ -20,6 +20,7 @@ import beans.Comment;
 import beans.Customer;
 import beans.RandomGenerator;
 import beans.Trainer;
+import beans.Training;
 import beans.User;
 import dao.AdminDao;
 import dao.CommentDao;
@@ -44,6 +45,22 @@ public class CommentService {
 	public String getContext() {
 		return (ctx.getRealPath("") + "WEB-INF" + File.separator + "classes" + File.separator + "jsonData"
 				+ File.separator);
+	}
+	
+	@POST
+	@Path("/getAprovedByFacility")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Comment> getAprovedByFacility(String facilityId){
+		commentDao.setBasePath(getContext());
+		return commentDao.getAprovedByFacility(facilityId);
+	}
+	
+	@POST
+	@Path("/getNotAprovedByFacility")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Comment> getNotAprovedByFacility(String facilityId){
+		commentDao.setBasePath(getContext());
+		return commentDao.getNotAprovedByFacility(facilityId);
 	}
 	
 	@GET

@@ -1,1 +1,14 @@
-{}
+{
+  "1A": {
+    "code": "1A",
+    "dateOfValidity": "Jul 26, 2022, 2:00:00 AM",
+    "quantity": 20,
+    "discount": 20
+  },
+  "1AC": {
+    "code": "1AC",
+    "dateOfValidity": "Jul 15, 2022, 2:00:00 AM",
+    "quantity": 22,
+    "discount": 13
+  }
+}

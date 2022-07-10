@@ -3,7 +3,7 @@
 
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
       <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie" @rateFacility="rateFacility"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
-      :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer"/>
+      :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer" :isTrainer="isTrainer"/>
 
   </div>
 <!--  <MyFooter/>-->
@@ -44,6 +44,7 @@ export default{
       this.isAdmin = false
       this.isManager = false
       this.isCustomer = false
+      this.isTrainer = false
     },
     account(){
       this.$router.push({name : 'AccountView'})
@@ -55,9 +56,22 @@ export default{
       
     },
     rateFacility(sportFacilityName){
-      axios.post("http://localhost:8080/BodyFit/rest/facilities/getByName",sportFacilityName)
-       .then((response) => {this.selectedFacilitie = response.data; console.log(response.data) })
-      
+
+      console.log(sportFacilityName)
+      axios.get("http://localhost:8080/BodyFit/rest/facilities/")
+       .then((response) => { 
+        console.log(response.data)
+           for (var facilitiy of response.data){
+            
+              if(facilitiy.name == sportFacilityName){
+                
+                this.selectedFacilitie = facilitiy
+                console.log(this.selectedFacilitie)
+              }
+           }
+        })
+       
+
       this.$router.push({name : 'CommentView'})
     }
   },

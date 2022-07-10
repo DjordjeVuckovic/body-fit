@@ -1,1 +1,66 @@
-{}
+{
+  "f4e76212-65d4-4fb3-95a7-77fd58090b2d": {
+    "id": "f4e76212-65d4-4fb3-95a7-77fd58090b2d",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "fina",
+    "rating": 4,
+    "state": true
+  },
+  "71986352-b821-424c-810e-b5d9c8ce10e9": {
+    "id": "71986352-b821-424c-810e-b5d9c8ce10e9",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "nije lose",
+    "rating": 4,
+    "state": false
+  },
+  "08ef8de8-3b1b-4fd4-9ee2-abd9d94c9494": {
+    "id": "08ef8de8-3b1b-4fd4-9ee2-abd9d94c9494",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "super",
+    "rating": 4,
+    "state": false
+  },
+  "7391520f-ad37-40ba-a4c6-5fd64209f5ce": {
+    "id": "7391520f-ad37-40ba-a4c6-5fd64209f5ce",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "ne svidja mi se",
+    "rating": 2,
+    "state": true
+  },
+  "ea33034b-57bd-471d-8cb2-aa24f4b5db3f": {
+    "id": "ea33034b-57bd-471d-8cb2-aa24f4b5db3f",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "Bas je dobra",
+    "rating": 5,
+    "state": false
+  },
+  "74457391-b43c-44f5-8cbc-754fdc17bf74": {
+    "id": "74457391-b43c-44f5-8cbc-754fdc17bf74",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "OK je.\nUsluga je super!",
+    "rating": 3,
+    "state": true
+  },
+  "36b8d382-db7e-4303-8e45-c6eac57315dd": {
+    "id": "36b8d382-db7e-4303-8e45-c6eac57315dd",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "super",
+    "rating": 4,
+    "state": false
+  },
+  "adf677f0-7e2d-4057-8f98-c6b7a3d44404": {
+    "id": "adf677f0-7e2d-4057-8f98-c6b7a3d44404",
+    "customerId": "vc",
+    "sportFacilityId": "2",
+    "text": "Dobri grupni treninzi.",
+    "rating": 4,
+    "state": false
+  }
+}
