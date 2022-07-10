@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.google.gson.reflect.TypeToken;
 
+import beans.Comment;
 import beans.SportFacility;
 
 public class SportFacilityDao extends GenericDao<String,SportFacility, SportFacilityDao>{
@@ -46,12 +47,17 @@ public class SportFacilityDao extends GenericDao<String,SportFacility, SportFaci
 		return new ArrayList<SportFacility>(getAllToMap().values());
 	}
 	public SportFacility getByName(String facilityName) {
-		for(SportFacility facility : getAllToList()) {
+
+		SportFacility findFacility = new SportFacility();
+		ArrayList<SportFacility> facilities = getAllToList();
+		for(SportFacility facility : facilities) {
 			if(facility.getName().equals(facilityName)) {
+
 				return facility;
 			}
 		}
-		return null;
+		return findFacility;
+		
 	}
 
 

@@ -1,1 +1,32 @@
-{}
+{
+  "6db8afe9-d74b-4880-8926-437875790ec0": {
+    "id": "6db8afe9-d74b-4880-8926-437875790ec0",
+    "type": "MONTH",
+    "paymentDate": "Jul 9, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Aug 9, 2022, 2:00:00 AM",
+    "price": 2000,
+    "customerId": "vc",
+    "isActive": true,
+    "numberOfSession": 16
+  },
+  "4adc36ec-067e-45e8-8a00-2518c2a20043": {
+    "id": "4adc36ec-067e-45e8-8a00-2518c2a20043",
+    "type": "MONTH",
+    "paymentDate": "Jul 9, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Aug 9, 2022, 2:00:00 AM",
+    "price": 1600,
+    "customerId": "vc",
+    "isActive": true,
+    "numberOfSession": 16
+  },
+  "7ac91f8a-f4d0-48b4-8967-ba26e6c0af24": {
+    "id": "7ac91f8a-f4d0-48b4-8967-ba26e6c0af24",
+    "type": "THREE_MONTHS",
+    "paymentDate": "Jul 9, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Oct 9, 2022, 2:00:00 AM",
+    "price": 5500,
+    "customerId": "vc",
+    "isActive": true,
+    "numberOfSession": 16
+  }
+}

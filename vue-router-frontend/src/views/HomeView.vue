@@ -22,7 +22,7 @@ export default {
   props:['logedInUser'],
 }
 </script>
-<style>
+<style scoped>
 h1{
   text-align: center;
   margin: 40px 0 0;

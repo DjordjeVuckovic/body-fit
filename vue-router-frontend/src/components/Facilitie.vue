@@ -55,7 +55,11 @@
     </tr>
     </tbody>
   </table>
-    <button class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
+    <button v-if="!selectedFacilitie" class="btn btn-primary mb-3 btn-lg  buttonMy" @click.prevent="$emit('selectFacilitie',this.facilitie)">Preview facility</button>
+    <button  style="margin: 50px;" v-if="selectedFacilitie && !viewComentsBoole" class="btn btn-primary mb-3 btn-lg  buttonMy"  @click.prevent="$emit('viewComments')">View comments</button>
+    <button  style="margin: 50px;" v-if="selectedFacilitie && !viewTreningsBoole" class="btn btn-primary mb-3 btn-lg  buttonMy"  @click.prevent="$emit('viewTrenings')">View trainings</button>
+    <button  style="margin: 50px;"  v-if="selectedFacilitie && viewComentsBoole" class="btn btn-primary mb-3 btn-lg  buttonMyRed"  @click.prevent="$emit('hideComments')">Hide comments</button>
+    <button style="margin: 50px;" v-if="selectedFacilitie  && viewTreningsBoole" class="btn btn-primary mb-3 btn-lg  buttonMyRed"  @click.prevent="$emit('hideTrenings')">Hide trainings</button>
   </div>
   <div class="col-lg-4 ico pt-3 pb-3 justify-content-center">
     <span class="d-block">
@@ -72,7 +76,10 @@ import Header from "@/components/Header";
 export default{
     name:'Facilitie-multi',
     props:{
-        facilitie: Object
+        facilitie: Object,
+        selectedFacilitie: Object,
+        viewComentsBoole: Boolean,
+        viewTreningsBoole: Boolean
     },
   components:{ Header},
   methods:{
@@ -81,7 +88,7 @@ export default{
       return images('./' + facility + ".png")
     }
   },
-  emits:['selectFacilitie']
+  emits:['selectFacilitie','viewComments','viewTrenings','hideTrenings','hideComments']
 }
 </script>
 
@@ -112,6 +119,15 @@ table{
 }
 .buttonMy{
   background: #2691d9;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buttonMyRed{
+  background: #d6491e;
   color: white;
   border-radius: 15px;
   font-size: 20px;

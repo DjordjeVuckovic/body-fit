@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="isCode" style="padding-bottom: 300px;">
+        <div v-if="isCode" style="padding-bottom: 700px;">
             <Membership class="container choosen" @chooseMembership="chooseMembership" :logedInUser="logedInUser" :numberOfSession = "this.selectedMembership.numberOfSession" :isCode="true" :type = "this.selectedMembership.type" :price = "this.selectedMembership.price"></Membership>
         </div>
     </div>

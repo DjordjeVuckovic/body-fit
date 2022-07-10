@@ -1,13 +1,14 @@
 {
   "a": {
     "username": "a",
-    "password": "a",
+    "password": "1312",
     "name": "a",
     "surname": "a",
     "birthday": "Jun 15, 2022, 2:36:51 AM",
     "gender": "FEMALE",
     "userRole": "ADMIN",
-    "deleted": false
+    "deleted": false,
+    "banned": false
   },
   "b": {
     "username": "b",
@@ -17,9 +18,10 @@
     "birthday": "Jun 15, 2022, 2:36:51 AM",
     "gender": "FEMALE",
     "userRole": "ADMIN",
-    "deleted": false
+    "deleted": false,
+    "banned": false
   },
-   "admin": {
+  "admin": {
     "username": "admin",
     "password": "admin",
     "name": "admin",
@@ -27,6 +29,7 @@
     "birthday": "Jun 15, 2022, 2:36:51 AM",
     "gender": "FEMALE",
     "userRole": "ADMIN",
-    "deleted": false
+    "deleted": false,
+    "banned": false
   }
 }

@@ -1,7 +1,7 @@
 <template >
 <div class="b " style="margin-top: 250px;">
     <div >
-      <h1>{{selectedFacilitie.name}}</h1>
+     
       <div style="margin-left: 30px;">
         <star-rating :rounded-corners="true" text-class="custom-text" :show-rating="false" :border-width="6" :star-size="70"   @update:rating="rating = $event"></star-rating>
       </div>
@@ -41,7 +41,7 @@ export default {
             comment:{
               id:'',
               customerId: this.logedInUser.username,
-              sportFacilityId:this.selectedFacilitie.sportFacilityId,
+
               text: '',
               rating: this.rating,
               state:false
@@ -79,7 +79,8 @@ export default {
   },
     computed: {
         currentRatingText() {
-        return this.rating
+          console.log(this.selectedFacilitie)
+        return this.rating()
             ? "You have selected " + this.rating + " stars"
             : "No rating selected";
         }
