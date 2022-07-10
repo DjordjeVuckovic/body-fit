@@ -53,5 +53,16 @@
     "duration": 30,
     "deleted": false,
     "additionalPrice": 2000.0
+  },
+  "5": {
+    "id": "5",
+    "type": "GROUP",
+    "sportFacilityId": "1",
+    "trainerId": "bobi",
+    "name": "Gluteus",
+    "description": "glutues core",
+    "duration": 45,
+    "deleted": false,
+    "additionalPrice": 0.0
   }
 }
