@@ -20,6 +20,7 @@ import beans.Comment;
 import beans.Customer;
 import beans.RandomGenerator;
 import beans.Trainer;
+import beans.Training;
 import beans.User;
 import dao.AdminDao;
 import dao.CommentDao;
@@ -44,6 +45,14 @@ public class CommentService {
 	public String getContext() {
 		return (ctx.getRealPath("") + "WEB-INF" + File.separator + "classes" + File.separator + "jsonData"
 				+ File.separator);
+	}
+	
+	@POST
+	@Path("/getAllByFacility")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Comment> getAllByFacility(String facilityId){
+		commentDao.setBasePath(getContext());
+		return commentDao.getAllByFacility(facilityId);
 	}
 	
 	@GET

@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Comment;
 import beans.Manager;
+import beans.Training;
 
 public class CommentDao extends GenericDao<String,Comment, CommentDao> {
 
@@ -45,6 +46,16 @@ public class CommentDao extends GenericDao<String,Comment, CommentDao> {
 	public ArrayList<Comment> getAllToList() {
 		// TODO Auto-generated method stub
 		return new ArrayList<Comment>(getAllToMap().values());
+	}
+	
+	public ArrayList<Comment> getAllByFacility(String facilityId){
+		ArrayList<Comment> comments = new ArrayList<Comment>();
+		for (Comment comment : getAllToList()) {
+			if(comment.getSportFacilityId().equals(facilityId)) {
+				comments.add(comment);
+			}
+		}
+		return comments;
 	}
 	
 }
