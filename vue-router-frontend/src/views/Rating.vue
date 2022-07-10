@@ -1,7 +1,12 @@
 <template >
 <div class="b " style="margin-top: 250px;">
-    <div id="app">
-        <star-rating :rounded-corners="true" :border-width="6" :star-size="70"  :show-rating="false" @update:rating="rating = $event"></star-rating>
+    <div >
+      <h1>{{selectedFacilitie.name}}</h1>
+      <div style="margin-left: 30px;">
+        <star-rating :rounded-corners="true" text-class="custom-text" :show-rating="false" :border-width="6" :star-size="70"   @update:rating="rating = $event"></star-rating>
+      </div>
+        
+        <label class="labelMy">Leave a comment about your experience </label>
         <div class="comment" style="margin-top: 35px;">
             <textarea v-model="comment.text" class="comment-text"></textarea>
         </div>
@@ -84,6 +89,7 @@ export default {
 </script>
 
 <style scoped>
+
 .buttonMy{
         background: #2691d9;
         color: white;
@@ -105,7 +111,9 @@ export default {
     border-radius: 10px;
     font-size: 20px;
 }
-
+h1{
+  margin-bottom: 25px;
+}
 .comment{
     background-color: unset;
 }
@@ -123,4 +131,14 @@ export default {
   color: #999;
   background: #fff;
 }
+.labelMy {
+        color: #aaa;
+        display: inline-block;
+        margin: 25px 0 15px;
+        font-size: 0.7em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bolder;
+        font-size: 20px;
+    }
 </style>

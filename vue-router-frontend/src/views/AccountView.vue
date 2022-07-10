@@ -1,6 +1,6 @@
 <template >
-<div style="margin-top: 100px">
-    <form class="center" @submit.prevent="$emit('account')" >
+<div style="margin-top: 150px">
+    <form v-if="this.changePassword" class="center" @submit.prevent="$emit('account')" >
         <h1>Account information</h1>
         <span>
             <label>Username:</label>
@@ -88,14 +88,14 @@
         
        
     
-        <div class=" align-items-center justify-content-center">
-            <div class=" justify-content-center">
-                <button v-if="this.changePassword" type="button" class="submiter d-flex" @click="StartChangePassword()" >Change password</button>
+        
+            <div style="margin-left: 85px;" >
+                <button v-if="this.changePassword" type="button" class="submiter d-flex" @click="StartChangePassword()">Change password</button>
             </div>
             
-        </div>
         
-        <div  v-if="!this.changePassword" class="paswordchanger container">
+    </form>
+    <div  v-if="!this.changePassword" class="paswordchanger container">
             <div >
                 <label class="paswordchangerText">Insert old password:</label>
                 <input v-model="this.oldPassword" class="paswordchangerText" type="password" required >
@@ -118,15 +118,9 @@
             </div>
              
         </div>
-        
-    </form>
     
 </div>
-    <p>{{this.user.name}}</p>
-    <p>{{this.oldPassword}}</p>
-    <p>{{this.newPassword}}</p>
-    <p>{{this.confirmPassword}}</p>
-    <p>{{this.user.password}}</p>
+    
 </template>
 
 <script>
@@ -221,6 +215,9 @@ export default {
                 this.user.password = this.newPassword;
                 this.logedInUser.password = this.newPassword;
                 this.changePassword = true;
+                this.newPassword= '';
+                this.confirmPassword= '';
+                this.oldPassword= '';
                 this.updateUser();
             }
             else{
@@ -234,6 +231,9 @@ export default {
         },
         cancelPasswordChange(){
              this.changePassword = true
+             this.newPassword= '';
+            this.confirmPassword= '';
+            this.oldPassword= '';
         },
         
         
@@ -264,7 +264,8 @@ export default {
         
     }
     .paswordchanger{
-        width: 400px;
+        border-radius: 10px;
+        width: 500px;
         margin-top: 60px;
         padding-bottom: 30px;
         background: rgb(170, 179, 208);
