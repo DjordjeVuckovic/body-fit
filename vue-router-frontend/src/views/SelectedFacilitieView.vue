@@ -81,6 +81,7 @@ export default {
       CommentService.getByFacilityNotAproved(this.selectedFacilitie.id).
       then((response)=>{this.commentsNotAproved = response.data; console.log("sadgfasgfadgdfag")})
       .catch((error) => console.log(error))
+      console.log(this.selectedFacilitie)
     },
     methods:{
       viewTrenings(){

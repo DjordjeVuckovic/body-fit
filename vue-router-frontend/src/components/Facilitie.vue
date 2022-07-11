@@ -66,7 +66,7 @@
     <img  :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
       </span>
   </div>
-    <div class="col p-5" v-if="selectedFacilitie" style="margin-left:250px ; margin-top:50px ; border-color: 5px blue;">
+    <div class="col p-5" v-if="selectedFacilitie" style="padding-left:150px ; margin-left:150px ; padding-top:450px ; border-left: 3px solid black;">
         <Map :facilities="facilitie"></Map>
       </div>
   </div>
