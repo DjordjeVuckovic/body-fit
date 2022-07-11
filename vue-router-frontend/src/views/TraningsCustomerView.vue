@@ -5,17 +5,17 @@
       <div class="mx-2 col-2" >
         <div class="textual"><label for="search">Search for trainings:</label></div>
         <div class="textual">
-          <input class="form-control me-2" type="search" v-model="searchQuery" placeholder="Search" aria-label="Search..." autofocus required /></div>
+          <input class="form-control me-2" type="search" v-model="searchQuery" @change="filterList()" placeholder="Search" aria-label="Search..." autofocus required /></div>
       </div>
       <div class="col-1">
         <div class="textual"><label for="search">Start date:</label></div>
         <div class="textual dates">
-          <input class="form-control me-2" type="date" v-model="startDate" autofocus required /></div>
+          <input class="form-control me-2" type="date" v-model="startDate" @change="filterList()" autofocus required /></div>
       </div>
       <div class="col-1">
         <div class="textual"><label for="search">Finish date:</label></div>
         <div class="textual dates">
-          <input class="form-control me-2" type="date" v-model="finishDate" autofocus required /></div>
+          <input class="form-control me-2" type="date" v-model="finishDate" @change="filterList()" autofocus required /></div>
       </div>
       <div>
         <div class="textual">
