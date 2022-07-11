@@ -5,7 +5,7 @@
     "type": "GYM",
     "isWorking": false,
     "currentLocation": {
-      "streetAndNumber": "Veselina Maslese 84",
+      "streetAndNumber": "Veselina Maslese 74",
       "city": "Novi Sad",
       "postalCode": "2100",
       "latitude": "45.26031035752238",
@@ -21,7 +21,7 @@
     "facilityContent": [],
     "isWorking": false,
     "currentLocation": {
-      "streetAndNumber": "21000",
+      "streetAndNumber": "Hickoka 3",
       "city": "Novi Sad",
       "postalCode": "21000",
       "latitude": "45.248439636131316",
@@ -37,9 +37,9 @@
     "facilityContent": [],
     "isWorking": false,
     "currentLocation": {
-      "streetAndNumber": "ca",
-      "city": "ca",
-      "postalCode": "ca",
+      "streetAndNumber": "Mike Antica 12",
+      "city": "Novi Sad",
+      "postalCode": "21000",
       "latitude": "45.25336731236138",
       "longitude": "19.84558805760194"
     },
@@ -58,7 +58,8 @@
       "latitude": "45.24857800161932",
       "longitude": "19.844296524797166"
     },
-    "averageGrade": 4.0
+    "averageGrade": 4.0,
+    "deleted": false
   },
   "5": {
     "sportFacilityId": "5",
@@ -72,7 +73,8 @@
       "latitude": "45.241892911574055",
       "longitude": "19.82849249596142"
     },
-    "averageGrade": 5.0
+    "averageGrade": 5.0,
+    "deleted": false
   },
   "6": {
     "sportFacilityId": "6",
@@ -86,7 +88,8 @@
       "latitude": "45.29340339934422",
       "longitude": "19.82332165941428"
     },
-    "averageGrade": 4.0
+    "averageGrade": 4.0,
+    "deleted": false
   },
   "7": {
     "sportFacilityId": "7",
@@ -100,6 +103,23 @@
       "latitude": "44.800852647085684",
       "longitude": "20.383988526632155"
     },
-    "averageGrade": 4.0
+    "averageGrade": 4.0,
+    "deleted": false
+  },
+  "8": {
+    "sportFacilityId": "8",
+    "name": "Atletic",
+    "type": "GYM",
+    "facilityContent": [],
+    "isWorking": false,
+    "currentLocation": {
+      "streetAndNumber": "Voje ilica 21",
+      "city": "Beograd",
+      "postalCode": "11050",
+      "latitude": "44.78759833309235",
+      "longitude": "20.503788982680035"
+    },
+    "averageGrade": 0.0,
+    "deleted": false
   }
 }
