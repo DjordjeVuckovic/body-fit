@@ -66,8 +66,8 @@
     <img  :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
       </span>
   </div>
-    <div class="col p-5" v-if="selectedFacilitie" style="margin-left:250px ; margin-top:50px ; border-color: 5px blue;">
-        <Map :facilities="facilitie"></Map>
+    <div class="col p-5" v-if="selectedFacilitie" style="margin-left:250px ; margin-top:50px ; border-color: blue;">
+        <MapOne :latitude="facilitie.lat" :longitude="facilitie.longi"></MapOne>
       </div>
   </div>
 </div>
@@ -77,6 +77,7 @@
 <script>
 import Map from '@/components/Map.vue'
 import Header from "@/components/Header";
+import MapOne from "@/components/MapOne";
 export default{
     name:'Facilitie-multi',
     props:{
@@ -86,7 +87,7 @@ export default{
         viewTreningsBoole: Boolean,
         
     },
-  components:{ Header,Map},
+  components:{MapOne, Header,Map},
   methods:{
     getImgUrl(facility){
       let images = require.context('../assets/', false, /\.png$/);

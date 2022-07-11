@@ -29,11 +29,7 @@ public class FacilityViewDto {
 		this.rating = String.valueOf(facility.getAverageGrade());
 	}
 	public FacilityViewDto() {
-		this.name = "NO_FACILITIES";
-		this.type = null;
-		this.status = null;
-		//this.location= null;
-		this.rating = null;		
+		super();	
 	}
 	private String isWorkingToString(SportFacility facility) {
 		if(facility.isWorikng()) {
