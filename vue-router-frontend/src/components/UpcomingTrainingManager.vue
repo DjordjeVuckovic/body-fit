@@ -57,6 +57,15 @@
           </tr>
           <tr>
             <td>
+              <label>Description: </label>
+            </td>
+            <td>
+              <!--            <label>{{getFacility(training.sportFacilityId)}}</label>-->
+              <label>{{training.description}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <label>Facility name: </label>
             </td>
             <td>
@@ -179,8 +188,8 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  min-height: 45em;
-  max-height: 45em;
+  min-height: 47em;
+  max-height: 47em;
 }
 .buttonMy{
   background: #2691d9;
