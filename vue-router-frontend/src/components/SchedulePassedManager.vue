@@ -147,7 +147,7 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  min-height: 430px;
+  min-height: 45em;
   max-height: 45em;
 }
 .buttonMy{

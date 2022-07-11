@@ -33,6 +33,16 @@
         label="PostalCode:"
         type="text"
     />
+    <InputBase
+        v-model="NewFacilitie.longi"
+        label="Longitude:"
+        type="text"
+    />
+    <InputBase
+        v-model="NewFacilitie.lat"
+        label="Latitude:"
+        type="text"
+    />
         <div class="col-auto">
         <label  class="col-form-label">Upload image:</label>
          </div>
@@ -83,7 +93,9 @@ export default {
                 type: '',
                 city: '',
                 postal: '',
-                address: ''
+                address: '',
+                lat:'',
+                longi:''
             },
           selectedFile:null,
           isDisabled:true,

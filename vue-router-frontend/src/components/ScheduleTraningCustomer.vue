@@ -164,8 +164,8 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  min-height: 430px;
-  max-height: 45em;
+  min-height: 42em;
+  max-height: 42em;
 }
 .buttonMy{
   background: #2691d9;

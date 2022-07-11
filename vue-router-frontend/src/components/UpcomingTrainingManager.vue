@@ -142,10 +142,12 @@ export default {
       return images('./' + facility + ".png")
     },
     ChangeStatus(){
-        //let isExecuted = confirm("Are you sure to cancel this training?")
-        ScheduleTraningService.ChangeStatus(this.ScheduleTraining)
-        this.isDeleted = true
-        this.$emit('isDeletedT')
+        let isExecuted = confirm("Are you sure to cancel this training?")
+        if(isExecuted) {
+          ScheduleTraningService.ChangeStatus(this.ScheduleTraining.id)
+          this.isDeleted = true
+          this.$emit('isDeletedT', this.isDeleted, this.ScheduleTraining)
+        }
     },
     validDate(){
       let trDate = moment(new Date(this.ScheduleTraining.dateTraining).toDateString())
@@ -177,8 +179,8 @@ table{
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  min-height: 42em;
-  max-height: 42em;
+  min-height: 45em;
+  max-height: 45em;
 }
 .buttonMy{
   background: #2691d9;

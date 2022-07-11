@@ -192,7 +192,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v))))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v))))
           }
           else{
             return false
@@ -205,7 +205,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v)))))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.filterType.toLowerCase().split(' ').every(v => item.traning.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v)))))
           }
           else{
             return false
@@ -239,7 +239,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)))
           }
           else{
             return false
@@ -252,7 +252,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)) && this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.filterType.toLowerCase().split(' ').every(v => item.traning.type.toLowerCase().includes(v))))
           }
           else{
             return false

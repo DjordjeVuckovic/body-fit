@@ -33,7 +33,7 @@ class ScheduleTrainings{
         return axios.post(TRAININGS6_API_BASE_URL,id)
     }
     ChangeStatus(ScheduleTraining){
-        return axios.put(TRAININGS5_API_BASE_URL,ScheduleTraining)
+        return axios.post(TRAININGS5_API_BASE_URL,ScheduleTraining)
     }
 
 }

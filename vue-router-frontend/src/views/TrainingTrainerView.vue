@@ -125,7 +125,8 @@ export default {
       startDate:'',
       finishDate:'',
       checked:false,
-      isDeleted: false
+      isDeleted: false,
+      trForDelete:{}
     }
   },
   created() {
@@ -149,13 +150,9 @@ export default {
           }
       )
     },
-    refresh(){
-      ScheduleTraningService.AllUpcomingTrainer(this.logedInUser.username).then(
-          (res)=>{
-            console.log(res.data)
-            this.trainings = res.data
-          }
-      )
+    refresh(isDeleted,tr){
+      this.trForDelete = tr
+      this.isDeleted = isDeleted
     },
     filterList() {
       this.resultQueryUp(this.trainings)
@@ -164,6 +161,10 @@ export default {
     CheckMe(tr){
       if(this.checked) {
         return tr.traning.additionalPrice === 0
+      }
+      if(this.isDeleted && tr == this.trForDelete){
+        this.getAllUp()
+        return false
       }
       else{
         return true
@@ -202,7 +203,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v))))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v))))
           }
           else{
             return false
@@ -215,7 +216,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v)))))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.filterType.toLowerCase().split(' ').every(v => item.traning.type.toLowerCase().includes(v) && this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v)))))
           }
           else{
             return false
@@ -249,7 +250,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)))
           }
           else{
             return false
@@ -262,7 +263,7 @@ export default {
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
           if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
-            return (this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)) && this.filterType.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v)))
+            return (this.filterTypeFacility.toLowerCase().split(' ').every(v => item.sportFacility.type.toLowerCase().includes(v) && this.filterType.toLowerCase().split(' ').every(v => item.traning.type.toLowerCase().includes(v))))
           }
           else{
             return false

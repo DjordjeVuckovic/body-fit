@@ -49,9 +49,20 @@ public class NewSportFacilityService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createFacility(FacilityViewDto sportFacility) {
 		sportFacilityDao.setBasePath(getContext());
-		SportFacility facility = new SportFacility(RandomGenerator.usingRandomUUID(), sportFacility.name, FacilityType.valueOf(sportFacility.type), new Adress(sportFacility.address, sportFacility.city, sportFacility.postal), 0);
+		SportFacility facility = new SportFacility(GenerateId(), sportFacility.name, FacilityType.valueOf(sportFacility.type), new Adress(sportFacility.address, sportFacility.city, sportFacility.postal,sportFacility.lat,sportFacility.longi), 0);
 		setCurrentFacility(facility);
 		sportFacilityDao.create(facility);
+	}
+	private String GenerateId() {
+		Integer maxId = -1;
+		for (String id : sportFacilityDao.getAllToMap().keySet()) {
+			int idNum =Integer.parseInt(id);
+			if (idNum > maxId) {
+				maxId = idNum;
+			}
+		}
+		maxId++;
+		return maxId.toString();
 	}
 	@POST
 	@Path("setManager")	

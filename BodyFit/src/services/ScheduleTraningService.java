@@ -145,12 +145,11 @@ public class ScheduleTraningService {
 	public Collection<Customer> getAllCustomersForManager(String id){
 		return getAllVisited(id);
 	}
-	@PUT
+	@POST
 	@Path("/changeStatus")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void ChangeStatus(ScheduleTraningDto updateTraning) {
+	public void ChangeStatus(String updateTraning) {
 		scheduleTrainingDao.setBasePath(getContext());
-		ScheduleTraning tr = scheduleTrainingDao.getById(updateTraning.id);
+		ScheduleTraning tr = scheduleTrainingDao.getById(updateTraning);
 		tr.setStatus(true);
 		scheduleTrainingDao.update(tr);
 	}

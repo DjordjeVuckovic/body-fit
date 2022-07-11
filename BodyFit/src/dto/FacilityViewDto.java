@@ -11,8 +11,8 @@ public class FacilityViewDto {
 	public String city;
 	public String postal;
 	public String address;
-	public String lat="";
-	public String longi="";
+	public String lat;
+	public String longi;
 	//public String logitude;
 	//public String latitude;
 	public String rating;
