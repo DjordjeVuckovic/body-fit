@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
+      <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isTrainer="isTrainer" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
       <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie" @rateFacility="rateFacility"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
       :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer" :isTrainer="isTrainer"/>
 
@@ -176,6 +176,7 @@ body {
   font-size: 20px;
   padding-bottom:10px;
 }
+.
 .checkbox{
   width: 20px;
   height: 20px;

@@ -88,9 +88,13 @@ public class ScheduleTraningService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<ScheduleTraningDto> getAllPassedManager(String id){
 		scheduleTrainingDao.setBasePath(getContext());
+		trainingDao.setBasePath(getContext());
+		facilityDao.setBasePath(getContext());
 		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
-		for(ScheduleTraning scheduleTraning: AllPassedTrainer(id)) {
-			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		for(ScheduleTraning training: AllPassedTrainer(id)) {
+			Training tr = trainingDao.getById(training.getTraningId());
+			SportFacility facility = facilityDao.getById(tr.getSportFacilityId());
+			scheduleTraningDtos.add(new ScheduleTraningDto(training.getDateAssign(),training.getDateTraining(),training.getTraningId(),training.getCustomerId(),FormatDate(training.getStartTime()),FormatDate(training.getFinishTime()),training.getId(),training.isStatus(),tr,facility));
 		}
 		return scheduleTraningDtos;
 	}
@@ -109,25 +113,18 @@ public class ScheduleTraningService {
 		}
 		return scheduleTraningDtos;
 	}
-//	@POST
-//	@Path("/getAllUpcomingCustomer")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public ArrayList<ScheduleTraningDto> getAllUpcomingCustomerFilter(String id){
-//		scheduleTrainingDao.setBasePath(getContext());
-//		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
-//		for(ScheduleTraning scheduleTraning: scheduleTrainingDao.getAllUpcomingCustomer(id)) {
-//			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
-//		}
-//		return scheduleTraningDtos;
-//	}
 	@POST
 	@Path("/getAllUpcomingTrainer")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<ScheduleTraningDto> getAllUpcomingTrainer(String id){
 		scheduleTrainingDao.setBasePath(getContext());
+		trainingDao.setBasePath(getContext());
+		facilityDao.setBasePath(getContext());
 		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
-		for(ScheduleTraning scheduleTraning: AllUpcomingTrainer(id)) {
-			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		for(ScheduleTraning training: AllUpcomingTrainer(id)) {
+			Training tr = trainingDao.getById(training.getTraningId());
+			SportFacility facility = facilityDao.getById(tr.getSportFacilityId());
+			scheduleTraningDtos.add(new ScheduleTraningDto(training.getDateAssign(),training.getDateTraining(),training.getTraningId(),training.getCustomerId(),FormatDate(training.getStartTime()),FormatDate(training.getFinishTime()),training.getId(),training.isStatus(),tr,facility));
 		}
 		return scheduleTraningDtos;
 	}
