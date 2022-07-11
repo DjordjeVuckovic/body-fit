@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid ">
+  <div class="container-fluid" style="margin-top: 120px;">
     <div class="row">
     <Facilitie @viewComments="viewComments"  @hideTrenings="hideTrenings" :viewTreningsBoole="viewTreningsBoole" :viewComentsBoole="viewComentsBoole" @viewTrenings="viewTrenings" @hideComments="hideComments" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
     </div>
@@ -35,9 +35,6 @@
     </div>
     
      
-    
-
-    
     <div v-if="viewTreningsBoole" class="row">
       <h1 class="headMy">Available trainings</h1>
       <div   class="py-5 mx-5">

@@ -1,0 +1,202 @@
+{
+  "0": {
+    "dateAssign": "Jul 4, 2022, 4:03:45 AM",
+    "dateTraining": "Jul 8, 2022, 2:00:00 AM",
+    "traningId": "0",
+    "customerId": "vc",
+    "id": "0",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 12,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "1": {
+    "dateAssign": "Jul 4, 2022, 4:08:44 AM",
+    "dateTraining": "Jul 7, 2022, 2:00:00 AM",
+    "traningId": "1",
+    "customerId": "vc",
+    "id": "1",
+    "startTime": {
+      "hour": 12,
+      "minute": 22,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 55,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "2": {
+    "dateAssign": "Jul 9, 2022, 4:09:35 AM",
+    "dateTraining": "Jul 10, 2022, 2:00:00 AM",
+    "traningId": "4",
+    "customerId": "vc",
+    "id": "2",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 22,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "3": {
+    "dateAssign": "Jul 9, 2022, 4:12:10 AM",
+    "dateTraining": "Jul 12, 2022, 2:00:00 AM",
+    "traningId": "4",
+    "customerId": "vc",
+    "id": "3",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 22,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "4": {
+    "dateAssign": "Jul 9, 2022, 4:13:09 AM",
+    "dateTraining": "Jul 10, 2022, 2:00:00 AM",
+    "traningId": "3",
+    "customerId": "vc",
+    "id": "4",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 22,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "5": {
+    "dateAssign": "Jul 9, 2022, 4:13:38 AM",
+    "dateTraining": "Jul 15, 2022, 2:00:00 AM",
+    "traningId": "3",
+    "customerId": "vc",
+    "id": "5",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 22,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "6": {
+    "dateAssign": "Jul 9, 2022, 4:15:12 AM",
+    "dateTraining": "Jul 22, 2022, 2:00:00 AM",
+    "traningId": "3",
+    "customerId": "vc",
+    "id": "6",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 22,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "7": {
+    "dateAssign": "Jul 9, 2022, 6:23:53 AM",
+    "dateTraining": "Jul 30, 2022, 2:00:00 AM",
+    "traningId": "0",
+    "customerId": "vc",
+    "id": "7",
+    "startTime": {
+      "hour": 6,
+      "minute": 26,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 6,
+      "minute": 27,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "8": {
+    "dateAssign": "Jul 9, 2022, 5:06:09 PM",
+    "dateTraining": "Jul 29, 2022, 2:00:00 AM",
+    "traningId": "5",
+    "customerId": "vc",
+    "id": "8",
+    "startTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 12,
+      "minute": 2,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  },
+  "9": {
+    "dateAssign": "Jul 9, 2022, 5:32:06 PM",
+    "dateTraining": "Jul 22, 2022, 2:00:00 AM",
+    "traningId": "5",
+    "customerId": "vc",
+    "id": "9",
+    "startTime": {
+      "hour": 22,
+      "minute": 22,
+      "second": 0,
+      "nano": 0
+    },
+    "finishTime": {
+      "hour": 11,
+      "minute": 11,
+      "second": 0,
+      "nano": 0
+    },
+    "status": false
+  }
+}
