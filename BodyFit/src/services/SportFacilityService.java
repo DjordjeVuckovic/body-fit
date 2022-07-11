@@ -66,9 +66,11 @@ public class SportFacilityService  {
 	@POST
 	@Path("/getById")
 	@Produces(MediaType.APPLICATION_JSON)
-	public SportFacility getById(String id) {
+	public FacilityViewDto getById(String id) {
 		sportFacilityDao.setBasePath(getContext());
-		return sportFacilityDao.getById(id);
+		SportFacility sportFac = sportFacilityDao.getById(id);
+		FacilityViewDto view  = new FacilityViewDto(sportFac);
+		return view;
 	}
 	
 	@POST
