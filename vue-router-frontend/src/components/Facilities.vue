@@ -163,7 +163,7 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
 <style scoped>
 .myrow { display: table}
 .scroll{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 1100px;
 }
 
