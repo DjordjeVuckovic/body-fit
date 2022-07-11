@@ -57,14 +57,18 @@
 <!--    </div>-->
 <!--  </div>-->
 
-    <div class="overflow-auto">
-      <div class="col-lg-6">
+    <div class="row">
+      <div class="col scroll">
       <div  v-for="facilitie in resultQuery()" v-bind:key="facilitie.sportFacilityId">
         <div class="d-block">
-          <Facilitie  v-if="filterByType(facilitie)"  :facilitie="facilitie"  @selectFacilitie="$emit('selectFacilitie',facilitie)"></Facilitie>
+          <Facilitie  v-if="filterByType(facilitie)"  :facilitie="facilitie"   @selectFacilitie="$emit('selectFacilitie',facilitie)"></Facilitie>
         </div>
       </div>
       </div>
+      <div class="col p-3" >
+        <Map :facilities="facilities"></Map>
+      </div>
+      
   </div>
     </div>
 
@@ -72,6 +76,7 @@
 
 <script>
 import Facilitie from './Facilitie.vue'
+import Map from '@/components/Map.vue'
 import FacilitieService from "@/FrontedServices/FacilitieServices";
     export default{
         name: 'Facilities-multi',
@@ -79,7 +84,8 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
             facilities: Array
         },
         components:{
-            Facilitie
+            Facilitie,
+            Map
         },
         data() {
         return{
@@ -156,6 +162,10 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
 </script>
 <style scoped>
 .myrow { display: table}
+.scroll{
+    overflow-y: scroll;
+    height: 1100px;
+}
 
 .mycol { float: left; padding: 100px;}
 </style>

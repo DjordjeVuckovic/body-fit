@@ -1,6 +1,12 @@
 <template>
-<div>
-    <Facilities :facilities="facilities" @selectFacilitie="Selectfacilitie"></Facilities>
+<div class="row">
+    <div class="col">
+        <div >
+            <Facilities :facilities="facilities" @selectFacilitie="Selectfacilitie"></Facilities>
+        </div>
+    </div>
+    
+    
 </div>
     
 </template>
@@ -9,11 +15,13 @@
 import FacilitieService from '../FrontedServices/FacilitieServices'
 import Facilities from '../components/Facilities.vue'
 import Header from '../components/Header.vue'
+import Map from '../components/Map.vue'
 export default {
     name: 'FacilitiesView',
     components: {
     Facilities,
-    Header
+    Header,
+    Map
     },
     data() {
         return{
@@ -39,5 +47,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.scroll{
+    overflow-y: scroll;
+    height: 1200px;
+}
 </style>

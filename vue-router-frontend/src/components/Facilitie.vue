@@ -1,7 +1,7 @@
 <template >
 <div class = "facilitie container-fluid p-5" >
   <div class="row">
-  <div class="col-lg-8 pt-3 pb-3">
+  <div class="col-lg-6 pt-3 pb-3">
   <table class="table">
     <thead class="table-dark">
     <th class="name justify-content-end" scope="col">{{facilitie.name}}</th>
@@ -61,17 +61,21 @@
     <button  style="margin: 50px;"  v-if="selectedFacilitie && viewComentsBoole" class="btn btn-primary mb-3 btn-lg  buttonMyRed"  @click.prevent="$emit('hideComments')">Hide comments</button>
     <button style="margin: 50px;" v-if="selectedFacilitie  && viewTreningsBoole" class="btn btn-primary mb-3 btn-lg  buttonMyRed"  @click.prevent="$emit('hideTrenings')">Hide trainings</button>
   </div>
-  <div class="col-lg-4 ico pt-3 pb-3 justify-content-center">
+  <div class="col-lg- ico pt-3 pb-3 justify-items-center" style="margin-top: 150px; height: 450px; width: 450px;" >
     <span class="d-block">
-    <img :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
+    <img  :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
       </span>
   </div>
+    <div class="col p-5" v-if="selectedFacilitie" style="margin-left:250px ; margin-top:50px ; border-color: 5px blue;">
+        <Map :facilities="facilitie"></Map>
+      </div>
   </div>
 </div>
     
 </template>
 
 <script>
+import Map from '@/components/Map.vue'
 import Header from "@/components/Header";
 export default{
     name:'Facilitie-multi',
@@ -79,9 +83,10 @@ export default{
         facilitie: Object,
         selectedFacilitie: Object,
         viewComentsBoole: Boolean,
-        viewTreningsBoole: Boolean
+        viewTreningsBoole: Boolean,
+        
     },
-  components:{ Header},
+  components:{ Header,Map},
   methods:{
     getImgUrl(facility){
       let images = require.context('../assets/', false, /\.png$/);
