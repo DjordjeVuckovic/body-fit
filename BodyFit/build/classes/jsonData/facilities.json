@@ -8,13 +8,46 @@
       "streetAndNumber": "Veselina Maslese 84",
       "city": "Novi Sad",
       "postalCode": "2100",
-      "latitude": "19.848",
-      "longitude": "45.251"
+      "latitude": "45.26031035752238",
+      "longitude": "19.809554954172846"
     },
-    "averageGrade": 9.0
+    "averageGrade": 9.0,
+    "deleted": false
   },
   "2": {
     "sportFacilityId": "2",
+    "name": "Milan",
+    "type": "POOL",
+    "facilityContent": [],
+    "isWorking": false,
+    "currentLocation": {
+      "streetAndNumber": "21000",
+      "city": "Novi Sad",
+      "postalCode": "21000",
+      "latitude": "45.248439636131316",
+      "longitude": "19.815743302642588"
+    },
+    "averageGrade": 0.0,
+    "deleted": false
+  },
+  "3": {
+    "sportFacilityId": "3",
+    "name": "matica",
+    "type": "DANCINGSTUDIO",
+    "facilityContent": [],
+    "isWorking": false,
+    "currentLocation": {
+      "streetAndNumber": "ca",
+      "city": "ca",
+      "postalCode": "ca",
+      "latitude": "45.25336731236138",
+      "longitude": "19.84558805760194"
+    },
+    "averageGrade": 0.0,
+    "deleted": false
+  },
+  "4": {
+    "sportFacilityId": "4",
     "name": "Flex",
     "type": "GYM",
     "isWorking": true,
@@ -22,13 +55,13 @@
       "streetAndNumber": "Bulevar Cara Lazara 11",
       "city": "Novi Sad",
       "postalCode": "2100",
-      "latitude": "41,11",
-      "longitude": "12.84"
+      "latitude": "45.24857800161932",
+      "longitude": "19.844296524797166"
     },
     "averageGrade": 4.0
   },
-  "3": {
-    "sportFacilityId": "3",
+  "5": {
+    "sportFacilityId": "5",
     "name": "Gladiator",
     "type": "GYM",
     "isWorking": false,
@@ -36,36 +69,36 @@
       "streetAndNumber": "Fruskogorska 19",
       "city": "Novi Sad",
       "postalCode": "2100",
-      "latitude": "41,11",
-      "longitude": "12.84"
+      "latitude": "45.241892911574055",
+      "longitude": "19.82849249596142"
     },
     "averageGrade": 5.0
   },
-   "4": {
-    "sportFacilityId": "4",
+  "6": {
+    "sportFacilityId": "6",
     "name": "Atlantida",
     "type": "POOL",
     "isWorking": true,
     "currentLocation": {
-      "streetAndNumber": "Gogoljeva 11",
+      "streetAndNumber": "Klisa 8",
       "city": "Novi Sad",
       "postalCode": "2100",
-      "latitude": "41,11",
-      "longitude": "12.84"
+      "latitude": "45.29340339934422",
+      "longitude": "19.82332165941428"
     },
     "averageGrade": 4.0
   },
-   "5": {
-    "sportFacilityId": "5",
+  "7": {
+    "sportFacilityId": "7",
     "name": "Talicna",
     "type": "SHOOTINGRANGE",
     "isWorking": true,
     "currentLocation": {
-      "streetAndNumber": "Jiricekova 1",
-      "city": "Novi Sad",
-      "postalCode": "2100",
-      "latitude": "31,11",
-      "longitude": "12.84"
+      "streetAndNumber": "Nehrunova 50",
+      "city": "Beograd",
+      "postalCode": " 11070",
+      "latitude": "44.800852647085684",
+      "longitude": "20.383988526632155"
     },
     "averageGrade": 4.0
   }
