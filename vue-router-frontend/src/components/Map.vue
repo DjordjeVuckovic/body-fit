@@ -14,7 +14,7 @@
                 
                 <ol-feature v-for="obj in this.facilities" v-bind:key="obj.sportFacilityId">
                     
-                    <ol-geom-point :coordinates="[obj.longi, obj.lat]"></ol-geom-point>
+                    <ol-geom-point :coordinates="[obj.currentLocation.longitude, obj.currentLocation.latitude]"></ol-geom-point>
                     <ol-style>
                         <ol-style-icon :src="markerIcon" :scale="0.5"></ol-style-icon>
                     </ol-style>
