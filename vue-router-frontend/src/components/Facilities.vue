@@ -65,7 +65,7 @@
         </div>
       </div>
       </div>
-      <div class="col p-3" >
+      <div class="col  a" >
         <Map :facilities="facilities"></Map>
       </div>
       
@@ -166,6 +166,11 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
     overflow-y: auto;
     height: 1100px;
 }
-
+.a{
+  max-width: 1200px;
+  max-height: 1100px;
+  margin: 15px;
+ 
+}
 .mycol { float: left; padding: 100px;}
 </style>
