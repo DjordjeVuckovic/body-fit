@@ -1,5 +1,9 @@
 package dto;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import beans.FacilityType;
 import beans.SportFacility;
 
@@ -13,9 +17,17 @@ public class FacilityViewDto {
 	public String address;
 	public String lat;
 	public String longi;
+	public String startTime;
+	public String finishTime;
 	//public String logitude;
 	//public String latitude;
 	public String rating;
+	public LocalTime parseTimeS() {
+		return LocalTime.parse(startTime);
+	}
+	public LocalTime parseTimeF() {
+		return LocalTime.parse(finishTime);
+	}
 	public FacilityViewDto(SportFacility facility) {
 		this.id = facility.getSportFacilityId();
 		this.name = facility.getName();
@@ -27,6 +39,8 @@ public class FacilityViewDto {
 		this.longi = facility.getCurrentLocation().getLongitude();
 		this.lat = facility.getCurrentLocation().getLatitude();
 		this.rating = String.valueOf(facility.getAverageGrade());
+		this.startTime = FormatDate(facility.getOpenTime());
+		this.finishTime= FormatDate(facility.getCloseTime());
 	}
 	public FacilityViewDto() {
 		super();	
@@ -36,8 +50,13 @@ public class FacilityViewDto {
 			return "Working";
 		}
 		else {
-			return "Closed";
+			return "Not working";
 		}
+	}
+	private String FormatDate(LocalTime time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
+		String timeString = time.format(formatter);
+		return timeString;
 	}
 
 }

@@ -1,5 +1,8 @@
 package services;
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
@@ -49,7 +52,7 @@ public class NewSportFacilityService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createFacility(FacilityViewDto sportFacility) {
 		sportFacilityDao.setBasePath(getContext());
-		SportFacility facility = new SportFacility(GenerateId(), sportFacility.name, FacilityType.valueOf(sportFacility.type), new Adress(sportFacility.address, sportFacility.city, sportFacility.postal,sportFacility.lat,sportFacility.longi), 0);
+		SportFacility facility = new SportFacility(GenerateId(), sportFacility.name, FacilityType.valueOf(sportFacility.type), new Adress(sportFacility.address,sportFacility.city, sportFacility.postal,sportFacility.lat,sportFacility.longi), 0,sportFacility.parseTimeS(),sportFacility.parseTimeF());
 		setCurrentFacility(facility);
 		sportFacilityDao.create(facility);
 	}
@@ -77,6 +80,9 @@ public class NewSportFacilityService {
 		manager.setSportFacilityId(sportFacility.getSportFacilityId());
 		managerDao.update(manager);
 	}
+	
+
+	
 
 }
 

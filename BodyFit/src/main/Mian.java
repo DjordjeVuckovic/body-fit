@@ -43,13 +43,13 @@ public class Mian {
 //		facilityDao.setBasePath("C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\src\\jsonData\\");
 //		SportFacility fac = facilityDao.getById("2");
 //		System.out.println(fac.getName());
-		ScheduleTrainingDao dao = new ScheduleTrainingDao();
-		//TrainingDao trainingDao = new TrainingDao();
-		dao.setBasePath("src/jsonData/");
-		ArrayList<ScheduleTraning> arrayList =  dao.getAllUpcomingCustomer();
-		for(ScheduleTraning st: arrayList) {
-			System.out.println(st.getId());
-		}
+//		ScheduleTrainingDao dao = new ScheduleTrainingDao();
+//		//TrainingDao trainingDao = new TrainingDao();
+//		dao.setBasePath("src/jsonData/");
+//		ArrayList<ScheduleTraning> arrayList =  dao.getAllUpcomingCustomer();
+//		for(ScheduleTraning st: arrayList) {
+//			System.out.println(st.getId());
+//		}
 //		ArrayList<Training> tr = trainingDao.getAllByManager("2");
 //		ArrayList<Trainer> tr1 = trainingDao.getAllTrainersForTrainings("2");
 //		for (Trainer tra: tr1) {

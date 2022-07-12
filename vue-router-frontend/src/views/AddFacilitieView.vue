@@ -43,12 +43,16 @@
         label="Latitude:"
         type="text"
     />
+    <label>Start time:</label>
+    <input class="form-control inputMy" type="time" v-model="NewFacilitie.startTime"/>
+    <label>Finish time:</label>
+    <input class="form-control inputMy" type="time" v-model="NewFacilitie.finishTime"/>
         <div class="col-auto">
         <label  class="col-form-label">Upload image:</label>
          </div>
     <div class="row g-2">
          <div class="col-auto">
-           <input :disabled="isDisabled" class="form-control inputMy" type="file" id="formFile">
+           <input :disabled="isDisabled" class="form-control inputMy" type="file" id="formFile"/>
          </div>
         <div class="col-auto">
           <button @click.prevent="OnFileUpload(this.NewFacilitie.name)" :disabled="isDisabled" class="btn btn-primary mb-3 btn-lg  buttonMy">Add logo</button>
@@ -95,7 +99,9 @@ export default {
                 postal: '',
                 address: '',
                 lat:'',
-                longi:''
+                longi:'',
+                finishTime:'',
+                startTime:''
             },
           selectedFile:null,
           isDisabled:true,

@@ -47,6 +47,22 @@
     </tr>
     <tr>
       <td>
+        <label>Open time: </label>
+      </td>
+      <td>
+        <label>{{facilitie.startTime}}</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Closing time: </label>
+      </td>
+      <td>
+        <label>{{facilitie.finishTime}}</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <label>Rating: </label>
       </td>
       <td>
@@ -78,6 +94,7 @@
 import Map from '@/components/Map.vue'
 import Header from "@/components/Header";
 import MapOne from "@/components/MapOne";
+import moment from "moment";
 export default{
     name:'Facilitie-multi',
     props:{

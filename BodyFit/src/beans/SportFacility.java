@@ -1,5 +1,7 @@
 package beans;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,8 +13,8 @@ public class SportFacility {
 	private boolean isWorking;
 	private Adress currentLocation;
 	private double averageGrade;
-	private Date openTime;
-	private Date closeTime;
+	private LocalTime openTime;
+	private LocalTime closeTime;
 	private boolean deleted;
 	
 	public SportFacility() {
@@ -29,9 +31,24 @@ public class SportFacility {
 		this.averageGrade = averageGrade;
 		this.facilityContent = new ArrayList<String>();
 		this.deleted = false;
+		this.isWorking = true;
+	}
+	public SportFacility(String sportFacilityId, String name, FacilityType type, Adress currentLocation,
+			double averageGrade,LocalTime openTime, LocalTime closeTime) {
+		super();
+		this.sportFacilityId = sportFacilityId;
+		this.name = name;
+		this.type = type;
+		this.currentLocation = currentLocation;
+		this.averageGrade = averageGrade;
+		this.facilityContent = new ArrayList<String>();
+		this.openTime = openTime;
+		this.closeTime = closeTime;
+		this.deleted = false;
+		this.isWorking = true;
 	}
 	public SportFacility(String sportFacilityId, String name, FacilityType type,
-			boolean status,Adress location, double averageGrade, Date openTime, Date closeTime) {
+			boolean status,Adress location, double averageGrade, LocalTime openTime, LocalTime closeTime) {
 		super();
 		this.sportFacilityId = sportFacilityId;
 		this.name = name;
@@ -43,20 +60,7 @@ public class SportFacility {
 		this.facilityContent = new ArrayList<String>();
 		this.deleted = false;
 	}
-	public SportFacility(String sportFacilityId, String name, FacilityType type, ArrayList<String> facilityContent,
-			boolean status, Adress location, double averageGrade, Date openTime, Date closeTime) {
-		super();
-		this.sportFacilityId = sportFacilityId;
-		this.name = name;
-		this.type = type;
-		this.facilityContent = facilityContent;
-		this.isWorking = status;
-		this.currentLocation = location;
-		this.averageGrade = averageGrade;
-		this.openTime = openTime;
-		this.closeTime = closeTime;
-		this.facilityContent = facilityContent;
-	}
+
 	public String getSportFacilityId() {
 		return sportFacilityId;
 	}
@@ -93,16 +97,16 @@ public class SportFacility {
 	public void setAverageGrade(double averageGrade) {
 		this.averageGrade = averageGrade;
 	}
-	public Date getOpenTime() {
+	public LocalTime getOpenTime() {
 		return openTime;
 	}
-	public void setOpenTime(Date openTime) {
+	public void setOpenTime(LocalTime openTime) {
 		this.openTime = openTime;
 	}
-	public Date getCloseTime() {
+	public LocalTime getCloseTime() {
 		return closeTime;
 	}
-	public void setCloseTime(Date closeTime) {
+	public void setCloseTime(LocalTime closeTime) {
 		this.closeTime = closeTime;
 	}
 	public void addContent(String contentId) {

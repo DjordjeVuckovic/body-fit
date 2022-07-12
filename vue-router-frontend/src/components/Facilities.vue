@@ -78,6 +78,7 @@
 import Facilitie from './Facilitie.vue'
 import Map from '@/components/Map.vue'
 import FacilitieService from "@/FrontedServices/FacilitieServices";
+import moment from "moment";
     export default{
         name: 'Facilities-multi',
         props: {
@@ -126,6 +127,9 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
           },
           sortList() {
             console.log(this.selected)
+            if (this.selected == 'Default') {
+              this.facilities.sort((x, y) => (x.status > y.status ? -1 : 1));
+            }
             if (this.selected == 'NameASC') {
               this.facilities.sort((x, y) => (x.name < y.name ? -1 : 1));
             }
@@ -146,15 +150,26 @@ import FacilitieService from "@/FrontedServices/FacilitieServices";
             }
         },
           filterByType(facility){
-        let ret = false
-        if(facility.type === undefined ||  this.filterMe===undefined) {return}
-        if(this.filterMe === facility.type || this.filterMe === 'ALL') {
-          ret = true
-        }
-        if(this.checked && facility.status === 'Closed'){
-          ret = false
-        }
-        return ret
+            // let date = new Date()
+            // let mom = moment(date)
+            // let mom1 = moment(facility.startTime)
+            // console.log(mom1)
+            // if( mom.isBetween(moment(facility.startTime),moment(facility.finishTime))){
+            //   console.log("Working")
+            // }
+            // else{
+            //   console.log("Not working")
+            // }
+            //console.log(moment(facility.finishTime).isAfter(date))
+            let ret = false
+            if(facility.type === undefined ||  this.filterMe===undefined) {return}
+            if(this.filterMe === facility.type || this.filterMe === 'ALL') {
+              ret = true
+            }
+            if(this.checked && facility.status === 'Not working'){
+              ret = false
+            }
+            return ret
       }
     },
       emits:['selectFacilitie']

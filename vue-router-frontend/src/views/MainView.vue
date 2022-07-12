@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" style="margin-top: 150px">
-  <div id="main">
-    <Header title="You have successfully created an account!"></Header>
+  <div id="main" class="container-fluid">
+    <Header class="headMy" title="You have successfully submitted form!"></Header>
   </div>
   </div>
 </template>
@@ -22,6 +22,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #2691d9;
+}
+.headMy{
+  text-align: center;
+  vertical-align: center;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  font-size: 7em;
   color: #2691d9;
 }
 .container {
