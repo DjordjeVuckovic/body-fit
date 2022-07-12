@@ -33,8 +33,6 @@
       
     </div>
     </div>
-    
-     
     <div v-if="viewTreningsBoole" class="row">
       <h1 class="headMy">Available trainings</h1>
       <div   class="py-5 mx-5">

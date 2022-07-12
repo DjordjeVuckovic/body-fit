@@ -1,7 +1,7 @@
 <template >
 <div class = "facilitie container-fluid p-5" >
   <div class="row">
-  <div class="col-lg-6 pt-3 pb-3">
+  <div class="col-lg-4 pt-3 pb-3">
   <table class="table">
     <thead class="table-dark">
     <th class="name justify-content-end" scope="col">{{facilitie.name}}</th>
@@ -77,12 +77,12 @@
     <button  style="margin: 50px;"  v-if="selectedFacilitie && viewComentsBoole" class="btn btn-primary mb-3 btn-lg  buttonMyRed"  @click.prevent="$emit('hideComments')">Hide comments</button>
     <button style="margin: 50px;" v-if="selectedFacilitie  && viewTreningsBoole" class="btn btn-primary mb-3 btn-lg  buttonMyRed"  @click.prevent="$emit('hideTrenings')">Hide trainings</button>
   </div>
-  <div class="col-lg- ico pt-3 pb-3 justify-items-center" style="margin-top: 150px; height: 450px; width: 450px;" >
+  <div class="col-lg-3 ico pt-3 pb-3 justify-items-center" style="margin-top: 150px; height: 450px; width: 450px;" >
     <span class="d-block">
     <img  :src="getImgUrl(facilitie.name)" :alt="facilitie.name" class="ico"/>
       </span>
   </div>
-    <div class="col p-5" v-if="selectedFacilitie" style="margin-left:250px ; margin-top:50px ; border-color: blue;">
+    <div class="col-lg-5 p-5 im" v-if="selectedFacilitie" style="margin-left:300px ; margin-top:50px ; border-color: blue;">
         <MapOne :latitude="facilitie.lat" :longitude="facilitie.longi"></MapOne>
       </div>
   </div>
@@ -117,6 +117,13 @@ export default{
 
 
 <style scoped>
+.im{
+  border-left: 3px solid blue;
+  padding-left: 50px;
+}
+.ima{
+  border-right: 3px solid blue;
+}
 .fas {
   color: red;
 }
