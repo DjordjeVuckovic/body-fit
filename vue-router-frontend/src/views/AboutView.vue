@@ -1,27 +1,4 @@
 <template>
-  <div id="my">
-    <div>
-      <h1>Customize with Props</h1>
-      
-          squared-tabs
-          card-background
-          navigable-tabs
-          :custom-tabs="[
-          {
-            title: 'Step 1',
-          },
-          {
-            title: 'Step 2',
-          },
-        ]"
-          :beforeChange="onTabBeforeChange"
-          @change="onChangeCurrentTab"
-      >
-        <CreateManagerForFacilitie v-if="currentTabIndex === 0"/>
-        <h5 v-if="currentTabIndex === 1">Tab 1</h5>
-      
-    </div>
-  </div>
 </template>
 
 <script>
@@ -54,12 +31,4 @@ export default {
 </script>
 
 <style scoped>
-#my {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

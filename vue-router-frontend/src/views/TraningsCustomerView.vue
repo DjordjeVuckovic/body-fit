@@ -19,7 +19,7 @@
       </div>
       <div class="col-sm-1">
         <div class="textual">
-          <label>Sort facilities:</label>
+          <label>Sort trainings:</label>
         </div>
         <div class="textual">
           <select id="sort" name="sort" class="form-select" aria-label="Default select example" v-model="selected" style="{width: 200px;}" @change="sortList()">
@@ -71,6 +71,16 @@
         </div>
       </div>
     </div>
+<!--    <div class="textual">-->
+<!--      <div class="textual"><label for="search">First price:</label></div>-->
+<!--      <div class="textual dates">-->
+<!--        <input class="form-control me-2" type="number" style="width: 50px" v-model="price1" autofocus required /></div>-->
+<!--    </div>-->
+<!--    <div class="textual">-->
+<!--      <div class="textual"><label for="search">Second price:</label></div>-->
+<!--      <div class="textual dates">-->
+<!--        <input class="form-control me-2" type="number" style="width: 50px" v-model="price2" autofocus required /></div>-->
+<!--    </div>-->
   </nav>
   </div>
   <div class="container-fluid px-5">
@@ -121,7 +131,9 @@ export default {
       filterUp:[],
       startDate:'',
       finishDate:'',
-      checked:false
+      checked:false,
+      price1:0,
+      price2:0
     }
   },
   created() {
@@ -165,7 +177,7 @@ export default {
           const DateS = moment(this.startDate)
           const DateF = moment(this.finishDate)
           const itemDate = moment(item.dateTraining)
-          if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF) ){
+          if(itemDate.isAfter(DateS) && itemDate.isBefore(DateF)){
             return this.searchQuery.toLowerCase().split(' ').every(v => item.sportFacility.name.toLowerCase().includes(v))
           }
           else{

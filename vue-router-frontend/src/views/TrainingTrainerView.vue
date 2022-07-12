@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-1">
           <div class="textual">
-            <label>Sort facilities:</label>
+            <label>Sort trainings:</label>
           </div>
           <div class="textual">
             <select id="sort" name="sort" class="form-select" aria-label="Default select example" v-model="selected" style="{width: 200px;}" @change="sortList()">
@@ -313,7 +313,6 @@ export default {
       }
     },
     sortList() {
-      console.log(this.selected)
       if(this.selected =='Default'){
         this.trainings.sort((x, y) => (x.traning.additionalPrice < y.traning.additionalPrice ? -1 : 1));
         this.trainingsPassed.sort((x, y) => (x.traning.additionalPrice < y.traning.additionalPrice ? -1 : 1));

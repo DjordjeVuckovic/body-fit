@@ -57,6 +57,15 @@
           </tr>
           <tr>
             <td>
+              <label>Description: </label>
+            </td>
+            <td>
+              <!--            <label>{{getFacility(training.sportFacilityId)}}</label>-->
+              <label>{{training.description}}</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <label>Facility name: </label>
             </td>
             <td>
