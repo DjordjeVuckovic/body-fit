@@ -18,12 +18,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Adress;
+import beans.Customer;
 import beans.FacilityType;
 import beans.Membership;
 import beans.MembershipType;
 import beans.PromoCode;
 import beans.RandomGenerator;
 import beans.SportFacility;
+import beans.User;
 import dao.MembershipDao;
 import dto.FacilityViewDto;
 import dto.MembershipViewDto;
@@ -85,16 +87,32 @@ public class MembershipService {
 	public Membership createMembership(MembershipViewDto membershipViewDto) {
 		membershipDao.setBasePath(getContext());
 		Membership membership = new Membership(RandomGenerator.usingRandomUUID(),MembershipType.valueOf(membershipViewDto.type),membershipViewDto.paymentDate,
-				membershipViewDto.dateAndTimeOfValidity,membershipViewDto.price, membershipViewDto.customerId, true, membershipViewDto.numberOfSession);
+				membershipViewDto.dateAndTimeOfValidity,membershipViewDto.price, membershipViewDto.customerId, true, membershipViewDto.numberOfSession,membershipViewDto.startSesions);
 		ArrayList<Membership> allMemberships = membershipDao.getAllToList();
 		for (Membership membership2 : allMemberships) {
-			if (membership2.isActive() && membership.getCustomerId()==membership2.getCustomerId()) {
+			if ( membership.getCustomerId().equals(membership2.getCustomerId())) {
 				membership2.setActive(false);
 				membershipDao.update(membership2);
 			}
 		}
 		membershipDao.create(membership);
 		return membership;
+	}
+	
+	@POST
+	@Path("/getByCustomer")	
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Membership getByCustomer(String customer) {
+		membershipDao.setBasePath(getContext());
+		ArrayList<Membership> allMemberships = membershipDao.getAllToList();
+		for (Membership membership : allMemberships) {
+			if (membership.isActive() && membership.getCustomerId().equals(customer)) {
+				return membership;
+			}
+		}
+		return null;
+		
 	}
 	
 	@PUT
@@ -111,4 +129,18 @@ public class MembershipService {
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
 
 	}
-}
+	
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/expired")
+	public Membership expired(Membership membership) {
+		membershipDao.setBasePath(getContext());
+		Membership m = membershipDao.getById(membership.getId());
+		
+		m.setActive(false);	
+		membershipDao.update(m);
+		return m;
+	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
+		}
+	}

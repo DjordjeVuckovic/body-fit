@@ -1,5 +1,11 @@
 {
   "mikiia": {
+    "visitedFacilities": [],
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    },
     "colletedPoints": 11.0,
     "username": "mikiia",
     "password": "mikia",
@@ -12,6 +18,12 @@
     "banned": false
   },
   "djokaa": {
+    "visitedFacilities": [],
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    },
     "colletedPoints": 144.0,
     "username": "Djoka",
     "password": "Djokovic",
@@ -36,6 +48,12 @@
     "banned": false
   },
   "aa": {
+    "visitedFacilities": [],
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    },
     "colletedPoints": 11.0,
     "username": "aa",
     "password": "lazarevic",
@@ -48,6 +66,12 @@
     "banned": false
   },
   "lm": {
+    "visitedFacilities": [],
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    },
     "colletedPoints": 11.0,
     "username": "lm",
     "password": "mikia",

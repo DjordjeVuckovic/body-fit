@@ -11,6 +11,12 @@ public class Customer extends User {
 	
 
 	
+	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,ArrayList<String> visitedFacilities, CustomerType customerType, double colletedPoints,UserRole userRole) {
+		super(username, password, name, surname, birthdate, gender,userRole);
+		this.visitedFacilities = visitedFacilities;
+		this.customerType = customerType;
+		this.colletedPoints = colletedPoints;
+	}
 	public Customer(String username, String password, String name, String surname, Date birthdate, Gender gender,
 			UserRole userRole, double colletedPoints) {
 		super(username, password, name, surname, birthdate, gender, userRole);

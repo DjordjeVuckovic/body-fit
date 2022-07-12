@@ -6,8 +6,9 @@
     "dateAndTimeOfValidity": "Aug 9, 2022, 2:00:00 AM",
     "price": 2000,
     "customerId": "vc",
-    "isActive": true,
-    "numberOfSession": 16
+    "isActive": false,
+    "numberOfSession": 16,
+    "startSesions":16
   },
   "4adc36ec-067e-45e8-8a00-2518c2a20043": {
     "id": "4adc36ec-067e-45e8-8a00-2518c2a20043",
@@ -16,8 +17,9 @@
     "dateAndTimeOfValidity": "Aug 9, 2022, 2:00:00 AM",
     "price": 1600,
     "customerId": "vc",
-    "isActive": true,
-    "numberOfSession": 16
+    "isActive": false,
+    "numberOfSession": 16,
+    "startSesions":16
   },
   "7ac91f8a-f4d0-48b4-8967-ba26e6c0af24": {
     "id": "7ac91f8a-f4d0-48b4-8967-ba26e6c0af24",
@@ -27,6 +29,62 @@
     "price": 5500,
     "customerId": "vc",
     "isActive": true,
-    "numberOfSession": 16
+    "numberOfSession": 16,
+    "startSesions":16
+  },
+  "93a7d22b-e97b-45b9-acca-4a0a7fb56639": {
+    "id": "93a7d22b-e97b-45b9-acca-4a0a7fb56639",
+    "type": "THREE_MONTHS",
+    "paymentDate": "Jul 12, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Oct 12, 2022, 2:00:00 AM",
+    "price": 5500,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfSession": 48,
+    "startSesions":48
+  },
+  "00d2fb2d-19e0-418a-a7d6-eb1eb8d73f22": {
+    "id": "00d2fb2d-19e0-418a-a7d6-eb1eb8d73f22",
+    "type": "THREE_MONTHS",
+    "paymentDate": "Jul 12, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Oct 12, 2022, 2:00:00 AM",
+    "price": 4400,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfSession": 48,
+    "startSesions":48
+  },
+  "2b409e53-94a4-445d-94de-5e835cbf57eb": {
+    "id": "2b409e53-94a4-445d-94de-5e835cbf57eb",
+    "type": "THREE_MONTHS",
+    "paymentDate": "Jul 12, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Oct 12, 2022, 2:00:00 AM",
+    "price": 4400,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfSession": 48,
+    "startSesions":48
+  },
+  "3eb816bf-795d-4b04-9efd-0cf721a02eb2": {
+    "id": "3eb816bf-795d-4b04-9efd-0cf721a02eb2",
+    "type": "THREE_MONTHS",
+    "paymentDate": "Jul 12, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Oct 12, 2022, 2:00:00 AM",
+    "price": 4400,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfSession": 48,
+    "startSesions":48
+  },
+  "dab85ed6-892c-48a5-a4d5-634b38d147a9": {
+    "id": "dab85ed6-892c-48a5-a4d5-634b38d147a9",
+    "type": "THREE_MONTHS",
+    "paymentDate": "Jul 12, 2022, 2:00:00 AM",
+    "dateAndTimeOfValidity": "Oct 12, 2022, 2:00:00 AM",
+    "price": 4400,
+    "customerId": "mikiia",
+    "isActive": true,
+    "numberOfSession": 48,
+    "startSesions":48
   }
 }

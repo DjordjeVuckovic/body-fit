@@ -4,7 +4,8 @@
       <NavigationBar  @sign-out="signOut" :logedInUser="logedInUser" :isAdmin="isAdmin" :isTrainer="isTrainer" :isManager="isManager"  :isCustomer ="isCustomer"></NavigationBar>
       <router-view style="padding-top:120px ;" @selectFacilitie="SelectFacilitie" @rateFacility="rateFacility"  @account="account" @loggedIn="logggUser" :logedInUser="logedInUser" :selectedFacilitie="selectedFacilitie"
       :isAdmin="isAdmin" :isManager="isManager" :isCustomer ="isCustomer" :isTrainer="isTrainer"/>
-
+      <vue-basic-alert :duration="200" :closeIn="7000" ref="alert"></vue-basic-alert>
+      <vue-basic-alert :duration="200" :closeIn="5000" ref="alert2"></vue-basic-alert>
   </div>
 <!--  <MyFooter/>-->
 </template>
@@ -13,6 +14,8 @@
 import NavigationBar from './components/NavigationBar.vue'
 import axios from "axios";
 import MyFooter from "@/MyFooter";
+import moment from "moment"
+import VueBasicAlert from 'vue-basic-alert'
 
 export default{
   name:'App',
@@ -25,6 +28,7 @@ export default{
               console.log(this.logedInUser.userRole)
               if (this.logedInUser.userRole == "CUSTOMER"){
                 this.isCustomer = true
+                this.findMembership()
               }
               if (this.logedInUser.userRole === "ADMIN"){
                 this.isAdmin = true
@@ -38,6 +42,84 @@ export default{
               this.$router.push({name : 'Facilities'})
              })
             .catch((error) => console.log(error))
+    },
+    findMembership(){
+      axios.post("http://localhost:8080/BodyFit/rest/memberships/getByCustomer",this.logedInUser.username)
+            .then((response) => {
+              console.log(response.data)
+                this.membership =response.data
+                
+                this.calculateMembership()
+             })
+            .catch((error) => console.log(error))
+    },
+    calculateMembership(){
+      var today = new Date();
+      if(moment(this.membership.dateAndTimeOfValidity).isBefore(today)){
+        console.log("uso if")
+        this.membership.isActive= false
+        this.logedInUser.colletedPoints = ((this.membership.price/1000)*(this.membership.startSesions-this.membership.numberOfSession))
+        if((this.membership.startSesions-this.membership.numberOfSession)<this.membership.startSesions/3){
+          this.logedInUser.colletedPoints =  this.logedInUser.colletedPoints -((this.membership.price/1000)*133*4)
+        }
+        this.scalePoints()
+        var customerDto={
+          username: this.logedInUser.username,
+          colletedPoints: this.logedInUser.colletedPoints,
+          userType:this.userTypeName,
+          dicount:this.userDisc
+          }
+        console.log(customerDto)
+        axios.put("http://localhost:8080/BodyFit/rest/customers/editCustomerPoints",customerDto)
+          .then((response) => {
+            
+            console.log(response.data)
+                 this.$refs.alert 
+                        .showAlert('info','Your membership has expired. your new user type is '+ this.userTypeName,'congratulations!')
+
+                
+          })
+          .catch((error) => console.log(error))
+        console.log(this.membership)
+        var mem ={
+          id: this.membership.id,
+          type:this.membership.type,
+          paymentDate: this.membership.paymentDate,
+          dateAndTimeOfValidity: this.membership.dateAndTimeOfValidity,
+          price: this.membership.price,
+          customerId:this.membership.customerId,
+          active: this.membership.active,
+          numberOfSession:this.membership.numberOfSessionid,
+          startSesions: this.membership.startSesions
+        }
+          console.log(mem)
+          axios.put("http://localhost:8080/BodyFit/rest/memberships/expired",mem)
+          .then((response) => {
+            
+            console.log(response.data)
+                 
+          })
+          .catch((error) => console.log(error))
+        }
+        
+      
+    },
+    scalePoints(){
+      if(this.logedInUser.colletedPoints < 10){
+        this.userTypeName = 'BRONZE'
+      }
+      else if (this.logedInUser.colletedPoints >= 10 && this.logedInUser.colletedPoints > 20){
+        this.userTypeName = 'SILVER'
+        this.userDisc = 5
+      }
+      else if (this.logedInUser.colletedPoints >= 20 && this.logedInUser.colletedPoints > 30){
+        this.userTypeName = 'GOLD'
+        this.userDisc = 10
+      }
+      else if (this.logedInUser.colletedPoints >= 30 ){
+        this.userTypeName = 'DIMOND'
+        this.userDisc = 20
+      }
     },
     signOut(){
       this.logedInUser = null
@@ -82,12 +164,16 @@ export default{
       selectedFacilitie: null,
       isManager: false,
       isCustomer: false,
-      isTrainer:false
+      isTrainer:false,
+      membership: null,
+      userTypeName: '',
+      userDisc: ''
     }
   },
   components:{
     MyFooter,
-    NavigationBar
+    NavigationBar,
+    VueBasicAlert
   }
  
 }
@@ -176,7 +262,7 @@ body {
   font-size: 20px;
   padding-bottom:10px;
 }
-.
+
 .checkbox{
   width: 20px;
   height: 20px;

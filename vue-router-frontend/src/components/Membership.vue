@@ -78,7 +78,8 @@ export default {
                 price: this.membership.price,
                 customerId:this.logedInUser.username,
                 isActive: true,
-                numberOfSession: this.membership.numberOfSession
+                numberOfSession: this.calculateNumberOfSessions(),
+                startSesions: this.calculateNumberOfSessions()
             }
 
              axios.post("http://localhost:8080/BodyFit/rest/memberships/",newmembership)
@@ -96,6 +97,20 @@ export default {
             
              this.$refs.alert 
                     .showAlert('success','Yuu have successfully bought membership','congratulations!')
+        },
+        calculateNumberOfSessions(){
+             if(this.type=="MONTH"){
+                return this.membership.numberOfSession;
+            }
+            else if(this.type=="THREE_MONTHS"){
+                return this.membership.numberOfSession * 3;
+            }
+            else if(this.type=="SIX_MONTHS"){
+                return this.membership.numberOfSession * 6;
+            }
+            else if(this.type=="YEAR"){
+               return this.membership.numberOfSession * 12;
+            }
         },
         calculateEndDate(){
             let today;

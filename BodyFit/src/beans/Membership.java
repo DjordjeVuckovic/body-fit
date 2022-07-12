@@ -11,10 +11,16 @@ public class Membership {
 	private String customerId;
 	private boolean isActive;
 	private int numberOfSession;
+	private int startSesions;
 	
 	
+	public Membership() {
+		super();
+	}
+
+
 	public Membership(String id, MembershipType type, Date paymentDate, Date dateAndTimeOfValidity, int price, String customerId,
-			boolean status, int numberOfSession) {
+			boolean status, int numberOfSession,int startSesions) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -24,9 +30,20 @@ public class Membership {
 		this.customerId = customerId;
 		this.isActive = status;
 		this.numberOfSession = numberOfSession;
+		this.startSesions=startSesions;
 	}
 	
 	
+	public int getStartSesions() {
+		return startSesions;
+	}
+
+
+	public void setStartSesions(int startSesions) {
+		this.startSesions = startSesions;
+	}
+
+
 	public String getId() {
 		return id;
 	}
