@@ -133,9 +133,13 @@ public class ScheduleTraningService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<ScheduleTraningDto> getAllByFacility(String id){
 		scheduleTrainingDao.setBasePath(getContext());
+		trainingDao.setBasePath(getContext());
+		facilityDao.setBasePath(getContext());
 		ArrayList<ScheduleTraningDto> scheduleTraningDtos = new ArrayList<ScheduleTraningDto>();
-		for(ScheduleTraning scheduleTraning: getAllByManager(id)) {
-			scheduleTraningDtos.add(new ScheduleTraningDto(scheduleTraning));
+		for(ScheduleTraning training: getAllByManager(id)) {
+			Training tr = trainingDao.getById(training.getTraningId());
+			SportFacility facility = facilityDao.getById(tr.getSportFacilityId());
+			scheduleTraningDtos.add(new ScheduleTraningDto(training.getDateAssign(),training.getDateTraining(),training.getTraningId(),training.getCustomerId(),FormatDate(training.getStartTime()),FormatDate(training.getFinishTime()),training.getId(),training.isStatus(),tr,facility));
 		}
 		return scheduleTraningDtos;
 	}
