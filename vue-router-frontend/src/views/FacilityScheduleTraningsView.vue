@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark p-5 text-light" style="margin-top: 100px">
+  <nav class="navbar navbar-dark bg-dark p-5 text-light" style="margin-top: 110px">
     <div class="container-fluid mx-5">
       <div class="col-1 textual">
         <div class="textual"><label for="search">Start date:</label></div>

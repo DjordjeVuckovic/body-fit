@@ -106,6 +106,7 @@ export default {
             console.log("Success")
           }
       )
+      this.$router.push({name : 'MainView'})
     },
     getAll() {
       axios.get("http://localhost:8080/BodyFit/rest/contents").then(

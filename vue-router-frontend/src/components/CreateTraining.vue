@@ -1,6 +1,5 @@
 <template>
-  <div class="container-fluid" style="margin-top: 150px">
-  </div>
+  <div class="container-fluid" style="margin-top: 50px">
   <form class="center">
     <h1>Add  training</h1>
     <InputBase
@@ -46,16 +45,19 @@
       <input @click.prevent="CreateTraining"  class="submiter btn btn-primary btn-lg" value="Finish" :disabled="isDisabled"/>
     </div>
   </form>
+    <vue-basic-alert :duration="200" :closeIn="5000" ref="alert"></vue-basic-alert>
+  </div>
 </template>
 
 <script>
 import InputBase from "@/components/InputBase";
 import AllTrainers from "@/components/AllTrainers";
 import TrainingService from "@/FrontedServices/TrainingService";
+import VueBasicAlert from "vue-basic-alert";
 import axios from "axios";
 export default {
   name: "CreateTraining",
-  components:{InputBase,AllTrainers,TrainingService},
+  components:{InputBase,AllTrainers,TrainingService,VueBasicAlert},
   data() {
     return {
       name:'',
@@ -89,7 +91,8 @@ export default {
     checkName() {
       if (this.trainings.some(code => code.name.toLowerCase() === this.name.toLowerCase())) {
         this.error = "Wrong name.Please choose another name!";
-        alert(this.error);
+        this.$refs.alert.showAlert('error','Wrong name.Please choose another name!','Error')
+        //alert(this.error);
         this.isDisabled = true
       } else if (!this.name) {
         this.isDisabled = true
@@ -103,6 +106,10 @@ export default {
       if(this.trainer != null){
         trainerIdd = this.trainer.username
       }
+      if(!this.name && !this.type && !this.description && !this.duration && !this.additionalPrice){
+        this.$refs.alert.showAlert('error','Please fill up fields correctly','Error')
+        return
+      }
       const training = {
         name: this.name,
         type: this.type,
@@ -115,6 +122,7 @@ export default {
       TrainingService.createTraining(training)
           .then((response)=>{console.log(response.data)})
           .catch((error) => console.log(error))
+      this.$router.push({name : 'MainView'})
     },
     getAll() {
       TrainingService.getTrainings().then((response) => {

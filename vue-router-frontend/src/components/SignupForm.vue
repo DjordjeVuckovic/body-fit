@@ -12,7 +12,7 @@
         <label class="form-label labelMy">Pasword:</label>
         <input v-model="user.password" class="form-control inputMy" type="password" placeholder="Password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
         <div class="d-grid gap-2 col-5 mx-auto">
-            <input  type="submit" class="btn btn-primary submiter" value="login" />
+            <input @click="Validate" type="submit" class="btn btn-primary submiter" value="login" />
         </div>
         
         <div class="signup_link">
@@ -20,22 +20,30 @@
             <router-link to="/registration" ><a>Signup</a></router-link>
         </div>
     </form>
+    <vue-basic-alert :duration="200" :closeIn="5000" ref="alert"></vue-basic-alert>
   </div>
 </template>
 
 <script>
 import InputBase from "@/components/InputBase";
+import VueBasicAlert from "vue-basic-alert";
 export default {
-  components: {InputBase},
+  components: {InputBase,VueBasicAlert},
   data(){
         return{
             user:{
                 password: '',
                 username: ''
             }
-           
         }
+    },
+  methods:{
+    Validate(){
+      if(!this.user.password && !this.user.username)
+      this.$refs.alert
+          .showAlert('warning','Plese fulfill date of validaty correctly ','warning')
     }
+  }
 }
 </script>
 

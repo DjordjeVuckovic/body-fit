@@ -168,7 +168,7 @@ export default {
         axios.post("http://localhost:8080/BodyFit/rest/newFacilitie/setManager/",this.availableManager)
             .then((response)=>{console.log(this.availableManager)})
             .catch((error) => console.log(error))
-        this.$router.push('Facilities')
+        this.$router.push({name : 'MainView'})
       },
       ChangeView(){
         this.step1 = false

@@ -1,11 +1,13 @@
 <template>
-  <div class="container-fluid" style="margin-top: 150px">
+  <div class="container-fluid" style="margin-top: 100px">
     <form class="center" @submit.prevent="createUser">
       <h1>Create new  trainer </h1>
       <label>Username:</label>
       <input type="text" placeholder="Enter username..." v-model="user.username" required>
       <label>Password:</label>
       <input v-model="user.password" type="password" required placeholder="Enter password...">
+      <label>Confirm Password:</label>
+      <input v-model="passwordCheck" type="password"  placeholder="Enter password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
       <label>Name:</label>
       <input v-model="user.name" type="text" required placeholder="Enter name...">
       <label>Surname:</label>
@@ -19,11 +21,13 @@
       </select>
       <input type="submit" class="inputButton" value="Sign up"/>
     </form>
+    <vue-basic-alert :duration="200" :closeIn="5000" ref="alert"></vue-basic-alert>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import VueBasicAlert from "vue-basic-alert";
 export default {
   name: "registerUser",
   data() {
@@ -35,16 +39,40 @@ export default {
         surname: '',
         birthday: '',
         gender: ''
-      }
+      },
+      passwordCheck:'',
+      users:[]
     }
+  },
+  components:{
+    VueBasicAlert
   },
   methods: {
     createUser() {
+      if (this.users.some(code=> code.toLowerCase() === this.user.username.toLowerCase()))
+      {
+        this.error = "Wrong credentials.Please choose another username!";
+        //alert(this.error);
+        this.$refs.alert.showAlert('error','Chosen username already taken!','Error')
+        return;
+      }
+      if(this.user.password !== this.passwordCheck){
+        this.$refs.alert.showAlert('error','Passwords not matching','Error')
+        return;
+      }
+      if(!this.user.username && !this.user.password && !this.user.name &&  !this.user.surname && !this.user.birthday && this.user.gender){
+        this.$refs.alert.showAlert('error','Please fill up fields correctly','Error')
+        return;
+      }
       axios.post("http://localhost:8080/BodyFit/rest/trainers", this.user)
           .then((response) => console.log(response))
           .catch((error) => console.log(error))
       this.$router.push({name : 'MainView'})
     }
+  },
+  created() {
+    axios.get("http://localhost:8080/BodyFit/rest/login/getUsernames")
+        .then(response => (this.users = response.data))
   }
 }
 </script>
@@ -58,7 +86,7 @@ export default {
   color: #2691d9;
 }
 form {
-  max-width: 420px;
+  max-width: 520px;
   margin: 30px auto;
   background: rgb(242, 242, 240);
   text-align: left;

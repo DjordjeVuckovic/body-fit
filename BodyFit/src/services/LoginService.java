@@ -126,7 +126,7 @@ public class LoginService   {
 		return null;
 		
 	}
-	@POST
+	@GET
 	@Path("getUsernames")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<String> getAllUserNames(){
@@ -136,16 +136,16 @@ public class LoginService   {
 		trainerDao.setBasePath(getContext());
 		ArrayList<String> usernames = new ArrayList<String>();
 		for (User user : customerDao.getAllToList()) {
-			usernames.add(user.getName());
+			usernames.add(user.getUsername());
 		}
 		for (User user : managerDao.getAllToList()) {
-			usernames.add(user.getName());
+			usernames.add(user.getUsername());
 		}
 		for (User user : adminDao.getAllToList()) {
-			usernames.add(user.getName());
+			usernames.add(user.getUsername());
 		}
 		for (User user : trainerDao.getAllToList()) {
-			usernames.add(user.getName());
+			usernames.add(user.getUsername());
 		}
 		this.usernames = usernames;
 		return usernames;

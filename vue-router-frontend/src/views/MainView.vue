@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" style="margin-top: 50px">
     <div id="main" class="container-fluid">
-      <HeaderMulti class="headMy" title="You have successfully submitted form!"></HeaderMulti>
+      <h1 class="headMy" >You have successfully submitted form!</h1>
       <div class="center">
         <img src="../../success.png">
       </div>
@@ -40,7 +40,7 @@ export default {
   vertical-align: center;
   padding-top: 0.5em;
   padding-left: 0.5em;
-  font-size: 7em;
+  font-size: 5em;
   color: #2691d9;
 }
 .container {

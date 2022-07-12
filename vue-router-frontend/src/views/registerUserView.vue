@@ -7,8 +7,10 @@
   <label>Password:</label>
   <input v-model="user.password" type="password"  placeholder="Enter password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
     <div id="passwordHelpBlock" class="form-text">
-      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+      Your password must be least 1 character long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
     </div>
+    <label>Confirm Password:</label>
+    <input v-model="passwordCheck" type="password"  placeholder="Enter password..." id="inputPassword5"  aria-describedby="passwordHelpBlock" required>
   <label>Name:</label>
   <input v-model="user.name" type="text"  placeholder="Enter name..." required>
   <label>Surname:</label>
@@ -21,10 +23,11 @@
     <option value="female">Female</option>
   </select>
   <div class="d-grid gap-2 col-5 " style="margin-left: 30px;">
-    <input type="submit" class="inputButton" value="Sign up"/>
+    <input type="submit"  class="inputButton" value="Sign up"/>
   </div>
   
   </form>
+    <vue-basic-alert :duration="200" :closeIn="5000" ref="alert"></vue-basic-alert>
   <div class="centerp">
   <p >{{error}}</p>
   </div>
@@ -36,6 +39,7 @@
 <script>
 import axios from "axios";
 import Facilities from "@/components/Facilities";
+import VueBasicAlert from "vue-basic-alert";
 export default {
   name: "registerUser",
   data(){
@@ -49,18 +53,29 @@ export default {
         gender:''
       },
       error:'',
-      props: {
-        users: Array
-      }
+      passwordCheck:'',
+      users:[]
     }
+  },
+  components:{
+    VueBasicAlert
   },
   methods:{
     createUser(){
       console.log(this.users)
-      if (this.users.some(code=> code.username.toLowerCase() === this.user.username.toLowerCase()))
+      if (this.users.some(code=> code.toLowerCase() === this.user.username.toLowerCase()))
       {
         this.error = "Wrong credentials.Please choose another username!";
-        alert(this.error);
+        //alert(this.error);
+        this.$refs.alert.showAlert('error','Chosen username already taken!','Error')
+        return;
+      }
+      if(this.user.password !== this.passwordCheck){
+        this.$refs.alert.showAlert('error','Passwords not matching','Error')
+        return;
+      }
+      if(!this.user.username && !this.user.password && !this.user.name &&  !this.user.surname && !this.user.birthday && this.user.gender){
+        this.$refs.alert.showAlert('error','Please fill up fields correctly','Error')
         return;
       }
       axios.post("http://localhost:8080/BodyFit/rest/customers",this.user)
@@ -70,10 +85,12 @@ export default {
     },
     goToLogin(){
       this.$router.push("About");
+    },
+    Validate(){
     }
   },
   created() {
-    axios.get("http://localhost:8080/BodyFit/rest/customers")
+    axios.get("http://localhost:8080/BodyFit/rest/login/getUsernames")
         .then(response => (this.users = response.data))
   }
 }

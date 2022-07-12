@@ -118,11 +118,6 @@ export default {
         }
         ScheduleTraningService.createScheduleTraining(scheduleTraining)
         this.$refs.alert.showAlert('success', 'You have successfully schedule training ', 'Congratulations!')
-        // for (let i = 0; i < 2; i++) {
-        //   console.log(`Waiting ${i} seconds...`);
-        //   new Promise(resolve => setTimeout(resolve, i * 1000))
-        // }
-        // this.$router.push({name: 'Facilities'})
       
       }
       
