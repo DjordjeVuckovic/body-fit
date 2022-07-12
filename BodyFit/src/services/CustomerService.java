@@ -16,9 +16,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Customer;
+import beans.CustomerType;
 import beans.Manager;
+import beans.Membership;
 import beans.User;
 import dao.CustomerDao;
+import dto.CustomerDto;
 import dto.UserDto;
 @Path("customers")
 public class CustomerService {
@@ -66,6 +69,21 @@ public class CustomerService {
 		c.setName(customer.name);
 		c.setSurname(customer.surname);
 		c.setPassword(customer.password);
+		customerDao.update(c);
+		return c;
+	   //return Response.status(200).entity("getUserById is called, id : " + id).build();
+
+	}
+	
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/editCustomerPoints")
+	public User editCustomerPoints(CustomerDto customer) {
+		customerDao.setBasePath(getContext());
+		Customer c = customerDao.getById(customer.username);
+		c.setColletedPoints(customer.colletedPoints);
+		c.setCustomerType(new CustomerType(customer.userType, customer.dicount, 0));
 		customerDao.update(c);
 		return c;
 	   //return Response.status(200).entity("getUserById is called, id : " + id).build();

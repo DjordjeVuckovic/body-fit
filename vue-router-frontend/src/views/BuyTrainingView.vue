@@ -15,7 +15,7 @@
         <input class="inputBase form-control" v-model="finishTime" type="time"/>
       </div>
       <div class="d-grid gap-2 col-5 mx-auto">
-        <input @click.prevent="BuyTraining"  class="submiter btn btn-primary btn-lg" value="Finish"/>
+        <input @click.prevent="getMemebership"  class="submiter btn btn-primary btn-lg" value="Finish"/>
       </div>
       <vue-basic-alert :duration="200" :closeIn="5000" ref="alert"></vue-basic-alert>
     </form>
@@ -48,6 +48,8 @@ export default {
       isDisabled:false,
       trainer:{},
       trainerId:'',
+      membership:null,
+      noMembership:false
     }
   }
   ,created() {
@@ -77,11 +79,30 @@ export default {
           }
       )
     },
+    getMemebership(){
+      axios.post("http://localhost:8080/BodyFit/rest/memberships/getByCustomer",this.logedInUser.username)
+            .then((response) => {
+              console.log(response.data)
+                this.membership =response.data;
+                if(this.membership.numberOfSession<=0 ){
+                  console.log("usoo1")
+                  this.$refs.alert
+                  .showAlert('error','Your membership has expired ','warning')
+                }
+                else{
+                  this.BuyTraining();
+                }
+             })
+            .catch((error) => this.$refs.alert
+                  .showAlert('error','Your membership has expired ','warning'))
+
+            
+    },
     BuyTraining() {
-      function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-      let today = new Date();
+      
+      
+      
+        let today = new Date();
       if(moment(this.date).isBefore(today)){
         this.$refs.alert
             .showAlert('error','Plese fulfill date of validaty correctly ','warning')
@@ -102,7 +123,9 @@ export default {
         //   new Promise(resolve => setTimeout(resolve, i * 1000))
         // }
         // this.$router.push({name: 'Facilities'})
+      
       }
+      
     }
   },
     props:{

@@ -13,6 +13,7 @@ public class MembershipViewDto {
 	public String customerId;
 	public boolean isActive;
 	public int numberOfSession;
+	public int startSesions;
 	public MembershipViewDto(Membership membership) {
 		this.type = membership.getType().toString();
 		this.paymentDate = membership.getPaymentDate();
@@ -21,6 +22,7 @@ public class MembershipViewDto {
 		this.customerId = membership.getCustomerId();
 		this.isActive = membership.isActive();
 		this.numberOfSession = membership.getNumberOfSession();
+		this.startSesions = membership.getStartSesions();
 	}
 	public MembershipViewDto() {	
 	}
