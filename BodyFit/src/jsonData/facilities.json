@@ -3,13 +3,25 @@
     "sportFacilityId": "1",
     "name": "Synergy",
     "type": "GYM",
-    "isWorking": false,
+    "isWorking": true,
     "currentLocation": {
       "streetAndNumber": "Veselina Maslese 74",
       "city": "Novi Sad",
       "postalCode": "2100",
       "latitude": "45.26031035752238",
       "longitude": "19.809554954172846"
+    },
+    "openTime": {
+      "hour": 4,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 22,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
     },
     "averageGrade": 9.0,
     "deleted": false
@@ -19,13 +31,25 @@
     "name": "Milan",
     "type": "POOL",
     "facilityContent": [],
-    "isWorking": false,
+    "isWorking": true,
     "currentLocation": {
       "streetAndNumber": "Hickoka 3",
       "city": "Novi Sad",
       "postalCode": "21000",
       "latitude": "45.248439636131316",
       "longitude": "19.815743302642588"
+    },
+    "openTime": {
+      "hour": 6,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 23,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
     },
     "averageGrade": 0.0,
     "deleted": false
@@ -43,6 +67,18 @@
       "latitude": "45.25336731236138",
       "longitude": "19.84558805760194"
     },
+    "openTime": {
+      "hour": 7,
+      "minute": 21,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 10,
+      "minute": 24,
+      "second": 0,
+      "nano": 0
+    },
     "averageGrade": 0.0,
     "deleted": false
   },
@@ -58,6 +94,18 @@
       "latitude": "45.24857800161932",
       "longitude": "19.844296524797166"
     },
+    "openTime": {
+      "hour": 8,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 22,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
     "averageGrade": 4.0,
     "deleted": false
   },
@@ -65,13 +113,25 @@
     "sportFacilityId": "5",
     "name": "Gladiator",
     "type": "GYM",
-    "isWorking": false,
+    "isWorking": true,
     "currentLocation": {
       "streetAndNumber": "Fruskogorska 19",
       "city": "Novi Sad",
       "postalCode": "2100",
       "latitude": "45.241892911574055",
       "longitude": "19.82849249596142"
+    },
+    "openTime": {
+      "hour": 7,
+      "minute": 21,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 22,
+      "minute": 24,
+      "second": 0,
+      "nano": 0
     },
     "averageGrade": 5.0,
     "deleted": false
@@ -80,13 +140,25 @@
     "sportFacilityId": "6",
     "name": "Atlantida",
     "type": "POOL",
-    "isWorking": true,
+    "isWorking": false,
     "currentLocation": {
       "streetAndNumber": "Klisa 8",
       "city": "Novi Sad",
       "postalCode": "2100",
       "latitude": "45.29340339934422",
       "longitude": "19.82332165941428"
+    },
+    "openTime": {
+      "hour": 8,
+      "minute": 21,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 11,
+      "minute": 24,
+      "second": 0,
+      "nano": 0
     },
     "averageGrade": 4.0,
     "deleted": false
@@ -103,6 +175,18 @@
       "latitude": "44.800852647085684",
       "longitude": "20.383988526632155"
     },
+    "openTime": {
+      "hour": 7,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 21,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
     "averageGrade": 4.0,
     "deleted": false
   },
@@ -111,7 +195,7 @@
     "name": "Atletic",
     "type": "GYM",
     "facilityContent": [],
-    "isWorking": false,
+    "isWorking": true,
     "currentLocation": {
       "streetAndNumber": "Voje ilica 21",
       "city": "Beograd",
@@ -119,7 +203,47 @@
       "latitude": "44.78759833309235",
       "longitude": "20.503788982680035"
     },
+    "openTime": {
+      "hour": 7,
+      "minute": 21,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 21,
+      "minute": 24,
+      "second": 0,
+      "nano": 0
+    },
     "averageGrade": 0.0,
+    "deleted": false
+  },
+  "9": {
+    "sportFacilityId": "9",
+    "name": "Viki",
+    "type": "GYM",
+    "facilityContent": [],
+    "isWorking": false,
+    "currentLocation": {
+      "streetAndNumber": "11",
+      "city": "11",
+      "postalCode": "11",
+      "latitude": "11",
+      "longitude": "11"
+    },
+    "averageGrade": 0.0,
+    "openTime": {
+      "hour": 7,
+      "minute": 21,
+      "second": 0,
+      "nano": 0
+    },
+    "closeTime": {
+      "hour": 10,
+      "minute": 24,
+      "second": 0,
+      "nano": 0
+    },
     "deleted": false
   }
 }
