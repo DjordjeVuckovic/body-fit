@@ -3,7 +3,7 @@
     <div class="row">
     <Facilitie @viewComments="viewComments"  @hideTrenings="hideTrenings" :viewTreningsBoole="viewTreningsBoole" :viewComentsBoole="viewComentsBoole" @viewTrenings="viewTrenings" @hideComments="hideComments" :selectedFacilitie="selectedFacilitie" :facilitie="selectedFacilitie"></Facilitie>
     </div>
-    <div class="com" v-if="viewComentsBoole"> 
+    <div  v-if="viewComentsBoole"> 
         <div  v-if="isAdmin || isManager" class="row bg-dark"> 
           <div class="col">
             <div style="border-bottom: 5px white;">
