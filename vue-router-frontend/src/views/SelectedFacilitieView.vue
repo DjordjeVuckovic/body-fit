@@ -46,6 +46,16 @@
           </div>
         </div>
       </div>
+      <h1 class="headMy"> Other content</h1>
+      <div   class="py-5 mx-5">
+        <div class="row row-cols-2 g-3">
+          <div  v-for="tr in contents" v-bind:key="tr.id" class="container" style="padding-top: 20px">
+            <div class="col">
+              <OtherContent :training = "tr"></OtherContent>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   
 </template>
@@ -57,6 +67,7 @@ import TrainingService from "@/FrontedServices/TrainingService";
 import CommentService from "../FrontedServices/CommentServices";
 import ModalBuyTraining from "@/components/ModalBuyTraining";
 import Comment from "../components/Comment.vue";
+import OtherContent from "@/components/OtherContent";
 export default {
     name: 'SelectedFacilitieView',
     data(){
@@ -65,12 +76,14 @@ export default {
           viewTreningsBoole:true,
           viewComentsBoole:false,
           commentsAproved:[],
-          commentsNotAproved:[]
+          commentsNotAproved:[],
+          contents:[]
         }
     },
     props:['selectedFacilitie', 'isCustomer','isManager','isAdmin','isTrainer',],
     
     components:{
+      OtherContent,
       TrainingForCustomer,Facilitie,ModalBuyTraining,CommentService,Comment
         },
     created() {
@@ -82,6 +95,11 @@ export default {
       then((response)=>{this.commentsNotAproved = response.data; console.log("sadgfasgfadgdfag")})
       .catch((error) => console.log(error))
       console.log(this.selectedFacilitie)
+      TrainingService.getContent(this.selectedFacilitie.id).then(
+          (res)=>{
+            this.contents = res.data
+          }
+      )
     },
     methods:{
       viewTrenings(){

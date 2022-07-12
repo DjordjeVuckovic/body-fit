@@ -6,6 +6,7 @@ const TRAININGS_TRAINERS_API_BASE_URL="http://localhost:8080/BodyFit/rest/traini
 const TRAINING_EDIT_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings/editTraining"
 const TRAININGS_FACILITY_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings/getAllByFacility"
 const TRAININGS_ID_API_BASE_URL="http://localhost:8080/BodyFit/rest/trainings/getById"
+const CONTENT_ID_API_BASE_URL="http://localhost:8080/BodyFit/rest/contents/getByFacility"
 
 
 class getTrainings{
@@ -29,6 +30,9 @@ class getTrainings{
     }
     getById(id){
         return axios.post(TRAININGS_ID_API_BASE_URL,id)
+    }
+    getContent(id){
+        return axios.post(CONTENT_ID_API_BASE_URL,id)
     }
 
 }

@@ -1,8 +1,11 @@
 <template>
-  <div class="container-fluid" style="margin-top: 150px">
-  <div id="main" class="container-fluid">
-    <Header class="headMy" title="You have successfully submitted form!"></Header>
-  </div>
+  <div class="container-fluid" style="margin-top: 50px">
+    <div id="main" class="container-fluid">
+      <HeaderMulti class="headMy" title="You have successfully submitted form!"></HeaderMulti>
+      <div class="center">
+        <img src="../../success.png">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,14 @@ export default {
 </script>
 
 <style scoped>
+.center {
+  display: block;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center
+}
 #main{
   font-family: Roboto;
   -webkit-font-smoothing: antialiased;

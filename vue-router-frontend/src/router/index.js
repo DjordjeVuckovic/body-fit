@@ -152,10 +152,12 @@ const routes = [
     path: '/allCustomersManager',
     name: 'allCustomersManager',
     component: AllCustomersManagerView
+  },
+  {
+    path: '/addContentView',
+    name: 'addContentView',
+    component: AddContentView
   }
-
-
-
 ]
 
 const router = createRouter({

@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.FacilityContent;
 import beans.Manager;
+import beans.Training;
 
 public class FacilityContentDao extends GenericDao<String, FacilityContent, FacilityContentDao>{
 	@Override
@@ -44,6 +45,16 @@ public class FacilityContentDao extends GenericDao<String, FacilityContent, Faci
 	public ArrayList<FacilityContent> getAllToList() {
 		// TODO Auto-generated method stub
 		return new ArrayList<FacilityContent>(getAllToMap().values());
+	}
+	public ArrayList<FacilityContent> getAllByFacility(String facilityId){
+		ArrayList<FacilityContent> trainings = new ArrayList<FacilityContent>();
+		for (FacilityContent training : getAllToList()) {
+			if(training.getSportFacilityId().equals(facilityId)) {
+				trainings.add(training);
+			}
+			
+		}
+		return trainings;
 	}
 
 }
