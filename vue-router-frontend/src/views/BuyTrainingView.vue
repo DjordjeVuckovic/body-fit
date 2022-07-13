@@ -100,7 +100,10 @@ export default {
     },
     BuyTraining() {
       
-      
+      if(!this.date && !this.startTime && !this.finishTime){
+        this.$refs.alert
+            .showAlert('error','Plese fill all fields correctly ','warning')
+      }
       
         let today = new Date();
       if(moment(this.date).isBefore(today)){
