@@ -16,13 +16,26 @@ This application is a web app for managing fitness centers. The backend is built
 ## Installation and Setup
 
 1. Install JDK 11 or above for java backend.You also have to configure tomcat server(usefull link [https://www.baeldung.com/eclipse-tomcat](https://www.baeldung.com/eclipse-tomcat))
-2. Install Node js for 
-2. Clone the repository: `git clone https://github.com/[insert repository URL here].git`
-3. Navigate to the project directory: `cd fitness-center-management-app`
-4. Start the backend server: `[insert command here]`
-5. In a separate terminal window
+2. Install Node js for vue frontend
+3. Clone the repository: `git clone https://github.com/DjordjeVuckovic/body-fit.git`
+4. Navigate to the backend project directory: `cd BodyFit` and open project in Eclipse EE
+5. Setup previously downloaded and configured tomcat server and run backend
+6. The backend base endpoint will be  http://localhost:8080/BodyFit/rest/
+7. Navigate to the frontend project directory: `cd vue-router-frontend` and run command: `npm run serve`
+8. The frontend will be running on http://localhost:8081
 
 ## Built With
 
 - [Java JAX-RS](https://jax-rs.java.net/) - Backend RESTful web service framework
 - [Vue.js](https://vuejs.org/) - Frontend JavaScript framework
+
+## Screenshots
+![Screenshot of my project](screenshots/Screenshot_1.png)
+![Screenshot of my project](screenshots/Screenshot_2.png)
+![Screenshot of my project](screenshots/Screenshot_3.png)
+![Screenshot of my project](screenshots/Screenshot_4.png)
+![Screenshot of my project](screenshots/Screenshot_5.png)
+![Screenshot of my project](screenshots/Screenshot_6.png)
+![Screenshot of my project](screenshots/Screenshot_7.png)
+![Screenshot of my project](screenshots/Screenshot_8.png)
+![Screenshot of my project](screenshots/Screenshot_9.png)
