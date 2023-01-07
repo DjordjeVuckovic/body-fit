@@ -31,11 +31,19 @@ This application is a web app for managing fitness centers. The backend is built
 
 ## Screenshots
 ![Screenshot of my project](screenshots/Screenshot_1.png)
+
 ![Screenshot of my project](screenshots/Screenshot_2.png)
+
 ![Screenshot of my project](screenshots/Screenshot_3.png)
+
 ![Screenshot of my project](screenshots/Screenshot_4.png)
+
 ![Screenshot of my project](screenshots/Screenshot_5.png)
+
 ![Screenshot of my project](screenshots/Screenshot_6.png)
+
 ![Screenshot of my project](screenshots/Screenshot_7.png)
+
 ![Screenshot of my project](screenshots/Screenshot_8.png)
+
 ![Screenshot of my project](screenshots/Screenshot_9.png)
